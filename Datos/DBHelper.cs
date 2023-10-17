@@ -1,0 +1,129 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Farmaceutica.Datos
+{
+    public class DBHelper
+    {
+        SqlConnection conexion;
+        SqlCommand comando;
+
+        private static DBHelper? instancia;
+
+        public DBHelper()
+        {
+            conexion = new SqlConnection(Properties.Resources.cadena_conexion);
+            comando = new SqlCommand();
+            comando.Connection = conexion;
+        }
+
+        public static DBHelper ObtenerInstancia()
+        {
+            if (instancia == null)
+                instancia = new DBHelper();
+            return instancia;
+        }
+
+        public void AbreConexionConTransaccion()
+        {
+            try
+            {
+                conexion.Open();
+                comando.Transaction = conexion.BeginTransaction();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (comando.Transaction != null)
+                    comando.Transaction.Rollback();
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                    conexion.Close();
+            }
+        }
+
+        public void CierraConexionConTransaccion()
+        {
+            try
+            {
+                comando.Transaction.Commit();
+                conexion.Close();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (comando.Transaction != null)
+                    comando.Transaction.Rollback();
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                    conexion.Close();
+            }
+        }
+
+        public DataTable CargarTabla(string SP)
+        {
+            try
+            {
+                DataTable Tabla = new DataTable();
+                conexion.Open();
+                comando.CommandText = SP;
+                comando.CommandType = CommandType.StoredProcedure;
+                Tabla.Load(comando.ExecuteReader());
+                conexion.Close();
+                return Tabla;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                 if (conexion != null && conexion.State == ConnectionState.Open)
+                    conexion.Close();
+            }
+
+        }
+
+        public int EjecutaComando(string SP, List<SqlParameter> lista_param, SqlParameter? salida)
+        {
+            try
+            {
+                int resultado = -1;
+                comando.Parameters.Clear();
+                comando.CommandText = SP;
+                comando.CommandType = CommandType.StoredProcedure;
+                if (salida != null)
+                    comando.Parameters.Add(salida);
+                foreach (SqlParameter param in lista_param)
+                    comando.Parameters.Add(param);
+                comando.ExecuteNonQuery();
+                if (salida != null)
+                    resultado = (int)salida.Value;
+                else
+                    resultado = 0;
+                return resultado;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (comando.Transaction != null)
+                    comando.Transaction.Rollback();
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                    conexion.Close();
+            }
+        }
+    }
+}
