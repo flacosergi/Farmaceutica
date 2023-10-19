@@ -398,6 +398,7 @@
             MinimizeBox = false;
             Name = "Articulos";
             Text = "Artículos";
+            Load += Articulos_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

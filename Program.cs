@@ -16,7 +16,7 @@ namespace Farmaceutica
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            client.BaseAddress = new Uri("http://localhost:64195/");
+            client.BaseAddress = new Uri("https://localhost:5001");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             Application.Run(new Articulos());

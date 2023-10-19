@@ -21,24 +21,31 @@ namespace Farmaceutica.Presentacion
         public Articulos()
         {
             InitializeComponent();
-
+           
         }
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            lista = await GetProductAsync(url.PathAndQuery);
+            lista = await GetProductAsync("/WeatherForecast");
         }
 
         private async Task<List<WeatherForecast>> GetProductAsync(string path)
         {
-            
+
             List<WeatherForecast> lista = new List<WeatherForecast>();
+
             HttpResponseMessage response = await client.GetAsync(path);
             if (response.IsSuccessStatusCode)
             {
                 lista = await response.Content.ReadAsAsync<List<WeatherForecast>>();
             }
+            MessageBox.Show(lista[0].TemperatureC.ToString());
             return lista;
+        }
+
+        private void Articulos_Load(object sender, EventArgs e)
+        {
+            client.GetStringAsync("/WeatherForecast");
         }
     }
 
@@ -46,7 +53,7 @@ namespace Farmaceutica.Presentacion
     {
         public DateTime Date { get; set; }
         public int TemperatureC { get; set; }
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+        public int TemperatureF { get; set; }
         public string? Summary { get; set; }
     }
 
