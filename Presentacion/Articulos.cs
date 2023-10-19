@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Farmaceutica.Dominio;
+using Farmaceutica.Servicios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,17 +18,19 @@ namespace Farmaceutica.Presentacion
 {
     public partial class Articulos : Form
     {
-        List<WeatherForecast> lista = new List<WeatherForecast>();
+        List<Tipo_Articulo> lista = new List<Tipo_Articulo>();
+        GestorArticulos gestor_art;
 
         public Articulos()
         {
             InitializeComponent();
-           
+            AbstractFactory factoria = new DominioFactory();
+            gestor_art = (GestorArticulos)factoria.CreaObjeto("gestor_art");
         }
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            lista = await GetProductAsync("/WeatherForecast");
+           
         }
 
         private async Task<List<WeatherForecast>> GetProductAsync(string path)
@@ -43,9 +47,19 @@ namespace Farmaceutica.Presentacion
             return lista;
         }
 
-        private void Articulos_Load(object sender, EventArgs e)
+ 
+        private async void Articulos_Load(object sender, EventArgs e)
         {
-            client.GetStringAsync("/WeatherForecast");
+            await client.GetStringAsync("/WeatherForecast");
+            LlenaComboTipoArticulo(cbo_tipo_art, await gestor_art.GetTipoArticulos());
+        }
+
+        private void LlenaComboTipoArticulo(ComboBox combo, List<Tipo_Articulo> lista)
+        {
+            combo.DataSource = lista;
+            combo.DisplayMember = "detalle";
+            combo.ValueMember = "id_tipo_articulo";
+            combo.SelectedIndex = -1;
         }
     }
 

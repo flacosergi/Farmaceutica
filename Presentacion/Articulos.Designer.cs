@@ -52,7 +52,7 @@
             label5 = new Label();
             textBox1 = new TextBox();
             label4 = new Label();
-            comboBox1 = new ComboBox();
+            cbo_tipo_art = new ComboBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -163,7 +163,7 @@
             panel2.Controls.Add(label5);
             panel2.Controls.Add(textBox1);
             panel2.Controls.Add(label4);
-            panel2.Controls.Add(comboBox1);
+            panel2.Controls.Add(cbo_tipo_art);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label1);
@@ -336,14 +336,14 @@
             label4.TabIndex = 14;
             label4.Text = "Descripcón:";
             // 
-            // comboBox1
+            // cbo_tipo_art
             // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(146, 56);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(164, 23);
-            comboBox1.TabIndex = 2;
+            cbo_tipo_art.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_tipo_art.FormattingEnabled = true;
+            cbo_tipo_art.Location = new Point(146, 56);
+            cbo_tipo_art.Name = "cbo_tipo_art";
+            cbo_tipo_art.Size = new Size(164, 23);
+            cbo_tipo_art.TabIndex = 2;
             // 
             // label3
             // 
@@ -416,7 +416,7 @@
         private Panel panel2;
         private Label label1;
         private PictureBox pictureBox1;
-        private ComboBox comboBox1;
+        private ComboBox cbo_tipo_art;
         private Label label3;
         private Label label2;
         private Label label7;
