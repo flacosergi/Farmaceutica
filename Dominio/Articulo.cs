@@ -13,6 +13,7 @@ namespace Farmaceutica.Dominio
         public int cod_articulo { get; set; }
         public Tipo_Articulo tipo_articulo { get; set; }
         public Unidad_Medida unidad_medida { get; set; }
+        public Marca marca { get; set; }
         public decimal cant_um { get; set; }
         public string detalle { get; set; }
         public decimal precio { get; set; }
@@ -25,6 +26,7 @@ namespace Farmaceutica.Dominio
             cod_articulo = 0;
             tipo_articulo = (Tipo_Articulo)factory.CreaObjeto("tipo_articulo");
             unidad_medida = (Unidad_Medida)factory.CreaObjeto("unidad_medida");
+            marca = (Marca)factory.CreaObjeto("marca");
             cant_um = 0;
             detalle = string.Empty;
             precio = 0;

@@ -19,8 +19,8 @@ namespace Farmaceutica.Dominio
                     return new Tipo_Articulo();
                 case "unidad_medida":
                     return new Unidad_Medida();
-                case "gestor_art":
-                    return new GestorArticulos();
+                case "marca":
+                    return new Marca();
                 default:
                     throw new ArgumentException($"Tipo de objeto inválido: {tipo}");
             }

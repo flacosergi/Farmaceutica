@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            btnNuevo = new Button();
             panel1 = new Panel();
-            button3 = new Button();
-            button5 = new Button();
+            btnLimpiar = new Button();
+            btnSalir = new Button();
             button4 = new Button();
             button2 = new Button();
-            panel2 = new Panel();
+            pnlCarga = new Panel();
             checkBox1 = new CheckBox();
             maskedTextBox5 = new MaskedTextBox();
             label11 = new Label();
@@ -47,8 +47,8 @@
             maskedTextBox1 = new MaskedTextBox();
             label7 = new Label();
             label6 = new Label();
-            comboBox3 = new ComboBox();
-            comboBox2 = new ComboBox();
+            cboUM = new ComboBox();
+            cbo_marca = new ComboBox();
             label5 = new Label();
             textBox1 = new TextBox();
             label4 = new Label();
@@ -57,64 +57,68 @@
             label2 = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
+            button1 = new Button();
+            button3 = new Button();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
+            pnlCarga.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // btnNuevo
             // 
-            button1.BackColor = Color.DarkCyan;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.Control;
-            button1.Location = new Point(33, 18);
-            button1.Name = "button1";
-            button1.Size = new Size(85, 27);
-            button1.TabIndex = 0;
-            button1.Text = "Nuevo";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btnNuevo.BackColor = Color.DarkCyan;
+            btnNuevo.FlatStyle = FlatStyle.Flat;
+            btnNuevo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNuevo.ForeColor = SystemColors.Control;
+            btnNuevo.Location = new Point(33, 18);
+            btnNuevo.Name = "btnNuevo";
+            btnNuevo.Size = new Size(85, 27);
+            btnNuevo.TabIndex = 0;
+            btnNuevo.Text = "Nuevo";
+            btnNuevo.UseVisualStyleBackColor = false;
+            btnNuevo.Click += btnNuevo_Click;
             // 
             // panel1
             // 
             panel1.BackColor = Color.PaleTurquoise;
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(button3);
-            panel1.Controls.Add(button5);
+            panel1.Controls.Add(btnLimpiar);
+            panel1.Controls.Add(btnSalir);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(btnNuevo);
             panel1.Location = new Point(17, 417);
             panel1.Name = "panel1";
             panel1.Size = new Size(801, 71);
             panel1.TabIndex = 1;
             // 
-            // button3
+            // btnLimpiar
             // 
-            button3.BackColor = Color.DarkCyan;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.ForeColor = SystemColors.Control;
-            button3.Location = new Point(593, 18);
-            button3.Name = "button3";
-            button3.Size = new Size(85, 27);
-            button3.TabIndex = 3;
-            button3.Text = "Limpiar";
-            button3.UseVisualStyleBackColor = false;
+            btnLimpiar.BackColor = Color.DarkCyan;
+            btnLimpiar.FlatStyle = FlatStyle.Flat;
+            btnLimpiar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLimpiar.ForeColor = SystemColors.Control;
+            btnLimpiar.Location = new Point(593, 18);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(85, 27);
+            btnLimpiar.TabIndex = 3;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
-            // button5
+            // btnSalir
             // 
-            button5.BackColor = Color.DarkCyan;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button5.ForeColor = SystemColors.Control;
-            button5.Location = new Point(700, 18);
-            button5.Name = "button5";
-            button5.Size = new Size(85, 27);
-            button5.TabIndex = 4;
-            button5.Text = "Salir";
-            button5.UseVisualStyleBackColor = false;
+            btnSalir.BackColor = Color.DarkCyan;
+            btnSalir.FlatStyle = FlatStyle.Flat;
+            btnSalir.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSalir.ForeColor = SystemColors.Control;
+            btnSalir.Location = new Point(700, 18);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(85, 27);
+            btnSalir.TabIndex = 4;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click;
             // 
             // button4
             // 
@@ -142,36 +146,39 @@
             button2.Text = "Editar";
             button2.UseVisualStyleBackColor = false;
             // 
-            // panel2
+            // pnlCarga
             // 
-            panel2.BackColor = Color.White;
-            panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(checkBox1);
-            panel2.Controls.Add(maskedTextBox5);
-            panel2.Controls.Add(label11);
-            panel2.Controls.Add(maskedTextBox4);
-            panel2.Controls.Add(label10);
-            panel2.Controls.Add(maskedTextBox3);
-            panel2.Controls.Add(label9);
-            panel2.Controls.Add(maskedTextBox2);
-            panel2.Controls.Add(label8);
-            panel2.Controls.Add(maskedTextBox1);
-            panel2.Controls.Add(label7);
-            panel2.Controls.Add(label6);
-            panel2.Controls.Add(comboBox3);
-            panel2.Controls.Add(comboBox2);
-            panel2.Controls.Add(label5);
-            panel2.Controls.Add(textBox1);
-            panel2.Controls.Add(label4);
-            panel2.Controls.Add(cbo_tipo_art);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(label1);
-            panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(17, 19);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(801, 379);
-            panel2.TabIndex = 0;
+            pnlCarga.BackColor = Color.White;
+            pnlCarga.BorderStyle = BorderStyle.FixedSingle;
+            pnlCarga.Controls.Add(button3);
+            pnlCarga.Controls.Add(button1);
+            pnlCarga.Controls.Add(checkBox1);
+            pnlCarga.Controls.Add(maskedTextBox5);
+            pnlCarga.Controls.Add(label11);
+            pnlCarga.Controls.Add(maskedTextBox4);
+            pnlCarga.Controls.Add(label10);
+            pnlCarga.Controls.Add(maskedTextBox3);
+            pnlCarga.Controls.Add(label9);
+            pnlCarga.Controls.Add(maskedTextBox2);
+            pnlCarga.Controls.Add(label8);
+            pnlCarga.Controls.Add(maskedTextBox1);
+            pnlCarga.Controls.Add(label7);
+            pnlCarga.Controls.Add(label6);
+            pnlCarga.Controls.Add(cboUM);
+            pnlCarga.Controls.Add(cbo_marca);
+            pnlCarga.Controls.Add(label5);
+            pnlCarga.Controls.Add(textBox1);
+            pnlCarga.Controls.Add(label4);
+            pnlCarga.Controls.Add(cbo_tipo_art);
+            pnlCarga.Controls.Add(label3);
+            pnlCarga.Controls.Add(label2);
+            pnlCarga.Controls.Add(label1);
+            pnlCarga.Controls.Add(pictureBox1);
+            pnlCarga.Enabled = false;
+            pnlCarga.Location = new Point(17, 19);
+            pnlCarga.Name = "pnlCarga";
+            pnlCarga.Size = new Size(801, 379);
+            pnlCarga.TabIndex = 0;
             // 
             // checkBox1
             // 
@@ -180,7 +187,7 @@
             checkBox1.FlatStyle = FlatStyle.Flat;
             checkBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox1.ForeColor = Color.DarkCyan;
-            checkBox1.Location = new Point(726, 332);
+            checkBox1.Location = new Point(342, 329);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(59, 19);
             checkBox1.TabIndex = 11;
@@ -266,6 +273,7 @@
             maskedTextBox1.Name = "maskedTextBox1";
             maskedTextBox1.Size = new Size(80, 23);
             maskedTextBox1.TabIndex = 6;
+            maskedTextBox1.ValidatingType = typeof(int);
             // 
             // label7
             // 
@@ -289,23 +297,23 @@
             label6.TabIndex = 16;
             label6.Text = "U. Medida.:";
             // 
-            // comboBox3
+            // cboUM
             // 
-            comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(146, 171);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(164, 23);
-            comboBox3.TabIndex = 5;
+            cboUM.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboUM.FormattingEnabled = true;
+            cboUM.Location = new Point(146, 171);
+            cboUM.Name = "cboUM";
+            cboUM.Size = new Size(164, 23);
+            cboUM.TabIndex = 5;
             // 
-            // comboBox2
+            // cbo_marca
             // 
-            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(146, 132);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(164, 23);
-            comboBox2.TabIndex = 4;
+            cbo_marca.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_marca.FormattingEnabled = true;
+            cbo_marca.Location = new Point(146, 132);
+            cbo_marca.Name = "cbo_marca";
+            cbo_marca.Size = new Size(238, 23);
+            cbo_marca.TabIndex = 4;
             // 
             // label5
             // 
@@ -320,17 +328,17 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(146, 93);
+            textBox1.Location = new Point(146, 56);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(324, 23);
-            textBox1.TabIndex = 3;
+            textBox1.TabIndex = 2;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.DarkCyan;
-            label4.Location = new Point(21, 96);
+            label4.Location = new Point(18, 59);
             label4.Name = "label4";
             label4.Size = new Size(72, 15);
             label4.TabIndex = 14;
@@ -340,17 +348,17 @@
             // 
             cbo_tipo_art.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_tipo_art.FormattingEnabled = true;
-            cbo_tipo_art.Location = new Point(146, 56);
+            cbo_tipo_art.Location = new Point(146, 94);
             cbo_tipo_art.Name = "cbo_tipo_art";
-            cbo_tipo_art.Size = new Size(164, 23);
-            cbo_tipo_art.TabIndex = 2;
+            cbo_tipo_art.Size = new Size(238, 23);
+            cbo_tipo_art.TabIndex = 3;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.DarkCyan;
-            label3.Location = new Point(21, 58);
+            label3.Location = new Point(18, 97);
             label3.Name = "label3";
             label3.Size = new Size(81, 15);
             label3.TabIndex = 13;
@@ -386,13 +394,39 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.DarkCyan;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.Control;
+            button1.Location = new Point(524, 279);
+            button1.Name = "button1";
+            button1.Size = new Size(109, 27);
+            button1.TabIndex = 21;
+            button1.Text = "Agregar Imagen";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.DarkCyan;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.ForeColor = SystemColors.Control;
+            button3.Location = new Point(650, 279);
+            button3.Name = "button3";
+            button3.Size = new Size(107, 27);
+            button3.TabIndex = 22;
+            button3.Text = "Borrar Imagen";
+            button3.UseVisualStyleBackColor = false;
+            // 
             // Articulos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Azure;
             ClientSize = new Size(833, 507);
-            Controls.Add(panel2);
+            Controls.Add(pnlCarga);
             Controls.Add(panel1);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -400,20 +434,20 @@
             Text = "Artículos";
             Load += Articulos_Load;
             panel1.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            pnlCarga.ResumeLayout(false);
+            pnlCarga.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button button1;
+        private Button btnNuevo;
         private Panel panel1;
-        private Button button5;
+        private Button btnSalir;
         private Button button4;
         private Button button2;
-        private Panel panel2;
+        private Panel pnlCarga;
         private Label label1;
         private PictureBox pictureBox1;
         private ComboBox cbo_tipo_art;
@@ -421,8 +455,8 @@
         private Label label2;
         private Label label7;
         private Label label6;
-        private ComboBox comboBox3;
-        private ComboBox comboBox2;
+        private ComboBox cboUM;
+        private ComboBox cbo_marca;
         private Label label5;
         private TextBox textBox1;
         private Label label4;
@@ -435,7 +469,9 @@
         private Label label8;
         private MaskedTextBox maskedTextBox5;
         private Label label11;
-        private Button button3;
+        private Button btnLimpiar;
         private CheckBox checkBox1;
+        private Button button3;
+        private Button button1;
     }
 }

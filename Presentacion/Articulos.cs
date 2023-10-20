@@ -20,56 +20,46 @@ namespace Farmaceutica.Presentacion
     {
         List<Tipo_Articulo> lista = new List<Tipo_Articulo>();
         GestorArticulos gestor_art;
+        MetodosComunes metodos;
 
         public Articulos()
         {
             InitializeComponent();
-            AbstractFactory factoria = new DominioFactory();
+            AbstractFactory factoria = new ServiciosFactory();
             gestor_art = (GestorArticulos)factoria.CreaObjeto("gestor_art");
+            metodos = (MetodosComunes)factoria.CreaObjeto("metodos_comunes");
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+
+        private async void Articulos_Load(object sender, EventArgs e)
         {
-           
-        }
-
-        private async Task<List<WeatherForecast>> GetProductAsync(string path)
-        {
-
-            List<WeatherForecast> lista = new List<WeatherForecast>();
-
-            HttpResponseMessage response = await client.GetAsync(path);
-            if (response.IsSuccessStatusCode)
-            {
-                lista = await response.Content.ReadAsAsync<List<WeatherForecast>>();
-            }
-            MessageBox.Show(lista[0].TemperatureC.ToString());
-            return lista;
+            await client.GetStringAsync("/api/Articulos/Obtener_Marcas");
+            List<Tipo_Articulo> lista = await gestor_art.GetTipoArticulos();
+            metodos.LlenaCombo(cbo_tipo_art, lista.ToList<object>(), "detalle", "id_tipo_articulo");
+            List<Marca> lista_m = await gestor_art.GetMarcas();
+            metodos.LlenaCombo(cbo_marca, lista_m.ToList<object>(), "detalle", "id_marca");
+            List<Unidad_Medida> lista_um = await gestor_art.GetUM();
+            metodos.LlenaCombo(cboUM, lista_um.ToList<object>(), "detalle", "id_u_medida");
         }
 
  
-        private async void Articulos_Load(object sender, EventArgs e)
+
+        private void btnNuevo_Click(object sender, EventArgs e)
         {
-            await client.GetStringAsync("/WeatherForecast");
-            LlenaComboTipoArticulo(cbo_tipo_art, await gestor_art.GetTipoArticulos());
+            pnlCarga.Enabled = true;
+
         }
 
-        private void LlenaComboTipoArticulo(ComboBox combo, List<Tipo_Articulo> lista)
+        private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            combo.DataSource = lista;
-            combo.DisplayMember = "detalle";
-            combo.ValueMember = "id_tipo_articulo";
-            combo.SelectedIndex = -1;
+            metodos.LimpiaControles(pnlCarga);
+            pnlCarga.Enabled = false;
+        }
+
+         private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
-
-    public class WeatherForecast
-    {
-        public DateTime Date { get; set; }
-        public int TemperatureC { get; set; }
-        public int TemperatureF { get; set; }
-        public string? Summary { get; set; }
-    }
-
 
 }

@@ -1,4 +1,5 @@
-﻿using APIFarmaceutica.Modelos;
+﻿using ApiFarmaceutica.Modelos;
+using APIFarmaceutica.Modelos;
 using APIFarmaceutica.Servicios;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace APIFarmaceutica.Datos
             salida.SqlDbType = System.Data.SqlDbType.Int;
             salida.ParameterName = "@proximo";
             DBHelper.ObtenerInstancia().AbreConexionConTransaccion();
-            NuevoArticulo.cod_articulo = DBHelper.ObtenerInstancia().EjecutaComando("SP_BUSCA_PROXIMO_ID_ARTICULO", new List<SqlParameter>(), salida);
+            NuevoArticulo.cod_articulo = DBHelper.ObtenerInstancia().EjecutaComando("SP_ARTICULOS_BUSCA_PROXIMO_ID", new List<SqlParameter>(), salida);
             param_articulo.Add(new SqlParameter("@cod_articulo", NuevoArticulo.cod_articulo));
             param_articulo.Add(new SqlParameter("@id_tipo_articulo", NuevoArticulo.tipo_articulo.id_tipo_articulo));
             param_articulo.Add(new SqlParameter("@id_u_medida", NuevoArticulo.unidad_medida.id_u_medida));
@@ -33,7 +34,7 @@ namespace APIFarmaceutica.Datos
             param_articulo.Add(new SqlParameter("@stock_maximo", NuevoArticulo.stock_maximo));
             param_articulo.Add(new SqlParameter("@stock_minimo", NuevoArticulo.stock_minimo));
             param_articulo.Add(new SqlParameter("@codigo_barras", NuevoArticulo.codigo_barras));
-            int resultado = DBHelper.ObtenerInstancia().EjecutaComando("SP_ALTA_ARTICULO", param_articulo, null);
+            int resultado = DBHelper.ObtenerInstancia().EjecutaComando("SP_ARTICULOS_ALTA", param_articulo, null);
             DBHelper.ObtenerInstancia().CierraConexionConTransaccion();
             return resultado;
         }
@@ -57,7 +58,7 @@ namespace APIFarmaceutica.Datos
         {
             List<Tipo_Articulo> nueva_lista = new List<Tipo_Articulo>();
             DataTable nueva_tabla = new DataTable();
-            nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("SP_CARGA_TIPO_ARTICULOS");
+            nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("SP_ARTICULOS_CARGA_TIPOS");
             foreach (DataRow fila in nueva_tabla.Rows) 
             {
                 Tipo_Articulo nuevo_tipo = (Tipo_Articulo)factory.CreaObjeto("tipo_articulo");
@@ -67,5 +68,36 @@ namespace APIFarmaceutica.Datos
             }
             return nueva_lista;
         }
+        public List<Marca> Obtiene_Marcas(AbstractFactory factory)
+        {
+            List<Marca> nueva_lista = new List<Marca>();
+            DataTable nueva_tabla = new DataTable();
+            nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("SP_ARTICULOS_CARGA_MARCAS");
+            foreach (DataRow fila in nueva_tabla.Rows)
+            {
+                Marca nueva_marca = (Marca)factory.CreaObjeto("marca");
+                nueva_marca.id_marca = Convert.ToInt32(fila["id_marca"].ToString());
+                nueva_marca.detalle = (string)fila["detalle"];
+                nueva_lista.Add(nueva_marca);
+            }
+            return nueva_lista;
+        }
+
+        public List<Unidad_Medida> Obtiene_UM(AbstractFactory factory)
+        {
+            List<Unidad_Medida> nueva_lista = new List<Unidad_Medida>();
+            DataTable nueva_tabla = new DataTable();
+            nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("SP_ARTICULOS_CARGA_UM");
+            foreach (DataRow fila in nueva_tabla.Rows)
+            {
+                Unidad_Medida nueva_um = (Unidad_Medida)factory.CreaObjeto("um");
+                nueva_um.id_u_medida = Convert.ToInt32(fila["id_u_medida"].ToString());
+                nueva_um.detalle = (string)fila["detalle_um"];
+                nueva_lista.Add(nueva_um);
+            }
+            return nueva_lista;
+        }
+
+
     }
 }

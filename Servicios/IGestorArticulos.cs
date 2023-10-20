@@ -10,6 +10,6 @@ namespace Farmaceutica.Servicios
     public interface IGestorArticulos
     {
         Task<List<Tipo_Articulo>> GetTipoArticulos();
-
+        Task<List<Marca>> GetMarcas();
     }
 }

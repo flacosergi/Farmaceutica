@@ -1,4 +1,5 @@
-﻿using APIFarmaceutica.Datos;
+﻿using ApiFarmaceutica.Modelos;
+using APIFarmaceutica.Datos;
 using APIFarmaceutica.Modelos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +12,7 @@ namespace APIFarmaceutica.Controllers
     [ApiController]
     public class ArticulosController : ControllerBase
     {
-        DominioFactory factory = new DominioFactory();
+        ModeloFactory factory = new ModeloFactory();
         private readonly ILogger<ArticulosController> _logger;
 
         public ArticulosController(ILogger<ArticulosController> logger)
@@ -20,12 +21,28 @@ namespace APIFarmaceutica.Controllers
         }
 
 
-        // GET: api/<Tipo_Articulos>
+        // GET: api/Articulos/Obtener_Tipo_Articulos
         [HttpGet, Route("Obtener_Tipo_Articulos")]
-        public IEnumerable<Tipo_Articulo> Get()
+        public IEnumerable<Tipo_Articulo> GetTipos()
         {
             DaoArticulo dao = (DaoArticulo)factory.CreaObjeto("DaoArticulo");
             return dao.Obtiene_Tipo_Articulo(factory);
+        }
+
+        // GET: api/Articulos/Obtener_Marcas
+        [HttpGet, Route("Obtener_Marcas")]
+        public IEnumerable<Marca> GetMarcas()
+        {
+            DaoArticulo dao = (DaoArticulo)factory.CreaObjeto("DaoArticulo");
+            return dao.Obtiene_Marcas(factory);
+        }
+
+        // GET: api/Articulos/Obtener_UM
+        [HttpGet, Route("Obtener_UM")]
+        public IEnumerable<Unidad_Medida> GetUM()
+        {
+            DaoArticulo dao = (DaoArticulo)factory.CreaObjeto("DaoArticulo");
+            return dao.Obtiene_UM(factory);
         }
 
         // GET api/<ArticulosController>/5
