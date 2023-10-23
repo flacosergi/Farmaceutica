@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Farmaceutica.Dominio;
 
 namespace Farmaceutica.Servicios
 {
@@ -16,6 +17,14 @@ namespace Farmaceutica.Servicios
                     return new GestorArticulos();
                 case "metodos_comunes":
                     return new MetodosComunes();
+                case "articulo":
+                    return new Articulo(this);
+                case "tipo_articulo":
+                    return new Tipo_Articulo();
+                case "unidad_medida":
+                    return new Unidad_Medida();
+                case "marca":
+                    return new Marca();
                 default:
                     throw new ArgumentException($"Tipo de objeto inválido: {tipo}");
             }

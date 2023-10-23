@@ -1,10 +1,17 @@
 ﻿using Farmaceutica.Dominio;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Media.Protection.PlayReady;
 using static Farmaceutica.Program;
+
 
 namespace Farmaceutica.Servicios
 {
@@ -43,8 +50,35 @@ namespace Farmaceutica.Servicios
             return lista_um;
         }
 
+        public async Task<string> CargarArticulo(Articulo nuevo_articulo)
+        {
 
+            HttpResponseMessage response = await client.PostAsJsonAsync("/api/Articulos/CargarArticulo", nuevo_articulo);
+            if (response.IsSuccessStatusCode)
+            {
+                return "OK";
+            }
 
+            else
+                return string.Empty;
+        }
 
+        public async Task<string> Upload(string pathFile)
+        {
+
+            byte[] bytes = System.IO.File.ReadAllBytes(pathFile);
+
+            using (var content = new ByteArrayContent(bytes))
+            {
+                content.Headers.ContentType = new MediaTypeHeaderValue("image/" + Path.GetExtension(pathFile).ToString().Replace(".",""));
+
+                //Send it
+                var response = await client.PostAsync("/api/File/cargar_archivo", content);
+                response.EnsureSuccessStatusCode();
+                Stream responseStream = await response.Content.ReadAsStreamAsync();
+                StreamReader reader = new StreamReader(responseStream);
+                return reader.ReadToEnd();
+            }
+        }
     }
 }

@@ -21,9 +21,12 @@ namespace APIFarmaceutica.Modelos
         public decimal stock_maximo { get; set; }
         public decimal stock_minimo { get; set; }
         public long codigo_barras { get; set; }
+        public bool activo { get; set; }
+        public string imagen { get; set; }
 
-        public Articulo(AbstractFactory factory)
+        public Articulo()
         {
+            AbstractFactory factory = new ModeloFactory();
             cod_articulo = 0;
             tipo_articulo = (Tipo_Articulo)factory.CreaObjeto("tipo_articulo");
             unidad_medida = (Unidad_Medida)factory.CreaObjeto("unidad_medida");
@@ -34,6 +37,8 @@ namespace APIFarmaceutica.Modelos
             stock_maximo = 0;
             stock_minimo = 0;
             codigo_barras = 0;
+            activo = true;
+            imagen = string.Empty;
         }
 
     }

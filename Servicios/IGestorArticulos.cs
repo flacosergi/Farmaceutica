@@ -11,5 +11,7 @@ namespace Farmaceutica.Servicios
     {
         Task<List<Tipo_Articulo>> GetTipoArticulos();
         Task<List<Marca>> GetMarcas();
+        Task<List<Unidad_Medida>> GetUM();
+        Task<string> CargarArticulo(Articulo nuevo_articulo);
     }
 }

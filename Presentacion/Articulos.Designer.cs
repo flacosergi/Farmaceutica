@@ -32,36 +32,36 @@
             panel1 = new Panel();
             btnLimpiar = new Button();
             btnSalir = new Button();
-            button4 = new Button();
+            btnGuardar = new Button();
             button2 = new Button();
             pnlCarga = new Panel();
-            checkBox1 = new CheckBox();
-            maskedTextBox5 = new MaskedTextBox();
+            ntbCodBarras = new NumberTextBox.NumberTextBox();
+            ntbStockMinimo = new NumberTextBox.NumberTextBox();
+            ntbStockMaximo = new NumberTextBox.NumberTextBox();
+            ntbPrecio = new NumberTextBox.NumberTextBox();
+            ntbCantidad = new NumberTextBox.NumberTextBox();
+            btnBorraImagen = new Button();
+            btnAgregaImagen = new Button();
+            chbActivo = new CheckBox();
             label11 = new Label();
-            maskedTextBox4 = new MaskedTextBox();
             label10 = new Label();
-            maskedTextBox3 = new MaskedTextBox();
             label9 = new Label();
-            maskedTextBox2 = new MaskedTextBox();
             label8 = new Label();
-            maskedTextBox1 = new MaskedTextBox();
             label7 = new Label();
             label6 = new Label();
             cboUM = new ComboBox();
             cbo_marca = new ComboBox();
             label5 = new Label();
-            textBox1 = new TextBox();
+            txtDescripcion = new TextBox();
             label4 = new Label();
             cbo_tipo_art = new ComboBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            pictureBox1 = new PictureBox();
-            button1 = new Button();
-            button3 = new Button();
+            pbArticulo = new PictureBox();
             panel1.SuspendLayout();
             pnlCarga.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbArticulo).BeginInit();
             SuspendLayout();
             // 
             // btnNuevo
@@ -84,7 +84,7 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(btnLimpiar);
             panel1.Controls.Add(btnSalir);
-            panel1.Controls.Add(button4);
+            panel1.Controls.Add(btnGuardar);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(btnNuevo);
             panel1.Location = new Point(17, 417);
@@ -120,18 +120,20 @@
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
             // 
-            // button4
+            // btnGuardar
             // 
-            button4.BackColor = Color.DarkCyan;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.ForeColor = SystemColors.Control;
-            button4.Location = new Point(257, 18);
-            button4.Name = "button4";
-            button4.Size = new Size(85, 27);
-            button4.TabIndex = 2;
-            button4.Text = "Guardar";
-            button4.UseVisualStyleBackColor = false;
+            btnGuardar.BackColor = Color.DarkCyan;
+            btnGuardar.Enabled = false;
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGuardar.ForeColor = SystemColors.Control;
+            btnGuardar.Location = new Point(257, 18);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(85, 27);
+            btnGuardar.TabIndex = 2;
+            btnGuardar.Text = "Guardar";
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // button2
             // 
@@ -150,57 +152,183 @@
             // 
             pnlCarga.BackColor = Color.White;
             pnlCarga.BorderStyle = BorderStyle.FixedSingle;
-            pnlCarga.Controls.Add(button3);
-            pnlCarga.Controls.Add(button1);
-            pnlCarga.Controls.Add(checkBox1);
-            pnlCarga.Controls.Add(maskedTextBox5);
+            pnlCarga.Controls.Add(ntbCodBarras);
+            pnlCarga.Controls.Add(ntbStockMinimo);
+            pnlCarga.Controls.Add(ntbStockMaximo);
+            pnlCarga.Controls.Add(ntbPrecio);
+            pnlCarga.Controls.Add(ntbCantidad);
+            pnlCarga.Controls.Add(btnBorraImagen);
+            pnlCarga.Controls.Add(btnAgregaImagen);
+            pnlCarga.Controls.Add(chbActivo);
             pnlCarga.Controls.Add(label11);
-            pnlCarga.Controls.Add(maskedTextBox4);
             pnlCarga.Controls.Add(label10);
-            pnlCarga.Controls.Add(maskedTextBox3);
             pnlCarga.Controls.Add(label9);
-            pnlCarga.Controls.Add(maskedTextBox2);
             pnlCarga.Controls.Add(label8);
-            pnlCarga.Controls.Add(maskedTextBox1);
             pnlCarga.Controls.Add(label7);
             pnlCarga.Controls.Add(label6);
             pnlCarga.Controls.Add(cboUM);
             pnlCarga.Controls.Add(cbo_marca);
             pnlCarga.Controls.Add(label5);
-            pnlCarga.Controls.Add(textBox1);
+            pnlCarga.Controls.Add(txtDescripcion);
             pnlCarga.Controls.Add(label4);
             pnlCarga.Controls.Add(cbo_tipo_art);
             pnlCarga.Controls.Add(label3);
             pnlCarga.Controls.Add(label2);
             pnlCarga.Controls.Add(label1);
-            pnlCarga.Controls.Add(pictureBox1);
+            pnlCarga.Controls.Add(pbArticulo);
             pnlCarga.Enabled = false;
             pnlCarga.Location = new Point(17, 19);
             pnlCarga.Name = "pnlCarga";
             pnlCarga.Size = new Size(801, 379);
             pnlCarga.TabIndex = 0;
             // 
-            // checkBox1
+            // ntbCodBarras
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.CheckAlign = ContentAlignment.MiddleRight;
-            checkBox1.FlatStyle = FlatStyle.Flat;
-            checkBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox1.ForeColor = Color.DarkCyan;
-            checkBox1.Location = new Point(342, 329);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(59, 19);
-            checkBox1.TabIndex = 11;
-            checkBox1.Text = "Activo";
-            checkBox1.TextAlign = ContentAlignment.MiddleCenter;
-            checkBox1.UseVisualStyleBackColor = true;
+            ntbCodBarras.AceptaNegativos = false;
+            ntbCodBarras.AceptaValorCero = false;
+            ntbCodBarras.CerosIzquierda = false;
+            ntbCodBarras.Decimales = 0;
+            ntbCodBarras.DecimalesConFormato = 0;
+            ntbCodBarras.Digitos = 13;
+            ntbCodBarras.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
+            ntbCodBarras.Location = new Point(146, 327);
+            ntbCodBarras.Name = "ntbCodBarras";
+            ntbCodBarras.SimboloMoneda = "$";
+            ntbCodBarras.Size = new Size(164, 23);
+            ntbCodBarras.TabIndex = 27;
+            ntbCodBarras.TextAlign = HorizontalAlignment.Right;
+            ntbCodBarras.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Entero;
+            ntbCodBarras.ValorDecimal = 0D;
+            ntbCodBarras.ValorEntero = 0L;
+            ntbCodBarras.ValorMaximo = null;
+            ntbCodBarras.ValorMinimo = null;
             // 
-            // maskedTextBox5
+            // ntbStockMinimo
             // 
-            maskedTextBox5.Location = new Point(146, 328);
-            maskedTextBox5.Name = "maskedTextBox5";
-            maskedTextBox5.Size = new Size(164, 23);
-            maskedTextBox5.TabIndex = 10;
+            ntbStockMinimo.AceptaNegativos = false;
+            ntbStockMinimo.AceptaValorCero = false;
+            ntbStockMinimo.CerosIzquierda = false;
+            ntbStockMinimo.Decimales = 0;
+            ntbStockMinimo.DecimalesConFormato = 0;
+            ntbStockMinimo.Digitos = 10;
+            ntbStockMinimo.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
+            ntbStockMinimo.Location = new Point(146, 288);
+            ntbStockMinimo.Name = "ntbStockMinimo";
+            ntbStockMinimo.SimboloMoneda = "$";
+            ntbStockMinimo.Size = new Size(164, 23);
+            ntbStockMinimo.TabIndex = 26;
+            ntbStockMinimo.TextAlign = HorizontalAlignment.Right;
+            ntbStockMinimo.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Entero;
+            ntbStockMinimo.ValorDecimal = 0D;
+            ntbStockMinimo.ValorEntero = 0L;
+            ntbStockMinimo.ValorMaximo = null;
+            ntbStockMinimo.ValorMinimo = null;
+            // 
+            // ntbStockMaximo
+            // 
+            ntbStockMaximo.AceptaNegativos = false;
+            ntbStockMaximo.AceptaValorCero = false;
+            ntbStockMaximo.CerosIzquierda = false;
+            ntbStockMaximo.Decimales = 0;
+            ntbStockMaximo.DecimalesConFormato = 0;
+            ntbStockMaximo.Digitos = 10;
+            ntbStockMaximo.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
+            ntbStockMaximo.Location = new Point(146, 248);
+            ntbStockMaximo.Name = "ntbStockMaximo";
+            ntbStockMaximo.SimboloMoneda = "$";
+            ntbStockMaximo.Size = new Size(164, 23);
+            ntbStockMaximo.TabIndex = 25;
+            ntbStockMaximo.TextAlign = HorizontalAlignment.Right;
+            ntbStockMaximo.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Entero;
+            ntbStockMaximo.ValorDecimal = 0D;
+            ntbStockMaximo.ValorEntero = 0L;
+            ntbStockMaximo.ValorMaximo = null;
+            ntbStockMaximo.ValorMinimo = null;
+            // 
+            // ntbPrecio
+            // 
+            ntbPrecio.AceptaNegativos = false;
+            ntbPrecio.AceptaValorCero = false;
+            ntbPrecio.CerosIzquierda = false;
+            ntbPrecio.Decimales = 2;
+            ntbPrecio.DecimalesConFormato = 2;
+            ntbPrecio.Digitos = 10;
+            ntbPrecio.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
+            ntbPrecio.Location = new Point(146, 212);
+            ntbPrecio.Name = "ntbPrecio";
+            ntbPrecio.SimboloMoneda = "$";
+            ntbPrecio.Size = new Size(164, 23);
+            ntbPrecio.TabIndex = 24;
+            ntbPrecio.TextAlign = HorizontalAlignment.Right;
+            ntbPrecio.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Moneda;
+            ntbPrecio.ValorDecimal = 0D;
+            ntbPrecio.ValorEntero = 0L;
+            ntbPrecio.ValorMaximo = null;
+            ntbPrecio.ValorMinimo = null;
+            // 
+            // ntbCantidad
+            // 
+            ntbCantidad.AceptaNegativos = false;
+            ntbCantidad.AceptaValorCero = false;
+            ntbCantidad.CerosIzquierda = false;
+            ntbCantidad.Decimales = 2;
+            ntbCantidad.DecimalesConFormato = 2;
+            ntbCantidad.Digitos = 5;
+            ntbCantidad.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
+            ntbCantidad.Location = new Point(387, 169);
+            ntbCantidad.Name = "ntbCantidad";
+            ntbCantidad.SimboloMoneda = "$";
+            ntbCantidad.Size = new Size(83, 23);
+            ntbCantidad.TabIndex = 23;
+            ntbCantidad.TextAlign = HorizontalAlignment.Right;
+            ntbCantidad.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Estandar;
+            ntbCantidad.ValorDecimal = 0D;
+            ntbCantidad.ValorEntero = 0L;
+            ntbCantidad.ValorMaximo = null;
+            ntbCantidad.ValorMinimo = null;
+            // 
+            // btnBorraImagen
+            // 
+            btnBorraImagen.BackColor = Color.DarkCyan;
+            btnBorraImagen.FlatStyle = FlatStyle.Flat;
+            btnBorraImagen.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBorraImagen.ForeColor = SystemColors.Control;
+            btnBorraImagen.Location = new Point(650, 279);
+            btnBorraImagen.Name = "btnBorraImagen";
+            btnBorraImagen.Size = new Size(107, 27);
+            btnBorraImagen.TabIndex = 22;
+            btnBorraImagen.Text = "Borrar Imagen";
+            btnBorraImagen.UseVisualStyleBackColor = false;
+            btnBorraImagen.Click += btnBorraImagen_Click;
+            // 
+            // btnAgregaImagen
+            // 
+            btnAgregaImagen.BackColor = Color.DarkCyan;
+            btnAgregaImagen.FlatStyle = FlatStyle.Flat;
+            btnAgregaImagen.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAgregaImagen.ForeColor = SystemColors.Control;
+            btnAgregaImagen.Location = new Point(524, 279);
+            btnAgregaImagen.Name = "btnAgregaImagen";
+            btnAgregaImagen.Size = new Size(109, 27);
+            btnAgregaImagen.TabIndex = 21;
+            btnAgregaImagen.Text = "Agregar Imagen";
+            btnAgregaImagen.UseVisualStyleBackColor = false;
+            btnAgregaImagen.Click += btnAgregaImagen_Click;
+            // 
+            // chbActivo
+            // 
+            chbActivo.AutoSize = true;
+            chbActivo.CheckAlign = ContentAlignment.MiddleRight;
+            chbActivo.FlatStyle = FlatStyle.Flat;
+            chbActivo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            chbActivo.ForeColor = Color.DarkCyan;
+            chbActivo.Location = new Point(342, 329);
+            chbActivo.Name = "chbActivo";
+            chbActivo.Size = new Size(59, 19);
+            chbActivo.TabIndex = 11;
+            chbActivo.Text = "Activo";
+            chbActivo.TextAlign = ContentAlignment.MiddleCenter;
+            chbActivo.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -213,13 +341,6 @@
             label11.TabIndex = 0;
             label11.Text = "Código de Barras:";
             // 
-            // maskedTextBox4
-            // 
-            maskedTextBox4.Location = new Point(146, 288);
-            maskedTextBox4.Name = "maskedTextBox4";
-            maskedTextBox4.Size = new Size(164, 23);
-            maskedTextBox4.TabIndex = 9;
-            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -230,13 +351,6 @@
             label10.Size = new Size(87, 15);
             label10.TabIndex = 20;
             label10.Text = "Stock Mínimo:";
-            // 
-            // maskedTextBox3
-            // 
-            maskedTextBox3.Location = new Point(146, 250);
-            maskedTextBox3.Name = "maskedTextBox3";
-            maskedTextBox3.Size = new Size(164, 23);
-            maskedTextBox3.TabIndex = 8;
             // 
             // label9
             // 
@@ -249,13 +363,6 @@
             label9.TabIndex = 19;
             label9.Text = "Stock Máximo:";
             // 
-            // maskedTextBox2
-            // 
-            maskedTextBox2.Location = new Point(146, 211);
-            maskedTextBox2.Name = "maskedTextBox2";
-            maskedTextBox2.Size = new Size(164, 23);
-            maskedTextBox2.TabIndex = 7;
-            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -266,14 +373,6 @@
             label8.Size = new Size(45, 15);
             label8.TabIndex = 18;
             label8.Text = "Precio:";
-            // 
-            // maskedTextBox1
-            // 
-            maskedTextBox1.Location = new Point(390, 171);
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(80, 23);
-            maskedTextBox1.TabIndex = 6;
-            maskedTextBox1.ValidatingType = typeof(int);
             // 
             // label7
             // 
@@ -326,12 +425,12 @@
             label5.TabIndex = 15;
             label5.Text = "Marca / Laborat.:";
             // 
-            // textBox1
+            // txtDescripcion
             // 
-            textBox1.Location = new Point(146, 56);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(324, 23);
-            textBox1.TabIndex = 2;
+            txtDescripcion.Location = new Point(146, 56);
+            txtDescripcion.Name = "txtDescripcion";
+            txtDescripcion.Size = new Size(324, 23);
+            txtDescripcion.TabIndex = 2;
             // 
             // label4
             // 
@@ -385,40 +484,15 @@
             label1.TabIndex = 12;
             label1.Text = "Codigo Artículo:";
             // 
-            // pictureBox1
+            // pbArticulo
             // 
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Location = new Point(489, 13);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(296, 260);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.DarkCyan;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.Control;
-            button1.Location = new Point(524, 279);
-            button1.Name = "button1";
-            button1.Size = new Size(109, 27);
-            button1.TabIndex = 21;
-            button1.Text = "Agregar Imagen";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.DarkCyan;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.ForeColor = SystemColors.Control;
-            button3.Location = new Point(650, 279);
-            button3.Name = "button3";
-            button3.Size = new Size(107, 27);
-            button3.TabIndex = 22;
-            button3.Text = "Borrar Imagen";
-            button3.UseVisualStyleBackColor = false;
+            pbArticulo.BorderStyle = BorderStyle.FixedSingle;
+            pbArticulo.Location = new Point(489, 13);
+            pbArticulo.Name = "pbArticulo";
+            pbArticulo.Size = new Size(296, 260);
+            pbArticulo.SizeMode = PictureBoxSizeMode.Zoom;
+            pbArticulo.TabIndex = 0;
+            pbArticulo.TabStop = false;
             // 
             // Articulos
             // 
@@ -436,7 +510,7 @@
             panel1.ResumeLayout(false);
             pnlCarga.ResumeLayout(false);
             pnlCarga.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbArticulo).EndInit();
             ResumeLayout(false);
         }
 
@@ -445,11 +519,11 @@
         private Button btnNuevo;
         private Panel panel1;
         private Button btnSalir;
-        private Button button4;
+        private Button btnGuardar;
         private Button button2;
         private Panel pnlCarga;
         private Label label1;
-        private PictureBox pictureBox1;
+        private PictureBox pbArticulo;
         private ComboBox cbo_tipo_art;
         private Label label3;
         private Label label2;
@@ -458,20 +532,20 @@
         private ComboBox cboUM;
         private ComboBox cbo_marca;
         private Label label5;
-        private TextBox textBox1;
+        private TextBox txtDescripcion;
         private Label label4;
-        private MaskedTextBox maskedTextBox1;
-        private MaskedTextBox maskedTextBox4;
         private Label label10;
-        private MaskedTextBox maskedTextBox3;
         private Label label9;
-        private MaskedTextBox maskedTextBox2;
         private Label label8;
-        private MaskedTextBox maskedTextBox5;
         private Label label11;
         private Button btnLimpiar;
-        private CheckBox checkBox1;
-        private Button button3;
-        private Button button1;
+        private CheckBox chbActivo;
+        private Button btnBorraImagen;
+        private Button btnAgregaImagen;
+        private NumberTextBox.NumberTextBox ntbCodBarras;
+        private NumberTextBox.NumberTextBox ntbStockMinimo;
+        private NumberTextBox.NumberTextBox ntbStockMaximo;
+        private NumberTextBox.NumberTextBox ntbPrecio;
+        private NumberTextBox.NumberTextBox ntbCantidad;
     }
 }

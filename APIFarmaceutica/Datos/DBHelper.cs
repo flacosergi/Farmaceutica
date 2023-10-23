@@ -39,14 +39,11 @@ namespace APIFarmaceutica.Datos
             }
             catch (SqlException ex)
             {
-                throw ex;
-            }
-            finally
-            {
                 if (comando.Transaction != null)
                     comando.Transaction.Rollback();
                 if (conexion != null && conexion.State == ConnectionState.Open)
                     conexion.Close();
+                throw ex;
             }
         }
 
@@ -59,14 +56,11 @@ namespace APIFarmaceutica.Datos
             }
             catch (SqlException ex)
             {
-                throw ex;
-            }
-            finally
-            {
                 if (comando.Transaction != null)
                     comando.Transaction.Rollback();
                 if (conexion != null && conexion.State == ConnectionState.Open)
                     conexion.Close();
+                throw ex;
             }
         }
 
@@ -84,14 +78,10 @@ namespace APIFarmaceutica.Datos
             }
             catch (SqlException ex)
             {
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                    conexion.Close();
                 throw ex;
             }
-            finally
-            {
-                 if (conexion != null && conexion.State == ConnectionState.Open)
-                    conexion.Close();
-            }
-
         }
 
         public int EjecutaComando(string SP, List<SqlParameter> lista_param, SqlParameter? salida)
@@ -115,14 +105,11 @@ namespace APIFarmaceutica.Datos
             }
             catch (SqlException ex)
             {
-                throw ex;
-            }
-            finally
-            {
                 if (comando.Transaction != null)
                     comando.Transaction.Rollback();
                 if (conexion != null && conexion.State == ConnectionState.Open)
                     conexion.Close();
+                throw ex;
             }
         }
     }

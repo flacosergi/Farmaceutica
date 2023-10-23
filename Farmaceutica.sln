@@ -4,8 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Farmaceutica", "Farmaceutica.csproj", "{C56D9A55-8A0B-4C6E-B7D3-7E2DECDC1652}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7AC70DC5-7E96-459E-BD35-8B1D02173DC6} = {7AC70DC5-7E96-459E-BD35-8B1D02173DC6}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIFarmaceutica", "APIFarmaceutica\APIFarmaceutica.csproj", "{7AC70DC5-7E96-459E-BD35-8B1D02173DC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIFarmaceutica", "APIFarmaceutica\APIFarmaceutica.csproj", "{7AC70DC5-7E96-459E-BD35-8B1D02173DC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

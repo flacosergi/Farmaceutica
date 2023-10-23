@@ -16,7 +16,7 @@ namespace APIFarmaceutica.Modelos
             switch (tipo)
             {
                 case "articulo":
-                    return new Articulo(this);
+                    return new Articulo();
                 case "tipo_articulo":
                     return new Tipo_Articulo();
                 case "unidad_medida":
@@ -25,9 +25,7 @@ namespace APIFarmaceutica.Modelos
                     return new DaoArticulo();
                 case "marca":
                     return new Marca();
-                case "um":
-                    return new Unidad_Medida();
-                default:
+                 default:
                     throw new ArgumentException($"Tipo de objeto inválido: {tipo}");
             }
         }

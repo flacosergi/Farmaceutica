@@ -20,6 +20,8 @@ namespace Farmaceutica.Dominio
         public decimal stock_maximo { get; set; }
         public decimal stock_minimo { get; set; }
         public long codigo_barras { get; set; }
+        public bool activo { get; set; }
+        public string imagen { get; set; }
 
         public Articulo(AbstractFactory factory)
         {
@@ -33,6 +35,8 @@ namespace Farmaceutica.Dominio
             stock_maximo = 0;
             stock_minimo = 0;
             codigo_barras = 0;
+            activo = true;
+            imagen = string.Empty;
         }
 
     }

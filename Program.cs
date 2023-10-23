@@ -21,7 +21,7 @@ namespace Farmaceutica
             client.BaseAddress = new Uri("https://localhost:7101");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            Application.Run(new Articulos());
+            Application.Run(new Articulos(new ServiciosFactory()));
         }
 
     }
