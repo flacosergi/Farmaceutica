@@ -68,7 +68,6 @@ namespace Farmaceutica.Servicios
         public async Task<string> Upload(string pathFile)
         {
             var multiForm = new MultipartFormDataContent();
-
             FileStream fs = File.OpenRead(pathFile);
             multiForm.Add(new StreamContent(fs), "files", Path.GetFileName(pathFile));
             var response = await client.PostAsync("/api/File/cargar_archivo", multiForm);

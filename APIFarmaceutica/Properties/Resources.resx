@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="cadena_conexion" xml:space="preserve">
-    <value>Data Source=ALFA\SQLEXPRESS;Initial Catalog=Farmaceutica;Integrated Security=True</value>
+    <value>Data Source=sql.bsite.net\MSSQL2016;Initial Catalog=tpprogra_Farmaceutica;User ID=tpprogra_Farmaceutica;Password=grupo14</value>
   </data>
 </root>

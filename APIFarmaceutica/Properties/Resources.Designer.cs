@@ -61,7 +61,7 @@ namespace APIFarmaceutica.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Data Source=ALFA\SQLEXPRESS;Initial Catalog=Farmaceutica;Integrated Security=True.
+        ///   Busca una cadena traducida similar a Data Source=sql.bsite.net\MSSQL2016;Initial Catalog=tpprogra_Farmaceutica;User ID=tpprogra_Farmaceutica;Password=grupo14.
         /// </summary>
         internal static string cadena_conexion {
             get {
