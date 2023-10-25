@@ -1,6 +1,4 @@
-﻿using ApiFarmaceutica.Modelos;
-using APIFarmaceutica.Modelos;
-using APIFarmaceutica.Servicios;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,9 +7,11 @@ using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
+using AccesoDatos.Modelos;
+using AccesoDatos.Servicios;
 
 
-namespace APIFarmaceutica.Datos
+namespace AccesoDatos.Datos
 {
     public class DaoArticulo : IObjetoDAO
     {

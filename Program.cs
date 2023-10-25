@@ -1,4 +1,3 @@
-using Farmaceutica.Dominio;
 using Farmaceutica.Presentacion;
 using Farmaceutica.Servicios;
 using System.Net.Http.Headers;

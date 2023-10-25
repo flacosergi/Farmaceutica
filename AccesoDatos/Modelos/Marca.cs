@@ -4,17 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APIFarmaceutica.Modelos
+namespace AccesoDatos.Modelos
 {
-    public class Unidad_Medida
+    public class Marca
     {
-        public int id_u_medida{ get; set; }
+        public int id_marca { get; set; }
         public string detalle { get; set; }
+        public string imagen { get; set; }
 
-        public Unidad_Medida()
+        public Marca()
         {
-            id_u_medida = 0;
+            id_marca = 0;
             detalle = string.Empty;
+            imagen = string.Empty;
         }
     }
 }

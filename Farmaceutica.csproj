@@ -11,15 +11,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AccesoDatos\**" />
     <Compile Remove="APIFarmaceutica\**" />
+    <Compile Remove="Dominio\**" />
+    <EmbeddedResource Remove="AccesoDatos\**" />
     <EmbeddedResource Remove="APIFarmaceutica\**" />
+    <EmbeddedResource Remove="Dominio\**" />
+    <None Remove="AccesoDatos\**" />
     <None Remove="APIFarmaceutica\**" />
+    <None Remove="Dominio\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
     <PackageReference Include="NumberTextBox" Version="1.0.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="AccesoDatos\AccesoDatos.csproj" />
   </ItemGroup>
 
 </Project>

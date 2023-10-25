@@ -1,5 +1,6 @@
-﻿using Farmaceutica.Dominio;
-using Farmaceutica.Servicios;
+﻿using Farmaceutica.Servicios;
+using AccesoDatos.Modelos;
+using AccesoDatos.Servicios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -1,4 +1,3 @@
-using APIFarmaceutica.Modelos;
 
 var builder = WebApplication.CreateBuilder(args);
 

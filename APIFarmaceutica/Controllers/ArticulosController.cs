@@ -1,7 +1,7 @@
-﻿using ApiFarmaceutica.Modelos;
-using APIFarmaceutica.Datos;
-using APIFarmaceutica.Modelos;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using AccesoDatos.Servicios;
+using AccesoDatos.Modelos;
+using AccesoDatos.Datos;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

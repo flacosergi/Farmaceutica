@@ -1,13 +1,12 @@
-﻿using ApiFarmaceutica.Modelos;
-using APIFarmaceutica.Datos;
-using APIFarmaceutica.Servicios;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AccesoDatos.Modelos;
+using AccesoDatos.Datos;
 
-namespace APIFarmaceutica.Modelos
+namespace AccesoDatos.Servicios
 {
     public class ModeloFactory : AbstractFactory
     {
@@ -25,7 +24,7 @@ namespace APIFarmaceutica.Modelos
                     return new DaoArticulo();
                 case "marca":
                     return new Marca();
-                 default:
+                default:
                     throw new ArgumentException($"Tipo de objeto inválido: {tipo}");
             }
         }

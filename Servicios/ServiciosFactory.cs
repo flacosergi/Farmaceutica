@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Farmaceutica.Dominio;
+using AccesoDatos.Servicios;
+using AccesoDatos.Modelos;
 
 namespace Farmaceutica.Servicios
 {
@@ -18,7 +19,7 @@ namespace Farmaceutica.Servicios
                 case "metodos_comunes":
                     return new MetodosComunes();
                 case "articulo":
-                    return new Articulo(this);
+                    return new Articulo();
                 case "tipo_articulo":
                     return new Tipo_Articulo();
                 case "unidad_medida":

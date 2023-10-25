@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APIFarmaceutica.Modelos
+namespace AccesoDatos.Modelos
 {
     public class Tipo_Articulo
     {
