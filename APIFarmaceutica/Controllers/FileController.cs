@@ -81,7 +81,6 @@ namespace APIFarmaceutica.Controllers
             string RutaRaiz = _env.ContentRootPath;
             string NombreCarpeta = "/Imagenes/";
             string RutaCompleta = RutaRaiz + NombreCarpeta + filename;
-
             Byte[] b = System.IO.File.ReadAllBytes(RutaCompleta);   // You can use your own method over here.
             return File(b, "image/png");
         }

@@ -22,45 +22,36 @@ namespace Farmaceutica.Servicios
         public async Task<List<Tipo_Articulo>> GetTipoArticulos()
         {
             List<Tipo_Articulo> lista_tipos = new List<Tipo_Articulo>();
-            HttpResponseMessage response = await client.GetAsync("/api/Articulos/Obtener_Tipo_Articulos");
-            if (response.IsSuccessStatusCode)
-            {
-                lista_tipos = (List<Tipo_Articulo>)await response.Content.ReadAsAsync<List<Tipo_Articulo>>();
-            }
+            string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Articulos/Obtener_Tipo_Articulos");
+            if (contenido != string.Empty)
+                lista_tipos = JsonConvert.DeserializeObject<List<Tipo_Articulo>>(contenido); ;
             return lista_tipos;
         }
 
         public async Task<List<Marca>> GetMarcas()
         {
             List<Marca> lista_marcas = new List<Marca>();
-            HttpResponseMessage response = await client.GetAsync("/api/Articulos/Obtener_Marcas");
-            if (response.IsSuccessStatusCode)
-            {
-                lista_marcas = (List<Marca>)await response.Content.ReadAsAsync<List<Marca>>();
-            }
+            string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Articulos/Obtener_Marcas");
+            if (contenido != string.Empty)
+                lista_marcas = JsonConvert.DeserializeObject<List<Marca>>(contenido);
             return lista_marcas;
         }
 
         public async Task<List<Unidad_Medida>> GetUM()
         {
             List<Unidad_Medida> lista_um = new List<Unidad_Medida>();
-            HttpResponseMessage response = await client.GetAsync("/api/Articulos/Obtener_UM");
-            if (response.IsSuccessStatusCode)
-            {
-                lista_um = (List<Unidad_Medida>)await response.Content.ReadAsAsync<List<Unidad_Medida>>();
-            }
+            string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Articulos/Obtener_UM");
+            if (contenido != string.Empty)
+                lista_um = JsonConvert.DeserializeObject<List<Unidad_Medida>>(contenido);
             return lista_um;
         }
 
         public async Task<string> CargarArticulo(Articulo nuevo_articulo)
         {
-
-            HttpResponseMessage response = await client.PostAsJsonAsync("/api/Articulos/CargarArticulo", nuevo_articulo);
-            if (response.IsSuccessStatusCode)
-            {
-                return "OK";
-            }
-
+            string art = JsonConvert.SerializeObject(nuevo_articulo, Formatting.Indented);
+            string response = await ClientSingleton.GetInstance().PostAsync("/api/Articulos/CargarArticulo", art );
+            if (response != string.Empty)
+                return response;
             else
                 return string.Empty;
         }
@@ -70,12 +61,11 @@ namespace Farmaceutica.Servicios
             var multiForm = new MultipartFormDataContent();
             FileStream fs = File.OpenRead(pathFile);
             multiForm.Add(new StreamContent(fs), "files", Path.GetFileName(pathFile));
-            var response = await client.PostAsync("/api/File/cargar_archivo", multiForm);
-            response.EnsureSuccessStatusCode();
-            Stream responseStream = await response.Content.ReadAsStreamAsync();
-            StreamReader reader = new StreamReader(responseStream);
-            return reader.ReadToEnd();
-            //}
+            string response = await ClientSingleton.GetInstance().PostAsyncFile("/api/File/cargar_archivo", multiForm);
+            if (response != string.Empty)
+                return response;
+            else
+                return string.Empty;
         }
     }
 }

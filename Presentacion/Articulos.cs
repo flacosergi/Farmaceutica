@@ -35,7 +35,6 @@ namespace Farmaceutica.Presentacion
 
         private async void Articulos_Load(object sender, EventArgs e)
         {
-            await client.GetStringAsync("/api/Articulos/Obtener_Marcas");
             List<Tipo_Articulo> lista = await gestor_art.GetTipoArticulos();
             metodos.LlenaCombo(cbo_tipo_art, lista.ToList<object>(), "detalle", "id_tipo_articulo");
             List<Marca> lista_m = await gestor_art.GetMarcas();
@@ -95,16 +94,20 @@ namespace Farmaceutica.Presentacion
             nuevo_articulo.activo = chbActivo.Checked;
             nuevo_articulo.imagen = Path.GetFileName(pbArticulo.ImageLocation);
             string resultado = await gestor_art.CargarArticulo(nuevo_articulo);
-            await gestor_art.Upload(pbArticulo.ImageLocation);
+            string respuestaIMG = string.Empty;
+            if (pbArticulo.ImageLocation != string.Empty)
+            {
+                respuestaIMG = await gestor_art.Upload(pbArticulo.ImageLocation);
+            }
             if (resultado == "OK")
             {
                 MessageBox.Show("El artículo se ingresó correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnLimpiar_Click(this, EventArgs.Empty);
             }
             else
-            {
                 MessageBox.Show("Se ha producido un error. El artículo no pudo ser guardado.", "Atención:", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            if (respuestaIMG != "OK" && pbArticulo.ImageLocation != string.Empty)
+                MessageBox.Show("Se ha producido un error al guardar la imagen.", "Atención:", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private bool ValidarControles()
