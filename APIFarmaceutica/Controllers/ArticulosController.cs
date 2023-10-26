@@ -47,6 +47,15 @@ namespace APIFarmaceutica.Controllers
             return dao.Obtiene_UM(factory);
         }
 
+        // GET: /api/Articulos/Obtener_Lista_Simple
+        [HttpGet, Route("Obtener_Lista_Simple")]
+        public IList<KeyValuePair<int, string>> ObtenerListaSimple()
+        {
+            DaoArticulo dao = (DaoArticulo)factory.CreaObjeto("DaoArticulo");
+            return dao.ListaSimpleRegistros();
+        }
+
+
         // POST api/<ArticulosController>
         [HttpPost, Route("CargarArticulo")]
         public IActionResult PostArticulo(Articulo nuevo_articulo)

@@ -9,7 +9,8 @@ namespace AccesoDatos.Datos
     public interface IObjetoDAO
     {
         int InsertarRegistro(object objeto);
-        List<object> ListarRegistros();
+        List<KeyValuePair<int, string>> ListaSimpleRegistros();
+        object BuscaRegistro(int registro);
         int ModificarRegistro(object objeto);
         int EliminarRegistro(int codigo);
     }

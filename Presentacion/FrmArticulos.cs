@@ -50,6 +50,10 @@ namespace Farmaceutica.Presentacion
             btnGuardar.Enabled = true;
             chbActivo.Checked = true;
             chbActivo.Enabled = false;
+            btnNuevo.Enabled = false;
+            btnEditar.Enabled = false;
+            btnConsultar.Enabled = false;
+            txtDescripcion.Focus();
 
         }
 
@@ -59,6 +63,10 @@ namespace Farmaceutica.Presentacion
             btnGuardar.Enabled = false;
             pnlCarga.Enabled = false;
             chbActivo.Enabled = true;
+            btnNuevo.Enabled = true;
+            btnEditar.Enabled = true;
+            btnConsultar.Enabled = true;
+
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

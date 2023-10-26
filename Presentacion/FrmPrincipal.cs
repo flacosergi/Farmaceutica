@@ -23,7 +23,9 @@ namespace Farmaceutica.Presentacion
 
         private void Principal_Load(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Maximized;
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)

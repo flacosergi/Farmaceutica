@@ -47,9 +47,21 @@ namespace AccesoDatos.Datos
             throw new NotImplementedException();
         }
 
-        public List<object> ListarRegistros()
+        object IObjetoDAO.BuscaRegistro(int registro)
         {
             throw new NotImplementedException();
+        }
+
+        public List<KeyValuePair<int, string>> ListaSimpleRegistros()
+        {
+            List<KeyValuePair<int, string>> NuevaListaPares = new List<KeyValuePair<int, string>>();
+            DataTable nueva_tabla = new DataTable();
+            nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("SP_ARTICULOS_LISTA_SIMPLE");
+            foreach (DataRow fila in nueva_tabla.Rows)
+            {
+                NuevaListaPares.Add(new KeyValuePair<int, string>(Convert.ToInt32(fila["cod_articulo"].ToString()), (string)fila["detalle"]));
+            }
+            return NuevaListaPares;
         }
 
         public int ModificarRegistro(object objeto)
@@ -57,12 +69,12 @@ namespace AccesoDatos.Datos
             throw new NotImplementedException();
         }
 
-        public List <Tipo_Articulo> Obtiene_Tipo_Articulo(AbstractFactory factory) 
+        public List<Tipo_Articulo> Obtiene_Tipo_Articulo(AbstractFactory factory)
         {
             List<Tipo_Articulo> nueva_lista = new List<Tipo_Articulo>();
             DataTable nueva_tabla = new DataTable();
             nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("SP_ARTICULOS_CARGA_TIPOS");
-            foreach (DataRow fila in nueva_tabla.Rows) 
+            foreach (DataRow fila in nueva_tabla.Rows)
             {
                 Tipo_Articulo nuevo_tipo = (Tipo_Articulo)factory.CreaObjeto("tipo_articulo");
                 nuevo_tipo.id_tipo_articulo = Convert.ToInt32(fila["id_tipo_articulo"].ToString());
@@ -100,6 +112,7 @@ namespace AccesoDatos.Datos
             }
             return nueva_lista;
         }
+
 
 
     }
