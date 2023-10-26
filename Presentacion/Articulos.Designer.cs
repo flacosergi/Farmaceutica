@@ -30,10 +30,11 @@
         {
             btnNuevo = new Button();
             panel1 = new Panel();
+            btnConsultar = new Button();
             btnLimpiar = new Button();
             btnSalir = new Button();
             btnGuardar = new Button();
-            button2 = new Button();
+            btnEditar = new Button();
             pnlCarga = new Panel();
             ntbCodBarras = new NumberTextBox.NumberTextBox();
             ntbStockMinimo = new NumberTextBox.NumberTextBox();
@@ -82,15 +83,29 @@
             // 
             panel1.BackColor = Color.PaleTurquoise;
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(btnConsultar);
             panel1.Controls.Add(btnLimpiar);
             panel1.Controls.Add(btnSalir);
             panel1.Controls.Add(btnGuardar);
-            panel1.Controls.Add(button2);
+            panel1.Controls.Add(btnEditar);
             panel1.Controls.Add(btnNuevo);
             panel1.Location = new Point(17, 417);
             panel1.Name = "panel1";
             panel1.Size = new Size(801, 71);
             panel1.TabIndex = 1;
+            // 
+            // btnConsultar
+            // 
+            btnConsultar.BackColor = Color.DarkCyan;
+            btnConsultar.FlatStyle = FlatStyle.Flat;
+            btnConsultar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnConsultar.ForeColor = SystemColors.Control;
+            btnConsultar.Location = new Point(254, 18);
+            btnConsultar.Name = "btnConsultar";
+            btnConsultar.Size = new Size(85, 27);
+            btnConsultar.TabIndex = 5;
+            btnConsultar.Text = "Consultar";
+            btnConsultar.UseVisualStyleBackColor = false;
             // 
             // btnLimpiar
             // 
@@ -127,7 +142,7 @@
             btnGuardar.FlatStyle = FlatStyle.Flat;
             btnGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnGuardar.ForeColor = SystemColors.Control;
-            btnGuardar.Location = new Point(257, 18);
+            btnGuardar.Location = new Point(365, 18);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(85, 27);
             btnGuardar.TabIndex = 2;
@@ -135,18 +150,18 @@
             btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
             // 
-            // button2
+            // btnEditar
             // 
-            button2.BackColor = Color.DarkCyan;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.ForeColor = SystemColors.Control;
-            button2.Location = new Point(143, 18);
-            button2.Name = "button2";
-            button2.Size = new Size(85, 27);
-            button2.TabIndex = 1;
-            button2.Text = "Editar";
-            button2.UseVisualStyleBackColor = false;
+            btnEditar.BackColor = Color.DarkCyan;
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEditar.ForeColor = SystemColors.Control;
+            btnEditar.Location = new Point(143, 18);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(85, 27);
+            btnEditar.TabIndex = 1;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = false;
             // 
             // pnlCarga
             // 
@@ -547,5 +562,7 @@
         private NumberTextBox.NumberTextBox ntbStockMaximo;
         private NumberTextBox.NumberTextBox ntbPrecio;
         private NumberTextBox.NumberTextBox ntbCantidad;
+        private Button btnEditar;
+        private Button btnConsultar;
     }
 }

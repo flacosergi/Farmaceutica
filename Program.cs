@@ -17,6 +17,18 @@ namespace Farmaceutica
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Articulos(new ServiciosFactory()));
+
+
+
+            /// esto al principio de tu form BASE (Va a hacer falta para otros formularios)
+            ServiciosFactory factory = new ServiciosFactory();
+
+
+
+
+            // Esto dentro del método del menú
+            Articulos FormArticulos = new Articulos(factory);
+            FormArticulos.ShowDialog();
         }
 
     }
