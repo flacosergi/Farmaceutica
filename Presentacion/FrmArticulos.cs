@@ -1,18 +1,6 @@
-﻿using Farmaceutica.Servicios;
-using AccesoDatos.Modelos;
+﻿using AccesoDatos.Modelos;
 using AccesoDatos.Servicios;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static Farmaceutica.Program;
+using Farmaceutica.Servicios;
 
 
 namespace Farmaceutica.Presentacion
@@ -30,11 +18,13 @@ namespace Farmaceutica.Presentacion
             factoria = fact;
             gestor_art = (GestorArticulos)factoria.CreaObjeto("gestor_art");
             metodos = (MetodosComunes)factoria.CreaObjeto("metodos_comunes");
+            CenterToScreen();
         }
 
 
         private async void Articulos_Load(object sender, EventArgs e)
         {
+
             List<Tipo_Articulo> lista = await gestor_art.GetTipoArticulos();
             metodos.LlenaCombo(cbo_tipo_art, lista.ToList<object>(), "detalle", "id_tipo_articulo");
             List<Marca> lista_m = await gestor_art.GetMarcas();
@@ -184,6 +174,11 @@ namespace Farmaceutica.Presentacion
             }
 
             return true;
+        }
+
+        private void FrmArticulos_Shown(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.Default;
         }
     }
 

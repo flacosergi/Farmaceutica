@@ -509,7 +509,7 @@
             pbArticulo.TabIndex = 0;
             pbArticulo.TabStop = false;
             // 
-            // Articulos
+            // FrmArticulos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -519,9 +519,10 @@
             Controls.Add(panel1);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "Articulos";
+            Name = "FrmArticulos";
             Text = "Artículos";
             Load += Articulos_Load;
+            Shown += FrmArticulos_Shown;
             panel1.ResumeLayout(false);
             pnlCarga.ResumeLayout(false);
             pnlCarga.PerformLayout();

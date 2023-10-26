@@ -40,6 +40,7 @@ namespace Farmaceutica.Presentacion
         private void agregarArticulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmArticulos articulos = new FrmArticulos(factory);
+            Cursor.Current = Cursors.WaitCursor;
             articulos.ShowDialog();
         }
     }

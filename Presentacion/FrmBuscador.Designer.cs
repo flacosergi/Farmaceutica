@@ -35,6 +35,7 @@
             Codigo = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
             textBox1 = new TextBox();
+            label1 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -45,9 +46,9 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(btnCancelar);
             panel1.Controls.Add(btnAceptar);
-            panel1.Location = new Point(12, 367);
+            panel1.Location = new Point(15, 394);
             panel1.Name = "panel1";
-            panel1.Size = new Size(673, 71);
+            panel1.Size = new Size(670, 71);
             panel1.TabIndex = 2;
             // 
             // btnCancelar
@@ -86,7 +87,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.ColumnHeadersVisible = false;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Codigo, Descripcion });
-            dataGridView1.Location = new Point(15, 67);
+            dataGridView1.Location = new Point(15, 89);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
@@ -107,21 +108,33 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(15, 29);
+            textBox1.Location = new Point(15, 56);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(672, 23);
+            textBox1.Size = new Size(670, 23);
             textBox1.TabIndex = 4;
             // 
-            // Buscador
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.DarkCyan;
+            label1.Location = new Point(15, 25);
+            label1.Name = "label1";
+            label1.Size = new Size(494, 15);
+            label1.TabIndex = 13;
+            label1.Text = "Ingrese el nombre en forma total o parcial para buscar coincidencias en la tabla de abajo.";
+            // 
+            // FrmBuscador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Azure;
-            ClientSize = new Size(699, 450);
+            ClientSize = new Size(699, 481);
+            Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
-            Name = "Buscador";
+            Name = "FrmBuscador";
             Text = "Buscador";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -138,5 +151,6 @@
         private DataGridViewTextBoxColumn Codigo;
         private DataGridViewTextBoxColumn Descripcion;
         private TextBox textBox1;
+        private Label label1;
     }
 }
