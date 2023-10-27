@@ -1,6 +1,6 @@
 using Farmaceutica.Presentacion;
 using Farmaceutica.Servicios;
-using System.Net.Http.Headers;
+
 
 namespace Farmaceutica
 {
@@ -16,6 +16,7 @@ namespace Farmaceutica
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+
             Application.Run(new FrmPrincipal());
         }
 
