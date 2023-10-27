@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             menuStrip1 = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
@@ -58,7 +59,7 @@
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(224, 26);
+            salirToolStripMenuItem.Size = new Size(121, 26);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
@@ -72,7 +73,7 @@
             // agregarArticulosToolStripMenuItem
             // 
             agregarArticulosToolStripMenuItem.Name = "agregarArticulosToolStripMenuItem";
-            agregarArticulosToolStripMenuItem.Size = new Size(224, 26);
+            agregarArticulosToolStripMenuItem.Size = new Size(208, 26);
             agregarArticulosToolStripMenuItem.Text = "Agregar Articulos";
             agregarArticulosToolStripMenuItem.Click += agregarArticulosToolStripMenuItem_Click;
             // 
@@ -92,7 +93,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.images1;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(601, 411);
             Controls.Add(menuStrip1);

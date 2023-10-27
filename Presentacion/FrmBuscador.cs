@@ -21,5 +21,10 @@ namespace Farmaceutica.Presentacion
         {
             Close();
         }
+
+        private void FrmBuscador_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
