@@ -183,7 +183,10 @@ namespace Farmaceutica.Presentacion
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-
+            FrmBuscador buscador_articulos = (FrmBuscador)factoria.CreaObjeto("buscador_articulos");
+            Opacity = 0.5;
+            buscador_articulos.ShowDialog(this);
+            Opacity = 1;
         }
     }
 

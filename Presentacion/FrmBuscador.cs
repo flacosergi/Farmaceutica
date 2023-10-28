@@ -23,6 +23,7 @@ namespace Farmaceutica.Presentacion
             url_buscada = url;
             factoria = factory;
             gestor_buscador = (GestorBuscador)factoria.CreaObjeto("gestor_buscador");
+            CenterToScreen();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

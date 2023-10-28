@@ -30,6 +30,9 @@ namespace Farmaceutica.Servicios
                     return new Marca();
                 case "articulos":
                     return new FrmArticulos(this);
+                case "buscador_articulos":
+                    return new FrmBuscador(this, "/api/Articulos/Obtener_Lista_Simple");
+
                 default:
                     throw new ArgumentException($"Tipo de objeto inválido: {tipo}");
             }
