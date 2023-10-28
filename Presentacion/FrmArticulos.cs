@@ -180,6 +180,11 @@ namespace Farmaceutica.Presentacion
         {
             Cursor.Current = Cursors.Default;
         }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

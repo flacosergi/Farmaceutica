@@ -81,7 +81,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.PaleTurquoise;
+            panel1.BackColor = Color.FromArgb(180, 254, 228);
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(btnConsultar);
             panel1.Controls.Add(btnLimpiar);
@@ -106,6 +106,7 @@
             btnConsultar.TabIndex = 5;
             btnConsultar.Text = "Consultar";
             btnConsultar.UseVisualStyleBackColor = false;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // btnLimpiar
             // 
