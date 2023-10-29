@@ -30,7 +30,7 @@ namespace Farmaceutica.Presentacion
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult = DialogResult.Cancel;
         }
 
         private async void FrmBuscador_Load(object sender, EventArgs e)
@@ -87,6 +87,17 @@ namespace Farmaceutica.Presentacion
         private void FrmBuscador_Shown(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.Default;
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (dgvBusqueda.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione una fila en la tabla y luego presione Aceptar.", "Atención:", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            else
+                DialogResult = DialogResult.OK;
         }
     }
 }

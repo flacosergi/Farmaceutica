@@ -46,14 +46,24 @@ namespace Farmaceutica.Servicios
             return lista_um;
         }
 
-        public async Task<string> CargarArticulo(Articulo nuevo_articulo)
+        public async Task<string> IngresarArticulo(Articulo nuevo_articulo)
         {
             string art = JsonConvert.SerializeObject(nuevo_articulo, Formatting.Indented);
-            string response = await ClientSingleton.GetInstance().PostAsync("/api/Articulos/CargarArticulo", art );
+            string response = await ClientSingleton.GetInstance().PostAsync("/api/Articulos/IngresarArticulo", art );
             if (response != string.Empty)
                 return response;
             else
                 return string.Empty;
+        }
+
+        public async Task<Articulo?> ObtenerArticuloPorID(int cod_articulo)
+        {
+            
+            string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Articulos/ObtenerArticuloPorID/" + cod_articulo);
+            if (contenido != string.Empty)
+                return JsonConvert.DeserializeObject<Articulo>(contenido);
+            else
+                return null;
         }
 
         public async Task<string> Upload(string pathFile)

@@ -15,6 +15,7 @@ namespace AccesoDatos.Datos
 {
     public class DaoArticulo : IObjetoDAO
     {
+        AbstractFactory factory = new ModeloFactory();
         public int InsertarRegistro(object objeto)
         {
             Articulo NuevoArticulo = (Articulo)objeto;
@@ -47,9 +48,28 @@ namespace AccesoDatos.Datos
             throw new NotImplementedException();
         }
 
-        object IObjetoDAO.BuscaRegistro(int registro)
+        public object BuscaRegistro(int registro)
         {
-            throw new NotImplementedException();
+            Articulo articulo_buscado = (Articulo)factory.CreaObjeto("articulo");
+            List<SqlParameter> lista_parametros = new List<SqlParameter>();
+            lista_parametros.Add(new SqlParameter("@cod_articulo", registro));
+            DataTable nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("SP_ARTICULOS_SELECCIONA_POR_ID", lista_parametros);
+            foreach (DataRow fila in nueva_tabla.Rows)
+            {
+                articulo_buscado.cod_articulo = Convert.ToInt32(fila["cod_articulo"].ToString());
+                articulo_buscado.tipo_articulo.id_tipo_articulo = Convert.ToInt32(fila["id_tipo_articulo"].ToString());
+                articulo_buscado.unidad_medida.id_u_medida = Convert.ToInt32(fila["id_u_medida"].ToString());
+                articulo_buscado.marca.id_marca = Convert.ToInt32(fila["id_marca"].ToString());
+                articulo_buscado.cant_um = Convert.ToDecimal(fila["cant_um"].ToString());
+                articulo_buscado.detalle = (string)fila["detalle"];
+                articulo_buscado.precio = Convert.ToDecimal(fila["precio"].ToString());
+                articulo_buscado.stock_maximo = Convert.ToDecimal(fila["stock_maximo"].ToString());
+                articulo_buscado.stock_minimo = Convert.ToDecimal(fila["stock_minimo"].ToString());
+                articulo_buscado.codigo_barras = Convert.ToInt64(fila["codigo_barras"].ToString());
+                articulo_buscado.activo = Convert.ToBoolean(fila["activo"].ToString());
+                articulo_buscado.imagen = (string)fila["imagen"];
+            }
+            return articulo_buscado;
         }
 
         public List<KeyValuePair<int, string>> ListaSimpleRegistros()
@@ -112,8 +132,5 @@ namespace AccesoDatos.Datos
             }
             return nueva_lista;
         }
-
-
-
     }
 }

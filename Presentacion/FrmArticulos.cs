@@ -1,7 +1,7 @@
 ﻿using AccesoDatos.Modelos;
 using AccesoDatos.Servicios;
 using Farmaceutica.Servicios;
-
+using Microsoft.VisualBasic;
 
 namespace Farmaceutica.Presentacion
 {
@@ -91,7 +91,7 @@ namespace Farmaceutica.Presentacion
             nuevo_articulo.codigo_barras = ntbCodBarras.ValorEntero;
             nuevo_articulo.activo = chbActivo.Checked;
             nuevo_articulo.imagen = Path.GetFileName(pbArticulo.ImageLocation);
-            string resultado = await gestor_art.CargarArticulo(nuevo_articulo);
+            string resultado = await gestor_art.IngresarArticulo(nuevo_articulo);
             string respuestaIMG = string.Empty;
             if (pbArticulo.ImageLocation != string.Empty)
             {
@@ -181,11 +181,23 @@ namespace Farmaceutica.Presentacion
             Cursor.Current = Cursors.Default;
         }
 
-        private void btnConsultar_Click(object sender, EventArgs e)
+        private async void btnConsultar_Click(object sender, EventArgs e)
         {
             FrmBuscador buscador_articulos = (FrmBuscador)factoria.CreaObjeto("buscador_articulos");
             Opacity = 0.5;
-            buscador_articulos.ShowDialog(this);
+            if (buscador_articulos.ShowDialog(this) == DialogResult.OK)
+            {
+                int codigo_buscado = Convert.ToInt32(buscador_articulos.dgvBusqueda.SelectedRows[0].Cells[0].Value.ToString());
+                Articulo? articulo_buscado = await gestor_art.ObtenerArticuloPorID(codigo_buscado);
+                if (articulo_buscado != null)
+                {
+                    txtDescripcion.Text = articulo_buscado.detalle;
+
+                }
+                else
+                    MessageBox.Show("No pudo encontrarse el artículo buscado.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
             Opacity = 1;
         }
     }

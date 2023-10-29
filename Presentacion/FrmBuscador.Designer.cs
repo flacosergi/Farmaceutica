@@ -77,6 +77,7 @@
             btnAceptar.TabIndex = 0;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = false;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // dgvBusqueda
             // 
@@ -92,6 +93,7 @@
             dgvBusqueda.RowHeadersVisible = false;
             dgvBusqueda.RowHeadersWidth = 51;
             dgvBusqueda.RowTemplate.Height = 25;
+            dgvBusqueda.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvBusqueda.Size = new Size(670, 294);
             dgvBusqueda.TabIndex = 2;
             dgvBusqueda.KeyDown += dgvBusqueda_KeyDown;
@@ -162,10 +164,10 @@
         private Panel panel1;
         private Button btnCancelar;
         private Button btnAceptar;
-        private DataGridView dgvBusqueda;
         private TextBox txtBusqueda;
         private Label label1;
         private DataGridViewTextBoxColumn Codigo;
         private DataGridViewTextBoxColumn Descripcion;
+        internal DataGridView dgvBusqueda;
     }
 }

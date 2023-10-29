@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -64,7 +65,7 @@ public class DBHelper
         }
     }
 
-    public DataTable CargarTabla(string SP)
+    public DataTable CargarTabla(string SP, List<SqlParameter>? lista_parametros = null)
     {
         try
         {
@@ -72,6 +73,14 @@ public class DBHelper
             conexion.Open();
             comando.CommandText = SP;
             comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.Clear();
+            if (lista_parametros != null)
+            { 
+                foreach (SqlParameter param in lista_parametros)
+                {
+                    comando.Parameters.Add(param);
+                }
+            }
             Tabla.Load(comando.ExecuteReader());
             conexion.Close();
             return Tabla;
