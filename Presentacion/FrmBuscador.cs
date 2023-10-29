@@ -17,13 +17,15 @@ namespace Farmaceutica.Presentacion
         string url_buscada = string.Empty;
         AbstractFactory factoria;
         GestorBuscador gestor_buscador;
-        public FrmBuscador(AbstractFactory factory, string url)
+        DataTable tabla_datos = new DataTable();
+        public FrmBuscador(AbstractFactory factory, string url, string titulo)
         {
             InitializeComponent();
             url_buscada = url;
             factoria = factory;
             gestor_buscador = (GestorBuscador)factoria.CreaObjeto("gestor_buscador");
             CenterToScreen();
+            Text = titulo;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -33,8 +35,58 @@ namespace Farmaceutica.Presentacion
 
         private async void FrmBuscador_Load(object sender, EventArgs e)
         {
-            dgvBusqueda.DataSource = await gestor_buscador.CargaLista(url_buscada);
+            tabla_datos = await gestor_buscador.CargaLista(url_buscada);
+            dgvBusqueda.DataSource = tabla_datos;
+            dgvBusqueda.ClearSelection();
 
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            DataView DV = new DataView(tabla_datos);
+            DV.AllowEdit = false;
+            DV.AllowDelete = false;
+            DV.AllowNew = false;
+            DV.RowFilter = "Descripcion Like " + "'%" + txtBusqueda.Text + "%'";
+            dgvBusqueda.DataSource = DV;
+            dgvBusqueda.ClearSelection();
+        }
+
+        private void dgvBusqueda_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (dgvBusqueda.SelectedRows.Count == 0)
+                return;
+            else
+                DialogResult = DialogResult.OK;
+        }
+
+        private void txtBusqueda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                e.SuppressKeyPress = true;
+                SendKeys.Send("{TAB}");
+                if (dgvBusqueda.Rows.Count != 0)
+                    dgvBusqueda.Rows[0].Selected = true;
+            }
+        }
+
+        private void dgvBusqueda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                if (dgvBusqueda.SelectedRows.Count == 0)
+                    MessageBox.Show("Seleccione una fila en la tabla y luego presione Aceptar.", "Atención:", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else
+                    DialogResult = DialogResult.OK;
+
+            }
+        }
+
+        private void FrmBuscador_Shown(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.Default;
         }
     }
 }

@@ -32,10 +32,10 @@
             btnCancelar = new Button();
             btnAceptar = new Button();
             dgvBusqueda = new DataGridView();
-            txtBusqueda = new TextBox();
-            label1 = new Label();
             Codigo = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
+            txtBusqueda = new TextBox();
+            label1 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvBusqueda).BeginInit();
             SuspendLayout();
@@ -49,7 +49,7 @@
             panel1.Location = new Point(15, 394);
             panel1.Name = "panel1";
             panel1.Size = new Size(670, 71);
-            panel1.TabIndex = 2;
+            panel1.TabIndex = 3;
             // 
             // btnCancelar
             // 
@@ -60,7 +60,7 @@
             btnCancelar.Location = new Point(569, 22);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(85, 27);
-            btnCancelar.TabIndex = 4;
+            btnCancelar.TabIndex = 1;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
@@ -93,25 +93,9 @@
             dgvBusqueda.RowHeadersWidth = 51;
             dgvBusqueda.RowTemplate.Height = 25;
             dgvBusqueda.Size = new Size(670, 294);
-            dgvBusqueda.TabIndex = 3;
-            // 
-            // txtBusqueda
-            // 
-            txtBusqueda.Location = new Point(15, 56);
-            txtBusqueda.Name = "txtBusqueda";
-            txtBusqueda.Size = new Size(670, 23);
-            txtBusqueda.TabIndex = 4;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.DarkCyan;
-            label1.Location = new Point(15, 25);
-            label1.Name = "label1";
-            label1.Size = new Size(494, 15);
-            label1.TabIndex = 13;
-            label1.Text = "Ingrese el nombre en forma total o parcial para buscar coincidencias en la tabla de abajo.";
+            dgvBusqueda.TabIndex = 2;
+            dgvBusqueda.KeyDown += dgvBusqueda_KeyDown;
+            dgvBusqueda.MouseDoubleClick += dgvBusqueda_MouseDoubleClick;
             // 
             // Codigo
             // 
@@ -128,7 +112,29 @@
             Descripcion.HeaderText = "Descripción";
             Descripcion.MinimumWidth = 6;
             Descripcion.Name = "Descripcion";
+            Descripcion.ReadOnly = true;
+            Descripcion.Resizable = DataGridViewTriState.False;
             Descripcion.Width = 650;
+            // 
+            // txtBusqueda
+            // 
+            txtBusqueda.Location = new Point(15, 56);
+            txtBusqueda.Name = "txtBusqueda";
+            txtBusqueda.Size = new Size(670, 23);
+            txtBusqueda.TabIndex = 1;
+            txtBusqueda.TextChanged += txtBusqueda_TextChanged;
+            txtBusqueda.KeyDown += txtBusqueda_KeyDown;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.DarkCyan;
+            label1.Location = new Point(15, 25);
+            label1.Name = "label1";
+            label1.Size = new Size(494, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Ingrese el nombre en forma total o parcial para buscar coincidencias en la tabla de abajo.";
             // 
             // FrmBuscador
             // 
@@ -140,9 +146,11 @@
             Controls.Add(txtBusqueda);
             Controls.Add(dgvBusqueda);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FrmBuscador";
             Text = "Buscador";
             Load += FrmBuscador_Load;
+            Shown += FrmBuscador_Shown;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvBusqueda).EndInit();
             ResumeLayout(false);
