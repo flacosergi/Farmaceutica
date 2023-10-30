@@ -2,6 +2,7 @@
 using AccesoDatos.Servicios;
 using Farmaceutica.Servicios;
 using Microsoft.VisualBasic;
+using System.Collections.Generic;
 
 namespace Farmaceutica.Presentacion
 {
@@ -24,13 +25,18 @@ namespace Farmaceutica.Presentacion
 
         private async void Articulos_Load(object sender, EventArgs e)
         {
-
+            var tarea = gestor_art.GetTipoArticulos();
+            var tarea1 = gestor_art.GetMarcas();
+            var tarea2 = gestor_art.GetUM();
             List<Tipo_Articulo> lista = await gestor_art.GetTipoArticulos();
             metodos.LlenaCombo(cbo_tipo_art, lista.ToList<object>(), "detalle", "id_tipo_articulo");
             List<Marca> lista_m = await gestor_art.GetMarcas();
             metodos.LlenaCombo(cbo_marca, lista_m.ToList<object>(), "detalle", "id_marca");
             List<Unidad_Medida> lista_um = await gestor_art.GetUM();
             metodos.LlenaCombo(cboUM, lista_um.ToList<object>(), "detalle", "id_u_medida");
+            tarea.Wait();
+            tarea1.Wait();
+            tarea2.Wait();
         }
 
 
@@ -56,7 +62,10 @@ namespace Farmaceutica.Presentacion
             btnNuevo.Enabled = true;
             btnEditar.Enabled = true;
             btnConsultar.Enabled = true;
-
+            lbl_cod_art.Text = "000";
+            metodos.BloqueaControles(pnlCarga, false);
+            btnAgregaImagen.Enabled = true;
+            btnBorraImagen.Enabled = true;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -191,14 +200,36 @@ namespace Farmaceutica.Presentacion
                 Articulo? articulo_buscado = await gestor_art.ObtenerArticuloPorID(codigo_buscado);
                 if (articulo_buscado != null)
                 {
+                    lbl_cod_art.Text = articulo_buscado.cod_articulo.ToString();
                     txtDescripcion.Text = articulo_buscado.detalle;
-
+                    cbo_tipo_art.SelectedValue = articulo_buscado.tipo_articulo.id_tipo_articulo;
+                    cbo_marca.SelectedValue = articulo_buscado.marca.id_marca;
+                    cboUM.SelectedValue = articulo_buscado.unidad_medida.id_u_medida;
+                    ntbCantidad.Text = articulo_buscado.cant_um.ToString();
+                    ntbPrecio.Text = articulo_buscado.precio.ToString();
+                    ntbStockMaximo.Text = articulo_buscado.stock_maximo.ToString();
+                    ntbStockMinimo.Text = articulo_buscado.stock_minimo.ToString();
+                    ntbCodBarras.Text = articulo_buscado.codigo_barras.ToString();
+                    chbActivo.Checked = articulo_buscado.activo;
+                    pbArticulo.Image = await gestor_art.DownLoad(articulo_buscado.imagen);
+                    pnlCarga.Enabled = true;
+                    metodos.BloqueaControles(pnlCarga, true);
+                    btnAgregaImagen.Enabled = false;
+                    btnBorraImagen.Enabled = false;
                 }
                 else
                     MessageBox.Show("No pudo encontrarse el artículo buscado.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
+            }
+            else
+            {
+                btnLimpiar_Click(this, MouseEventArgs.Empty);
+                Opacity = 1;
+                return;
             }
             Opacity = 1;
+            btnNuevo.Enabled = false;
+            btnEditar.Enabled = false;
+            btnConsultar.Enabled = false;
         }
     }
 

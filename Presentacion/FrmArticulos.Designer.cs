@@ -57,7 +57,7 @@
             label4 = new Label();
             cbo_tipo_art = new ComboBox();
             label3 = new Label();
-            label2 = new Label();
+            lbl_cod_art = new Label();
             label1 = new Label();
             pbArticulo = new PictureBox();
             panel1.SuspendLayout();
@@ -189,7 +189,7 @@
             pnlCarga.Controls.Add(label4);
             pnlCarga.Controls.Add(cbo_tipo_art);
             pnlCarga.Controls.Add(label3);
-            pnlCarga.Controls.Add(label2);
+            pnlCarga.Controls.Add(lbl_cod_art);
             pnlCarga.Controls.Add(label1);
             pnlCarga.Controls.Add(pbArticulo);
             pnlCarga.Enabled = false;
@@ -479,15 +479,15 @@
             label3.TabIndex = 13;
             label3.Text = "Tipo Artículo:";
             // 
-            // label2
+            // lbl_cod_art
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(143, 19);
-            label2.Name = "label2";
-            label2.Size = new Size(37, 21);
-            label2.TabIndex = 1;
-            label2.Text = "000";
+            lbl_cod_art.AutoSize = true;
+            lbl_cod_art.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_cod_art.Location = new Point(143, 19);
+            lbl_cod_art.Name = "lbl_cod_art";
+            lbl_cod_art.Size = new Size(37, 21);
+            lbl_cod_art.TabIndex = 1;
+            lbl_cod_art.Text = "000";
             // 
             // label1
             // 
@@ -543,7 +543,7 @@
         private PictureBox pbArticulo;
         private ComboBox cbo_tipo_art;
         private Label label3;
-        private Label label2;
+        private Label lbl_cod_art;
         private Label label7;
         private Label label6;
         private ComboBox cboUM;

@@ -49,7 +49,7 @@ namespace Farmaceutica.Servicios
         public async Task<string> IngresarArticulo(Articulo nuevo_articulo)
         {
             string art = JsonConvert.SerializeObject(nuevo_articulo, Formatting.Indented);
-            string response = await ClientSingleton.GetInstance().PostAsync("/api/Articulos/IngresarArticulo", art );
+            string response = await ClientSingleton.GetInstance().PostAsync("/api/Articulos/IngresarArticulo", art);
             if (response != string.Empty)
                 return response;
             else
@@ -58,7 +58,7 @@ namespace Farmaceutica.Servicios
 
         public async Task<Articulo?> ObtenerArticuloPorID(int cod_articulo)
         {
-            
+
             string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Articulos/ObtenerArticuloPorID/" + cod_articulo);
             if (contenido != string.Empty)
                 return JsonConvert.DeserializeObject<Articulo>(contenido);
@@ -76,6 +76,15 @@ namespace Farmaceutica.Servicios
                 return response;
             else
                 return string.Empty;
+        }
+
+        public async Task<Image?> DownLoad(string filename)
+        {
+            var contenido = await ClientSingleton.GetInstance().GetAsyncFile("/api/File/leer_archivo/" + filename);
+            if (contenido != null)
+                return Image.FromStream(contenido);
+            else
+                return null;
         }
     }
 }

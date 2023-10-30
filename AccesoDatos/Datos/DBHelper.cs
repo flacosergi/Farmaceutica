@@ -27,7 +27,10 @@ public class DBHelper
     public static DBHelper ObtenerInstancia()
     {
         if (instancia == null)
+        {
             instancia = new DBHelper();
+        }
+
         return instancia;
     }
 
@@ -75,7 +78,7 @@ public class DBHelper
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.Clear();
             if (lista_parametros != null)
-            { 
+            {
                 foreach (SqlParameter param in lista_parametros)
                 {
                     comando.Parameters.Add(param);

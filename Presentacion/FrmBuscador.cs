@@ -43,13 +43,16 @@ namespace Farmaceutica.Presentacion
 
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
-            DataView DV = new DataView(tabla_datos);
-            DV.AllowEdit = false;
-            DV.AllowDelete = false;
-            DV.AllowNew = false;
-            DV.RowFilter = "Descripcion Like " + "'%" + txtBusqueda.Text + "%'";
-            dgvBusqueda.DataSource = DV;
-            dgvBusqueda.ClearSelection();
+            if (tabla_datos.Rows.Count != 0)
+            {
+                DataView DV = new DataView(tabla_datos);
+                DV.AllowEdit = false;
+                DV.AllowDelete = false;
+                DV.AllowNew = false;
+                DV.RowFilter = "Descripcion Like " + "'%" + txtBusqueda.Text + "%'";
+                dgvBusqueda.DataSource = DV;
+                dgvBusqueda.ClearSelection();
+            }
         }
 
         private void dgvBusqueda_MouseDoubleClick(object sender, MouseEventArgs e)

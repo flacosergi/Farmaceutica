@@ -75,7 +75,7 @@ namespace APIFarmaceutica.Controllers
             return Task.FromResult(resultado);
         }
 
-        [HttpGet, Route("leer_archivo")]
+        [HttpGet, Route("leer_archivo/{filename}")]
         public IActionResult GetFile(string filename)
         {
             string RutaRaiz = _env.ContentRootPath;

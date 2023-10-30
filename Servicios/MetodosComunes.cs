@@ -10,32 +10,67 @@ namespace Farmaceutica.Servicios
     {
         public void LimpiaControles(Control control)
         {
-            foreach (Control child in control.Controls)
+            switch (control.GetType().Name)
             {
-                if (child.HasChildren)
-                    LimpiaControles(child);
-                switch (child.GetType().Name)
+                case "TextBox":
+                    ((TextBox)control).Text = string.Empty; break;
+                case "MaskedTextBox":
+                    ((MaskedTextBox)control).Text = string.Empty; break;
+                case "ComboBox":
+                    ((ComboBox)control).SelectedIndex = -1; break;
+                case "CheckBox":
+                    ((CheckBox)control).Checked = false; break;
+                case "NumericUpDown":
+                    ((NumericUpDown)control).Value = ((NumericUpDown)control).Minimum; break;
+                case "DatagridView":
+                    ((DataGridView)control).Rows.Clear(); break;
+                case "PictureBox":
+                    ((PictureBox)control).Image = null; break;
+                case "NumberTextBox":
+                    ((NumberTextBox.NumberTextBox)control).Text = string.Empty; break;
+                default:
+                    break;
+            }
+
+            if (control.HasChildren)
+            {
+                foreach (Control child in control.Controls)
                 {
-                    case "TextBox":
-                        ((TextBox)child).Text = string.Empty; break;
-                    case "MaskedTextBox":
-                        ((MaskedTextBox)child).Text = string.Empty; break;
-                    case "ComboBox":
-                        ((ComboBox)child).SelectedIndex = -1; break;
-                    case "CheckBox":
-                        ((CheckBox)child).Checked = false; break;
-                    case "NumericUpDown":
-                        ((NumericUpDown)child).Value = ((NumericUpDown)child).Minimum; break;
-                    case "DatagridView":
-                        ((DataGridView)child).Rows.Clear(); break;
-                    case "PictureBox":
-                        ((PictureBox)child).Image = null; break;
-                    case "NumberTextBox":
-                        ((NumberTextBox.NumberTextBox)child).Text = string.Empty; break;
-                    default:
-                        break;
+                   LimpiaControles(child);
                 }
             }
+        }
+
+        public void BloqueaControles(Control control, bool bloqueo)
+        {
+            switch (control.GetType().Name)
+            {
+                case "TextBox":
+                    ((TextBox)control).ReadOnly = bloqueo; break;
+                case "MaskedTextBox":
+                    ((MaskedTextBox)control).ReadOnly = bloqueo; break;
+                case "ComboBox":
+                    ((ComboBox)control).Enabled = !bloqueo; break;
+                case "CheckBox":
+                    ((CheckBox)control).Enabled = !bloqueo; break;
+                case "NumericUpDown":
+                    ((NumericUpDown)control).Enabled =! bloqueo; break;
+                case "DatagridView":
+                    ((DataGridView)control).ReadOnly = bloqueo; break;
+                case "NumberTextBox":
+                    ((NumberTextBox.NumberTextBox)control).ReadOnly = bloqueo; break;
+                default:
+                    break;
+            }
+
+            if (control.HasChildren)
+            {
+                foreach (Control child in control.Controls)
+                {
+                    BloqueaControles(child, bloqueo);
+                }
+            }
+
         }
 
         public void LlenaCombo(ComboBox combo, List<object> lista, string display, string value)

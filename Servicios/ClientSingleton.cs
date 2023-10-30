@@ -50,5 +50,14 @@ namespace Farmaceutica.Servicios
                 response = "OK";
             return response;
         }
-    } 
+
+        public async Task<Stream?> GetAsyncFile(string url)
+        {
+            var result = await client.GetAsync(url);
+            var content = string.Empty;
+            if (result.IsSuccessStatusCode)
+                return result.Content.ReadAsStream();
+            return null;
+        }
+      } 
 }
