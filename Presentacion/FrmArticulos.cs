@@ -3,6 +3,7 @@ using AccesoDatos.Servicios;
 using Farmaceutica.Servicios;
 using Microsoft.VisualBasic;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Farmaceutica.Presentacion
 {
@@ -25,18 +26,13 @@ namespace Farmaceutica.Presentacion
 
         private async void Articulos_Load(object sender, EventArgs e)
         {
-            var tarea = gestor_art.GetTipoArticulos();
-            var tarea1 = gestor_art.GetMarcas();
-            var tarea2 = gestor_art.GetUM();
             List<Tipo_Articulo> lista = await gestor_art.GetTipoArticulos();
             metodos.LlenaCombo(cbo_tipo_art, lista.ToList<object>(), "detalle", "id_tipo_articulo");
             List<Marca> lista_m = await gestor_art.GetMarcas();
             metodos.LlenaCombo(cbo_marca, lista_m.ToList<object>(), "detalle", "id_marca");
             List<Unidad_Medida> lista_um = await gestor_art.GetUM();
             metodos.LlenaCombo(cboUM, lista_um.ToList<object>(), "detalle", "id_u_medida");
-            tarea.Wait();
-            tarea1.Wait();
-            tarea2.Wait();
+
         }
 
 
