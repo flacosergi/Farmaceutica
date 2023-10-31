@@ -13,6 +13,7 @@ namespace Farmaceutica.Servicios
         Task<List<Marca>> GetMarcas();
         Task<List<Unidad_Medida>> GetUM();
         Task<string> IngresarArticulo(Articulo nuevo_articulo);
+        Task<string> ModificarArticulo(Articulo articulo);
         Task<Articulo?> ObtenerArticuloPorID(int cod_articulo);
     }
 }

@@ -67,7 +67,8 @@ namespace APIFarmaceutica.Controllers
                 return BadRequest();
         }
 
-        // GET /api/Articulos/ObtenerArticuloPorID{id}
+
+        // GET /api/Articulos/ObtenerArticuloPorID/5
         [HttpGet, Route("ObtenerArticuloPorID/{id}")]
         public Articulo GetArticuloByID(int id)
         {
@@ -75,11 +76,15 @@ namespace APIFarmaceutica.Controllers
             return (Articulo)dao.BuscaRegistro(id);
         }
 
-         // PUT api/<ArticulosController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+         // PUT /api/Articulos/ModificarArticulo
+        [HttpPut, Route("ModificarArticulo")]
+        public IActionResult PutArticulo(Articulo nuevo_articulo)
         {
-         
+            DaoArticulo dao = (DaoArticulo)factory.CreaObjeto("DaoArticulo");
+            if (dao.ModificarRegistro(nuevo_articulo) == 0)
+                return Ok();
+            else
+                return BadRequest();
         }
 
         // DELETE api/<ArticulosController>/5

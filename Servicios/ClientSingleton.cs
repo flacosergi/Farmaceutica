@@ -42,6 +42,16 @@ namespace Farmaceutica.Servicios
             return response;   
         }
 
+        public async Task<string> PutAsync(string url, string data)
+        {
+            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+            var result = await client.PutAsync(url, content);
+            var response = string.Empty;
+            if (result.IsSuccessStatusCode)
+                response = "OK";
+            return response;
+        }
+
         public async Task<string> PostAsyncFile(string url, HttpContent contenido)
         {
             var result = await client.PostAsync(url, contenido);

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
 namespace AccesoDatos.Datos;
 
 public class DBHelper
@@ -73,6 +74,7 @@ public class DBHelper
         try
         {
             DataTable Tabla = new DataTable();
+            while (conexion.State != ConnectionState.Closed) { }
             conexion.Open();
             comando.CommandText = SP;
             comando.CommandType = CommandType.StoredProcedure;

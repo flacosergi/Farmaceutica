@@ -21,8 +21,8 @@ namespace Farmaceutica.Servicios
     {
         public async Task<List<Tipo_Articulo>> GetTipoArticulos()
         {
-            List<Tipo_Articulo> lista_tipos = new List<Tipo_Articulo>();
-            string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Articulos/Obtener_Tipo_Articulos");
+            List<Tipo_Articulo> lista_tipos = new List<Tipo_Articulo> ();
+            string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Articulos/Obtener_Tipo_Articulos"); 
             if (contenido != string.Empty)
                 lista_tipos = JsonConvert.DeserializeObject<List<Tipo_Articulo>>(contenido); ;
             return lista_tipos;
@@ -85,6 +85,16 @@ namespace Farmaceutica.Servicios
                 return Image.FromStream(contenido);
             else
                 return null;
+        }
+
+        public async Task<string> ModificarArticulo(Articulo articulo)
+        {
+            string art = JsonConvert.SerializeObject(articulo, Formatting.Indented);
+            string response = await ClientSingleton.GetInstance().PutAsync("/api/Articulos/ModificarArticulo", art);
+            if (response != string.Empty)
+                return response;
+            else
+                return string.Empty;
         }
     }
 }
