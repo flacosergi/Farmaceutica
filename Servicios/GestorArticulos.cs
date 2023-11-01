@@ -10,7 +10,6 @@ using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Windows.Media.Protection.PlayReady;
 using static Farmaceutica.Program;
 using AccesoDatos.Modelos;
 

@@ -104,7 +104,11 @@ namespace Farmaceutica.Presentacion
             nuevo_articulo.stock_minimo = ntbStockMinimo.ValorEntero;
             nuevo_articulo.codigo_barras = ntbCodBarras.ValorEntero;
             nuevo_articulo.activo = chbActivo.Checked;
-            nuevo_articulo.imagen = Path.GetFileName(pbArticulo.ImageLocation);
+            if (pbArticulo.ImageLocation != null)
+                nuevo_articulo.imagen = Path.GetFileName(pbArticulo.ImageLocation);
+            else
+                if(pbArticulo.Image == null)
+                    nuevo_articulo.imagen = string.Empty;
             string resultado;
             if (btnGuardar.Text == "Guardar")
                 resultado = await gestor_art.IngresarArticulo(nuevo_articulo);

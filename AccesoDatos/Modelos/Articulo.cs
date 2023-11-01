@@ -21,7 +21,7 @@ namespace AccesoDatos.Modelos
         public decimal stock_minimo { get; set; }
         public long codigo_barras { get; set; }
         public bool activo { get; set; }
-        public string imagen { get; set; }
+        public string? imagen { get; set; }
 
         public Articulo()
         {
