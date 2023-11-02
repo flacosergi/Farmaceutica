@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+    <PackageReference Include="NumberTextBox" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
