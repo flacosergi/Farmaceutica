@@ -98,5 +98,10 @@ namespace Farmaceutica.Presentacion
         {
 
         }
+
+        private void btnBuscarArticulo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

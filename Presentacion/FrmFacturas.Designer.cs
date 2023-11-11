@@ -63,12 +63,6 @@
             label5 = new Label();
             pnlTablaDetalle = new Panel();
             dgvDetalleFactura = new DataGridView();
-            CodArticulo = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            Unitario = new DataGridViewTextBoxColumn();
-            Descuento = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
             btnConsultar = new Button();
             btnLimpiar = new Button();
@@ -76,6 +70,12 @@
             btnGuardar = new Button();
             btnEditar = new Button();
             btnNueva = new Button();
+            CodArticulo = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            Unitario = new DataGridViewTextBoxColumn();
+            Descuento = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
             pnlCabecera.SuspendLayout();
             pnlDetalle.SuspendLayout();
             pnlTablaDetalle.SuspendLayout();
@@ -137,7 +137,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label13.ForeColor = Color.DarkCyan;
-            label13.Location = new Point(585, 140);
+            label13.Location = new Point(569, 146);
             label13.Name = "label13";
             label13.Size = new Size(33, 15);
             label13.TabIndex = 15;
@@ -145,11 +145,11 @@
             // 
             // txtPlan
             // 
-            txtPlan.Location = new Point(630, 138);
+            txtPlan.Location = new Point(608, 138);
             txtPlan.Margin = new Padding(3, 2, 3, 2);
             txtPlan.Name = "txtPlan";
             txtPlan.ReadOnly = true;
-            txtPlan.Size = new Size(155, 23);
+            txtPlan.Size = new Size(177, 23);
             txtPlan.TabIndex = 16;
             // 
             // label12
@@ -197,9 +197,9 @@
             btnNuevoCliente.FlatStyle = FlatStyle.Flat;
             btnNuevoCliente.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnNuevoCliente.ForeColor = SystemColors.Control;
-            btnNuevoCliente.Location = new Point(668, 70);
+            btnNuevoCliente.Location = new Point(608, 69);
             btnNuevoCliente.Name = "btnNuevoCliente";
-            btnNuevoCliente.Size = new Size(119, 27);
+            btnNuevoCliente.Size = new Size(179, 27);
             btnNuevoCliente.TabIndex = 10;
             btnNuevoCliente.Text = "Nuevo Cliente";
             btnNuevoCliente.UseVisualStyleBackColor = false;
@@ -309,7 +309,7 @@
             pnlDetalle.Controls.Add(btnBuscarArticulo);
             pnlDetalle.Controls.Add(label5);
             pnlDetalle.Enabled = false;
-            pnlDetalle.Location = new Point(10, 193);
+            pnlDetalle.Location = new Point(10, 194);
             pnlDetalle.Margin = new Padding(3, 2, 3, 2);
             pnlDetalle.Name = "pnlDetalle";
             pnlDetalle.Size = new Size(805, 162);
@@ -494,6 +494,7 @@
             btnBuscarArticulo.Size = new Size(42, 27);
             btnBuscarArticulo.TabIndex = 1;
             btnBuscarArticulo.UseVisualStyleBackColor = false;
+            btnBuscarArticulo.Click += btnBuscarArticulo_Click;
             // 
             // label5
             // 
@@ -512,7 +513,7 @@
             pnlTablaDetalle.BorderStyle = BorderStyle.FixedSingle;
             pnlTablaDetalle.Controls.Add(dgvDetalleFactura);
             pnlTablaDetalle.Enabled = false;
-            pnlTablaDetalle.Location = new Point(10, 359);
+            pnlTablaDetalle.Location = new Point(10, 363);
             pnlTablaDetalle.Margin = new Padding(3, 2, 3, 2);
             pnlTablaDetalle.Name = "pnlTablaDetalle";
             pnlTablaDetalle.Size = new Size(805, 243);
@@ -533,49 +534,6 @@
             dgvDetalleFactura.RowTemplate.Height = 25;
             dgvDetalleFactura.Size = new Size(767, 210);
             dgvDetalleFactura.TabIndex = 0;
-            // 
-            // CodArticulo
-            // 
-            CodArticulo.HeaderText = "CodArticulo";
-            CodArticulo.MinimumWidth = 6;
-            CodArticulo.Name = "CodArticulo";
-            CodArticulo.Visible = false;
-            CodArticulo.Width = 125;
-            // 
-            // Descripcion
-            // 
-            Descripcion.HeaderText = "Descripción";
-            Descripcion.MinimumWidth = 6;
-            Descripcion.Name = "Descripcion";
-            Descripcion.Width = 320;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad";
-            Cantidad.MinimumWidth = 6;
-            Cantidad.Name = "Cantidad";
-            Cantidad.Width = 125;
-            // 
-            // Unitario
-            // 
-            Unitario.HeaderText = "Unitario";
-            Unitario.MinimumWidth = 6;
-            Unitario.Name = "Unitario";
-            Unitario.Width = 125;
-            // 
-            // Descuento
-            // 
-            Descuento.HeaderText = "Descuento";
-            Descuento.MinimumWidth = 6;
-            Descuento.Name = "Descuento";
-            Descuento.Width = 125;
-            // 
-            // Total
-            // 
-            Total.HeaderText = "Total";
-            Total.MinimumWidth = 6;
-            Total.Name = "Total";
-            Total.Width = 120;
             // 
             // panel2
             // 
@@ -675,6 +633,46 @@
             btnNueva.UseVisualStyleBackColor = false;
             btnNueva.Click += btnNueva_Click;
             // 
+            // CodArticulo
+            // 
+            CodArticulo.HeaderText = "CodArticulo";
+            CodArticulo.MinimumWidth = 6;
+            CodArticulo.Name = "CodArticulo";
+            CodArticulo.Visible = false;
+            CodArticulo.Width = 125;
+            // 
+            // Descripcion
+            // 
+            Descripcion.HeaderText = "Descripción";
+            Descripcion.MinimumWidth = 6;
+            Descripcion.Name = "Descripcion";
+            Descripcion.Width = 320;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.MinimumWidth = 6;
+            Cantidad.Name = "Cantidad";
+            // 
+            // Unitario
+            // 
+            Unitario.HeaderText = "Unitario";
+            Unitario.MinimumWidth = 6;
+            Unitario.Name = "Unitario";
+            // 
+            // Descuento
+            // 
+            Descuento.HeaderText = "Descuento";
+            Descuento.MinimumWidth = 6;
+            Descuento.Name = "Descuento";
+            // 
+            // Total
+            // 
+            Total.HeaderText = "Total";
+            Total.MinimumWidth = 6;
+            Total.Name = "Total";
+            Total.Width = 120;
+            // 
             // FrmFacturas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -729,12 +727,6 @@
         private NumberTextBox.NumberTextBox ntbMatricula;
         private Panel pnlTablaDetalle;
         private DataGridView dgvDetalleFactura;
-        private DataGridViewTextBoxColumn CodArticulo;
-        private DataGridViewTextBoxColumn Descripcion;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn Unitario;
-        private DataGridViewTextBoxColumn Descuento;
-        private DataGridViewTextBoxColumn Total;
         private TextBox txtArticulo;
         private TextBox txtCliente;
         private Label label13;
@@ -750,5 +742,11 @@
         private Button btnGuardar;
         private Button btnEditar;
         private Button btnNueva;
+        private DataGridViewTextBoxColumn CodArticulo;
+        private DataGridViewTextBoxColumn Descripcion;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn Unitario;
+        private DataGridViewTextBoxColumn Descuento;
+        private DataGridViewTextBoxColumn Total;
     }
 }
