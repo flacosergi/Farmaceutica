@@ -19,7 +19,7 @@ namespace Farmaceutica.Presentacion
         ServiciosFactory factoria;
         Cliente nuevo_Cliente;
         ModeloFactory factoria_modelos = new ModeloFactory();
-        
+        GestorCliente gestor_cliente;
 
         public FrmFacturas(ServiciosFactory fact)
         {
@@ -27,6 +27,7 @@ namespace Farmaceutica.Presentacion
             factoria = fact;
             metodos = (MetodosComunes)factoria.CreaObjeto("metodos_comunes");
             nuevo_Cliente = (Cliente)factoria_modelos.CreaObjeto("cliente");
+            gestor_cliente = (GestorCliente)factoria.CreaObjeto("gestor_cliente");
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -63,13 +64,19 @@ namespace Farmaceutica.Presentacion
             pnlTablaDetalle.Enabled = false;
         }
 
-        private void btnBuscarCliente_Click(object sender, EventArgs e)
+        private async void btnBuscarCliente_Click(object sender, EventArgs e)
         {
             FrmBuscador buscador_clientes = (FrmBuscador)factoria.CreaObjeto("buscador_clientes");
             Opacity = 0.5;
             if (buscador_clientes.ShowDialog(this) == DialogResult.OK)
             {
+                int codigo_buscado = Convert.ToInt32(buscador_clientes.dgvBusqueda.SelectedRows[0].Cells[0].Value.ToString());
+                Cliente? articulo_buscado = await gestor_cliente.ObtenerClientePorID(codigo_buscado);
+                if (articulo_buscado != null)
+                {
 
+                }
+            
             }
             Opacity = 1;
         }

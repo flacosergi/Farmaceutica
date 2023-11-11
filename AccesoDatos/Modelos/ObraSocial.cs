@@ -12,7 +12,7 @@ namespace AccesoDatos.Modelos
         public int codigo_os { get; set; }
         public TipoDoc tipo_doc { get; set; }
         public long nro_doc { get; set; }
-        public string razon_social { get; set; }
+        public string razon_social_os { get; set; }
         public string? sigla { get; set; }
         public string calle { get; set; }
         public int numero { get; set; }
@@ -26,7 +26,7 @@ namespace AccesoDatos.Modelos
             codigo_os = 0;
             tipo_doc = (TipoDoc)factory.CreaObjeto("tipo_doc");
             nro_doc = 0;
-            razon_social = string.Empty;
+            razon_social_os = string.Empty;
             calle = string.Empty;
             numero = 0;
             cod_postal = 0;

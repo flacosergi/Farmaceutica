@@ -41,7 +41,7 @@ namespace AccesoDatos.Servicios
                 case "plan_os":
                     return new PlanOS(this);
                 case "cliente":
-                    return new Cliente(this);
+                    return new Cliente();
 
                 
                 default:

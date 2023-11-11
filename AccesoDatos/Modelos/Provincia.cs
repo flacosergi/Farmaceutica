@@ -13,7 +13,7 @@ namespace AccesoDatos.Modelos
         public string provincia { get; set; }
         public Pais pais { get; set; }
 
-        public Provincia(ModeloFactory factory    )
+        public Provincia(ModeloFactory factory)
         {
             id_provincia = 0;
             provincia = string.Empty;
