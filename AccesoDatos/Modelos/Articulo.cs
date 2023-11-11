@@ -25,7 +25,7 @@ namespace AccesoDatos.Modelos
 
         public Articulo()
         {
-            AbstractFactory factory = new ModeloFactory();
+            ModeloFactory factory = new ModeloFactory();
             cod_articulo = 0;
             tipo_articulo = (Tipo_Articulo)factory.CreaObjeto("tipo_articulo");
             unidad_medida = (Unidad_Medida)factory.CreaObjeto("unidad_medida");

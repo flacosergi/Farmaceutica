@@ -15,6 +15,7 @@ namespace Farmaceutica.Presentacion
     public partial class FrmPrincipal : Form
     {
         ServiciosFactory factory = new ServiciosFactory();
+        ModeloFactory factory_modelos = new ModeloFactory();
         public FrmPrincipal()
         {
             InitializeComponent();

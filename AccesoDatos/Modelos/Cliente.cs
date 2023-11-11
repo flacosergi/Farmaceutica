@@ -27,7 +27,7 @@ namespace AccesoDatos.Modelos
 
         public PlanOS plan_os { get; set; }
 
-        public Cliente(AbstractFactory factory)
+        public Cliente(ModeloFactory factory)
         {
             codigo_cliente = 0;
             tipo_doc = (TipoDoc)factory.CreaObjeto("tipo_doc");

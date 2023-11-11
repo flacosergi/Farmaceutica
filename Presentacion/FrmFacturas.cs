@@ -16,15 +16,16 @@ namespace Farmaceutica.Presentacion
     public partial class FrmFacturas : Form
     {
         MetodosComunes metodos;
-        AbstractFactory factoria;
+        ServiciosFactory factoria;
         Cliente nuevo_Cliente;
+        ModeloFactory factoria_modelos = new ModeloFactory();
 
-        public FrmFacturas(AbstractFactory fact)
+        public FrmFacturas(ServiciosFactory fact)
         {
             InitializeComponent();
             factoria = fact;
             metodos = (MetodosComunes)factoria.CreaObjeto("metodos_comunes");
-            nuevo_Cliente = (Cliente)factoria.CreaObjeto("cliente");
+            nuevo_Cliente = (Cliente)factoria_modelos.CreaObjeto("cliente");
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

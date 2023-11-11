@@ -16,16 +16,17 @@ namespace Farmaceutica.Presentacion
         List<Tipo_Articulo> lista = new List<Tipo_Articulo>();
         GestorArticulos gestor_art;
         MetodosComunes metodos;
-        AbstractFactory factoria;
+        ServiciosFactory factoria;
+        ModeloFactory factoria_modelos = new ModeloFactory();
         Articulo nuevo_articulo; 
 
-        public FrmArticulos(AbstractFactory fact)
+        public FrmArticulos(ServiciosFactory fact)
         {
             InitializeComponent();
             factoria = fact;
             gestor_art = (GestorArticulos)factoria.CreaObjeto("gestor_art");
             metodos = (MetodosComunes)factoria.CreaObjeto("metodos_comunes");
-            nuevo_articulo = (Articulo)factoria.CreaObjeto("articulo");
+            nuevo_articulo = (Articulo)factoria_modelos.CreaObjeto("articulo");
             CenterToScreen();
         }
 
@@ -71,7 +72,7 @@ namespace Farmaceutica.Presentacion
             btnAgregaImagen.Enabled = true;
             btnBorraImagen.Enabled = true;
             btnGuardar.Text = "Guardar";
-            nuevo_articulo = (Articulo)factoria.CreaObjeto("articulo");
+            nuevo_articulo = (Articulo)factoria_modelos.CreaObjeto("articulo");
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

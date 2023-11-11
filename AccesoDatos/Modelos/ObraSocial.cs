@@ -21,7 +21,7 @@ namespace AccesoDatos.Modelos
         public DateTime fecha_alta { get; set; }
         public bool activa { get; set; }
 
-        public ObraSocial(AbstractFactory factory)
+        public ObraSocial(ModeloFactory factory)
         {
             codigo_os = 0;
             tipo_doc = (TipoDoc)factory.CreaObjeto("tipo_doc");

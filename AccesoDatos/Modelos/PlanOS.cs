@@ -13,7 +13,7 @@ namespace AccesoDatos.Modelos
         public ObraSocial obra_social { get; set; }
         public string desc_plan { get; set; }
 
-        public PlanOS(AbstractFactory factory)
+        public PlanOS(ModeloFactory factory)
         {
             cod_plan = 0;
             obra_social = (ObraSocial)factory.CreaObjeto("obra_social");

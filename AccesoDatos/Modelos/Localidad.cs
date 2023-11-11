@@ -13,7 +13,7 @@ namespace AccesoDatos.Modelos
         public string localidad { get; set; }
         public Provincia provincia { get; set; }
 
-        public Localidad(AbstractFactory factory)
+        public Localidad(ModeloFactory factory)
         {
             id_localidad = 0;
             localidad = string.Empty;
