@@ -28,6 +28,8 @@ namespace Farmaceutica.Servicios
                     return new FrmBuscador(this, "/api/Clientes/Obtener_Lista_Simple", "Seleccionar Cliente");
                 case "articulos":
                     return new FrmArticulos(this);
+                case "cliente":
+                    return new FrmClientes(this);
 
 
                 default:

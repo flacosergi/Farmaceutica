@@ -19,6 +19,7 @@ namespace Farmaceutica.Presentacion
         ServiciosFactory factoria;
         Cliente nuevo_Cliente;
         ModeloFactory factoria_modelos = new ModeloFactory();
+        
 
         public FrmFacturas(ServiciosFactory fact)
         {
@@ -71,6 +72,18 @@ namespace Farmaceutica.Presentacion
 
             }
             Opacity = 1;
+        }
+
+        private void btnNuevoCliente_Click(object sender, EventArgs e)
+        {
+            FrmClientes clientes = (FrmClientes)factoria.CreaObjeto("cliente");
+            Cursor.Current = Cursors.WaitCursor;
+            clientes.ShowDialog(this);
+        }
+
+        private void FrmFacturas_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
