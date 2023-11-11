@@ -36,6 +36,7 @@
             agregarArticulosToolStripMenuItem = new ToolStripMenuItem();
             traToolStripMenuItem = new ToolStripMenuItem();
             ayudaToolStripMenuItem = new ToolStripMenuItem();
+            tsmi_facturacion = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -66,7 +67,7 @@
             // 
             // soporteToolStripMenuItem
             // 
-            soporteToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarArticulosToolStripMenuItem });
+            soporteToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarArticulosToolStripMenuItem, tsmi_facturacion });
             soporteToolStripMenuItem.Name = "soporteToolStripMenuItem";
             soporteToolStripMenuItem.Size = new Size(60, 20);
             soporteToolStripMenuItem.Text = "Soporte";
@@ -74,8 +75,8 @@
             // agregarArticulosToolStripMenuItem
             // 
             agregarArticulosToolStripMenuItem.Name = "agregarArticulosToolStripMenuItem";
-            agregarArticulosToolStripMenuItem.Size = new Size(166, 22);
-            agregarArticulosToolStripMenuItem.Text = "Agregar Articulos";
+            agregarArticulosToolStripMenuItem.Size = new Size(180, 22);
+            agregarArticulosToolStripMenuItem.Text = "&Artículos";
             agregarArticulosToolStripMenuItem.Click += agregarArticulosToolStripMenuItem_Click;
             // 
             // traToolStripMenuItem
@@ -89,6 +90,13 @@
             ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
             ayudaToolStripMenuItem.Size = new Size(53, 20);
             ayudaToolStripMenuItem.Text = "Ayuda";
+            // 
+            // tsmi_facturacion
+            // 
+            tsmi_facturacion.Name = "tsmi_facturacion";
+            tsmi_facturacion.Size = new Size(180, 22);
+            tsmi_facturacion.Text = "&Facturación";
+            tsmi_facturacion.Click += tsmi_facturacion_Click;
             // 
             // FrmPrincipal
             // 
@@ -122,5 +130,6 @@
         private ToolStripMenuItem ayudaToolStripMenuItem;
         private ToolStripMenuItem salirToolStripMenuItem;
         private ToolStripMenuItem agregarArticulosToolStripMenuItem;
+        private ToolStripMenuItem tsmi_facturacion;
     }
 }

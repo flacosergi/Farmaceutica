@@ -22,8 +22,28 @@ namespace AccesoDatos.Servicios
                     return new Unidad_Medida();
                 case "DaoArticulo":
                     return new DaoArticulo();
+                case "DaoCliente":
+                    return new DaoCliente();
                 case "marca":
                     return new Marca();
+                case "pais":
+                    return new Pais();
+                case "provincia":
+                    return new Provincia(this);
+                case "localidad":
+                    return new Localidad(this);
+                case "tipo_doc":
+                    return new TipoDoc();
+                case "tipo_cliente":
+                    return new TipoCliente();
+                case "obra_social":
+                    return new ObraSocial(this);
+                case "plan_os":
+                    return new PlanOS(this);
+                case "cliente":
+                    return new Cliente(this);
+
+                
                 default:
                     throw new ArgumentException($"Tipo de objeto inválido: {tipo}");
             }

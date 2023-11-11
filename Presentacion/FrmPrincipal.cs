@@ -44,7 +44,14 @@ namespace Farmaceutica.Presentacion
         {
             FrmArticulos articulos = (FrmArticulos)factory.CreaObjeto("articulos");
             Cursor.Current = Cursors.WaitCursor;
-            articulos.ShowDialog();
+            articulos.ShowDialog(this);
+        }
+
+        private void tsmi_facturacion_Click(object sender, EventArgs e)
+        {
+            FrmFacturas facturas = (FrmFacturas)factory.CreaObjeto("factura");
+            Cursor.Current = Cursors.WaitCursor;
+            facturas.ShowDialog(this);
         }
     }
 }

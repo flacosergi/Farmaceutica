@@ -241,7 +241,8 @@ namespace Farmaceutica.Presentacion
                     ntbStockMinimo.Text = articulo_buscado.stock_minimo.ToString();
                     ntbCodBarras.Text = articulo_buscado.codigo_barras.ToString();
                     chbActivo.Checked = articulo_buscado.activo;
-                    pbArticulo.Image = await gestor_art.DownLoad(articulo_buscado.imagen);
+                    if(articulo_buscado.imagen !=null) 
+                        pbArticulo.Image = await gestor_art.DownLoad(articulo_buscado.imagen);
                     nuevo_articulo = articulo_buscado;
                     pnlCarga.Enabled = true;
                     Cursor.Current = Cursors.Default;
