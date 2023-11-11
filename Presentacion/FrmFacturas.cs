@@ -17,7 +17,7 @@ namespace Farmaceutica.Presentacion
     {
         MetodosComunes metodos;
         ServiciosFactory factoria;
-        Cliente nuevo_Cliente;
+        Cliente? nuevo_Cliente;
         ModeloFactory factoria_modelos = new ModeloFactory();
         GestorCliente gestor_cliente;
 
@@ -62,6 +62,8 @@ namespace Farmaceutica.Presentacion
             pnlCabecera.Enabled = false;
             pnlDetalle.Enabled = false;
             pnlTablaDetalle.Enabled = false;
+            btnBuscarCliente.Enabled = true;
+            btnNuevoCliente.Enabled = true;
         }
 
         private async void btnBuscarCliente_Click(object sender, EventArgs e)
@@ -71,12 +73,16 @@ namespace Farmaceutica.Presentacion
             if (buscador_clientes.ShowDialog(this) == DialogResult.OK)
             {
                 int codigo_buscado = Convert.ToInt32(buscador_clientes.dgvBusqueda.SelectedRows[0].Cells[0].Value.ToString());
-                Cliente? articulo_buscado = await gestor_cliente.ObtenerClientePorID(codigo_buscado);
-                if (articulo_buscado != null)
+                nuevo_Cliente = await gestor_cliente.ObtenerClientePorID(codigo_buscado);
+                if (nuevo_Cliente != null)
                 {
-
+                    btnBuscarCliente.Enabled = false;
+                    btnNuevoCliente.Enabled = false;
+                    txtCliente.Text = nuevo_Cliente.razon_social is null ? nuevo_Cliente.apellido + ", " + nuevo_Cliente.nombre : nuevo_Cliente.razon_social;
+                    txtObraSocial.Text = nuevo_Cliente.obra_social.razon_social_os;
+                    ntbNumAfiliado.Text = nuevo_Cliente.num_afiliado.ToString();
                 }
-            
+
             }
             Opacity = 1;
         }
