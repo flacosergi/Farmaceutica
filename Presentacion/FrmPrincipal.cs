@@ -54,5 +54,12 @@ namespace Farmaceutica.Presentacion
             Cursor.Current = Cursors.WaitCursor;
             facturas.ShowDialog(this);
         }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmClientes facturas = (FrmClientes)factory.CreaObjeto("cliente");
+            Cursor.Current = Cursors.WaitCursor;
+            facturas.ShowDialog(this);
+        }
     }
 }

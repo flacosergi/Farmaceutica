@@ -34,6 +34,7 @@ namespace Farmaceutica.Servicios
                     return new FrmClientes(this);
 
 
+
                 default:
                     throw new ArgumentException($"Tipo de objeto inválido: {tipo}");
             }
