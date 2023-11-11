@@ -63,6 +63,12 @@
             label5 = new Label();
             pnlTablaDetalle = new Panel();
             dgvDetalleFactura = new DataGridView();
+            CodArticulo = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            Unitario = new DataGridViewTextBoxColumn();
+            Descuento = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
             btnConsultar = new Button();
             btnLimpiar = new Button();
@@ -70,12 +76,6 @@
             btnGuardar = new Button();
             btnEditar = new Button();
             btnNueva = new Button();
-            CodArticulo = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            Unitario = new DataGridViewTextBoxColumn();
-            Descuento = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
             pnlCabecera.SuspendLayout();
             pnlDetalle.SuspendLayout();
             pnlTablaDetalle.SuspendLayout();
@@ -516,7 +516,7 @@
             pnlTablaDetalle.Location = new Point(10, 363);
             pnlTablaDetalle.Margin = new Padding(3, 2, 3, 2);
             pnlTablaDetalle.Name = "pnlTablaDetalle";
-            pnlTablaDetalle.Size = new Size(805, 243);
+            pnlTablaDetalle.Size = new Size(805, 172);
             pnlTablaDetalle.TabIndex = 2;
             // 
             // dgvDetalleFactura
@@ -532,8 +532,48 @@
             dgvDetalleFactura.RowHeadersVisible = false;
             dgvDetalleFactura.RowHeadersWidth = 51;
             dgvDetalleFactura.RowTemplate.Height = 25;
-            dgvDetalleFactura.Size = new Size(767, 210);
+            dgvDetalleFactura.Size = new Size(767, 144);
             dgvDetalleFactura.TabIndex = 0;
+            // 
+            // CodArticulo
+            // 
+            CodArticulo.HeaderText = "CodArticulo";
+            CodArticulo.MinimumWidth = 6;
+            CodArticulo.Name = "CodArticulo";
+            CodArticulo.Visible = false;
+            CodArticulo.Width = 125;
+            // 
+            // Descripcion
+            // 
+            Descripcion.HeaderText = "Descripción";
+            Descripcion.MinimumWidth = 6;
+            Descripcion.Name = "Descripcion";
+            Descripcion.Width = 320;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.MinimumWidth = 6;
+            Cantidad.Name = "Cantidad";
+            // 
+            // Unitario
+            // 
+            Unitario.HeaderText = "Unitario";
+            Unitario.MinimumWidth = 6;
+            Unitario.Name = "Unitario";
+            // 
+            // Descuento
+            // 
+            Descuento.HeaderText = "Descuento";
+            Descuento.MinimumWidth = 6;
+            Descuento.Name = "Descuento";
+            // 
+            // Total
+            // 
+            Total.HeaderText = "Total";
+            Total.MinimumWidth = 6;
+            Total.Name = "Total";
+            Total.Width = 120;
             // 
             // panel2
             // 
@@ -545,10 +585,10 @@
             panel2.Controls.Add(btnGuardar);
             panel2.Controls.Add(btnEditar);
             panel2.Controls.Add(btnNueva);
-            panel2.Location = new Point(10, 615);
+            panel2.Location = new Point(10, 539);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(805, 71);
+            panel2.Size = new Size(805, 65);
             panel2.TabIndex = 4;
             // 
             // btnConsultar
@@ -633,52 +673,12 @@
             btnNueva.UseVisualStyleBackColor = false;
             btnNueva.Click += btnNueva_Click;
             // 
-            // CodArticulo
-            // 
-            CodArticulo.HeaderText = "CodArticulo";
-            CodArticulo.MinimumWidth = 6;
-            CodArticulo.Name = "CodArticulo";
-            CodArticulo.Visible = false;
-            CodArticulo.Width = 125;
-            // 
-            // Descripcion
-            // 
-            Descripcion.HeaderText = "Descripción";
-            Descripcion.MinimumWidth = 6;
-            Descripcion.Name = "Descripcion";
-            Descripcion.Width = 320;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad";
-            Cantidad.MinimumWidth = 6;
-            Cantidad.Name = "Cantidad";
-            // 
-            // Unitario
-            // 
-            Unitario.HeaderText = "Unitario";
-            Unitario.MinimumWidth = 6;
-            Unitario.Name = "Unitario";
-            // 
-            // Descuento
-            // 
-            Descuento.HeaderText = "Descuento";
-            Descuento.MinimumWidth = 6;
-            Descuento.Name = "Descuento";
-            // 
-            // Total
-            // 
-            Total.HeaderText = "Total";
-            Total.MinimumWidth = 6;
-            Total.Name = "Total";
-            Total.Width = 120;
-            // 
             // FrmFacturas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Azure;
-            ClientSize = new Size(827, 697);
+            ClientSize = new Size(827, 615);
             Controls.Add(panel2);
             Controls.Add(pnlTablaDetalle);
             Controls.Add(pnlDetalle);
