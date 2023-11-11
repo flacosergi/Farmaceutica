@@ -538,7 +538,6 @@
         private Panel panel1;
         private Button btnSalir;
         private Button btnGuardar;
-        private Button button2;
         private Panel pnlCarga;
         private Label label1;
         private PictureBox pbArticulo;

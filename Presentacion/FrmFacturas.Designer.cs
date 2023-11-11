@@ -70,6 +70,12 @@
             Unitario = new DataGridViewTextBoxColumn();
             Descuento = new DataGridViewTextBoxColumn();
             Total = new DataGridViewTextBoxColumn();
+            txtObraSocial = new TextBox();
+            txtNumAfiliado = new TextBox();
+            label11 = new Label();
+            label12 = new Label();
+            label13 = new Label();
+            txtPlan = new TextBox();
             pnlCabecera.SuspendLayout();
             panel2.SuspendLayout();
             pnlDetalle.SuspendLayout();
@@ -81,6 +87,12 @@
             // 
             pnlCabecera.BackColor = Color.White;
             pnlCabecera.BorderStyle = BorderStyle.FixedSingle;
+            pnlCabecera.Controls.Add(label13);
+            pnlCabecera.Controls.Add(txtPlan);
+            pnlCabecera.Controls.Add(label12);
+            pnlCabecera.Controls.Add(label11);
+            pnlCabecera.Controls.Add(txtNumAfiliado);
+            pnlCabecera.Controls.Add(txtObraSocial);
             pnlCabecera.Controls.Add(txtCliente);
             pnlCabecera.Controls.Add(btnNuevoCliente);
             pnlCabecera.Controls.Add(btnBuscarCliente);
@@ -94,7 +106,7 @@
             pnlCabecera.Enabled = false;
             pnlCabecera.Location = new Point(12, 12);
             pnlCabecera.Name = "pnlCabecera";
-            pnlCabecera.Size = new Size(805, 114);
+            pnlCabecera.Size = new Size(805, 176);
             pnlCabecera.TabIndex = 0;
             // 
             // txtCliente
@@ -212,7 +224,7 @@
             panel2.Controls.Add(btnGuardar);
             panel2.Controls.Add(btnEditar);
             panel2.Controls.Add(btnNueva);
-            panel2.Location = new Point(12, 547);
+            panel2.Location = new Point(12, 609);
             panel2.Name = "panel2";
             panel2.Size = new Size(805, 71);
             panel2.TabIndex = 3;
@@ -319,7 +331,7 @@
             pnlDetalle.Controls.Add(btnBuscarArticulo);
             pnlDetalle.Controls.Add(label5);
             pnlDetalle.Enabled = false;
-            pnlDetalle.Location = new Point(12, 132);
+            pnlDetalle.Location = new Point(12, 194);
             pnlDetalle.Name = "pnlDetalle";
             pnlDetalle.Size = new Size(805, 160);
             pnlDetalle.TabIndex = 1;
@@ -521,7 +533,7 @@
             pnlTablaDetalle.BorderStyle = BorderStyle.FixedSingle;
             pnlTablaDetalle.Controls.Add(dgvDetalleFactura);
             pnlTablaDetalle.Enabled = false;
-            pnlTablaDetalle.Location = new Point(12, 298);
+            pnlTablaDetalle.Location = new Point(12, 360);
             pnlTablaDetalle.Name = "pnlTablaDetalle";
             pnlTablaDetalle.Size = new Size(805, 243);
             pnlTablaDetalle.TabIndex = 2;
@@ -574,12 +586,69 @@
             Total.Name = "Total";
             Total.Width = 120;
             // 
+            // txtObraSocial
+            // 
+            txtObraSocial.Location = new Point(182, 105);
+            txtObraSocial.Name = "txtObraSocial";
+            txtObraSocial.ReadOnly = true;
+            txtObraSocial.Size = new Size(420, 23);
+            txtObraSocial.TabIndex = 12;
+            // 
+            // txtNumAfiliado
+            // 
+            txtNumAfiliado.Location = new Point(182, 137);
+            txtNumAfiliado.Name = "txtNumAfiliado";
+            txtNumAfiliado.ReadOnly = true;
+            txtNumAfiliado.Size = new Size(191, 23);
+            txtNumAfiliado.TabIndex = 14;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.ForeColor = Color.DarkCyan;
+            label11.Location = new Point(23, 108);
+            label11.Name = "label11";
+            label11.Size = new Size(72, 15);
+            label11.TabIndex = 11;
+            label11.Text = "Obra Social:";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.ForeColor = Color.DarkCyan;
+            label12.Location = new Point(23, 140);
+            label12.Name = "label12";
+            label12.Size = new Size(101, 15);
+            label12.TabIndex = 13;
+            label12.Text = "Número Afiliado:";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label13.ForeColor = Color.DarkCyan;
+            label13.Location = new Point(557, 140);
+            label13.Name = "label13";
+            label13.Size = new Size(33, 15);
+            label13.TabIndex = 15;
+            label13.Text = "Plan:";
+            // 
+            // txtPlan
+            // 
+            txtPlan.Location = new Point(608, 137);
+            txtPlan.Name = "txtPlan";
+            txtPlan.ReadOnly = true;
+            txtPlan.Size = new Size(177, 23);
+            txtPlan.TabIndex = 16;
+            // 
             // FrmFacturas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Azure;
-            ClientSize = new Size(829, 631);
+            ClientSize = new Size(829, 692);
             Controls.Add(pnlTablaDetalle);
             Controls.Add(pnlDetalle);
             Controls.Add(panel2);
@@ -642,5 +711,11 @@
         private DataGridViewTextBoxColumn Total;
         private TextBox txtArticulo;
         private TextBox txtCliente;
+        private Label label13;
+        private TextBox txtPlan;
+        private Label label12;
+        private Label label11;
+        private TextBox txtNumAfiliado;
+        private TextBox txtObraSocial;
     }
 }

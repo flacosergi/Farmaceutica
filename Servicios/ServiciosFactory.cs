@@ -16,6 +16,8 @@ namespace Farmaceutica.Servicios
             {
                 case "gestor_art":
                     return new GestorArticulos();
+                case "gestor_cliente":
+                    return new GestorCliente();
                 case "metodos_comunes":
                     return new MetodosComunes();
                 case "gestor_buscador":

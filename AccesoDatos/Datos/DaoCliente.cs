@@ -27,9 +27,12 @@ namespace AccesoDatos.Datos
                 cliente_buscado.nro_doc = Convert.ToInt64(fila["nro_doc"].ToString());
                 cliente_buscado.tipo_cliente.id_tipo_cliente = Convert.ToInt32(fila["id_tipo_cliente"].ToString());
                 cliente_buscado.tipo_cliente.detalle = (string)fila["detalle"];
-                cliente_buscado.nombre = (string)fila["nombre"];
-                cliente_buscado.apellido = (string)fila["apellido"];
-                cliente_buscado.razon_social = (string)fila["razon_social"];
+                if (fila["nombre"] != DBNull.Value)
+                    cliente_buscado.nombre = (string)fila["nombre"];
+                if (fila["apellido"] != DBNull.Value)
+                    cliente_buscado.apellido = (string)fila["apellido"];
+                if (fila["razon_social"] != DBNull.Value)
+                    cliente_buscado.razon_social = (string)fila["razon_social"];
                 cliente_buscado.calle = (string)fila["calle"];
                 cliente_buscado.numero = Convert.ToInt32(fila["numero"].ToString());
                 cliente_buscado.cod_postal = Convert.ToInt32(fila["cod_postal"].ToString());
@@ -39,13 +42,19 @@ namespace AccesoDatos.Datos
                 cliente_buscado.localidad.provincia.provincia = (string)fila["provincia"];
                 cliente_buscado.localidad.provincia.pais.id_pais = Convert.ToInt32(fila["id_pais"].ToString());
                 cliente_buscado.localidad.provincia.pais.pais = (string)fila["pais"];
-                cliente_buscado.obra_social.codigo_os = Convert.ToInt32(fila["id_pais"].ToString());
-                cliente_buscado.obra_social.razon_social = (string)fila["razon_social"];
-                cliente_buscado.obra_social.sigla = (string)fila["sigla"];
-                cliente_buscado.num_afiliado = Convert.ToInt64(fila["num_afiliado"].ToString());
+                if (fila["codigo_os"] != DBNull.Value)
+                {
+                    cliente_buscado.obra_social.codigo_os = Convert.ToInt32(fila["codigo_os"].ToString());
+                    cliente_buscado.obra_social.razon_social_os = (string)fila["razon_social_os"];
+                    cliente_buscado.obra_social.sigla = (string)fila["sigla"];
+                    cliente_buscado.num_afiliado = Convert.ToInt64(fila["num_afiliado"].ToString());
+                }
                 cliente_buscado.fecha_alta = Convert.ToDateTime(fila["fecha_alta"].ToString());
-                cliente_buscado.plan_os.cod_plan = Convert.ToInt32(fila["cod_plan"].ToString());
-                cliente_buscado.plan_os.desc_plan = (string)fila["desc_plan"];
+                if (fila["cod_plan"] != DBNull.Value)
+                {
+                    cliente_buscado.plan_os.cod_plan = Convert.ToInt32(fila["cod_plan"].ToString());
+                    cliente_buscado.plan_os.desc_plan = (string)fila["desc_plan"];
+                }
 
             }
             return cliente_buscado;

@@ -1,4 +1,5 @@
 ﻿using AccesoDatos.Datos;
+using AccesoDatos.Modelos;
 using AccesoDatos.Servicios;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +26,14 @@ namespace APIFarmaceutica.Controllers
         {
             DaoCliente dao = (DaoCliente)factory.CreaObjeto("DaoCliente");
             return dao.ListaSimpleRegistros();
+        }
+
+        // GET /api/Clientes/ObtenerClientePorID/5
+        [HttpGet, Route("ObtenerClientePorID/{id}")]
+        public Cliente GetClienteByID(int id)
+        {
+            DaoCliente dao = (DaoCliente)factory.CreaObjeto("DaoCliente");
+            return (Cliente)dao.BuscaRegistro(id);
         }
 
         // GET api/<ClienteController>/5
