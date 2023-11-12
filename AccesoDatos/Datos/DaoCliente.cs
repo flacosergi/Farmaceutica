@@ -67,7 +67,32 @@ namespace AccesoDatos.Datos
 
         public int InsertarRegistro(object objeto)
         {
-            throw new NotImplementedException();
+            Cliente NuevoArticulo = (Cliente)objeto;
+            List<SqlParameter> param_articulo = new List<SqlParameter>();
+            SqlParameter salida = new SqlParameter();
+            salida.Direction = ParameterDirection.Output;
+            salida.SqlDbType = SqlDbType.Int;
+            salida.ParameterName = "@proximo";
+            DBHelper.ObtenerInstancia().AbreConexionConTransaccion();
+            NuevoArticulo.codigo_cliente = DBHelper.ObtenerInstancia().EjecutaComando("SP_CLIENTES_BUSCA_PROXIMO_ID", new List<SqlParameter>(), salida);
+            param_articulo.Add(new SqlParameter("@cod_cliente", NuevoArticulo.codigo_cliente));
+            param_articulo.Add(new SqlParameter("@id_tipo_cliente", NuevoArticulo.tipo_cliente.id_tipo_cliente));
+            param_articulo.Add(new SqlParameter("@nro_doc", NuevoArticulo.nro_doc));
+            param_articulo.Add(new SqlParameter("@id_tipo_doc", NuevoArticulo.tipo_doc.id_tipo_doc));
+            param_articulo.Add(new SqlParameter("@nombre", NuevoArticulo.nombre));
+            param_articulo.Add(new SqlParameter("@apellido", NuevoArticulo.apellido));
+            param_articulo.Add(new SqlParameter("@razon_social", NuevoArticulo.razon_social));
+            param_articulo.Add(new SqlParameter("@calle", NuevoArticulo.calle));
+            param_articulo.Add(new SqlParameter("@nro_calle", NuevoArticulo.numero));
+            param_articulo.Add(new SqlParameter("@codigo_postal", NuevoArticulo.cod_postal));
+            param_articulo.Add(new SqlParameter("@id_localidad", NuevoArticulo.localidad.id_localidad));
+            param_articulo.Add(new SqlParameter("@id_OS", NuevoArticulo.obra_social));
+            param_articulo.Add(new SqlParameter("@id_plan_OS", NuevoArticulo.plan_os));
+            param_articulo.Add(new SqlParameter("@fecha_alta", NuevoArticulo.fecha_alta));
+            param_articulo.Add(new SqlParameter("@nro_afiliado", NuevoArticulo.num_afiliado));
+            int resultado = DBHelper.ObtenerInstancia().EjecutaComando("SP_CLIENTES_ALTA", param_articulo, null);
+            DBHelper.ObtenerInstancia().CierraConexionConTransaccion();
+            return resultado; ;
         }
 
         public List<KeyValuePair<int, string>> ListaSimpleRegistros()
