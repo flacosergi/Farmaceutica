@@ -10,6 +10,16 @@ namespace Farmaceutica.Servicios
 {
     public class ServiciosFactory : AbstractFactory
     {
+        private static ServiciosFactory? instancia;
+
+        public static ServiciosFactory ObtenerInstancia()
+        {
+            if (instancia == null)
+                instancia = new ServiciosFactory();
+            return instancia;
+
+        }
+
         public override object CreaObjeto(string tipo)
         {
             switch (tipo)
@@ -22,6 +32,8 @@ namespace Farmaceutica.Servicios
                     return new MetodosComunes();
                 case "gestor_buscador":
                     return new GestorBuscador();
+                case "gestor_factura":
+                    return new GestorFactura();
                 case "buscador_articulos":
                     return new FrmBuscador(this, "/api/Articulos/Obtener_Lista_Simple", "Seleccionar Artículo");
                 case "factura":

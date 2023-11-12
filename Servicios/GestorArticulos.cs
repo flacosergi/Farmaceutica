@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Farmaceutica.Program;
 using AccesoDatos.Modelos;
-
+using AccesoDatos.Servicios;
 
 namespace Farmaceutica.Servicios
 {
@@ -23,7 +23,7 @@ namespace Farmaceutica.Servicios
             List<Tipo_Articulo> lista_tipos = new List<Tipo_Articulo> ();
             string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Articulos/Obtener_Tipo_Articulos"); 
             if (contenido != string.Empty)
-                lista_tipos = JsonConvert.DeserializeObject<List<Tipo_Articulo>>(contenido); ;
+                lista_tipos = JsonConvert.DeserializeObject<List<Tipo_Articulo>>(contenido); 
             return lista_tipos;
         }
 
@@ -55,14 +55,14 @@ namespace Farmaceutica.Servicios
                 return string.Empty;
         }
 
-        public async Task<Articulo?> ObtenerArticuloPorID(int cod_articulo)
+        public async Task<Articulo> ObtenerArticuloPorID(int cod_articulo)
         {
 
             string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Articulos/ObtenerArticuloPorID/" + cod_articulo);
             if (contenido != string.Empty)
                 return JsonConvert.DeserializeObject<Articulo>(contenido);
             else
-                return null;
+                return (Articulo)ModeloFactory.ObtenerInstancia().CreaObjeto("articulo");
         }
 
         public async Task<string> Upload(string pathFile)
@@ -94,6 +94,15 @@ namespace Farmaceutica.Servicios
                 return response;
             else
                 return string.Empty;
+        }
+
+        public async Task<int?> ObtieneStock(int codigo_articulo, int sucursal)
+        {
+            string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Articulos/ObtenerStock/" + codigo_articulo + "/" + sucursal);
+            if (contenido != string.Empty)
+                return JsonConvert.DeserializeObject<int>(contenido);
+            else
+                return null;
         }
     }
 }

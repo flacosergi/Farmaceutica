@@ -22,12 +22,14 @@ namespace Farmaceutica.Servicios
                     ((CheckBox)control).Checked = false; break;
                 case "NumericUpDown":
                     ((NumericUpDown)control).Value = ((NumericUpDown)control).Minimum; break;
-                case "DatagridView":
+                case "DataGridView":
                     ((DataGridView)control).Rows.Clear(); break;
                 case "PictureBox":
                     ((PictureBox)control).Image = null; break;
                 case "NumberTextBox":
                     ((NumberTextBox.NumberTextBox)control).Text = string.Empty; break;
+                case "DateTimePicker":
+                    ((DateTimePicker)control).Value = DateTime.Now; break;
                 default:
                     break;
             }

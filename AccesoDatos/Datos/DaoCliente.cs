@@ -54,6 +54,7 @@ namespace AccesoDatos.Datos
                 {
                     cliente_buscado.plan_os.cod_plan = Convert.ToInt32(fila["cod_plan"].ToString());
                     cliente_buscado.plan_os.desc_plan = (string)fila["desc_plan"];
+                    cliente_buscado.plan_os.descuento = Convert.ToDecimal(fila["descuento"].ToString());
                 }
 
             }
