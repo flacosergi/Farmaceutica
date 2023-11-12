@@ -55,6 +55,23 @@ namespace APIFarmaceutica.Controllers
             return dao.ListaSimpleRegistros();
         }
 
+        // GET /api/Articulos/ObtenerArticuloPorID/5
+        [HttpGet, Route("ObtenerArticuloPorID/{id}")]
+        public Articulo GetArticuloByID(int id)
+        {
+            DaoArticulo dao = (DaoArticulo)factory.CreaObjeto("DaoArticulo");
+            return (Articulo)dao.BuscaRegistro(id);
+        }
+
+
+        // GET /api/Articulos/ObtenerStock/5/1
+        [HttpGet, Route("ObtenerStock/{id}/{suc}")]
+        public int GetArticuloByID(int id, int suc)
+        {
+            DaoArticulo dao = (DaoArticulo)factory.CreaObjeto("DaoArticulo");
+            return dao.ObtieneStock(id, suc);
+        }
+
 
         // POST /api/Articulos/CargarArticulo
         [HttpPost, Route("IngresarArticulo")]
@@ -67,14 +84,6 @@ namespace APIFarmaceutica.Controllers
                 return BadRequest();
         }
 
-
-        // GET /api/Articulos/ObtenerArticuloPorID/5
-        [HttpGet, Route("ObtenerArticuloPorID/{id}")]
-        public Articulo GetArticuloByID(int id)
-        {
-            DaoArticulo dao = (DaoArticulo)factory.CreaObjeto("DaoArticulo");
-            return (Articulo)dao.BuscaRegistro(id);
-        }
 
          // PUT /api/Articulos/ModificarArticulo
         [HttpPut, Route("ModificarArticulo")]

@@ -9,7 +9,7 @@ namespace Farmaceutica.Servicios
 {
     public interface IGestorCliente
     {
-        Task<Cliente?> ObtenerClientePorID(int codigo_cliente);
+        Task<Cliente> ObtenerClientePorID(int codigo_cliente);
 
 
     }

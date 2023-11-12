@@ -149,5 +149,20 @@ namespace AccesoDatos.Datos
             }
             return nueva_lista;
         }
+
+        public int ObtieneStock(int codigo_articulo, int codigo_sucursal)
+        {
+            List<SqlParameter> param_articulo = new List<SqlParameter>();
+            SqlParameter salida = new SqlParameter();
+            salida.Direction = ParameterDirection.Output;
+            salida.SqlDbType = SqlDbType.Int;
+            salida.ParameterName = "@stock";
+            DBHelper.ObtenerInstancia().AbreConexionConTransaccion();
+            param_articulo.Add(new SqlParameter("@cod_articulo", codigo_articulo));
+            param_articulo.Add(new SqlParameter("@sucursal", codigo_sucursal));
+            int resultado = DBHelper.ObtenerInstancia().EjecutaComando("PA_STOCK_CONSULTA_STOCK_POR_ARTICULO", param_articulo, salida);
+            DBHelper.ObtenerInstancia().CierraConexionConTransaccion();
+            return resultado;
+        }
     }
 }
