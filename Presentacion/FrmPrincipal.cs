@@ -57,9 +57,9 @@ namespace Farmaceutica.Presentacion
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmClientes facturas = (FrmClientes)factory.CreaObjeto("cliente");
+            FrmClientes cli = (FrmClientes)factory.CreaObjeto("cliente");
             Cursor.Current = Cursors.WaitCursor;
-            facturas.ShowDialog(this);
+            cli.ShowDialog(this);
         }
     }
 }

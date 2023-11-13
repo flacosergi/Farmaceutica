@@ -20,6 +20,69 @@ namespace Farmaceutica.Servicios
                 return (Cliente)ModeloFactory.ObtenerInstancia().CreaObjeto("cliente");
         }
 
+        public async Task<List<TipoDoc>> GetTipoDoc()
+        {
+            List<TipoDoc> lista_tipos = new List<TipoDoc>();
+            string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Clientes/Obtener_Tipo_doc");
+            if (contenido != string.Empty)
+                lista_tipos = JsonConvert.DeserializeObject<List<TipoDoc>>(contenido);
+            return lista_tipos;
+        }
+
+        public async Task<List<TipoCliente>> GetTipoCliente()
+        {
+            List<TipoCliente> lista_tipos = new List<TipoCliente>();
+            string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Clientes/Obtener_Tipo_cli");
+            if (contenido != string.Empty)
+                lista_tipos = JsonConvert.DeserializeObject<List<TipoCliente>>(contenido);
+            return lista_tipos;
+        }
+        public async Task<string> IngresarCliente(Cliente nuevo_cliente)
+        {
+            string cli = JsonConvert.SerializeObject(nuevo_cliente, Formatting.Indented);
+            string response = await ClientSingleton.GetInstance().PostAsync("/api/Clientes/IngresarCliente", cli);
+            if (response != string.Empty)
+                return response;
+            else
+                return string.Empty;
+        }
+
+        public async Task<string> ModificarCliente(Cliente cliente)
+        {
+            string cli = JsonConvert.SerializeObject(cliente, Formatting.Indented);
+            string response = await ClientSingleton.GetInstance().PutAsync("/api/Clientes/ModificarClientes", cli);
+            if (response != string.Empty)
+                return response;
+            else
+                return string.Empty;
+        }
+
+        public async Task<List<Localidad>> GetTipoLocalidad()
+        {
+            List<Localidad> lista_tipos = new List<Localidad>();
+            string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Clientes/Obtener_Tipo_Localidad");
+            if (contenido != string.Empty)
+                lista_tipos = JsonConvert.DeserializeObject<List<Localidad>>(contenido);
+            return lista_tipos;
+        }
+
+        public async Task<List<ObraSocial>> GetTipoOS()
+        {
+            List<ObraSocial> lista_tipos = new List<ObraSocial>();
+            string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Clientes/Obtener_Tipo_OS");
+            if (contenido != string.Empty)
+                lista_tipos = JsonConvert.DeserializeObject<List<ObraSocial>>(contenido);
+            return lista_tipos;
+        }
+
+        public async Task<List<PlanOS>> GetPlanOS()
+        {
+            List<PlanOS> lista_tipos = new List<PlanOS>();
+            string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Clientes/Obtener_Plan_OS");
+            if (contenido != string.Empty)
+                lista_tipos = JsonConvert.DeserializeObject<List<PlanOS>>(contenido);
+            return lista_tipos;
+        }
     }
 }
 

@@ -19,11 +19,13 @@ namespace Farmaceutica.Presentacion
         const int Consultar = 1;
         const int Modificar = 2;
 
+        List<TipoDoc> lista = new List<TipoDoc>();
         ServiciosFactory factoria;
         GestorCliente gestor_cli;
         Cliente nuevo_cliente;
         MetodosComunes metodos;
         ModeloFactory factoria_modelos = new ModeloFactory();
+
         public FrmClientes(ServiciosFactory fact)
         {
             InitializeComponent();
@@ -33,13 +35,28 @@ namespace Farmaceutica.Presentacion
             metodos = (MetodosComunes)factoria.CreaObjeto("metodos_comunes");
         }
 
-        private void FrmClientes_Load(object sender, EventArgs e)
+        private async void FrmClientes_Load(object sender, EventArgs e)
         {
             dateFechaAlta.Value = DateTime.Today;
             foreach (Control control in this.Controls)
             {
                 control.Enabled = true;
             }
+
+            List<TipoDoc> lista = await gestor_cli.GetTipoDoc();
+            metodos.LlenaCombo(cbo_tipo_doc, lista.ToList<object>(), "tipo_doc", "id_tipo_doc");
+
+            List<TipoCliente> list = await gestor_cli.GetTipoCliente();
+            metodos.LlenaCombo(cbo_tipo_cliente, list.ToList<object>(), "detalle", "id_tipo_cliente");
+
+            //List<PlanOS> plan = await gestor_cli.GetPlanOS ();
+            //metodos.LlenaCombo(cboPlanOS, plan.ToList<object>(), "desc_plan", "cod_plan");
+
+            //List<ObraSocial> os = await gestor_cli.GetTipoOS();
+            //metodos.LlenaCombo(cboOS, os.ToList<object>(), "sigla", "codigo_os");
+
+            //List<Localidad> lis = await gestor_cli.GetTipoLocalidad();
+            //metodos.LlenaCombo(cboLocalidad, lis.ToList<object>(), "localidad", "id_localidad");
 
         }
 
@@ -124,6 +141,57 @@ namespace Farmaceutica.Presentacion
             RellenarCliente(Modificar);
             btnGuardar.Text = "Modificar";
             btnGuardar.Enabled = true;
+        }
+
+        private async void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (ValidarControles() == false)
+                return;
+            nuevo_cliente.nombre = txtNombre.Text;
+            nuevo_cliente.tipo_cliente = (TipoCliente)cbo_tipo_cliente.SelectedItem;
+            nuevo_cliente.tipo_doc = (TipoDoc)cbo_tipo_doc.SelectedItem;
+            nuevo_cliente.localidad = (Localidad)cboLocalidad.SelectedItem;
+            nuevo_cliente.obra_social = (ObraSocial)cboLocalidad.SelectedItem;
+            nuevo_cliente.plan_os = (PlanOS)cboPlanOS.SelectedItem;
+            nuevo_cliente.fecha_alta = dateFechaAlta.Value;
+            nuevo_cliente.apellido = txtApellido.Text;
+            nuevo_cliente.razon_social = txtRazonSocial.Text;
+            nuevo_cliente.calle = txtCalle.Text;
+            nuevo_cliente.cod_postal = Convert.ToInt32(txtCP);
+            nuevo_cliente.numero = Convert.ToInt32(txtNroCalle);
+            nuevo_cliente.num_afiliado = Convert.ToInt64(txtNroAfil);
+            nuevo_cliente.nro_doc = Convert.ToInt32(txtNroDoc);
+
+
+            string resultado;
+            if (btnGuardar.Text == "Guardar")
+                resultado = await gestor_cli.IngresarCliente(nuevo_cliente);
+            else
+                resultado = await gestor_cli.ModificarCliente(nuevo_cliente);
+            
+            
+            if (resultado == "OK")
+            {
+                if (btnGuardar.Text == "Guardar")
+                    MessageBox.Show("El artículo se ingresó correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("El artículo fue modificado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnLimpiar_Click(this, EventArgs.Empty);
+            }
+            else
+                MessageBox.Show("Se ha producido un error. El artículo no pudo ser guardado.", "Atención:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+        }
+
+        private bool ValidarControles()
+        {
+            if (txtNombre.Text == string.Empty)
+            {
+                MessageBox.Show("Debe indicar un Nombre.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtNombre.Focus();
+                return false;
+            }
+            return true;
         }
     }
 }

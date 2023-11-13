@@ -69,29 +69,29 @@ namespace AccesoDatos.Datos
         public int InsertarRegistro(object objeto)
         {
             Cliente NuevoArticulo = (Cliente)objeto;
-            List<SqlParameter> param_articulo = new List<SqlParameter>();
+            List<SqlParameter> param_cliente = new List<SqlParameter>();
             SqlParameter salida = new SqlParameter();
             salida.Direction = ParameterDirection.Output;
             salida.SqlDbType = SqlDbType.Int;
             salida.ParameterName = "@proximo";
             DBHelper.ObtenerInstancia().AbreConexionConTransaccion();
             NuevoArticulo.codigo_cliente = DBHelper.ObtenerInstancia().EjecutaComando("SP_CLIENTES_BUSCA_PROXIMO_ID", new List<SqlParameter>(), salida);
-            param_articulo.Add(new SqlParameter("@cod_cliente", NuevoArticulo.codigo_cliente));
-            param_articulo.Add(new SqlParameter("@id_tipo_cliente", NuevoArticulo.tipo_cliente.id_tipo_cliente));
-            param_articulo.Add(new SqlParameter("@nro_doc", NuevoArticulo.nro_doc));
-            param_articulo.Add(new SqlParameter("@id_tipo_doc", NuevoArticulo.tipo_doc.id_tipo_doc));
-            param_articulo.Add(new SqlParameter("@nombre", NuevoArticulo.nombre));
-            param_articulo.Add(new SqlParameter("@apellido", NuevoArticulo.apellido));
-            param_articulo.Add(new SqlParameter("@razon_social", NuevoArticulo.razon_social));
-            param_articulo.Add(new SqlParameter("@calle", NuevoArticulo.calle));
-            param_articulo.Add(new SqlParameter("@nro_calle", NuevoArticulo.numero));
-            param_articulo.Add(new SqlParameter("@codigo_postal", NuevoArticulo.cod_postal));
-            param_articulo.Add(new SqlParameter("@id_localidad", NuevoArticulo.localidad.id_localidad));
-            param_articulo.Add(new SqlParameter("@id_OS", NuevoArticulo.obra_social));
-            param_articulo.Add(new SqlParameter("@id_plan_OS", NuevoArticulo.plan_os));
-            param_articulo.Add(new SqlParameter("@fecha_alta", NuevoArticulo.fecha_alta));
-            param_articulo.Add(new SqlParameter("@nro_afiliado", NuevoArticulo.num_afiliado));
-            int resultado = DBHelper.ObtenerInstancia().EjecutaComando("SP_CLIENTES_ALTA", param_articulo, null);
+            param_cliente.Add(new SqlParameter("@cod_cliente", NuevoArticulo.codigo_cliente));
+            param_cliente.Add(new SqlParameter("@id_tipo_cliente", NuevoArticulo.tipo_cliente.id_tipo_cliente));
+            param_cliente.Add(new SqlParameter("@nro_doc", NuevoArticulo.nro_doc));
+            param_cliente.Add(new SqlParameter("@id_tipo_doc", NuevoArticulo.tipo_doc.id_tipo_doc));
+            param_cliente.Add(new SqlParameter("@nombre", NuevoArticulo.nombre));
+            param_cliente.Add(new SqlParameter("@apellido", NuevoArticulo.apellido));
+            param_cliente.Add(new SqlParameter("@razon_social", NuevoArticulo.razon_social));
+            param_cliente.Add(new SqlParameter("@calle", NuevoArticulo.calle));
+            param_cliente.Add(new SqlParameter("@nro_calle", NuevoArticulo.numero));
+            param_cliente.Add(new SqlParameter("@codigo_postal", NuevoArticulo.cod_postal));
+            param_cliente.Add(new SqlParameter("@id_localidad", NuevoArticulo.localidad.id_localidad));
+            param_cliente.Add(new SqlParameter("@id_OS", NuevoArticulo.obra_social));
+            param_cliente.Add(new SqlParameter("@id_plan_OS", NuevoArticulo.plan_os));
+            param_cliente.Add(new SqlParameter("@fecha_alta", NuevoArticulo.fecha_alta));
+            param_cliente.Add(new SqlParameter("@nro_afiliado", NuevoArticulo.num_afiliado));
+            int resultado = DBHelper.ObtenerInstancia().EjecutaComando("SP_CLIENTES_ALTA", param_cliente, null);
             DBHelper.ObtenerInstancia().CierraConexionConTransaccion();
             return resultado; ;
         }
@@ -110,7 +110,103 @@ namespace AccesoDatos.Datos
 
         public int ModificarRegistro(object objeto)
         {
-            throw new NotImplementedException();
+            Cliente NuevoCliente = (Cliente)objeto;
+            List<SqlParameter> param_cliente = new List<SqlParameter>();
+            
+
+            param_cliente.Add(new SqlParameter("@cod_cliente", NuevoCliente.codigo_cliente));
+            param_cliente.Add(new SqlParameter("@id_tipo_cliente", NuevoCliente.tipo_cliente.id_tipo_cliente));
+            param_cliente.Add(new SqlParameter("@nro_doc", NuevoCliente.nro_doc));
+            param_cliente.Add(new SqlParameter("@id_tipo_doc", NuevoCliente.tipo_doc.id_tipo_doc));
+            param_cliente.Add(new SqlParameter("@nombre", NuevoCliente.nombre));
+            param_cliente.Add(new SqlParameter("@apellido", NuevoCliente.apellido));
+            param_cliente.Add(new SqlParameter("@razon_social", NuevoCliente.razon_social));
+            param_cliente.Add(new SqlParameter("@calle", NuevoCliente.calle));
+            param_cliente.Add(new SqlParameter("@nro_calle", NuevoCliente.numero));
+            param_cliente.Add(new SqlParameter("@codigo_postal", NuevoCliente.cod_postal));
+            param_cliente.Add(new SqlParameter("@id_localidad", NuevoCliente.localidad.id_localidad));
+            param_cliente.Add(new SqlParameter("@id_OS", NuevoCliente.obra_social));
+            param_cliente.Add(new SqlParameter("@id_plan_OS", NuevoCliente.plan_os));
+            param_cliente.Add(new SqlParameter("@fecha_alta", NuevoCliente.fecha_alta));
+            param_cliente.Add(new SqlParameter("@nro_afiliado", NuevoCliente.num_afiliado));
+            DBHelper.ObtenerInstancia().AbreConexionConTransaccion();
+            int resultado = DBHelper.ObtenerInstancia().EjecutaComando("SP_CLIENTES_MODIFICACION", param_cliente, null);
+            DBHelper.ObtenerInstancia().CierraConexionConTransaccion();
+            return resultado;
+        }
+
+        public List<TipoCliente> Obtiene_Tipo_Cliente(AbstractFactory factory)
+        {
+            List<TipoCliente> nueva_lista = new List<TipoCliente>();
+            DataTable nueva_tabla = new DataTable();
+            nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("SP_CLIENTES_CARGA_TIPOS");
+            foreach (DataRow fila in nueva_tabla.Rows)
+            {
+                TipoCliente nuevo_tipo = (TipoCliente)factory.CreaObjeto("tipo_cliente");
+                nuevo_tipo.id_tipo_cliente = Convert.ToInt32(fila["id_tipo_cliente"].ToString());
+                nuevo_tipo.detalle = (string)fila["detalle"];
+                nueva_lista.Add(nuevo_tipo);
+            }
+            return nueva_lista;
+        }
+
+        public List<TipoDoc> Obtiene_Tipo_Doc(AbstractFactory factory)
+        {
+            List<TipoDoc> nueva_lista = new List<TipoDoc>();
+            DataTable nueva_tabla = new DataTable();
+            nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("SP_CLIENTES_CARGA_TIPOS_DOC");
+            foreach (DataRow fila in nueva_tabla.Rows)
+            {
+                TipoDoc nuevo_tipo = (TipoDoc)factory.CreaObjeto("tipo_doc");
+                nuevo_tipo.id_tipo_doc = Convert.ToInt32(fila["id_tipo_doc"].ToString());
+                nuevo_tipo.tipo_doc = (string)fila["tipo_doc"];
+                nueva_lista.Add(nuevo_tipo);
+            }
+            return nueva_lista;
+        }
+
+        public List<Localidad> Obtiene_Tipo_localidad(AbstractFactory factory)
+        {
+            List<Localidad> nueva_lista = new List<Localidad>();
+            DataTable nueva_tabla = new DataTable();
+            nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("SP_CLIENTES_CARGA_TIPOS_LOCALIDADES");
+            foreach (DataRow fila in nueva_tabla.Rows)
+            {
+                Localidad nuevo_tipo = (Localidad)factory.CreaObjeto("localidad");
+                nuevo_tipo.id_localidad = Convert.ToInt32(fila["id_localidad"].ToString());
+                nuevo_tipo.localidad = (string)fila["localidad"];
+                nueva_lista.Add(nuevo_tipo);
+            }
+            return nueva_lista;
+        }
+
+        public List<ObraSocial> Obtiene_Tipo_OS(AbstractFactory factory)
+        {
+            List<ObraSocial> nueva_lista = new List<ObraSocial>();
+            DataTable nueva_tabla = new DataTable();
+            nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("SP_CLIENTES_CARGA_TIPOS_OS");
+            foreach (DataRow fila in nueva_tabla.Rows)
+            {
+                ObraSocial nuevo_tipo = (ObraSocial)factory.CreaObjeto("obra_social");
+                nuevo_tipo.codigo_os = Convert.ToInt32(fila["codigo_os"].ToString());
+                nuevo_tipo.sigla = (string)fila["sigla"];
+                nueva_lista.Add(nuevo_tipo);
+            }
+            return nueva_lista;
+        }
+        public List<PlanOS> Obtiene_Plan_OS(AbstractFactory factory)
+        {
+            List<PlanOS> nueva_lista = new List<PlanOS>();
+            DataTable nueva_tabla = new DataTable();
+            nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("SP_CLIENTES_CARGA_PLANES_OS");
+            foreach (DataRow fila in nueva_tabla.Rows)
+            {
+                PlanOS nuevo_tipo = (PlanOS)factory.CreaObjeto("plan_os");
+                nuevo_tipo.cod_plan = Convert.ToInt32(fila["cod_plan"].ToString());
+                nuevo_tipo.desc_plan = (string)fila["desc_plan"];
+                nueva_lista.Add(nuevo_tipo);
+            }
+            return nueva_lista;
         }
     }
 }
