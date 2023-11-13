@@ -66,6 +66,10 @@ namespace AccesoDatos.Servicios
                     return new FormaPago();
                 case "factura_forma_pago":
                     return new Factura_FormaPago();
+                case "RepoStocks":
+                    return new RepoStocks();
+                case "DaoRepoStocks":
+                    return new DaoRepoStocks();
 
 
                 default:
