@@ -13,11 +13,11 @@ namespace AccesoDatos.Modelos
         public string provincia { get; set; }
         public Pais pais { get; set; }
 
-        public Provincia(ModeloFactory factory)
+        public Provincia()
         {
             id_provincia = 0;
             provincia = string.Empty;
-            pais = (Pais)factory.CreaObjeto("pais");
+            pais = (Pais)ModeloFactory.ObtenerInstancia().CreaObjeto("pais");
         }
 
     }

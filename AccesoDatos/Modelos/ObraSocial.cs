@@ -21,16 +21,16 @@ namespace AccesoDatos.Modelos
         public DateTime fecha_alta { get; set; }
         public bool activa { get; set; }
 
-        public ObraSocial(ModeloFactory factory)
+        public ObraSocial()
         {
             codigo_os = 0;
-            tipo_doc = (TipoDoc)factory.CreaObjeto("tipo_doc");
+            tipo_doc = (TipoDoc)ModeloFactory.ObtenerInstancia().CreaObjeto("tipo_doc");
             nro_doc = 0;
             razon_social_os = string.Empty;
             calle = string.Empty;
             numero = 0;
             cod_postal = 0;
-            localidad = (Localidad)factory.CreaObjeto("localidad");
+            localidad = (Localidad)ModeloFactory.ObtenerInstancia().CreaObjeto("localidad");
             fecha_alta = new DateTime();
             activa = true;
         }

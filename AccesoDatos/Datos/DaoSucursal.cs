@@ -49,7 +49,7 @@ namespace AccesoDatos.Datos
                 nueva_sucursal.calle = (string)fila["calle"];
                 nueva_sucursal.numero = Convert.ToInt32(fila["numero"].ToString());
                 nueva_sucursal.localidad.id_localidad = Convert.ToInt32(fila["id_localidad"].ToString());
-                nueva_sucursal.localidad.localidad = (string)fila["localidad"];
+                nueva_sucursal.localidad.nom_localidad = (string)fila["localidad"];
                 nueva_sucursal.localidad.provincia.id_provincia = Convert.ToInt32(fila["id_provincia"].ToString());
                 nueva_sucursal.localidad.provincia.provincia = (string)fila["provincia"];
                 nueva_sucursal.localidad.provincia.pais.id_pais = Convert.ToInt32(fila["id_pais"].ToString());

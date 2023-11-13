@@ -20,7 +20,7 @@ namespace Farmaceutica.Servicios
 
         }
 
-        public override object CreaObjeto(string tipo)
+        public override object CreaObjeto(string tipo, List<Object>? lista_parametros = default)
         {
             switch (tipo)
             {
@@ -34,6 +34,8 @@ namespace Farmaceutica.Servicios
                     return new GestorBuscador();
                 case "gestor_factura":
                     return new GestorFactura();
+                case "gestor_formas_pago":
+                    return new GestorFormasPago();
                 case "buscador_articulos":
                     return new FrmBuscador(this, "/api/Articulos/Obtener_Lista_Simple", "Seleccionar Artículo");
                 case "factura":
@@ -44,6 +46,14 @@ namespace Farmaceutica.Servicios
                     return new FrmArticulos(this);
                 case "cliente":
                     return new FrmClientes(this);
+                case "formas_pago":
+                    {
+                        Factura factura = (Factura)ModeloFactory.ObtenerInstancia().CreaObjeto("factura");
+                        if (lista_parametros != null) 
+                            factura = (Factura)lista_parametros[0];
+                        return new FrmFormasPago(ref factura);
+                    }
+                
 
 
                 default:

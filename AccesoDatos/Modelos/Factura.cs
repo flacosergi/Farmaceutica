@@ -16,6 +16,8 @@ namespace AccesoDatos.Modelos
         public decimal total { get; set; }
         public List<DetalleFactura> lista_detalle { get; set; }
 
+        public List<Factura_FormaPago> lista_formas_pago { get; set; }
+
         public Factura()
         {
             nro_factura = 0;
@@ -23,6 +25,7 @@ namespace AccesoDatos.Modelos
             sucursal = (Sucursal)ModeloFactory.ObtenerInstancia().CreaObjeto("sucursal");
             cliente = (Cliente)ModeloFactory.ObtenerInstancia().CreaObjeto("cliente");
             lista_detalle = new List<DetalleFactura>();
+            lista_formas_pago = new List<Factura_FormaPago>();
             total = 0;
         }
     }

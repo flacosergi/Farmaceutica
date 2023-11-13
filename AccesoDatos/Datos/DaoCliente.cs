@@ -37,7 +37,7 @@ namespace AccesoDatos.Datos
                 cliente_buscado.numero = Convert.ToInt32(fila["numero"].ToString());
                 cliente_buscado.cod_postal = Convert.ToInt32(fila["cod_postal"].ToString());
                 cliente_buscado.localidad.id_localidad = Convert.ToInt32(fila["id_localidad"].ToString());
-                cliente_buscado.localidad.localidad = (string)fila["localidad"];
+                cliente_buscado.localidad.nom_localidad = (string)fila["localidad"];
                 cliente_buscado.localidad.provincia.id_provincia = Convert.ToInt32(fila["id_provincia"].ToString());
                 cliente_buscado.localidad.provincia.provincia = (string)fila["provincia"];
                 cliente_buscado.localidad.provincia.pais.id_pais = Convert.ToInt32(fila["id_pais"].ToString());

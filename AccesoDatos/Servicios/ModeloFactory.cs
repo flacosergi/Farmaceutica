@@ -20,7 +20,7 @@ namespace AccesoDatos.Servicios
             
         }
 
-        public override object CreaObjeto(string tipo)
+        public override object CreaObjeto(string tipo, List<Object>? lista_parametros = default)
         {
             switch (tipo)
             {
@@ -36,22 +36,24 @@ namespace AccesoDatos.Servicios
                     return new DaoCliente();
                 case "DaoSucursal":
                     return new DaoSucursal();
+                case "DaoFactura":
+                    return new DaoFactura();
                 case "marca":
                     return new Marca();
                 case "pais":
                     return new Pais();
                 case "provincia":
-                    return new Provincia(this);
+                    return new Provincia();
                 case "localidad":
-                    return new Localidad(this);
+                    return new Localidad();
                 case "tipo_doc":
                     return new TipoDoc();
                 case "tipo_cliente":
                     return new TipoCliente();
                 case "obra_social":
-                    return new ObraSocial(this);
+                    return new ObraSocial();
                 case "plan_os":
-                    return new PlanOS(this);
+                    return new PlanOS();
                 case "cliente":
                     return new Cliente();
                 case "sucursal":
