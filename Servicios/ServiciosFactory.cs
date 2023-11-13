@@ -56,6 +56,7 @@ namespace Farmaceutica.Servicios
                 
 
 
+
                 default:
                     throw new ArgumentException($"Tipo de objeto inválido: {tipo}");
             }

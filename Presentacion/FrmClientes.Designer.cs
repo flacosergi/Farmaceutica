@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             pnlCarga = new Panel();
+            txtRazonSocial = new TextBox();
             dateFechaAlta = new DateTimePicker();
             txtNroAfil = new NumberTextBox.NumberTextBox();
             label15 = new Label();
@@ -52,22 +53,30 @@
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
-            cboRazonSocial = new ComboBox();
             cbo_tipo_cliente = new ComboBox();
             label5 = new Label();
             txtNombre = new TextBox();
             label4 = new Label();
             cbo_tipo_doc = new ComboBox();
             label3 = new Label();
-            lbl_cod_art = new Label();
+            lbl_cod_cli = new Label();
             label1 = new Label();
+            panel1 = new Panel();
+            btnConsultar = new Button();
+            btnLimpiar = new Button();
+            btnSalir = new Button();
+            btnGuardar = new Button();
+            btnEditar = new Button();
+            btnNuevo = new Button();
             pnlCarga.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // pnlCarga
             // 
             pnlCarga.BackColor = Color.White;
             pnlCarga.BorderStyle = BorderStyle.FixedSingle;
+            pnlCarga.Controls.Add(txtRazonSocial);
             pnlCarga.Controls.Add(dateFechaAlta);
             pnlCarga.Controls.Add(txtNroAfil);
             pnlCarga.Controls.Add(label15);
@@ -91,21 +100,28 @@
             pnlCarga.Controls.Add(label8);
             pnlCarga.Controls.Add(label7);
             pnlCarga.Controls.Add(label6);
-            pnlCarga.Controls.Add(cboRazonSocial);
             pnlCarga.Controls.Add(cbo_tipo_cliente);
             pnlCarga.Controls.Add(label5);
             pnlCarga.Controls.Add(txtNombre);
             pnlCarga.Controls.Add(label4);
             pnlCarga.Controls.Add(cbo_tipo_doc);
             pnlCarga.Controls.Add(label3);
-            pnlCarga.Controls.Add(lbl_cod_art);
+            pnlCarga.Controls.Add(lbl_cod_cli);
             pnlCarga.Controls.Add(label1);
             pnlCarga.Enabled = false;
             pnlCarga.Location = new Point(12, 13);
             pnlCarga.Margin = new Padding(3, 4, 3, 4);
             pnlCarga.Name = "pnlCarga";
-            pnlCarga.Size = new Size(807, 490);
+            pnlCarga.Size = new Size(814, 458);
             pnlCarga.TabIndex = 1;
+            // 
+            // txtRazonSocial
+            // 
+            txtRazonSocial.Location = new Point(510, 173);
+            txtRazonSocial.Margin = new Padding(3, 4, 3, 4);
+            txtRazonSocial.Name = "txtRazonSocial";
+            txtRazonSocial.Size = new Size(220, 27);
+            txtRazonSocial.TabIndex = 42;
             // 
             // dateFechaAlta
             // 
@@ -194,7 +210,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.Control;
-            button1.Location = new Point(594, 437);
+            button1.Location = new Point(605, 402);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(125, 36);
@@ -324,7 +340,7 @@
             btnAgregaImagen.FlatStyle = FlatStyle.Flat;
             btnAgregaImagen.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnAgregaImagen.ForeColor = SystemColors.Control;
-            btnAgregaImagen.Location = new Point(441, 437);
+            btnAgregaImagen.Location = new Point(462, 402);
             btnAgregaImagen.Margin = new Padding(3, 4, 3, 4);
             btnAgregaImagen.Name = "btnAgregaImagen";
             btnAgregaImagen.Size = new Size(125, 36);
@@ -398,16 +414,6 @@
             label6.TabIndex = 16;
             label6.Text = "Razon Social:";
             // 
-            // cboRazonSocial
-            // 
-            cboRazonSocial.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboRazonSocial.FormattingEnabled = true;
-            cboRazonSocial.Location = new Point(510, 172);
-            cboRazonSocial.Margin = new Padding(3, 4, 3, 4);
-            cboRazonSocial.Name = "cboRazonSocial";
-            cboRazonSocial.Size = new Size(220, 28);
-            cboRazonSocial.TabIndex = 5;
-            // 
             // cbo_tipo_cliente
             // 
             cbo_tipo_cliente.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -469,15 +475,15 @@
             label3.TabIndex = 13;
             label3.Text = "Tipo Doc.:";
             // 
-            // lbl_cod_art
+            // lbl_cod_cli
             // 
-            lbl_cod_art.AutoSize = true;
-            lbl_cod_art.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_cod_art.Location = new Point(163, 25);
-            lbl_cod_art.Name = "lbl_cod_art";
-            lbl_cod_art.Size = new Size(48, 28);
-            lbl_cod_art.TabIndex = 1;
-            lbl_cod_art.Text = "000";
+            lbl_cod_cli.AutoSize = true;
+            lbl_cod_cli.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_cod_cli.Location = new Point(163, 25);
+            lbl_cod_cli.Name = "lbl_cod_cli";
+            lbl_cod_cli.Size = new Size(48, 28);
+            lbl_cod_cli.TabIndex = 1;
+            lbl_cod_cli.Text = "000";
             // 
             // label1
             // 
@@ -490,11 +496,115 @@
             label1.TabIndex = 12;
             label1.Text = "Codigo Cliente:";
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(180, 254, 228);
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(btnConsultar);
+            panel1.Controls.Add(btnLimpiar);
+            panel1.Controls.Add(btnSalir);
+            panel1.Controls.Add(btnGuardar);
+            panel1.Controls.Add(btnEditar);
+            panel1.Controls.Add(btnNuevo);
+            panel1.Location = new Point(12, 479);
+            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(814, 94);
+            panel1.TabIndex = 2;
+            // 
+            // btnConsultar
+            // 
+            btnConsultar.BackColor = Color.DarkCyan;
+            btnConsultar.FlatStyle = FlatStyle.Flat;
+            btnConsultar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnConsultar.ForeColor = SystemColors.Control;
+            btnConsultar.Location = new Point(290, 24);
+            btnConsultar.Margin = new Padding(3, 4, 3, 4);
+            btnConsultar.Name = "btnConsultar";
+            btnConsultar.Size = new Size(97, 36);
+            btnConsultar.TabIndex = 5;
+            btnConsultar.Text = "Consultar";
+            btnConsultar.UseVisualStyleBackColor = false;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.BackColor = Color.DarkCyan;
+            btnLimpiar.FlatStyle = FlatStyle.Flat;
+            btnLimpiar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLimpiar.ForeColor = SystemColors.Control;
+            btnLimpiar.Location = new Point(572, 24);
+            btnLimpiar.Margin = new Padding(3, 4, 3, 4);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(97, 36);
+            btnLimpiar.TabIndex = 3;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            // 
+            // btnSalir
+            // 
+            btnSalir.BackColor = Color.DarkCyan;
+            btnSalir.FlatStyle = FlatStyle.Flat;
+            btnSalir.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSalir.ForeColor = SystemColors.Control;
+            btnSalir.Location = new Point(689, 24);
+            btnSalir.Margin = new Padding(3, 4, 3, 4);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(97, 36);
+            btnSalir.TabIndex = 4;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = false;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.BackColor = Color.DarkCyan;
+            btnGuardar.Enabled = false;
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGuardar.ForeColor = SystemColors.Control;
+            btnGuardar.Location = new Point(417, 24);
+            btnGuardar.Margin = new Padding(3, 4, 3, 4);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(97, 36);
+            btnGuardar.TabIndex = 2;
+            btnGuardar.Text = "Guardar";
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
+            // 
+            // btnEditar
+            // 
+            btnEditar.BackColor = Color.DarkCyan;
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEditar.ForeColor = SystemColors.Control;
+            btnEditar.Location = new Point(163, 24);
+            btnEditar.Margin = new Padding(3, 4, 3, 4);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(97, 36);
+            btnEditar.TabIndex = 1;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = false;
+            btnEditar.Click += btnEditar_Click;
+            // 
+            // btnNuevo
+            // 
+            btnNuevo.BackColor = Color.DarkCyan;
+            btnNuevo.FlatStyle = FlatStyle.Flat;
+            btnNuevo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNuevo.ForeColor = SystemColors.Control;
+            btnNuevo.Location = new Point(38, 24);
+            btnNuevo.Margin = new Padding(3, 4, 3, 4);
+            btnNuevo.Name = "btnNuevo";
+            btnNuevo.Size = new Size(97, 36);
+            btnNuevo.TabIndex = 0;
+            btnNuevo.Text = "Nuevo";
+            btnNuevo.UseVisualStyleBackColor = false;
+            // 
             // FrmClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(838, 523);
+            ClientSize = new Size(838, 569);
+            Controls.Add(panel1);
             Controls.Add(pnlCarga);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -503,6 +613,7 @@
             Load += FrmClientes_Load;
             pnlCarga.ResumeLayout(false);
             pnlCarga.PerformLayout();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -518,14 +629,13 @@
         private Label label8;
         private Label label7;
         private Label label6;
-        private ComboBox cboRazonSocial;
         private ComboBox cbo_tipo_cliente;
         private Label label5;
         private TextBox txtNombre;
         private Label label4;
         private ComboBox cbo_tipo_doc;
         private Label label3;
-        private Label lbl_cod_art;
+        private Label lbl_cod_cli;
         private Label label1;
         private Label label2;
         private TextBox txtApellido;
@@ -541,5 +651,13 @@
         private NumberTextBox.NumberTextBox txtNroAfil;
         private Label label15;
         private Label label14;
+        private TextBox txtRazonSocial;
+        private Panel panel1;
+        private Button btnConsultar;
+        private Button btnLimpiar;
+        private Button btnSalir;
+        private Button btnGuardar;
+        private Button btnEditar;
+        private Button btnNuevo;
     }
 }

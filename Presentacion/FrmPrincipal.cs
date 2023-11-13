@@ -55,11 +55,12 @@ namespace Farmaceutica.Presentacion
             facturas.ShowDialog(this);
         }
 
-        private void buscarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmBuscador buscadorCliente = (FrmBuscador)factory.CreaObjeto("buscador_clientes");
+            FrmClientes cli = (FrmClientes)factory.CreaObjeto("cliente");
             Cursor.Current = Cursors.WaitCursor;
-            buscadorCliente.ShowDialog();
+            cli.ShowDialog(this);
+
         }
     }
 }

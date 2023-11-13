@@ -60,5 +60,68 @@ namespace APIFarmaceutica.Controllers
         public void Delete(int id)
         {
         }
+
+        // GET: /api/Clientes/Obtener_Tipo_cli
+        [HttpGet, Route("Obtener_Tipo_cli")]
+        public IEnumerable<TipoCliente> GetTipos()
+        {
+            DaoCliente dao = (DaoCliente)factory.CreaObjeto("DaoCliente");
+            return dao.Obtiene_Tipo_Cliente(factory);
+        }
+
+        // GET: /api/Clientes/Obtener_Tipo_cli
+        [HttpGet, Route("Obtener_Tipo_doc")]
+        public IEnumerable<TipoDoc> GetTiposDoc()
+        {
+            DaoCliente dao = (DaoCliente)factory.CreaObjeto("DaoCliente");
+            return dao.Obtiene_Tipo_Doc(factory);
+        }
+
+        [HttpGet, Route("Obtener_Tipo_Localidad")]
+        public IEnumerable<Localidad> GetTiposLocalidad()
+        {
+            DaoCliente dao = (DaoCliente)factory.CreaObjeto("DaoCliente");
+            return dao.Obtiene_Tipo_localidad(factory);
+        }
+
+        
+        [HttpGet, Route("Obtener_Tipo_OS")]
+        public IEnumerable<ObraSocial> GetTiposOS()
+        {
+            DaoCliente dao = (DaoCliente)factory.CreaObjeto("DaoCliente");
+            return dao.Obtiene_Tipo_OS(factory);
+        }
+
+
+        
+        [HttpGet, Route("Obtener_Plan_OS")]
+        public IEnumerable<PlanOS> GetPlanOS()
+        {
+            DaoCliente dao = (DaoCliente)factory.CreaObjeto("DaoCliente");
+            return dao.Obtiene_Plan_OS(factory);
+        }
+
+        // POST /api/Cliente/CargarCliente
+        [HttpPost, Route("CargarCliente")]
+        public IActionResult PostCliente(Cliente nuevo_cliente)
+        {
+            DaoCliente dao = (DaoCliente)factory.CreaObjeto("DaoCliente");
+            if (dao.InsertarRegistro(nuevo_cliente) == 0)
+                return Ok();
+            else
+                return BadRequest();
+        }
+
+
+        // PUT /api/Cliente/ModificarCliente
+        [HttpPut, Route("ModificarCliente")]
+        public IActionResult PutCliente(Cliente nuevo_cliente)
+        {
+            DaoCliente dao = (DaoCliente)factory.CreaObjeto("DaoCliente");
+            if (dao.ModificarRegistro(nuevo_cliente) == 0)
+                return Ok();
+            else
+                return BadRequest();
+        }
     }
 }
