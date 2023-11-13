@@ -34,16 +34,19 @@
             salirToolStripMenuItem = new ToolStripMenuItem();
             soporteToolStripMenuItem = new ToolStripMenuItem();
             agregarArticulosToolStripMenuItem = new ToolStripMenuItem();
+            tsmi_facturacion = new ToolStripMenuItem();
             traToolStripMenuItem = new ToolStripMenuItem();
             ayudaToolStripMenuItem = new ToolStripMenuItem();
-            tsmi_facturacion = new ToolStripMenuItem();
+            clientesToolStripMenuItem = new ToolStripMenuItem();
+            buscarToolStripMenuItem = new ToolStripMenuItem();
+            nuevoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, soporteToolStripMenuItem, traToolStripMenuItem, ayudaToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, soporteToolStripMenuItem, traToolStripMenuItem, ayudaToolStripMenuItem, clientesToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(5, 2, 0, 2);
@@ -61,7 +64,7 @@
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(96, 22);
+            salirToolStripMenuItem.Size = new Size(180, 22);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
@@ -79,6 +82,13 @@
             agregarArticulosToolStripMenuItem.Text = "&Artículos";
             agregarArticulosToolStripMenuItem.Click += agregarArticulosToolStripMenuItem_Click;
             // 
+            // tsmi_facturacion
+            // 
+            tsmi_facturacion.Name = "tsmi_facturacion";
+            tsmi_facturacion.Size = new Size(180, 22);
+            tsmi_facturacion.Text = "&Facturación";
+            tsmi_facturacion.Click += tsmi_facturacion_Click;
+            // 
             // traToolStripMenuItem
             // 
             traToolStripMenuItem.Name = "traToolStripMenuItem";
@@ -91,12 +101,25 @@
             ayudaToolStripMenuItem.Size = new Size(53, 20);
             ayudaToolStripMenuItem.Text = "Ayuda";
             // 
-            // tsmi_facturacion
+            // clientesToolStripMenuItem
             // 
-            tsmi_facturacion.Name = "tsmi_facturacion";
-            tsmi_facturacion.Size = new Size(180, 22);
-            tsmi_facturacion.Text = "&Facturación";
-            tsmi_facturacion.Click += tsmi_facturacion_Click;
+            clientesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { buscarToolStripMenuItem, nuevoToolStripMenuItem });
+            clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            clientesToolStripMenuItem.Size = new Size(61, 20);
+            clientesToolStripMenuItem.Text = "Clientes";
+            // 
+            // buscarToolStripMenuItem
+            // 
+            buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
+            buscarToolStripMenuItem.Size = new Size(180, 22);
+            buscarToolStripMenuItem.Text = "Buscar";
+            buscarToolStripMenuItem.Click += buscarToolStripMenuItem_Click;
+            // 
+            // nuevoToolStripMenuItem
+            // 
+            nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
+            nuevoToolStripMenuItem.Size = new Size(180, 22);
+            nuevoToolStripMenuItem.Text = "Nuevo";
             // 
             // FrmPrincipal
             // 
@@ -131,5 +154,8 @@
         private ToolStripMenuItem salirToolStripMenuItem;
         private ToolStripMenuItem agregarArticulosToolStripMenuItem;
         private ToolStripMenuItem tsmi_facturacion;
+        private ToolStripMenuItem clientesToolStripMenuItem;
+        private ToolStripMenuItem buscarToolStripMenuItem;
+        private ToolStripMenuItem nuevoToolStripMenuItem;
     }
 }
