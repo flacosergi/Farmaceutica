@@ -45,10 +45,10 @@ namespace Farmaceutica.Presentacion
             {
                 dgvDeltallePagos.Rows.Add(factura_fp.forma_pago.id_forma_pago,
                                        factura_fp.forma_pago.forma_pago,
-                                       Math.Round(factura_fp.porc_recargo == 0 ? factura_fp.monto : factura_fp.monto / (1 + factura_fp.porc_recargo)),
+                                       Math.Round((decimal)factura_fp.porc_recargo == 0 ? factura_fp.monto : (decimal)factura_fp.monto / (1 + (decimal)factura_fp.porc_recargo)),
                                        factura_fp.cuotas == 0 ? DBNull.Value : factura_fp.cuotas,
-                                       factura_fp.porc_recargo == 0 ? DBNull.Value : (decimal)(Math.Round(factura_fp.monto * factura_fp.porc_recargo)),
-                                       Math.Round((factura_fp.monto * factura_fp.porc_recargo), 2) + factura_fp.monto,
+                                       factura_fp.porc_recargo == 0 ? DBNull.Value : (decimal)(Math.Round((decimal)factura_fp.monto * (decimal)factura_fp.porc_recargo)),
+                                       Math.Round((factura_fp.monto * (decimal)factura_fp.porc_recargo), 2) + factura_fp.monto,
                                        "Eliminar");
                 CalculaTotal();
                 cboFormasPago.Focus();
