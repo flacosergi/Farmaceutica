@@ -37,20 +37,18 @@
             tsmi_facturacion = new ToolStripMenuItem();
             traToolStripMenuItem = new ToolStripMenuItem();
             ayudaToolStripMenuItem = new ToolStripMenuItem();
-            clientesToolStripMenuItem = new ToolStripMenuItem();
-            buscarToolStripMenuItem = new ToolStripMenuItem();
-            nuevoToolStripMenuItem = new ToolStripMenuItem();
+            clientesToolStripMenuItem1 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, soporteToolStripMenuItem, traToolStripMenuItem, ayudaToolStripMenuItem, clientesToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, soporteToolStripMenuItem, traToolStripMenuItem, ayudaToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(6, 3, 0, 3);
-            menuStrip1.Size = new Size(601, 30);
+            menuStrip1.Padding = new Padding(5, 2, 0, 2);
+            menuStrip1.Size = new Size(526, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -58,83 +56,69 @@
             // 
             archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { salirToolStripMenuItem });
             archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            archivoToolStripMenuItem.Size = new Size(73, 24);
+            archivoToolStripMenuItem.Size = new Size(60, 20);
             archivoToolStripMenuItem.Text = "Archivo";
             // 
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(121, 26);
+            salirToolStripMenuItem.Size = new Size(180, 22);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
             // soporteToolStripMenuItem
             // 
-            soporteToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarArticulosToolStripMenuItem, tsmi_facturacion, clientesToolStripMenuItem });
+            soporteToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarArticulosToolStripMenuItem, tsmi_facturacion, clientesToolStripMenuItem1 });
             soporteToolStripMenuItem.Name = "soporteToolStripMenuItem";
-            soporteToolStripMenuItem.Size = new Size(76, 24);
+            soporteToolStripMenuItem.Size = new Size(60, 20);
             soporteToolStripMenuItem.Text = "Soporte";
             // 
             // agregarArticulosToolStripMenuItem
             // 
             agregarArticulosToolStripMenuItem.Name = "agregarArticulosToolStripMenuItem";
-            agregarArticulosToolStripMenuItem.Size = new Size(224, 26);
+            agregarArticulosToolStripMenuItem.Size = new Size(180, 22);
             agregarArticulosToolStripMenuItem.Text = "&Artículos";
             agregarArticulosToolStripMenuItem.Click += agregarArticulosToolStripMenuItem_Click;
             // 
             // tsmi_facturacion
             // 
             tsmi_facturacion.Name = "tsmi_facturacion";
-            tsmi_facturacion.Size = new Size(224, 26);
+            tsmi_facturacion.Size = new Size(180, 22);
             tsmi_facturacion.Text = "&Facturación";
             tsmi_facturacion.Click += tsmi_facturacion_Click;
             // 
             // traToolStripMenuItem
             // 
             traToolStripMenuItem.Name = "traToolStripMenuItem";
-            traToolStripMenuItem.Size = new Size(82, 24);
+            traToolStripMenuItem.Size = new Size(65, 20);
             traToolStripMenuItem.Text = "Reportes";
             // 
             // ayudaToolStripMenuItem
             // 
             ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            ayudaToolStripMenuItem.Size = new Size(65, 24);
+            ayudaToolStripMenuItem.Size = new Size(53, 20);
             ayudaToolStripMenuItem.Text = "Ayuda";
             // 
-            // clientesToolStripMenuItem
+            // clientesToolStripMenuItem1
             // 
-            clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            clientesToolStripMenuItem.Size = new Size(224, 26);
-            clientesToolStripMenuItem.Text = "Clientes";
-            clientesToolStripMenuItem.Click += clientesToolStripMenuItem_Click;
-            clientesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { buscarToolStripMenuItem, nuevoToolStripMenuItem });
-            // 
-            // buscarToolStripMenuItem
-            // 
-            buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
-            buscarToolStripMenuItem.Size = new Size(180, 22);
-            buscarToolStripMenuItem.Text = "Buscar";
-            buscarToolStripMenuItem.Click += buscarToolStripMenuItem_Click;
-            // 
-            // nuevoToolStripMenuItem
-            // 
-            nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            nuevoToolStripMenuItem.Size = new Size(180, 22);
-            nuevoToolStripMenuItem.Text = "Nuevo";
-
+            clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
+            clientesToolStripMenuItem1.Size = new Size(180, 22);
+            clientesToolStripMenuItem1.Text = "&Clientes";
+            clientesToolStripMenuItem1.Click += clientesToolStripMenuItem1_Click;
             // 
             // FrmPrincipal
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(180, 254, 228);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(601, 411);
+            ClientSize = new Size(526, 308);
             Controls.Add(menuStrip1);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             Name = "FrmPrincipal";
             Text = "Farmacia";
@@ -155,8 +139,6 @@
         private ToolStripMenuItem salirToolStripMenuItem;
         private ToolStripMenuItem agregarArticulosToolStripMenuItem;
         private ToolStripMenuItem tsmi_facturacion;
-        private ToolStripMenuItem clientesToolStripMenuItem;
-        private ToolStripMenuItem buscarToolStripMenuItem;
-        private ToolStripMenuItem nuevoToolStripMenuItem;
+        private ToolStripMenuItem clientesToolStripMenuItem1;
     }
 }

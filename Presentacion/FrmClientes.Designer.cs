@@ -109,25 +109,25 @@
             pnlCarga.Controls.Add(lbl_cod_cli);
             pnlCarga.Controls.Add(label1);
             pnlCarga.Enabled = false;
-            pnlCarga.Location = new Point(12, 13);
-            pnlCarga.Margin = new Padding(3, 4, 3, 4);
+            pnlCarga.Location = new Point(10, 10);
             pnlCarga.Name = "pnlCarga";
-            pnlCarga.Size = new Size(814, 458);
+            pnlCarga.Size = new Size(712, 344);
             pnlCarga.TabIndex = 1;
             // 
             // txtRazonSocial
             // 
-            txtRazonSocial.Location = new Point(510, 173);
-            txtRazonSocial.Margin = new Padding(3, 4, 3, 4);
+            txtRazonSocial.Location = new Point(446, 130);
             txtRazonSocial.Name = "txtRazonSocial";
-            txtRazonSocial.Size = new Size(220, 27);
+            txtRazonSocial.Size = new Size(193, 23);
             txtRazonSocial.TabIndex = 42;
             // 
             // dateFechaAlta
             // 
-            dateFechaAlta.Location = new Point(163, 411);
+            dateFechaAlta.Format = DateTimePickerFormat.Short;
+            dateFechaAlta.Location = new Point(143, 308);
+            dateFechaAlta.Margin = new Padding(3, 2, 3, 2);
             dateFechaAlta.Name = "dateFechaAlta";
-            dateFechaAlta.Size = new Size(224, 27);
+            dateFechaAlta.Size = new Size(196, 23);
             dateFechaAlta.TabIndex = 41;
             // 
             // txtNroAfil
@@ -139,11 +139,10 @@
             txtNroAfil.DecimalesConFormato = 2;
             txtNroAfil.Digitos = 10;
             txtNroAfil.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
-            txtNroAfil.Location = new Point(167, 360);
-            txtNroAfil.Margin = new Padding(3, 4, 3, 4);
+            txtNroAfil.Location = new Point(146, 270);
             txtNroAfil.Name = "txtNroAfil";
             txtNroAfil.SimboloMoneda = "$";
-            txtNroAfil.Size = new Size(220, 27);
+            txtNroAfil.Size = new Size(193, 23);
             txtNroAfil.TabIndex = 40;
             txtNroAfil.TextAlign = HorizontalAlignment.Right;
             txtNroAfil.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Moneda;
@@ -157,9 +156,9 @@
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label15.ForeColor = Color.DarkCyan;
-            label15.Location = new Point(24, 418);
+            label15.Location = new Point(21, 314);
             label15.Name = "label15";
-            label15.Size = new Size(86, 20);
+            label15.Size = new Size(67, 15);
             label15.TabIndex = 39;
             label15.Text = "Fecha Alta:";
             // 
@@ -168,9 +167,9 @@
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label14.ForeColor = Color.DarkCyan;
-            label14.Location = new Point(24, 363);
+            label14.Location = new Point(21, 272);
             label14.Name = "label14";
-            label14.Size = new Size(103, 20);
+            label14.Size = new Size(79, 15);
             label14.TabIndex = 38;
             label14.Text = "Nro. Afiliado:";
             // 
@@ -178,30 +177,27 @@
             // 
             cboPlanOS.DropDownStyle = ComboBoxStyle.DropDownList;
             cboPlanOS.FormattingEnabled = true;
-            cboPlanOS.Location = new Point(472, 313);
-            cboPlanOS.Margin = new Padding(3, 4, 3, 4);
+            cboPlanOS.Location = new Point(413, 235);
             cboPlanOS.Name = "cboPlanOS";
-            cboPlanOS.Size = new Size(220, 28);
+            cboPlanOS.Size = new Size(193, 23);
             cboPlanOS.TabIndex = 37;
             // 
             // cboOS
             // 
             cboOS.DropDownStyle = ComboBoxStyle.DropDownList;
             cboOS.FormattingEnabled = true;
-            cboOS.Location = new Point(167, 313);
-            cboOS.Margin = new Padding(3, 4, 3, 4);
+            cboOS.Location = new Point(146, 235);
             cboOS.Name = "cboOS";
-            cboOS.Size = new Size(220, 28);
+            cboOS.Size = new Size(193, 23);
             cboOS.TabIndex = 36;
             // 
             // cboLocalidad
             // 
             cboLocalidad.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLocalidad.FormattingEnabled = true;
-            cboLocalidad.Location = new Point(167, 221);
-            cboLocalidad.Margin = new Padding(3, 4, 3, 4);
+            cboLocalidad.Location = new Point(146, 166);
             cboLocalidad.Name = "cboLocalidad";
-            cboLocalidad.Size = new Size(220, 28);
+            cboLocalidad.Size = new Size(193, 23);
             cboLocalidad.TabIndex = 35;
             // 
             // button1
@@ -210,10 +206,9 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.Control;
-            button1.Location = new Point(605, 402);
-            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Location = new Point(529, 302);
             button1.Name = "button1";
-            button1.Size = new Size(125, 36);
+            button1.Size = new Size(109, 27);
             button1.TabIndex = 34;
             button1.Text = "Cancelar";
             button1.UseVisualStyleBackColor = false;
@@ -224,18 +219,17 @@
             txtCP.AceptaNegativos = false;
             txtCP.AceptaValorCero = false;
             txtCP.CerosIzquierda = false;
-            txtCP.Decimales = 2;
-            txtCP.DecimalesConFormato = 2;
+            txtCP.Decimales = 0;
+            txtCP.DecimalesConFormato = 0;
             txtCP.Digitos = 5;
             txtCP.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
-            txtCP.Location = new Point(625, 266);
-            txtCP.Margin = new Padding(3, 4, 3, 4);
+            txtCP.Location = new Point(547, 200);
             txtCP.Name = "txtCP";
             txtCP.SimboloMoneda = "$";
-            txtCP.Size = new Size(94, 27);
+            txtCP.Size = new Size(83, 23);
             txtCP.TabIndex = 33;
             txtCP.TextAlign = HorizontalAlignment.Right;
-            txtCP.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Estandar;
+            txtCP.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Entero;
             txtCP.ValorDecimal = 0D;
             txtCP.ValorEntero = 0L;
             txtCP.ValorMaximo = null;
@@ -246,18 +240,17 @@
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label13.ForeColor = Color.DarkCyan;
-            label13.Location = new Point(574, 273);
+            label13.Location = new Point(502, 205);
             label13.Name = "label13";
-            label13.Size = new Size(37, 20);
+            label13.Size = new Size(28, 15);
             label13.TabIndex = 32;
             label13.Text = "C.P.:";
             // 
             // txtNroDoc
             // 
-            txtNroDoc.Location = new Point(510, 122);
-            txtNroDoc.Margin = new Padding(3, 4, 3, 4);
+            txtNroDoc.Location = new Point(446, 92);
             txtNroDoc.Name = "txtNroDoc";
-            txtNroDoc.Size = new Size(220, 27);
+            txtNroDoc.Size = new Size(193, 23);
             txtNroDoc.TabIndex = 31;
             // 
             // label12
@@ -265,18 +258,17 @@
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label12.ForeColor = Color.DarkCyan;
-            label12.Location = new Point(407, 129);
+            label12.Location = new Point(356, 97);
             label12.Name = "label12";
-            label12.Size = new Size(79, 20);
+            label12.Size = new Size(62, 15);
             label12.TabIndex = 30;
             label12.Text = "Nro. Doc.:";
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(510, 76);
-            txtApellido.Margin = new Padding(3, 4, 3, 4);
+            txtApellido.Location = new Point(446, 57);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(220, 27);
+            txtApellido.Size = new Size(193, 23);
             txtApellido.TabIndex = 29;
             // 
             // label2
@@ -284,9 +276,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.DarkCyan;
-            label2.Location = new Point(407, 79);
+            label2.Location = new Point(356, 59);
             label2.Name = "label2";
-            label2.Size = new Size(71, 20);
+            label2.Size = new Size(55, 15);
             label2.TabIndex = 28;
             label2.Text = "Apellido:";
             // 
@@ -299,11 +291,10 @@
             txtCalle.DecimalesConFormato = 2;
             txtCalle.Digitos = 10;
             txtCalle.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
-            txtCalle.Location = new Point(167, 266);
-            txtCalle.Margin = new Padding(3, 4, 3, 4);
+            txtCalle.Location = new Point(146, 200);
             txtCalle.Name = "txtCalle";
             txtCalle.SimboloMoneda = "$";
-            txtCalle.Size = new Size(220, 27);
+            txtCalle.Size = new Size(193, 23);
             txtCalle.TabIndex = 24;
             txtCalle.TextAlign = HorizontalAlignment.Right;
             txtCalle.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Moneda;
@@ -317,18 +308,17 @@
             txtNroCalle.AceptaNegativos = false;
             txtNroCalle.AceptaValorCero = false;
             txtNroCalle.CerosIzquierda = false;
-            txtNroCalle.Decimales = 2;
-            txtNroCalle.DecimalesConFormato = 2;
+            txtNroCalle.Decimales = 0;
+            txtNroCalle.DecimalesConFormato = 0;
             txtNroCalle.Digitos = 5;
             txtNroCalle.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
-            txtNroCalle.Location = new Point(472, 266);
-            txtNroCalle.Margin = new Padding(3, 4, 3, 4);
+            txtNroCalle.Location = new Point(413, 200);
             txtNroCalle.Name = "txtNroCalle";
             txtNroCalle.SimboloMoneda = "$";
-            txtNroCalle.Size = new Size(94, 27);
+            txtNroCalle.Size = new Size(83, 23);
             txtNroCalle.TabIndex = 23;
             txtNroCalle.TextAlign = HorizontalAlignment.Right;
-            txtNroCalle.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Estandar;
+            txtNroCalle.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Entero;
             txtNroCalle.ValorDecimal = 0D;
             txtNroCalle.ValorEntero = 0L;
             txtNroCalle.ValorMaximo = null;
@@ -340,10 +330,9 @@
             btnAgregaImagen.FlatStyle = FlatStyle.Flat;
             btnAgregaImagen.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnAgregaImagen.ForeColor = SystemColors.Control;
-            btnAgregaImagen.Location = new Point(462, 402);
-            btnAgregaImagen.Margin = new Padding(3, 4, 3, 4);
+            btnAgregaImagen.Location = new Point(404, 302);
             btnAgregaImagen.Name = "btnAgregaImagen";
-            btnAgregaImagen.Size = new Size(125, 36);
+            btnAgregaImagen.Size = new Size(109, 27);
             btnAgregaImagen.TabIndex = 21;
             btnAgregaImagen.Text = "Agregar";
             btnAgregaImagen.UseVisualStyleBackColor = false;
@@ -353,9 +342,9 @@
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label11.ForeColor = Color.DarkCyan;
-            label11.Location = new Point(408, 316);
+            label11.Location = new Point(357, 237);
             label11.Name = "label11";
-            label11.Size = new Size(43, 20);
+            label11.Size = new Size(33, 15);
             label11.TabIndex = 0;
             label11.Text = "Plan:";
             // 
@@ -364,9 +353,9 @@
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label10.ForeColor = Color.DarkCyan;
-            label10.Location = new Point(24, 316);
+            label10.Location = new Point(21, 237);
             label10.Name = "label10";
-            label10.Size = new Size(91, 20);
+            label10.Size = new Size(72, 15);
             label10.TabIndex = 20;
             label10.Text = "Obra Social:";
             // 
@@ -375,9 +364,9 @@
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label9.ForeColor = Color.DarkCyan;
-            label9.Location = new Point(21, 229);
+            label9.Location = new Point(18, 172);
             label9.Name = "label9";
-            label9.Size = new Size(79, 20);
+            label9.Size = new Size(61, 15);
             label9.TabIndex = 19;
             label9.Text = "Localidad:";
             // 
@@ -386,9 +375,9 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label8.ForeColor = Color.DarkCyan;
-            label8.Location = new Point(24, 273);
+            label8.Location = new Point(21, 205);
             label8.Name = "label8";
-            label8.Size = new Size(46, 20);
+            label8.Size = new Size(36, 15);
             label8.TabIndex = 18;
             label8.Text = "Calle:";
             // 
@@ -397,9 +386,9 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label7.ForeColor = Color.DarkCyan;
-            label7.Location = new Point(407, 273);
+            label7.Location = new Point(356, 205);
             label7.Name = "label7";
-            label7.Size = new Size(44, 20);
+            label7.Size = new Size(34, 15);
             label7.TabIndex = 17;
             label7.Text = "Nro.:";
             // 
@@ -408,9 +397,9 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.DarkCyan;
-            label6.Location = new Point(407, 180);
+            label6.Location = new Point(356, 135);
             label6.Name = "label6";
-            label6.Size = new Size(100, 20);
+            label6.Size = new Size(79, 15);
             label6.TabIndex = 16;
             label6.Text = "Razon Social:";
             // 
@@ -418,10 +407,9 @@
             // 
             cbo_tipo_cliente.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_tipo_cliente.FormattingEnabled = true;
-            cbo_tipo_cliente.Location = new Point(167, 176);
-            cbo_tipo_cliente.Margin = new Padding(3, 4, 3, 4);
+            cbo_tipo_cliente.Location = new Point(146, 132);
             cbo_tipo_cliente.Name = "cbo_tipo_cliente";
-            cbo_tipo_cliente.Size = new Size(220, 28);
+            cbo_tipo_cliente.Size = new Size(193, 23);
             cbo_tipo_cliente.TabIndex = 4;
             // 
             // label5
@@ -429,18 +417,17 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.DarkCyan;
-            label5.Location = new Point(21, 184);
+            label5.Location = new Point(18, 138);
             label5.Name = "label5";
-            label5.Size = new Size(96, 20);
+            label5.Size = new Size(76, 15);
             label5.TabIndex = 15;
             label5.Text = "Tipo Cliente:";
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(167, 75);
-            txtNombre.Margin = new Padding(3, 4, 3, 4);
+            txtNombre.Location = new Point(146, 56);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(220, 27);
+            txtNombre.Size = new Size(193, 23);
             txtNombre.TabIndex = 2;
             // 
             // label4
@@ -448,9 +435,9 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.DarkCyan;
-            label4.Location = new Point(21, 79);
+            label4.Location = new Point(18, 59);
             label4.Name = "label4";
-            label4.Size = new Size(71, 20);
+            label4.Size = new Size(56, 15);
             label4.TabIndex = 14;
             label4.Text = "Nombre:";
             // 
@@ -458,10 +445,9 @@
             // 
             cbo_tipo_doc.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_tipo_doc.FormattingEnabled = true;
-            cbo_tipo_doc.Location = new Point(167, 125);
-            cbo_tipo_doc.Margin = new Padding(3, 4, 3, 4);
+            cbo_tipo_doc.Location = new Point(146, 94);
             cbo_tipo_doc.Name = "cbo_tipo_doc";
-            cbo_tipo_doc.Size = new Size(220, 28);
+            cbo_tipo_doc.Size = new Size(193, 23);
             cbo_tipo_doc.TabIndex = 3;
             // 
             // label3
@@ -469,9 +455,9 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.DarkCyan;
-            label3.Location = new Point(21, 129);
+            label3.Location = new Point(18, 97);
             label3.Name = "label3";
-            label3.Size = new Size(79, 20);
+            label3.Size = new Size(62, 15);
             label3.TabIndex = 13;
             label3.Text = "Tipo Doc.:";
             // 
@@ -479,9 +465,9 @@
             // 
             lbl_cod_cli.AutoSize = true;
             lbl_cod_cli.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_cod_cli.Location = new Point(163, 25);
+            lbl_cod_cli.Location = new Point(143, 19);
             lbl_cod_cli.Name = "lbl_cod_cli";
-            lbl_cod_cli.Size = new Size(48, 28);
+            lbl_cod_cli.Size = new Size(37, 21);
             lbl_cod_cli.TabIndex = 1;
             lbl_cod_cli.Text = "000";
             // 
@@ -490,9 +476,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.DarkCyan;
-            label1.Location = new Point(24, 32);
+            label1.Location = new Point(21, 24);
             label1.Name = "label1";
-            label1.Size = new Size(114, 20);
+            label1.Size = new Size(90, 15);
             label1.TabIndex = 12;
             label1.Text = "Codigo Cliente:";
             // 
@@ -506,10 +492,9 @@
             panel1.Controls.Add(btnGuardar);
             panel1.Controls.Add(btnEditar);
             panel1.Controls.Add(btnNuevo);
-            panel1.Location = new Point(12, 479);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Location = new Point(10, 359);
             panel1.Name = "panel1";
-            panel1.Size = new Size(814, 94);
+            panel1.Size = new Size(712, 71);
             panel1.TabIndex = 2;
             // 
             // btnConsultar
@@ -518,10 +503,9 @@
             btnConsultar.FlatStyle = FlatStyle.Flat;
             btnConsultar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnConsultar.ForeColor = SystemColors.Control;
-            btnConsultar.Location = new Point(290, 24);
-            btnConsultar.Margin = new Padding(3, 4, 3, 4);
+            btnConsultar.Location = new Point(254, 18);
             btnConsultar.Name = "btnConsultar";
-            btnConsultar.Size = new Size(97, 36);
+            btnConsultar.Size = new Size(85, 27);
             btnConsultar.TabIndex = 5;
             btnConsultar.Text = "Consultar";
             btnConsultar.UseVisualStyleBackColor = false;
@@ -532,10 +516,9 @@
             btnLimpiar.FlatStyle = FlatStyle.Flat;
             btnLimpiar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnLimpiar.ForeColor = SystemColors.Control;
-            btnLimpiar.Location = new Point(572, 24);
-            btnLimpiar.Margin = new Padding(3, 4, 3, 4);
+            btnLimpiar.Location = new Point(500, 18);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(97, 36);
+            btnLimpiar.Size = new Size(85, 27);
             btnLimpiar.TabIndex = 3;
             btnLimpiar.Text = "Limpiar";
             btnLimpiar.UseVisualStyleBackColor = false;
@@ -546,10 +529,9 @@
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalir.ForeColor = SystemColors.Control;
-            btnSalir.Location = new Point(689, 24);
-            btnSalir.Margin = new Padding(3, 4, 3, 4);
+            btnSalir.Location = new Point(603, 18);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(97, 36);
+            btnSalir.Size = new Size(85, 27);
             btnSalir.TabIndex = 4;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = false;
@@ -561,10 +543,9 @@
             btnGuardar.FlatStyle = FlatStyle.Flat;
             btnGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnGuardar.ForeColor = SystemColors.Control;
-            btnGuardar.Location = new Point(417, 24);
-            btnGuardar.Margin = new Padding(3, 4, 3, 4);
+            btnGuardar.Location = new Point(365, 18);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(97, 36);
+            btnGuardar.Size = new Size(85, 27);
             btnGuardar.TabIndex = 2;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = false;
@@ -576,10 +557,9 @@
             btnEditar.FlatStyle = FlatStyle.Flat;
             btnEditar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnEditar.ForeColor = SystemColors.Control;
-            btnEditar.Location = new Point(163, 24);
-            btnEditar.Margin = new Padding(3, 4, 3, 4);
+            btnEditar.Location = new Point(143, 18);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(97, 36);
+            btnEditar.Size = new Size(85, 27);
             btnEditar.TabIndex = 1;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = false;
@@ -591,24 +571,25 @@
             btnNuevo.FlatStyle = FlatStyle.Flat;
             btnNuevo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnNuevo.ForeColor = SystemColors.Control;
-            btnNuevo.Location = new Point(38, 24);
-            btnNuevo.Margin = new Padding(3, 4, 3, 4);
+            btnNuevo.Location = new Point(33, 18);
             btnNuevo.Name = "btnNuevo";
-            btnNuevo.Size = new Size(97, 36);
+            btnNuevo.Size = new Size(85, 27);
             btnNuevo.TabIndex = 0;
             btnNuevo.Text = "Nuevo";
             btnNuevo.UseVisualStyleBackColor = false;
             // 
             // FrmClientes
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(838, 569);
+            ClientSize = new Size(733, 443);
             Controls.Add(panel1);
             Controls.Add(pnlCarga);
+            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmClientes";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Nuevo Cliente";
             Load += FrmClientes_Load;
             pnlCarga.ResumeLayout(false);

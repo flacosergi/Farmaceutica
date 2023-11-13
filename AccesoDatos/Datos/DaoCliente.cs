@@ -174,7 +174,7 @@ namespace AccesoDatos.Datos
             {
                 Localidad nuevo_tipo = (Localidad)factory.CreaObjeto("localidad");
                 nuevo_tipo.id_localidad = Convert.ToInt32(fila["id_localidad"].ToString());
-                nuevo_tipo.localidad = (string)fila["localidad"];
+                nuevo_tipo.nom_localidad = (string)fila["localidad"];
                 nueva_lista.Add(nuevo_tipo);
             }
             return nueva_lista;

@@ -168,8 +168,8 @@ namespace Farmaceutica.Presentacion
                 resultado = await gestor_cli.IngresarCliente(nuevo_cliente);
             else
                 resultado = await gestor_cli.ModificarCliente(nuevo_cliente);
-            
-            
+
+
             if (resultado == "OK")
             {
                 if (btnGuardar.Text == "Guardar")
@@ -180,7 +180,7 @@ namespace Farmaceutica.Presentacion
             }
             else
                 MessageBox.Show("Se ha producido un error. El artículo no pudo ser guardado.", "Atención:", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
+
         }
 
         private bool ValidarControles()
