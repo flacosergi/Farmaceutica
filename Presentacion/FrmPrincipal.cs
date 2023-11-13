@@ -60,6 +60,7 @@ namespace Farmaceutica.Presentacion
             FrmClientes cli = (FrmClientes)factory.CreaObjeto("cliente");
             Cursor.Current = Cursors.WaitCursor;
             cli.ShowDialog(this);
+
         }
     }
 }

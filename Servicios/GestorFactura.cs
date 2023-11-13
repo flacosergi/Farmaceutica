@@ -20,9 +20,15 @@ namespace Farmaceutica.Servicios
             throw new NotImplementedException();
         }
 
-        public Task<string> Ingresar(object nuevo_objeto)
+        public async Task<string> Ingresar(object nuevo_objeto)
         {
-            throw new NotImplementedException();
+            Factura nueva_factura = (Factura)nuevo_objeto;
+            string fra = JsonConvert.SerializeObject(nueva_factura, Formatting.Indented);
+            string response = await ClientSingleton.GetInstance().PostAsync("/api/Factura/IngresarFactura", fra);
+            if (response != string.Empty)
+                return response;
+            else
+                return string.Empty;
         }
 
         public Task<string> Modificar(object objeto_modificar)

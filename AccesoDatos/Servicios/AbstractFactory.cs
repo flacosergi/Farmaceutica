@@ -9,6 +9,6 @@ namespace AccesoDatos.Servicios
 {
     public abstract class AbstractFactory
     {
-        public abstract object CreaObjeto(string tipo);
+        public abstract object CreaObjeto(string tipo, List<Object>? lista_parametros= default);
     }
 }

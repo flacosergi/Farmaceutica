@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             pnlCabecera = new Panel();
             ntbNumAfiliado = new NumberTextBox.NumberTextBox();
             label13 = new Label();
@@ -68,6 +68,13 @@
             btnBuscarArticulo = new Button();
             label5 = new Label();
             pnlTablaDetalle = new Panel();
+            label17 = new Label();
+            ntbDifFactura = new NumberTextBox.NumberTextBox();
+            label16 = new Label();
+            ntbRecargoFactura = new NumberTextBox.NumberTextBox();
+            label15 = new Label();
+            ntbTotalFactura = new NumberTextBox.NumberTextBox();
+            btnFormasPago = new Button();
             label14 = new Label();
             ntbSubTotal = new NumberTextBox.NumberTextBox();
             dgvDetalleFactura = new DataGridView();
@@ -85,9 +92,6 @@
             btnGuardar = new Button();
             btnEditar = new Button();
             btnNueva = new Button();
-            btnFormasPago = new Button();
-            label15 = new Label();
-            ntbTotal = new NumberTextBox.NumberTextBox();
             pnlCabecera.SuspendLayout();
             pnlDetalle.SuspendLayout();
             pnlTablaDetalle.SuspendLayout();
@@ -548,8 +552,12 @@
             // 
             pnlTablaDetalle.BackColor = Color.White;
             pnlTablaDetalle.BorderStyle = BorderStyle.FixedSingle;
+            pnlTablaDetalle.Controls.Add(label17);
+            pnlTablaDetalle.Controls.Add(ntbDifFactura);
+            pnlTablaDetalle.Controls.Add(label16);
+            pnlTablaDetalle.Controls.Add(ntbRecargoFactura);
             pnlTablaDetalle.Controls.Add(label15);
-            pnlTablaDetalle.Controls.Add(ntbTotal);
+            pnlTablaDetalle.Controls.Add(ntbTotalFactura);
             pnlTablaDetalle.Controls.Add(btnFormasPago);
             pnlTablaDetalle.Controls.Add(label14);
             pnlTablaDetalle.Controls.Add(ntbSubTotal);
@@ -561,15 +569,129 @@
             pnlTablaDetalle.Size = new Size(805, 271);
             pnlTablaDetalle.TabIndex = 2;
             // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label17.ForeColor = Color.DarkCyan;
+            label17.Location = new Point(564, 239);
+            label17.Name = "label17";
+            label17.Size = new Size(68, 15);
+            label17.TabIndex = 1;
+            label17.Text = "Diferencia:";
+            // 
+            // ntbDifFactura
+            // 
+            ntbDifFactura.AceptaNegativos = false;
+            ntbDifFactura.AceptaValorCero = false;
+            ntbDifFactura.CerosIzquierda = false;
+            ntbDifFactura.Decimales = 2;
+            ntbDifFactura.DecimalesConFormato = 2;
+            ntbDifFactura.Digitos = 10;
+            ntbDifFactura.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Paréntesis;
+            ntbDifFactura.Location = new Point(638, 236);
+            ntbDifFactura.Name = "ntbDifFactura";
+            ntbDifFactura.ReadOnly = true;
+            ntbDifFactura.SimboloMoneda = "$";
+            ntbDifFactura.Size = new Size(119, 23);
+            ntbDifFactura.TabIndex = 10;
+            ntbDifFactura.TextAlign = HorizontalAlignment.Right;
+            ntbDifFactura.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Moneda;
+            ntbDifFactura.ValorDecimal = 0D;
+            ntbDifFactura.ValorEntero = 0L;
+            ntbDifFactura.ValorMaximo = null;
+            ntbDifFactura.ValorMinimo = null;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label16.ForeColor = Color.DarkCyan;
+            label16.Location = new Point(392, 200);
+            label16.Name = "label16";
+            label16.Size = new Size(56, 15);
+            label16.TabIndex = 6;
+            label16.Text = "Recargo:";
+            // 
+            // ntbRecargoFactura
+            // 
+            ntbRecargoFactura.AceptaNegativos = false;
+            ntbRecargoFactura.AceptaValorCero = false;
+            ntbRecargoFactura.CerosIzquierda = false;
+            ntbRecargoFactura.Decimales = 2;
+            ntbRecargoFactura.DecimalesConFormato = 2;
+            ntbRecargoFactura.Digitos = 10;
+            ntbRecargoFactura.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
+            ntbRecargoFactura.Location = new Point(460, 197);
+            ntbRecargoFactura.Name = "ntbRecargoFactura";
+            ntbRecargoFactura.ReadOnly = true;
+            ntbRecargoFactura.SimboloMoneda = "$";
+            ntbRecargoFactura.Size = new Size(119, 23);
+            ntbRecargoFactura.TabIndex = 7;
+            ntbRecargoFactura.TextAlign = HorizontalAlignment.Right;
+            ntbRecargoFactura.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Moneda;
+            ntbRecargoFactura.ValorDecimal = 0D;
+            ntbRecargoFactura.ValorEntero = 0L;
+            ntbRecargoFactura.ValorMaximo = null;
+            ntbRecargoFactura.ValorMinimo = null;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label15.ForeColor = Color.DarkCyan;
+            label15.Location = new Point(595, 200);
+            label15.Name = "label15";
+            label15.Size = new Size(37, 15);
+            label15.TabIndex = 7;
+            label15.Text = "Total:";
+            // 
+            // ntbTotalFactura
+            // 
+            ntbTotalFactura.AceptaNegativos = false;
+            ntbTotalFactura.AceptaValorCero = false;
+            ntbTotalFactura.CerosIzquierda = false;
+            ntbTotalFactura.Decimales = 2;
+            ntbTotalFactura.DecimalesConFormato = 2;
+            ntbTotalFactura.Digitos = 10;
+            ntbTotalFactura.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
+            ntbTotalFactura.Location = new Point(638, 197);
+            ntbTotalFactura.Name = "ntbTotalFactura";
+            ntbTotalFactura.ReadOnly = true;
+            ntbTotalFactura.SimboloMoneda = "$";
+            ntbTotalFactura.Size = new Size(119, 23);
+            ntbTotalFactura.TabIndex = 8;
+            ntbTotalFactura.TextAlign = HorizontalAlignment.Right;
+            ntbTotalFactura.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Moneda;
+            ntbTotalFactura.ValorDecimal = 0D;
+            ntbTotalFactura.ValorEntero = 0L;
+            ntbTotalFactura.ValorMaximo = null;
+            ntbTotalFactura.ValorMinimo = null;
+            // 
+            // btnFormasPago
+            // 
+            btnFormasPago.BackColor = Color.DarkCyan;
+            btnFormasPago.Enabled = false;
+            btnFormasPago.FlatStyle = FlatStyle.Flat;
+            btnFormasPago.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnFormasPago.ForeColor = SystemColors.Control;
+            btnFormasPago.Location = new Point(365, 232);
+            btnFormasPago.Name = "btnFormasPago";
+            btnFormasPago.Size = new Size(148, 27);
+            btnFormasPago.TabIndex = 9;
+            btnFormasPago.Text = "Formas de Pago";
+            btnFormasPago.UseVisualStyleBackColor = false;
+            btnFormasPago.Click += btnFormasPago_Click;
+            // 
             // label14
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label14.ForeColor = Color.DarkCyan;
-            label14.Location = new Point(585, 212);
+            label14.Location = new Point(199, 200);
             label14.Name = "label14";
             label14.Size = new Size(57, 15);
-            label14.TabIndex = 1;
+            label14.TabIndex = 4;
             label14.Text = "Subtotal:";
             // 
             // ntbSubTotal
@@ -581,12 +703,12 @@
             ntbSubTotal.DecimalesConFormato = 2;
             ntbSubTotal.Digitos = 10;
             ntbSubTotal.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
-            ntbSubTotal.Location = new Point(647, 209);
+            ntbSubTotal.Location = new Point(261, 197);
             ntbSubTotal.Name = "ntbSubTotal";
             ntbSubTotal.ReadOnly = true;
             ntbSubTotal.SimboloMoneda = "$";
             ntbSubTotal.Size = new Size(119, 23);
-            ntbSubTotal.TabIndex = 2;
+            ntbSubTotal.TabIndex = 5;
             ntbSubTotal.TextAlign = HorizontalAlignment.Right;
             ntbSubTotal.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Moneda;
             ntbSubTotal.ValorDecimal = 0D;
@@ -600,14 +722,14 @@
             dgvDetalleFactura.AllowUserToDeleteRows = false;
             dgvDetalleFactura.AllowUserToResizeColumns = false;
             dgvDetalleFactura.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgvDetalleFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvDetalleFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvDetalleFactura.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDetalleFactura.Columns.AddRange(new DataGridViewColumn[] { CodArticulo, Descripcion, Cantidad, Unitario, Descuento, Total, Eliminar });
             dgvDetalleFactura.Location = new Point(18, 15);
@@ -615,7 +737,7 @@
             dgvDetalleFactura.RowHeadersVisible = false;
             dgvDetalleFactura.RowHeadersWidth = 51;
             dgvDetalleFactura.RowTemplate.Height = 25;
-            dgvDetalleFactura.Size = new Size(767, 185);
+            dgvDetalleFactura.Size = new Size(767, 176);
             dgvDetalleFactura.TabIndex = 0;
             dgvDetalleFactura.CellContentClick += dgvDetalleFactura_CellContentClick;
             // 
@@ -636,36 +758,36 @@
             // 
             // Cantidad
             // 
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.Format = "N0";
-            Cantidad.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "N0";
+            Cantidad.DefaultCellStyle = dataGridViewCellStyle2;
             Cantidad.HeaderText = "Cantidad";
             Cantidad.MinimumWidth = 6;
             Cantidad.Name = "Cantidad";
             // 
             // Unitario
             // 
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N2";
-            Unitario.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N2";
+            Unitario.DefaultCellStyle = dataGridViewCellStyle3;
             Unitario.HeaderText = "Unitario";
             Unitario.MinimumWidth = 6;
             Unitario.Name = "Unitario";
             // 
             // Descuento
             // 
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "N2";
-            Descuento.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            Descuento.DefaultCellStyle = dataGridViewCellStyle4;
             Descuento.HeaderText = "Descuento";
             Descuento.MinimumWidth = 6;
             Descuento.Name = "Descuento";
             // 
             // Total
             // 
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N2";
-            Total.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N2";
+            Total.DefaultCellStyle = dataGridViewCellStyle5;
             Total.HeaderText = "Total";
             Total.MinimumWidth = 6;
             Total.Name = "Total";
@@ -779,59 +901,13 @@
             btnNueva.UseVisualStyleBackColor = false;
             btnNueva.Click += btnNueva_Click;
             // 
-            // btnFormasPago
-            // 
-            btnFormasPago.BackColor = Color.DarkCyan;
-            btnFormasPago.Enabled = false;
-            btnFormasPago.FlatStyle = FlatStyle.Flat;
-            btnFormasPago.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnFormasPago.ForeColor = SystemColors.Control;
-            btnFormasPago.Location = new Point(365, 222);
-            btnFormasPago.Name = "btnFormasPago";
-            btnFormasPago.Size = new Size(148, 27);
-            btnFormasPago.TabIndex = 3;
-            btnFormasPago.Text = "Formas de Pago";
-            btnFormasPago.UseVisualStyleBackColor = false;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label15.ForeColor = Color.DarkCyan;
-            label15.Location = new Point(585, 243);
-            label15.Name = "label15";
-            label15.Size = new Size(37, 15);
-            label15.TabIndex = 4;
-            label15.Text = "Total:";
-            // 
-            // ntbTotal
-            // 
-            ntbTotal.AceptaNegativos = false;
-            ntbTotal.AceptaValorCero = false;
-            ntbTotal.CerosIzquierda = false;
-            ntbTotal.Decimales = 2;
-            ntbTotal.DecimalesConFormato = 2;
-            ntbTotal.Digitos = 10;
-            ntbTotal.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
-            ntbTotal.Location = new Point(647, 240);
-            ntbTotal.Name = "ntbTotal";
-            ntbTotal.ReadOnly = true;
-            ntbTotal.SimboloMoneda = "$";
-            ntbTotal.Size = new Size(119, 23);
-            ntbTotal.TabIndex = 5;
-            ntbTotal.TextAlign = HorizontalAlignment.Right;
-            ntbTotal.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Moneda;
-            ntbTotal.ValorDecimal = 0D;
-            ntbTotal.ValorEntero = 0L;
-            ntbTotal.ValorMaximo = null;
-            ntbTotal.ValorMinimo = null;
-            // 
             // FrmFacturas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Azure;
             ClientSize = new Size(827, 615);
+            ControlBox = false;
             Controls.Add(panel2);
             Controls.Add(pnlTablaDetalle);
             Controls.Add(pnlDetalle);
@@ -908,6 +984,10 @@
         private DataGridViewButtonColumn Eliminar;
         private Button btnFormasPago;
         private Label label15;
-        private NumberTextBox.NumberTextBox ntbTotal;
+        private NumberTextBox.NumberTextBox ntbTotalFactura;
+        private Label label16;
+        private NumberTextBox.NumberTextBox ntbRecargoFactura;
+        private Label label17;
+        private NumberTextBox.NumberTextBox ntbDifFactura;
     }
 }

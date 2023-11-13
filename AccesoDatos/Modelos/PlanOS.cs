@@ -10,14 +10,14 @@ namespace AccesoDatos.Modelos
     public class PlanOS
     {
         public int cod_plan { get; set; }
-        public ObraSocial obra_social { get; set; }
+        public int obra_social { get; set; }
         public string desc_plan { get; set; }
         public decimal descuento { get; set; }
 
-        public PlanOS(ModeloFactory factory)
+        public PlanOS()
         {
             cod_plan = 0;
-            obra_social = (ObraSocial)factory.CreaObjeto("obra_social");
+            obra_social = 0;
             desc_plan = string.Empty;
             descuento = 0;
         }

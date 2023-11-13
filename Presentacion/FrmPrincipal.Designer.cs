@@ -38,13 +38,15 @@
             traToolStripMenuItem = new ToolStripMenuItem();
             ayudaToolStripMenuItem = new ToolStripMenuItem();
             clientesToolStripMenuItem = new ToolStripMenuItem();
+            buscarToolStripMenuItem = new ToolStripMenuItem();
+            nuevoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, soporteToolStripMenuItem, traToolStripMenuItem, ayudaToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, soporteToolStripMenuItem, traToolStripMenuItem, ayudaToolStripMenuItem, clientesToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(6, 3, 0, 3);
@@ -105,6 +107,21 @@
             clientesToolStripMenuItem.Size = new Size(224, 26);
             clientesToolStripMenuItem.Text = "Clientes";
             clientesToolStripMenuItem.Click += clientesToolStripMenuItem_Click;
+            clientesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { buscarToolStripMenuItem, nuevoToolStripMenuItem });
+            // 
+            // buscarToolStripMenuItem
+            // 
+            buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
+            buscarToolStripMenuItem.Size = new Size(180, 22);
+            buscarToolStripMenuItem.Text = "Buscar";
+            buscarToolStripMenuItem.Click += buscarToolStripMenuItem_Click;
+            // 
+            // nuevoToolStripMenuItem
+            // 
+            nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
+            nuevoToolStripMenuItem.Size = new Size(180, 22);
+            nuevoToolStripMenuItem.Text = "Nuevo";
+
             // 
             // FrmPrincipal
             // 
@@ -139,5 +156,7 @@
         private ToolStripMenuItem agregarArticulosToolStripMenuItem;
         private ToolStripMenuItem tsmi_facturacion;
         private ToolStripMenuItem clientesToolStripMenuItem;
+        private ToolStripMenuItem buscarToolStripMenuItem;
+        private ToolStripMenuItem nuevoToolStripMenuItem;
     }
 }

@@ -8,6 +8,16 @@ namespace AccesoDatos.Modelos
 {
     public class FormaPago
     {
+        public enum Tipo
+        {
+            Efectivo = 1,
+            Transferencia = 2,
+            Cheques = 3,
+            TarjetaCredito = 4,
+            TarjetaDebito = 5,
+            CunentaCorriente = 6
+        }
+
         public int id_forma_pago { get; set; }
         public string forma_pago { get; set; }
 

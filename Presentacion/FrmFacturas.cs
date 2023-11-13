@@ -68,6 +68,7 @@ namespace Farmaceutica.Presentacion
             cbo_sucursales.Enabled = true;
             btnAgregarDetalle.Enabled = false;
             btnAutorizar.Enabled = false;
+            nueva_factura = (Factura)ModeloFactory.ObtenerInstancia().CreaObjeto("factura");
 
         }
 
@@ -190,6 +191,7 @@ namespace Farmaceutica.Presentacion
             metodos.LimpiaControles(pnlDetalle);
             btnAutorizar.Enabled = false;
             btnAgregarDetalle.Enabled = false;
+            btnBuscarArticulo.Focus();
         }
 
         private void btnAutorizar_Click(object sender, EventArgs e)
@@ -284,6 +286,7 @@ namespace Farmaceutica.Presentacion
                                         0);
             ActualizaTotal();
             btnCancelarDetalle_Click(this, MouseEventArgs.Empty);
+            btnFormasPago.Enabled = true;
         }
 
         private void cbo_sucursales_SelectionChangeCommitted(object sender, EventArgs e)
@@ -304,8 +307,23 @@ namespace Farmaceutica.Presentacion
                 total = total + (Decimal)Fila.Cells["Total"].Value;
 
             }
-            ntbSubTotal.Text = string.Empty;
+            ntbSubTotal.Focus();
             ntbSubTotal.Text = total.ToString();
+
+            decimal recargo = 0;
+            decimal imputado = 0;
+            foreach (Factura_FormaPago factura_fp in nueva_factura.lista_formas_pago)
+            {
+                decimal inicial = Math.Round(factura_fp.monto / (1 + factura_fp.porc_recargo),2);
+                imputado += inicial;
+                recargo += Math.Round(inicial * factura_fp.porc_recargo, 2);
+            }
+            ntbRecargoFactura.Focus();
+            ntbRecargoFactura.Text = recargo.ToString();
+            ntbTotalFactura.Focus();
+            ntbTotalFactura.Text = (ntbSubTotal.ValorDecimal + ntbRecargoFactura.ValorDecimal).ToString();
+            ntbDifFactura.Focus();
+            ntbDifFactura.Text = ((decimal)ntbSubTotal.ValorDecimal - imputado).ToString();
         }
 
         private void dgvDetalleFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -315,10 +333,11 @@ namespace Farmaceutica.Presentacion
                 nueva_factura.lista_detalle.RemoveAt(e.RowIndex);
                 dgvDetalleFactura.Rows.RemoveAt(e.RowIndex);
                 ActualizaTotal();
+                btnBuscarArticulo.Focus();
             }
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private async void btnGuardar_Click(object sender, EventArgs e)
         {
             if (dgvDetalleFactura.Rows.Count == 0)
             {
@@ -327,6 +346,47 @@ namespace Farmaceutica.Presentacion
                 return;
             }
 
+            if (ntbDifFactura.Text != string.Empty)
+            {
+                MessageBox.Show("Existe una diferencia con las formas de pago.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                btnFormasPago.Focus();
+                return;
+            }
+
+            nueva_factura.fecha = dtpFechaFactura.Value;
+            nueva_factura.sucursal = (Sucursal)cbo_sucursales.SelectedItem;
+            nueva_factura.total = (decimal)ntbTotalFactura.ValorDecimal;
+            string resultado;
+            if (btnGuardar.Text == "Guardar")
+                resultado = await gestor_factura.Ingresar(nueva_factura);
+            else
+                resultado = string.Empty;
+            //resultado = await gestor_factura.Modificar(nueva_factura);
+            if (resultado == "OK")
+            {
+                if (btnGuardar.Text == "Guardar")
+                    MessageBox.Show("La factura se ingresó correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("El factura fue modificada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnLimpiar_Click(this, EventArgs.Empty);
+            }
+            else
+                MessageBox.Show("Se ha producido un error. La factura no pudo ser guardada.", "Atención:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnFormasPago_Click(object sender, EventArgs e)
+        {
+            List<object> lista_parametros = new List<object>();
+            lista_parametros.Add(nueva_factura);
+            FrmFormasPago frm_formas_pago = (FrmFormasPago)ServiciosFactory.ObtenerInstancia().CreaObjeto("formas_pago", lista_parametros);
+            Opacity = 0.5;
+            frm_formas_pago.ntbSubTotal.Text = ntbSubTotal.ValorDecimal.ToString();
+            if (frm_formas_pago.ShowDialog(this) == DialogResult.OK)
+            {
+                ActualizaTotal();
+            }
+            Opacity = 1;
+            btnFormasPago.Focus();
 
         }
     }
