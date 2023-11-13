@@ -49,14 +49,14 @@ namespace Farmaceutica.Presentacion
             List<TipoCliente> list = await gestor_cli.GetTipoCliente();
             metodos.LlenaCombo(cbo_tipo_cliente, list.ToList<object>(), "detalle", "id_tipo_cliente");
 
-            //List<PlanOS> plan = await gestor_cli.GetPlanOS ();
-            //metodos.LlenaCombo(cboPlanOS, plan.ToList<object>(), "desc_plan", "cod_plan");
+            List<PlanOS> plan = await gestor_cli.GetPlanOS ();
+            metodos.LlenaCombo(cboPlanOS, plan.ToList<object>(), "desc_plan", "cod_plan");
 
-            //List<ObraSocial> os = await gestor_cli.GetTipoOS();
-            //metodos.LlenaCombo(cboOS, os.ToList<object>(), "sigla", "codigo_os");
+            List<ObraSocial> os = await gestor_cli.GetTipoOS();
+            metodos.LlenaCombo(cboOS, os.ToList<object>(), "sigla", "codigo_os");
 
-            //List<Localidad> lis = await gestor_cli.GetTipoLocalidad();
-            //metodos.LlenaCombo(cboLocalidad, lis.ToList<object>(), "localidad", "id_localidad");
+            List<Localidad> lis = await gestor_cli.GetTipoLocalidad();
+            metodos.LlenaCombo(cboLocalidad, lis.ToList<object>(), "nom_localidad", "id_localidad");
 
         }
 
