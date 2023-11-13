@@ -50,7 +50,7 @@ namespace AccesoDatos.Datos
 
         public object BuscaRegistro(int registro)
         {
-            Articulo articulo_buscado = (Articulo)factory.CreaObjeto("articulo");
+            Articulo articulo_buscado = (Articulo)ModeloFactory.ObtenerInstancia().CreaObjeto("articulo");
             List<SqlParameter> lista_parametros = new List<SqlParameter>();
             lista_parametros.Add(new SqlParameter("@cod_articulo", registro));
             DataTable nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("SP_ARTICULOS_SELECCIONA_POR_ID", lista_parametros);

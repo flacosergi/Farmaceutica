@@ -15,7 +15,51 @@ namespace AccesoDatos.Datos
     {
         public object BuscaRegistro(int registro)
         {
-            throw new NotImplementedException();
+            Factura nueva_factura = (Factura)ModeloFactory.ObtenerInstancia().CreaObjeto("factura");
+            List<SqlParameter> lista_parametros = new List<SqlParameter>();
+            lista_parametros.Add(new SqlParameter("@nro_factura", registro));
+            DBHelper.ObtenerInstancia().AbreConexionConTransaccion();
+            DataTable nueva_tabla = DBHelper.ObtenerInstancia().CargarTablaEnTransaccion("PA_FACTURAS_OBTENER_POR_NUMERO", lista_parametros);
+            DataRow fila = nueva_tabla.Rows[0];
+            nueva_factura.nro_factura = (int)fila["nro_factura"];
+            nueva_factura.fecha = Convert.ToDateTime(fila["fecha"]);
+            nueva_factura.sucursal.codigo_sucursal = (int)fila["codigo_sucrusal"];
+            nueva_factura.cliente.codigo_cliente = (int)fila["codigo_cliente"];
+            nueva_factura.total = (decimal)fila["Total"];
+            DataTable nueva_tabla_detalle = DBHelper.ObtenerInstancia().CargarTablaEnTransaccion("PA_FACTURAS_OBTENER_DETALLE_POR_FACTURA", lista_parametros);
+            foreach (DataRow fila_detalle in nueva_tabla_detalle.Rows)
+            {
+                DetalleFactura nuevo_detalle = (DetalleFactura)ModeloFactory.ObtenerInstancia().CreaObjeto("detalle_factura");
+                nuevo_detalle.id_detalle_factura = (int)fila_detalle["id_detalle_factura"];
+                nuevo_detalle.nro_factura = (int)fila_detalle["nro_factura"];
+                nuevo_detalle.articulo.cod_articulo = (int)fila_detalle["cod_articulo"];
+                nuevo_detalle.cantidad = (int)fila_detalle["cantidad"];
+                nuevo_detalle.precio = (decimal)fila_detalle["precio"];
+                nuevo_detalle.descuento_os = fila_detalle["decuento_os"] == DBNull.Value ? null : (decimal)fila_detalle["decuento_os"];
+                nuevo_detalle.nro_receta = fila_detalle["nro_receta"] == DBNull.Value ? null : (int)fila_detalle["nro_receta"];
+                nuevo_detalle.medico = fila_detalle["medico"] == DBNull.Value ? null : fila_detalle["nro_receta"].ToString();
+                nuevo_detalle.matricula = fila_detalle["matricula"] == DBNull.Value ? null : (int)fila_detalle["matricula"];
+                nuevo_detalle.fecha_receta = fila_detalle["fecha_receta"] == DBNull.Value ? null : Convert.ToDateTime(fila_detalle["nro_receta"]);
+                nuevo_detalle.cod_autorizacion = fila_detalle["cod_autorizacion"] == DBNull.Value ? null : fila_detalle["cod_autorizacion"].ToString();
+                nuevo_detalle.autorizado = fila_detalle["autorizado"] == DBNull.Value ? null : (bool)fila_detalle["autorizado"];
+                nueva_factura.lista_detalle.Add(nuevo_detalle);
+            }
+
+            DataTable nueva_tabla_pagos = DBHelper.ObtenerInstancia().CargarTablaEnTransaccion("PA_FACTURAS_CARGA_FORMAS_PAGO", lista_parametros);
+            foreach (DataRow fila_pago in nueva_tabla_pagos.Rows)
+            {
+                Factura_FormaPago factura_fp = (Factura_FormaPago)ModeloFactory.ObtenerInstancia().CreaObjeto("factura_forma_pago");
+                factura_fp.id_factura_for_pag = (int)fila_pago["id_factura_for_pag"];
+                factura_fp.nro_factura = (int)fila_pago["nro_factura"];
+                factura_fp.forma_pago.id_forma_pago = (int)fila_pago["id_forma_pago"];
+                factura_fp.cuotas = fila_pago["cuotas"] == DBNull.Value ? null: (int)fila_pago["Cuotas"]; 
+                factura_fp.monto = (decimal)fila_pago["monto"];
+                factura_fp.porc_recargo = fila_pago["porc_recargo"] == DBNull.Value ? null : (decimal)fila_pago["porc_recargo"];
+                factura_fp.observaciones = fila_pago["observaciones"] == DBNull.Value ? null : fila_pago["porc_recargo"].ToString();
+                nueva_factura.lista_formas_pago.Add(factura_fp);
+            }
+            DBHelper.ObtenerInstancia().CierraConexionConTransaccion();
+            return nueva_factura;
         }
 
         public int EliminarRegistro(int codigo)
@@ -39,7 +83,7 @@ namespace AccesoDatos.Datos
             param_factura.Add(new SqlParameter("@codigo_cliente", nueva_factura.cliente.codigo_cliente));
             param_factura.Add(new SqlParameter("@total", nueva_factura.total));
             int resultado = DBHelper.ObtenerInstancia().EjecutaComando("PA_FACTURAS_ALTA", param_factura, null);
-            foreach(DetalleFactura detalle in nueva_factura.lista_detalle)
+            foreach (DetalleFactura detalle in nueva_factura.lista_detalle)
             {
                 detalle.nro_factura = nueva_factura.nro_factura;
                 List<SqlParameter> param_detalle = new List<SqlParameter>();
@@ -52,12 +96,12 @@ namespace AccesoDatos.Datos
                 param_detalle.Add(new SqlParameter("@cantidad", detalle.cantidad));
                 param_detalle.Add(new SqlParameter("@precio", detalle.precio));
                 param_detalle.Add(new SqlParameter("@descuento_os", detalle.descuento_os));
-                param_detalle.Add(new SqlParameter("@nro_receta", detalle.nro_receta == null? DBNull.Value : detalle.nro_receta));
-                param_detalle.Add(new SqlParameter("@medico", detalle.medico));
-                param_detalle.Add(new SqlParameter("@matricula", detalle.matricula));
-                param_detalle.Add(new SqlParameter("@fecha_receta", detalle.fecha_receta));
-                param_detalle.Add(new SqlParameter("@cod_autorizacion", detalle.cod_autorizacion));
-                param_detalle.Add(new SqlParameter("@autorizado", detalle.autorizado));
+                param_detalle.Add(new SqlParameter("@nro_receta", detalle.nro_receta == null ? DBNull.Value : detalle.nro_receta));
+                param_detalle.Add(new SqlParameter("@medico", detalle.medico == null ? DBNull.Value : detalle.medico));
+                param_detalle.Add(new SqlParameter("@matricula", detalle.matricula == null ? DBNull.Value : detalle.matricula));
+                param_detalle.Add(new SqlParameter("@fecha_receta", detalle.fecha_receta == null ? DBNull.Value : detalle.fecha_receta));
+                param_detalle.Add(new SqlParameter("@cod_autorizacion", detalle.cod_autorizacion == null ? DBNull.Value : detalle.cod_autorizacion));
+                param_detalle.Add(new SqlParameter("@autorizado", detalle.autorizado == null ? DBNull.Value : detalle.autorizado));
                 detalle.id_detalle_factura = DBHelper.ObtenerInstancia().EjecutaComando("PA_FACTURAS_DETALLE_FACTURA_ALTA", param_detalle, salida_detalle);
 
                 List<SqlParameter> param_stock = new List<SqlParameter>();
@@ -83,11 +127,8 @@ namespace AccesoDatos.Datos
                 param_factura_fp.Add(new SqlParameter("@observaciones", factura_fp.observaciones));
                 resultado = DBHelper.ObtenerInstancia().EjecutaComando("PA_FACTURAS_FORMAS_PAGO_ALTA", param_factura_fp, null);
             }
-
-
             DBHelper.ObtenerInstancia().CierraConexionConTransaccion();
             return resultado;
-
         }
 
         public List<KeyValuePair<int, string>> ListaSimpleRegistros()

@@ -98,6 +98,32 @@ public class DBHelper
         }
     }
 
+    public DataTable CargarTablaEnTransaccion(string SP, List<SqlParameter>? lista_parametros = null)
+    {
+        try
+        {
+            DataTable Tabla = new DataTable();
+            comando.CommandText = SP;
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.Clear();
+            if (lista_parametros != null)
+            {
+                foreach (SqlParameter param in lista_parametros)
+                {
+                    comando.Parameters.Add(param);
+                }
+            }
+            Tabla.Load(comando.ExecuteReader());
+            return Tabla;
+        }
+        catch (SqlException ex)
+        {
+            if (conexion != null && conexion.State == ConnectionState.Open)
+                conexion.Close();
+            throw ex;
+        }
+    }
+
     public int EjecutaComando(string SP, List<SqlParameter> lista_param, SqlParameter? salida)
     {
         try

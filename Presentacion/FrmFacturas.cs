@@ -314,9 +314,13 @@ namespace Farmaceutica.Presentacion
             decimal imputado = 0;
             foreach (Factura_FormaPago factura_fp in nueva_factura.lista_formas_pago)
             {
-                decimal inicial = Math.Round(factura_fp.monto / (1 + factura_fp.porc_recargo),2);
-                imputado += inicial;
-                recargo += Math.Round(inicial * factura_fp.porc_recargo, 2);
+                decimal inicial;
+                if (factura_fp.porc_recargo != null)
+                {
+                    inicial = Math.Round(factura_fp.monto / (decimal)(1 + factura_fp.porc_recargo), 2);
+                    imputado += inicial;
+                    recargo += Math.Round(inicial * (decimal)factura_fp.porc_recargo, 2);
+                }
             }
             ntbRecargoFactura.Focus();
             ntbRecargoFactura.Text = recargo.ToString();
