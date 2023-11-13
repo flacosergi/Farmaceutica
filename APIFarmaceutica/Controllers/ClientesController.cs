@@ -102,7 +102,7 @@ namespace APIFarmaceutica.Controllers
         }
 
         // POST /api/Cliente/CargarCliente
-        [HttpPost, Route("CargarCliente")]
+        [HttpPost, Route("IngresarCliente")]
         public IActionResult PostCliente(Cliente nuevo_cliente)
         {
             DaoCliente dao = (DaoCliente)factory.CreaObjeto("DaoCliente");
