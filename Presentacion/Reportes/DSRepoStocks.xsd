@@ -9,17 +9,17 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DSRepoStocks" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="DSRepoStocks" msprop:Generator_DataSetName="DSRepoStocks">
+  <xs:element name="DSRepoStocks" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSRepoStocks" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSRepoStocks">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DTRepoStocks" msprop:Generator_RowEvHandlerName="DTRepoStocksRowChangeEventHandler" msprop:Generator_RowDeletedName="DTRepoStocksRowDeleted" msprop:Generator_RowDeletingName="DTRepoStocksRowDeleting" msprop:Generator_RowEvArgName="DTRepoStocksRowChangeEvent" msprop:Generator_TablePropName="DTRepoStocks" msprop:Generator_RowChangedName="DTRepoStocksRowChanged" msprop:Generator_RowChangingName="DTRepoStocksRowChanging" msprop:Generator_TableClassName="DTRepoStocksDataTable" msprop:Generator_RowClassName="DTRepoStocksRow" msprop:Generator_TableVarName="tableDTRepoStocks" msprop:Generator_UserTableName="DTRepoStocks">
+        <xs:element name="DTRepoStocks" msprop:Generator_RowEvHandlerName="DTRepoStocksRowChangeEventHandler" msprop:Generator_RowDeletedName="DTRepoStocksRowDeleted" msprop:Generator_RowDeletingName="DTRepoStocksRowDeleting" msprop:Generator_RowEvArgName="DTRepoStocksRowChangeEvent" msprop:Generator_TablePropName="DTRepoStocks" msprop:Generator_RowChangedName="DTRepoStocksRowChanged" msprop:Generator_UserTableName="DTRepoStocks" msprop:Generator_RowChangingName="DTRepoStocksRowChanging" msprop:Generator_RowClassName="DTRepoStocksRow" msprop:Generator_TableClassName="DTRepoStocksDataTable" msprop:Generator_TableVarName="tableDTRepoStocks">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="sucursal" msprop:Generator_ColumnPropNameInRow="sucursal" msprop:Generator_ColumnPropNameInTable="sucursalColumn" msprop:Generator_ColumnVarNameInTable="columnsucursal" msprop:Generator_UserColumnName="sucursal" type="xs:string" minOccurs="0" />
-              <xs:element name="articulo" msprop:Generator_ColumnPropNameInRow="articulo" msprop:Generator_ColumnPropNameInTable="articuloColumn" msprop:Generator_ColumnVarNameInTable="columnarticulo" msprop:Generator_UserColumnName="articulo" type="xs:string" minOccurs="0" />
-              <xs:element name="stock_minimo" msprop:Generator_ColumnPropNameInRow="stock_minimo" msprop:Generator_ColumnPropNameInTable="stock_minimoColumn" msprop:Generator_ColumnVarNameInTable="columnstock_minimo" msprop:Generator_UserColumnName="stock_minimo" type="xs:int" minOccurs="0" />
-              <xs:element name="stock_actual" msprop:Generator_ColumnPropNameInRow="stock_actual" msprop:Generator_ColumnPropNameInTable="stock_actualColumn" msprop:Generator_ColumnVarNameInTable="columnstock_actual" msprop:Generator_UserColumnName="stock_actual" type="xs:int" minOccurs="0" />
-              <xs:element name="estado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_UserColumnName="estado" type="xs:string" minOccurs="0" />
+              <xs:element name="sucursal" msprop:Generator_ColumnPropNameInTable="sucursalColumn" msprop:Generator_ColumnPropNameInRow="sucursal" msprop:Generator_UserColumnName="sucursal" msprop:Generator_ColumnVarNameInTable="columnsucursal" type="xs:string" minOccurs="0" />
+              <xs:element name="articulo" msprop:Generator_ColumnPropNameInTable="articuloColumn" msprop:Generator_ColumnPropNameInRow="articulo" msprop:Generator_UserColumnName="articulo" msprop:Generator_ColumnVarNameInTable="columnarticulo" type="xs:string" minOccurs="0" />
+              <xs:element name="stockMinimo" msprop:Generator_ColumnPropNameInTable="stockMinimoColumn" msprop:Generator_ColumnPropNameInRow="stockMinimo" msprop:Generator_UserColumnName="stockMinimo" msprop:Generator_ColumnVarNameInTable="columnstockMinimo" type="xs:int" minOccurs="0" />
+              <xs:element name="stockActual" msprop:Generator_ColumnPropNameInTable="stockActualColumn" msprop:Generator_ColumnPropNameInRow="stockActual" msprop:Generator_UserColumnName="stockActual" msprop:Generator_ColumnVarNameInTable="columnstockActual" type="xs:int" minOccurs="0" />
+              <xs:element name="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_UserColumnName="estado" msprop:Generator_ColumnVarNameInTable="columnestado" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

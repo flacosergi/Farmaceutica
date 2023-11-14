@@ -244,6 +244,7 @@
             // 
             // cboFormasPago
             // 
+            cboFormasPago.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFormasPago.FormattingEnabled = true;
             cboFormasPago.Location = new Point(91, 45);
             cboFormasPago.Name = "cboFormasPago";

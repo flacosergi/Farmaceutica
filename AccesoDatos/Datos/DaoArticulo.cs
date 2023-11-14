@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 using AccesoDatos.Modelos;
 using AccesoDatos.Servicios;
 
@@ -69,6 +70,7 @@ namespace AccesoDatos.Datos
                 articulo_buscado.activo = Convert.ToBoolean(fila["activo"].ToString());
                 articulo_buscado.imagen = (string)fila["imagen"];
             }
+
             return articulo_buscado;
         }
 

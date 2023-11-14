@@ -22,11 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Presentacion\Reportes\ReporteFacturas.rdlc" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Presentacion\Reportes\ReporteFacturas.rdlc" />
     <None Remove="Presentacion\Reportes\ReporteStocks.rdlc" />
   </ItemGroup>
 
@@ -45,11 +40,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Presentacion\Reportes\DSFacturas.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>DSFacturas.xsd</DependentUpon>
-    </Compile>
     <Compile Update="Presentacion\Reportes\DSRepoStocks.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -74,10 +64,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Presentacion\Reportes\DSFacturas.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSFacturas.Designer.cs</LastGenOutput>
-    </None>
     <None Update="Presentacion\Reportes\DSRepoStocks.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DSRepoStocks.Designer.cs</LastGenOutput>

@@ -27,22 +27,24 @@ namespace APIFarmaceutica.Controllers
             return dao.ObtieneFormasPago();
         }
 
-        // GET: api/<FacturaController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        // GET: /api/Factura/Obtener_Lista_Simple
+        [HttpGet, Route("Obtener_Lista_Simple")]
+        public IList<KeyValuePair<int, string>> ObtenerListaSimple()
         {
-            return new string[] { "value1", "value2" };
+            DaoFactura dao = (DaoFactura)ModeloFactory.ObtenerInstancia().CreaObjeto("DaoFactura");
+            return dao.ListaSimpleRegistros();
         }
 
-        // GET api/<FacturaController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET /api/Factura/ObtenerFacturaPorID/5
+        [HttpGet, Route("ObtenerFacturaPorID/{id}")]
+        public Factura GetFacturaByID(int id)
         {
-            return "value";
+            DaoFactura dao = (DaoFactura)ModeloFactory.ObtenerInstancia().CreaObjeto("DaoFactura");
+            return (Factura)dao.BuscaRegistro(id);
         }
 
 
-        // POST /api/Facturas/IngresarFactura
+        // POST /api/Factura/IngresarFactura
         [HttpPost, Route("IngresarFactura")]
         public IActionResult PostFactura(Factura nueva_factura)
         {
@@ -53,10 +55,15 @@ namespace APIFarmaceutica.Controllers
                 return BadRequest();
         }
 
-        // PUT api/<FacturaController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // PUT /api/Factura/ModificarFactura
+        [HttpPut, Route("ModificarFactura")]
+        public IActionResult PutFactura(Factura nueva_factura)
         {
+            DaoFactura dao = (DaoFactura)ModeloFactory.ObtenerInstancia().CreaObjeto("DaoFactura");
+            if (dao.ModificarRegistro(nueva_factura) == 0)
+                return Ok();
+            else
+                return BadRequest();
         }
 
         // DELETE api/<FacturaController>/5

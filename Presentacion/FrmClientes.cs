@@ -38,10 +38,14 @@ namespace Farmaceutica.Presentacion
         private async void FrmClientes_Load(object sender, EventArgs e)
         {
             dateFechaAlta.Value = DateTime.Today;
-            foreach (Control control in this.Controls)
-            {
-                control.Enabled = true;
-            }
+
+            btnLimpiar.Enabled = false;
+            btnGuardar.Enabled = false;
+
+            //foreach (Control control in this.Controls)
+            //{
+            //    control.Enabled = true;
+            //}
 
             List<TipoDoc> lista = await gestor_cli.GetTipoDoc();
             metodos.LlenaCombo(cbo_tipo_doc, lista.ToList<object>(), "tipo_doc", "id_tipo_doc");
@@ -49,7 +53,7 @@ namespace Farmaceutica.Presentacion
             List<TipoCliente> list = await gestor_cli.GetTipoCliente();
             metodos.LlenaCombo(cbo_tipo_cliente, list.ToList<object>(), "detalle", "id_tipo_cliente");
 
-            List<PlanOS> plan = await gestor_cli.GetPlanOS ();
+            List<PlanOS> plan = await gestor_cli.GetPlanOS();
             metodos.LlenaCombo(cboPlanOS, plan.ToList<object>(), "desc_plan", "cod_plan");
 
             List<ObraSocial> os = await gestor_cli.GetTipoOS();
@@ -110,25 +114,29 @@ namespace Farmaceutica.Presentacion
             }
             else
             {
-                btnLimpiar_Click(this, MouseEventArgs.Empty);
+                Limpiar();
                 Opacity = 1;
                 return;
             }
             btnNuevo.Enabled = false;
             btnEditar.Enabled = false;
-            btnConsultar.Enabled = false;
+
 
         }
 
-        private void btnLimpiar_Click(FrmClientes frmClientes, EventArgs empty)
+        private void Limpiar()
         {
             metodos.LimpiaControles(pnlCarga);
             btnGuardar.Enabled = false;
             pnlCarga.Enabled = false;
+            btnLimpiar.Enabled = false;
 
             btnNuevo.Enabled = true;
             btnEditar.Enabled = true;
-            btnConsultar.Enabled = true;
+            txtNombre.Enabled = false;
+            txtApellido.Enabled = false;
+            txtRazonSocial.Enabled = false;
+
             lbl_cod_cli.Text = "000";
             metodos.BloqueaControles(pnlCarga, false);
 
@@ -141,27 +149,50 @@ namespace Farmaceutica.Presentacion
             RellenarCliente(Modificar);
             btnGuardar.Text = "Modificar";
             btnGuardar.Enabled = true;
+            btnLimpiar.Enabled = true;
         }
 
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
             if (ValidarControles() == false)
                 return;
-            nuevo_cliente.nombre = txtNombre.Text;
+            if (txtRazonSocial.Text == string.Empty)
+            {
+                nuevo_cliente.nombre = txtNombre.Text;
+                nuevo_cliente.apellido = txtApellido.Text;
+                nuevo_cliente.razon_social = null;
+
+            }
+            else
+            {
+                nuevo_cliente.nombre = null;
+                nuevo_cliente.apellido = null;
+                nuevo_cliente.razon_social = txtRazonSocial.Text;
+            }
+
             nuevo_cliente.tipo_cliente = (TipoCliente)cbo_tipo_cliente.SelectedItem;
             nuevo_cliente.tipo_doc = (TipoDoc)cbo_tipo_doc.SelectedItem;
             nuevo_cliente.localidad = (Localidad)cboLocalidad.SelectedItem;
-            nuevo_cliente.obra_social = (ObraSocial)cboLocalidad.SelectedItem;
-            nuevo_cliente.plan_os = (PlanOS)cboPlanOS.SelectedItem;
-            nuevo_cliente.fecha_alta = dateFechaAlta.Value;
-            nuevo_cliente.apellido = txtApellido.Text;
-            nuevo_cliente.razon_social = txtRazonSocial.Text;
-            nuevo_cliente.calle = txtCalle.Text;
-            nuevo_cliente.cod_postal = Convert.ToInt32(txtCP);
-            nuevo_cliente.numero = Convert.ToInt32(txtNroCalle);
-            nuevo_cliente.num_afiliado = Convert.ToInt64(txtNroAfil);
-            nuevo_cliente.nro_doc = Convert.ToInt32(txtNroDoc);
+            if (cboOS.SelectedIndex == -1)
+            {
+                nuevo_cliente.obra_social.codigo_os = 0;
+                nuevo_cliente.num_afiliado = null;
+                nuevo_cliente.plan_os.cod_plan = 0;
+            }
 
+            else
+            { 
+             nuevo_cliente.obra_social = (ObraSocial)cboOS.SelectedItem;
+             nuevo_cliente.plan_os = (PlanOS)cboPlanOS.SelectedItem;
+             nuevo_cliente.num_afiliado = (int)txtNroAfil.ValorEntero;
+            }
+           
+           
+            nuevo_cliente.fecha_alta = dateFechaAlta.Value;
+            nuevo_cliente.calle = txtCalle.Text;
+            nuevo_cliente.cod_postal = (int)txtCP.ValorEntero;
+            nuevo_cliente.numero = (int)txtNroCalle.ValorEntero;
+            nuevo_cliente.nro_doc = long.Parse(txtNroDoc.Text);
 
             string resultado;
             if (btnGuardar.Text == "Guardar")
@@ -169,29 +200,112 @@ namespace Farmaceutica.Presentacion
             else
                 resultado = await gestor_cli.ModificarCliente(nuevo_cliente);
 
-
             if (resultado == "OK")
             {
                 if (btnGuardar.Text == "Guardar")
-                    MessageBox.Show("El artículo se ingresó correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("El cliente se ingresó correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
-                    MessageBox.Show("El artículo fue modificado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnLimpiar_Click(this, EventArgs.Empty);
+                    MessageBox.Show("El cliente fue modificado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Limpiar();
             }
             else
-                MessageBox.Show("Se ha producido un error. El artículo no pudo ser guardado.", "Atención:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se ha producido un error. El cliente no pudo ser guardado.", "Atención:", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
         private bool ValidarControles()
         {
-            if (txtNombre.Text == string.Empty)
+            if (cbo_tipo_cliente.SelectedIndex == 0)
             {
-                MessageBox.Show("Debe indicar un Nombre.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtNombre.Focus();
-                return false;
+                if (txtNombre.Text == string.Empty)
+                {
+                    MessageBox.Show("Debe indicar un Nombre.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtNombre.Focus();
+                    return false;
+                }
             }
+
             return true;
+        }
+
+        private void btnAgregaImagen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
+        private void txtNroAfil_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            pnlCarga.Enabled = true;
+            btnGuardar.Enabled = true;
+            btnNuevo.Enabled = false;
+            btnEditar.Enabled = false;
+            btnLimpiar.Enabled = true;
+
+
+        }
+
+        private void cbo_tipo_cliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlCarga_Paint(object sender, PaintEventArgs e)
+        {
+            if (cbo_tipo_cliente.SelectedIndex == 0)
+            {
+                txtRazonSocial.Text = null;
+                txtNombre.Enabled = true;
+                txtApellido.Enabled = true;
+                txtRazonSocial.Enabled = false;
+            }
+            if (cbo_tipo_cliente.SelectedIndex == 1 || cbo_tipo_cliente.SelectedIndex == 2 || cbo_tipo_cliente.SelectedIndex == 3)
+            {
+                txtNombre.Text = string.Empty;
+                txtApellido.Text = string.Empty;
+                txtNombre.Enabled = false;
+                txtApellido.Enabled = false;
+                txtRazonSocial.Enabled = true;
+            }
+        }
+
+        private void cbo_tipo_cliente_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if ((int)cbo_tipo_cliente.SelectedValue == 1)
+            {
+                txtNombre.Enabled = true;
+                txtNombre.Text = string.Empty;
+                txtApellido.Enabled = true;
+                txtApellido.Text = string.Empty;
+                txtRazonSocial.Enabled = false;
+                txtRazonSocial.Text = string.Empty;
+                txtNombre.Focus();
+            }
+
+            else
+            {
+                txtNombre.Enabled = false;
+                txtNombre.Text = string.Empty;
+                txtApellido.Enabled = false;
+                txtApellido.Text = string.Empty;
+                txtRazonSocial.Enabled = true;
+                txtRazonSocial.Text = string.Empty;
+                txtRazonSocial.Focus();
+            }
         }
     }
 }

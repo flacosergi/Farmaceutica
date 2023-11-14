@@ -44,6 +44,8 @@ namespace Farmaceutica.Servicios
                     return new FrmFacturas(this);
                 case "buscador_clientes":
                     return new FrmBuscador(this, "/api/Clientes/Obtener_Lista_Simple", "Seleccionar Cliente");
+                case "buscador_facturas":
+                    return new FrmBuscador(this, "/api/Factura/Obtener_Lista_Simple", "Seleccionar Factura");
                 case "articulos":
                     return new FrmArticulos(this);
                 case "cliente":
@@ -51,20 +53,27 @@ namespace Farmaceutica.Servicios
                 case "formas_pago":
                     {
                         Factura factura = (Factura)ModeloFactory.ObtenerInstancia().CreaObjeto("factura");
-                        if (lista_parametros != null) 
+                        int caso = 0;
+                        if (lista_parametros != null)
+                        {
                             factura = (Factura)lista_parametros[0];
-                        return new FrmFormasPago(ref factura);
+                            caso = (int)lista_parametros[1];
+                        }
+                        return new FrmFormasPago(ref factura, caso);
                     }
                 case "repoStock":
-                    return new FrmRepoStocks();
+                    return new FrmRepoStocks(this);
                 case "repoFactura":
                     return new FrmReporteFacturas(this);
-				case "GestorReporteFacturas":
-					return new GestorReporteFacturas();
+        				case "GestorReporteFacturas":
+				          	return new GestorReporteFacturas();
+                case "GestorReporteStock":
+                    return new GestorReporteStock();
+                case "GestorSucursal":
+                    return new GestorSucursal();
 
 
-
-				default:
+          			default:
                     throw new ArgumentException($"Tipo de objeto inválido: {tipo}");
             }
         }

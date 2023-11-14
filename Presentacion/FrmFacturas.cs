@@ -22,6 +22,9 @@ namespace Farmaceutica.Presentacion
         Factura nueva_factura;
         Articulo nuevo_articulo;
 
+        const int Consultar = 1;
+        const int Modificar = 2;
+
         public FrmFacturas(ServiciosFactory fact)
         {
             InitializeComponent();
@@ -69,6 +72,8 @@ namespace Farmaceutica.Presentacion
             btnAgregarDetalle.Enabled = false;
             btnAutorizar.Enabled = false;
             nueva_factura = (Factura)ModeloFactory.ObtenerInstancia().CreaObjeto("factura");
+            lbl_nro_factura.Text = "00000000";
+            dgvDetalleFactura.Enabled = true;
 
         }
 
@@ -101,8 +106,10 @@ namespace Farmaceutica.Presentacion
         private void btnNuevoCliente_Click(object sender, EventArgs e)
         {
             FrmClientes clientes = (FrmClientes)ServiciosFactory.ObtenerInstancia().CreaObjeto("cliente");
+            Opacity = 0.5;
             Cursor.Current = Cursors.WaitCursor;
             clientes.ShowDialog(this);
+            Opacity = 1;
         }
 
         private async void FrmFacturas_Load(object sender, EventArgs e)
@@ -268,11 +275,11 @@ namespace Farmaceutica.Presentacion
             nuevo_detalle.articulo = nuevo_articulo;
             nuevo_detalle.cantidad = (int)ntbCantidad.ValorEntero;
             nuevo_detalle.precio = nuevo_articulo.precio;
-            nuevo_detalle.descuento_os = (decimal)ntbDescuento.ValorDecimal * nuevo_articulo.precio;
+            if (ntbDescuento.ValorDecimal == 0) nuevo_detalle.descuento_os = null; else nuevo_detalle.descuento_os = (decimal)ntbDescuento.ValorDecimal * nuevo_articulo.precio;
             nuevo_detalle.nro_receta = null;
-            nuevo_detalle.medico = txtMedico.Text;
-            nuevo_detalle.matricula = (int)ntbMatricula.ValorEntero;
-            nuevo_detalle.fecha_receta = dtpFechaReceta.Value;
+            if (txtMedico.Text == string.Empty) nuevo_detalle.medico = null; else nuevo_detalle.medico = txtMedico.Text;
+            if (txtMedico.Text == string.Empty) nuevo_detalle.matricula = null; else nuevo_detalle.matricula = (int)ntbMatricula.ValorEntero;
+            if (txtMedico.Text == string.Empty) nuevo_detalle.fecha_receta = null; else nuevo_detalle.fecha_receta = dtpFechaReceta.Value;
             nuevo_detalle.cod_autorizacion = "abc123";
             nuevo_detalle.autorizado = true;
             nueva_factura.lista_detalle.Add(nuevo_detalle);
@@ -315,12 +322,10 @@ namespace Farmaceutica.Presentacion
             foreach (Factura_FormaPago factura_fp in nueva_factura.lista_formas_pago)
             {
                 decimal inicial;
-                if (factura_fp.porc_recargo != null)
-                {
-                    inicial = Math.Round(factura_fp.monto / (decimal)(1 + factura_fp.porc_recargo), 2);
-                    imputado += inicial;
-                    recargo += Math.Round(inicial * (decimal)factura_fp.porc_recargo, 2);
-                }
+
+                inicial = Math.Round(factura_fp.monto / (decimal)(1 + (factura_fp.porc_recargo == null ? 0 : factura_fp.porc_recargo)), 2);
+                imputado += inicial;
+                recargo += Math.Round((decimal)(inicial * (factura_fp.porc_recargo == null ? 0 : factura_fp.porc_recargo)), 2);
             }
             ntbRecargoFactura.Focus();
             ntbRecargoFactura.Text = recargo.ToString();
@@ -364,7 +369,7 @@ namespace Farmaceutica.Presentacion
             if (btnGuardar.Text == "Guardar")
                 resultado = await gestor_factura.Ingresar(nueva_factura);
             else
-                resultado = string.Empty;
+                resultado = await gestor_factura.Modificar(nueva_factura);
             //resultado = await gestor_factura.Modificar(nueva_factura);
             if (resultado == "OK")
             {
@@ -382,6 +387,9 @@ namespace Farmaceutica.Presentacion
         {
             List<object> lista_parametros = new List<object>();
             lista_parametros.Add(nueva_factura);
+            int caso = 0;
+            if (dgvDetalleFactura.Enabled == true) caso = Modificar; else caso = Consultar;
+            lista_parametros.Add(caso);
             FrmFormasPago frm_formas_pago = (FrmFormasPago)ServiciosFactory.ObtenerInstancia().CreaObjeto("formas_pago", lista_parametros);
             Opacity = 0.5;
             frm_formas_pago.ntbSubTotal.Text = ntbSubTotal.ValorDecimal.ToString();
@@ -391,6 +399,85 @@ namespace Farmaceutica.Presentacion
             }
             Opacity = 1;
             btnFormasPago.Focus();
+
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            RellenarArticulo(Modificar);
+            btnGuardar.Text = "Modificar";
+            btnGuardar.Enabled = true;
+        }
+
+        private async void RellenarArticulo(int accion)
+        {
+            FrmBuscador buscador_facturas = (FrmBuscador)ServiciosFactory.ObtenerInstancia().CreaObjeto("buscador_facturas");
+            Opacity = 0.5;
+            if (buscador_facturas.ShowDialog(this) == DialogResult.OK)
+            {
+                int codigo_buscado = Convert.ToInt32(buscador_facturas.dgvBusqueda.SelectedRows[0].Cells[0].Value.ToString());
+                object? fra = await gestor_factura.ConsultarPorID(codigo_buscado);
+                Factura? factura_buscada = (Factura?)fra;
+                if (factura_buscada != null)
+                {
+                    Opacity = 1;
+                    lbl_nro_factura.Text = factura_buscada.nro_factura.ToString("D8");
+                    dtpFechaFactura.Value = factura_buscada.fecha;
+                    cbo_sucursales.SelectedValue = factura_buscada.sucursal.codigo_sucursal;
+                    if (factura_buscada.cliente.razon_social == null) txtCliente.Text = factura_buscada.cliente.apellido + ", " + factura_buscada.cliente.nombre;
+                    else txtCliente.Text = factura_buscada.cliente.razon_social;
+                    txtObraSocial.Text = factura_buscada.cliente.obra_social.razon_social_os;
+                    ntbNumAfiliado.Text = factura_buscada.cliente.num_afiliado.ToString();
+                    txtPlan.Text = factura_buscada.cliente.plan_os.desc_plan;
+                    foreach (DetalleFactura detalle in factura_buscada.lista_detalle)
+                    {
+                        dgvDetalleFactura.Rows.Add(detalle.articulo.cod_articulo,
+                                           detalle.articulo.detalle,
+                                           detalle.cantidad,
+                                           detalle.precio,
+                                           detalle.descuento_os,
+                                           detalle.precio - (detalle.descuento_os == null ? 0 : detalle.descuento_os),
+                                           "Eliminar",
+                                           1);
+
+
+                    }
+                    pnlTablaDetalle.Enabled = true;
+                    pnlDetalle.Enabled = true;
+                    btnFormasPago.Enabled = true;
+                    nueva_factura = factura_buscada;
+                    ActualizaTotal();
+                    btnBuscarArticulo.Focus();
+
+                    if (accion == Consultar)
+                    {
+                        metodos.BloqueaControles(pnlCabecera, true);
+                        metodos.BloqueaControles(pnlDetalle, true);
+                      }
+                }
+                else
+                {
+                    Opacity = 1;
+                    MessageBox.Show("No pudo encontrarse la factura buscada.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                btnLimpiar_Click(this, MouseEventArgs.Empty);
+                Opacity = 1;
+                return;
+            }
+            btnNueva.Enabled = false;
+            btnEditar.Enabled = false;
+            btnConsultar.Enabled = false;
+
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            RellenarArticulo(Consultar);
+            btnGuardar.Enabled = false;
+            pnlTablaDetalle.Enabled = false;
 
         }
     }
