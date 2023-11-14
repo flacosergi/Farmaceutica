@@ -43,11 +43,6 @@ namespace APIFarmaceutica.Controllers
             return "value";
         }
 
-        // POST api/<ClienteController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
 
         // PUT api/<ClienteController>/5
         [HttpPut("{id}")]

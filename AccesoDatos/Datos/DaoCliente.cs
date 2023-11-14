@@ -87,8 +87,8 @@ namespace AccesoDatos.Datos
             param_cliente.Add(new SqlParameter("@nro_calle", NuevoArticulo.numero));
             param_cliente.Add(new SqlParameter("@codigo_postal", NuevoArticulo.cod_postal));
             param_cliente.Add(new SqlParameter("@id_localidad", NuevoArticulo.localidad.id_localidad));
-            param_cliente.Add(new SqlParameter("@id_OS", NuevoArticulo.obra_social));
-            param_cliente.Add(new SqlParameter("@id_plan_OS", NuevoArticulo.plan_os));
+            param_cliente.Add(new SqlParameter("@id_OS", NuevoArticulo.obra_social.codigo_os));
+            param_cliente.Add(new SqlParameter("@id_plan_OS", NuevoArticulo.plan_os.cod_plan));
             param_cliente.Add(new SqlParameter("@fecha_alta", NuevoArticulo.fecha_alta));
             param_cliente.Add(new SqlParameter("@nro_afiliado", NuevoArticulo.num_afiliado));
             int resultado = DBHelper.ObtenerInstancia().EjecutaComando("SP_CLIENTES_ALTA", param_cliente, null);

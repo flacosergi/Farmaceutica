@@ -29,24 +29,22 @@
         private void InitializeComponent()
         {
             pnlCarga = new Panel();
+            txtNroDoc = new NumberTextBox.NumberTextBox();
+            txtNroAfil = new NumberTextBox.NumberTextBox();
             txtRazonSocial = new TextBox();
             dateFechaAlta = new DateTimePicker();
-            txtNroAfil = new NumberTextBox.NumberTextBox();
             label15 = new Label();
             label14 = new Label();
             cboPlanOS = new ComboBox();
             cboOS = new ComboBox();
             cboLocalidad = new ComboBox();
-            button1 = new Button();
             txtCP = new NumberTextBox.NumberTextBox();
             label13 = new Label();
-            txtNroDoc = new TextBox();
             label12 = new Label();
             txtApellido = new TextBox();
             label2 = new Label();
-            txtCalle = new NumberTextBox.NumberTextBox();
+            txtCalle = new TextBox();
             txtNroCalle = new NumberTextBox.NumberTextBox();
-            btnAgregaImagen = new Button();
             label11 = new Label();
             label10 = new Label();
             label9 = new Label();
@@ -76,24 +74,22 @@
             // 
             pnlCarga.BackColor = Color.White;
             pnlCarga.BorderStyle = BorderStyle.FixedSingle;
+            pnlCarga.Controls.Add(txtNroDoc);
+            pnlCarga.Controls.Add(txtNroAfil);
             pnlCarga.Controls.Add(txtRazonSocial);
             pnlCarga.Controls.Add(dateFechaAlta);
-            pnlCarga.Controls.Add(txtNroAfil);
             pnlCarga.Controls.Add(label15);
             pnlCarga.Controls.Add(label14);
             pnlCarga.Controls.Add(cboPlanOS);
             pnlCarga.Controls.Add(cboOS);
             pnlCarga.Controls.Add(cboLocalidad);
-            pnlCarga.Controls.Add(button1);
             pnlCarga.Controls.Add(txtCP);
             pnlCarga.Controls.Add(label13);
-            pnlCarga.Controls.Add(txtNroDoc);
             pnlCarga.Controls.Add(label12);
             pnlCarga.Controls.Add(txtApellido);
             pnlCarga.Controls.Add(label2);
             pnlCarga.Controls.Add(txtCalle);
             pnlCarga.Controls.Add(txtNroCalle);
-            pnlCarga.Controls.Add(btnAgregaImagen);
             pnlCarga.Controls.Add(label11);
             pnlCarga.Controls.Add(label10);
             pnlCarga.Controls.Add(label9);
@@ -114,12 +110,54 @@
             pnlCarga.Size = new Size(712, 344);
             pnlCarga.TabIndex = 1;
             // 
+            // txtNroDoc
+            // 
+            txtNroDoc.AceptaNegativos = false;
+            txtNroDoc.AceptaValorCero = false;
+            txtNroDoc.CerosIzquierda = false;
+            txtNroDoc.Decimales = 0;
+            txtNroDoc.DecimalesConFormato = 0;
+            txtNroDoc.Digitos = 8;
+            txtNroDoc.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
+            txtNroDoc.Location = new Point(446, 94);
+            txtNroDoc.Name = "txtNroDoc";
+            txtNroDoc.SimboloMoneda = "$";
+            txtNroDoc.Size = new Size(193, 23);
+            txtNroDoc.TabIndex = 40;
+            txtNroDoc.TextAlign = HorizontalAlignment.Right;
+            txtNroDoc.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Entero;
+            txtNroDoc.ValorDecimal = 0D;
+            txtNroDoc.ValorEntero = 0L;
+            txtNroDoc.ValorMaximo = null;
+            txtNroDoc.ValorMinimo = null;
+            // 
+            // txtNroAfil
+            // 
+            txtNroAfil.AceptaNegativos = false;
+            txtNroAfil.AceptaValorCero = false;
+            txtNroAfil.CerosIzquierda = false;
+            txtNroAfil.Decimales = 0;
+            txtNroAfil.DecimalesConFormato = 0;
+            txtNroAfil.Digitos = 15;
+            txtNroAfil.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
+            txtNroAfil.Location = new Point(146, 269);
+            txtNroAfil.Name = "txtNroAfil";
+            txtNroAfil.SimboloMoneda = "$";
+            txtNroAfil.Size = new Size(193, 23);
+            txtNroAfil.TabIndex = 12;
+            txtNroAfil.TextAlign = HorizontalAlignment.Right;
+            txtNroAfil.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Entero;
+            txtNroAfil.ValorDecimal = 0D;
+            txtNroAfil.ValorEntero = 0L;
+            txtNroAfil.ValorMaximo = null;
+            txtNroAfil.ValorMinimo = null;
+            // 
             // txtRazonSocial
             // 
             txtRazonSocial.Location = new Point(446, 130);
             txtRazonSocial.Name = "txtRazonSocial";
             txtRazonSocial.Size = new Size(193, 23);
-            txtRazonSocial.TabIndex = 42;
+            txtRazonSocial.TabIndex = 5;
             // 
             // dateFechaAlta
             // 
@@ -128,28 +166,7 @@
             dateFechaAlta.Margin = new Padding(3, 2, 3, 2);
             dateFechaAlta.Name = "dateFechaAlta";
             dateFechaAlta.Size = new Size(196, 23);
-            dateFechaAlta.TabIndex = 41;
-            // 
-            // txtNroAfil
-            // 
-            txtNroAfil.AceptaNegativos = false;
-            txtNroAfil.AceptaValorCero = false;
-            txtNroAfil.CerosIzquierda = false;
-            txtNroAfil.Decimales = 2;
-            txtNroAfil.DecimalesConFormato = 2;
-            txtNroAfil.Digitos = 10;
-            txtNroAfil.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
-            txtNroAfil.Location = new Point(146, 270);
-            txtNroAfil.Name = "txtNroAfil";
-            txtNroAfil.SimboloMoneda = "$";
-            txtNroAfil.Size = new Size(193, 23);
-            txtNroAfil.TabIndex = 40;
-            txtNroAfil.TextAlign = HorizontalAlignment.Right;
-            txtNroAfil.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Moneda;
-            txtNroAfil.ValorDecimal = 0D;
-            txtNroAfil.ValorEntero = 0L;
-            txtNroAfil.ValorMaximo = null;
-            txtNroAfil.ValorMinimo = null;
+            dateFechaAlta.TabIndex = 13;
             // 
             // label15
             // 
@@ -179,8 +196,8 @@
             cboPlanOS.FormattingEnabled = true;
             cboPlanOS.Location = new Point(413, 235);
             cboPlanOS.Name = "cboPlanOS";
-            cboPlanOS.Size = new Size(193, 23);
-            cboPlanOS.TabIndex = 37;
+            cboPlanOS.Size = new Size(217, 23);
+            cboPlanOS.TabIndex = 11;
             // 
             // cboOS
             // 
@@ -189,7 +206,7 @@
             cboOS.Location = new Point(146, 235);
             cboOS.Name = "cboOS";
             cboOS.Size = new Size(193, 23);
-            cboOS.TabIndex = 36;
+            cboOS.TabIndex = 10;
             // 
             // cboLocalidad
             // 
@@ -198,21 +215,7 @@
             cboLocalidad.Location = new Point(146, 166);
             cboLocalidad.Name = "cboLocalidad";
             cboLocalidad.Size = new Size(193, 23);
-            cboLocalidad.TabIndex = 35;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.DarkCyan;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.Control;
-            button1.Location = new Point(529, 302);
-            button1.Name = "button1";
-            button1.Size = new Size(109, 27);
-            button1.TabIndex = 34;
-            button1.Text = "Cancelar";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            cboLocalidad.TabIndex = 6;
             // 
             // txtCP
             // 
@@ -227,7 +230,7 @@
             txtCP.Name = "txtCP";
             txtCP.SimboloMoneda = "$";
             txtCP.Size = new Size(83, 23);
-            txtCP.TabIndex = 33;
+            txtCP.TabIndex = 9;
             txtCP.TextAlign = HorizontalAlignment.Right;
             txtCP.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Entero;
             txtCP.ValorDecimal = 0D;
@@ -246,13 +249,6 @@
             label13.TabIndex = 32;
             label13.Text = "C.P.:";
             // 
-            // txtNroDoc
-            // 
-            txtNroDoc.Location = new Point(446, 92);
-            txtNroDoc.Name = "txtNroDoc";
-            txtNroDoc.Size = new Size(193, 23);
-            txtNroDoc.TabIndex = 31;
-            // 
             // label12
             // 
             label12.AutoSize = true;
@@ -269,7 +265,7 @@
             txtApellido.Location = new Point(446, 57);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(193, 23);
-            txtApellido.TabIndex = 29;
+            txtApellido.TabIndex = 1;
             // 
             // label2
             // 
@@ -284,24 +280,10 @@
             // 
             // txtCalle
             // 
-            txtCalle.AceptaNegativos = false;
-            txtCalle.AceptaValorCero = false;
-            txtCalle.CerosIzquierda = false;
-            txtCalle.Decimales = 2;
-            txtCalle.DecimalesConFormato = 2;
-            txtCalle.Digitos = 10;
-            txtCalle.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
             txtCalle.Location = new Point(146, 200);
             txtCalle.Name = "txtCalle";
-            txtCalle.SimboloMoneda = "$";
             txtCalle.Size = new Size(193, 23);
-            txtCalle.TabIndex = 24;
-            txtCalle.TextAlign = HorizontalAlignment.Right;
-            txtCalle.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Moneda;
-            txtCalle.ValorDecimal = 0D;
-            txtCalle.ValorEntero = 0L;
-            txtCalle.ValorMaximo = null;
-            txtCalle.ValorMinimo = null;
+            txtCalle.TabIndex = 7;
             // 
             // txtNroCalle
             // 
@@ -316,26 +298,13 @@
             txtNroCalle.Name = "txtNroCalle";
             txtNroCalle.SimboloMoneda = "$";
             txtNroCalle.Size = new Size(83, 23);
-            txtNroCalle.TabIndex = 23;
+            txtNroCalle.TabIndex = 8;
             txtNroCalle.TextAlign = HorizontalAlignment.Right;
             txtNroCalle.TipoNumerico = NumberTextBox.NumberTextBox.TipoNumero.Entero;
             txtNroCalle.ValorDecimal = 0D;
             txtNroCalle.ValorEntero = 0L;
             txtNroCalle.ValorMaximo = null;
             txtNroCalle.ValorMinimo = null;
-            // 
-            // btnAgregaImagen
-            // 
-            btnAgregaImagen.BackColor = Color.DarkCyan;
-            btnAgregaImagen.FlatStyle = FlatStyle.Flat;
-            btnAgregaImagen.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAgregaImagen.ForeColor = SystemColors.Control;
-            btnAgregaImagen.Location = new Point(404, 302);
-            btnAgregaImagen.Name = "btnAgregaImagen";
-            btnAgregaImagen.Size = new Size(109, 27);
-            btnAgregaImagen.TabIndex = 21;
-            btnAgregaImagen.Text = "Agregar";
-            btnAgregaImagen.UseVisualStyleBackColor = false;
             // 
             // label11
             // 
@@ -428,7 +397,7 @@
             txtNombre.Location = new Point(146, 56);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(193, 23);
-            txtNombre.TabIndex = 2;
+            txtNombre.TabIndex = 0;
             // 
             // label4
             // 
@@ -448,7 +417,7 @@
             cbo_tipo_doc.Location = new Point(146, 94);
             cbo_tipo_doc.Name = "cbo_tipo_doc";
             cbo_tipo_doc.Size = new Size(193, 23);
-            cbo_tipo_doc.TabIndex = 3;
+            cbo_tipo_doc.TabIndex = 2;
             // 
             // label3
             // 
@@ -522,6 +491,7 @@
             btnLimpiar.TabIndex = 3;
             btnLimpiar.Text = "Limpiar";
             btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnSalir
             // 
@@ -535,18 +505,18 @@
             btnSalir.TabIndex = 4;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click;
             // 
             // btnGuardar
             // 
             btnGuardar.BackColor = Color.DarkCyan;
-            btnGuardar.Enabled = false;
             btnGuardar.FlatStyle = FlatStyle.Flat;
             btnGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnGuardar.ForeColor = SystemColors.Control;
             btnGuardar.Location = new Point(365, 18);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(85, 27);
-            btnGuardar.TabIndex = 2;
+            btnGuardar.TabIndex = 0;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
@@ -577,6 +547,7 @@
             btnNuevo.TabIndex = 0;
             btnNuevo.Text = "Nuevo";
             btnNuevo.UseVisualStyleBackColor = false;
+            btnNuevo.Click += btnNuevo_Click;
             // 
             // FrmClientes
             // 
@@ -601,9 +572,8 @@
         #endregion
 
         private Panel pnlCarga;
-        private NumberTextBox.NumberTextBox txtCalle;
+        private TextBox txtCalle;
         private NumberTextBox.NumberTextBox txtNroCalle;
-        private Button btnAgregaImagen;
         private Label label11;
         private Label label10;
         private Label label9;
@@ -620,16 +590,13 @@
         private Label label1;
         private Label label2;
         private TextBox txtApellido;
-        private TextBox txtNroDoc;
         private Label label12;
-        private Button button1;
         private NumberTextBox.NumberTextBox txtCP;
         private Label label13;
         private ComboBox cboLocalidad;
         private ComboBox cboOS;
         private ComboBox cboPlanOS;
         private DateTimePicker dateFechaAlta;
-        private NumberTextBox.NumberTextBox txtNroAfil;
         private Label label15;
         private Label label14;
         private TextBox txtRazonSocial;
@@ -640,5 +607,7 @@
         private Button btnGuardar;
         private Button btnEditar;
         private Button btnNuevo;
+        private NumberTextBox.NumberTextBox txtNroAfil;
+        private NumberTextBox.NumberTextBox txtNroDoc;
     }
 }
