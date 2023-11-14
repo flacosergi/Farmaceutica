@@ -73,6 +73,7 @@ namespace Farmaceutica.Presentacion
             btnAutorizar.Enabled = false;
             nueva_factura = (Factura)ModeloFactory.ObtenerInstancia().CreaObjeto("factura");
             lbl_nro_factura.Text = "00000000";
+            dgvDetalleFactura.Enabled = true;
 
         }
 
@@ -105,8 +106,10 @@ namespace Farmaceutica.Presentacion
         private void btnNuevoCliente_Click(object sender, EventArgs e)
         {
             FrmClientes clientes = (FrmClientes)ServiciosFactory.ObtenerInstancia().CreaObjeto("cliente");
+            Opacity = 0.5;
             Cursor.Current = Cursors.WaitCursor;
             clientes.ShowDialog(this);
+            Opacity = 1;
         }
 
         private async void FrmFacturas_Load(object sender, EventArgs e)
@@ -320,7 +323,7 @@ namespace Farmaceutica.Presentacion
             {
                 decimal inicial;
 
-                inicial = Math.Round(factura_fp.monto / (decimal)(1 + (factura_fp.porc_recargo == null? 0 : factura_fp.porc_recargo)), 2);
+                inicial = Math.Round(factura_fp.monto / (decimal)(1 + (factura_fp.porc_recargo == null ? 0 : factura_fp.porc_recargo)), 2);
                 imputado += inicial;
                 recargo += Math.Round((decimal)(inicial * (factura_fp.porc_recargo == null ? 0 : factura_fp.porc_recargo)), 2);
             }
@@ -366,7 +369,7 @@ namespace Farmaceutica.Presentacion
             if (btnGuardar.Text == "Guardar")
                 resultado = await gestor_factura.Ingresar(nueva_factura);
             else
-                resultado = string.Empty;
+                resultado = await gestor_factura.Modificar(nueva_factura);
             //resultado = await gestor_factura.Modificar(nueva_factura);
             if (resultado == "OK")
             {
@@ -384,6 +387,9 @@ namespace Farmaceutica.Presentacion
         {
             List<object> lista_parametros = new List<object>();
             lista_parametros.Add(nueva_factura);
+            int caso = 0;
+            if (dgvDetalleFactura.Enabled == true) caso = Modificar; else caso = Consultar;
+            lista_parametros.Add(caso);
             FrmFormasPago frm_formas_pago = (FrmFormasPago)ServiciosFactory.ObtenerInstancia().CreaObjeto("formas_pago", lista_parametros);
             Opacity = 0.5;
             frm_formas_pago.ntbSubTotal.Text = ntbSubTotal.ValorDecimal.ToString();
@@ -445,10 +451,9 @@ namespace Farmaceutica.Presentacion
 
                     if (accion == Consultar)
                     {
-                        //metodos.BloqueaControles(pnlCarga, true);
-                        //btnAgregaImagen.Enabled = false;
-                        //btnBorraImagen.Enabled = false;
-                    }
+                        metodos.BloqueaControles(pnlCabecera, true);
+                        metodos.BloqueaControles(pnlDetalle, true);
+                      }
                 }
                 else
                 {
@@ -468,5 +473,12 @@ namespace Farmaceutica.Presentacion
 
         }
 
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            RellenarArticulo(Consultar);
+            btnGuardar.Enabled = false;
+            pnlTablaDetalle.Enabled = false;
+
+        }
     }
 }

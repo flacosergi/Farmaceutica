@@ -53,9 +53,13 @@ namespace Farmaceutica.Servicios
                 case "formas_pago":
                     {
                         Factura factura = (Factura)ModeloFactory.ObtenerInstancia().CreaObjeto("factura");
-                        if (lista_parametros != null) 
+                        int caso = 0;
+                        if (lista_parametros != null)
+                        {
                             factura = (Factura)lista_parametros[0];
-                        return new FrmFormasPago(ref factura);
+                            caso = (int)lista_parametros[1];
+                        }
+                        return new FrmFormasPago(ref factura, caso);
                     }
                 case "repoStock":
                     return new FrmRepoStocks(this);

@@ -44,7 +44,7 @@ namespace APIFarmaceutica.Controllers
         }
 
 
-        // POST /api/Facturas/IngresarFactura
+        // POST /api/Factura/IngresarFactura
         [HttpPost, Route("IngresarFactura")]
         public IActionResult PostFactura(Factura nueva_factura)
         {
@@ -55,10 +55,15 @@ namespace APIFarmaceutica.Controllers
                 return BadRequest();
         }
 
-        // PUT api/<FacturaController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // PUT /api/Factura/ModificarFactura
+        [HttpPut, Route("ModificarFactura")]
+        public IActionResult PutFactura(Factura nueva_factura)
         {
+            DaoFactura dao = (DaoFactura)ModeloFactory.ObtenerInstancia().CreaObjeto("DaoFactura");
+            if (dao.ModificarRegistro(nueva_factura) == 0)
+                return Ok();
+            else
+                return BadRequest();
         }
 
         // DELETE api/<FacturaController>/5

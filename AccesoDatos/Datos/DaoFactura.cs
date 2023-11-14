@@ -8,6 +8,7 @@ using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace AccesoDatos.Datos
 {
@@ -52,9 +53,9 @@ namespace AccesoDatos.Datos
                 factura_fp.id_factura_for_pag = (int)fila_pago["id_factura_for_pag"];
                 factura_fp.nro_factura = (int)fila_pago["nro_factura"];
                 factura_fp.forma_pago.id_forma_pago = (int)fila_pago["id_forma_pago"];
-                factura_fp.cuotas = fila_pago["cuotas"] == DBNull.Value ? null : (int)fila_pago["Cuotas"];
+                factura_fp.cuotas = fila_pago["cuotas"] == DBNull.Value ? 0 : (int)fila_pago["Cuotas"];
                 factura_fp.monto = (decimal)fila_pago["monto"];
-                factura_fp.porc_recargo = fila_pago["porc_recargo"] == DBNull.Value ? null : (decimal)fila_pago["porc_recargo"];
+                factura_fp.porc_recargo = fila_pago["porc_recargo"] == DBNull.Value ? 0 : (decimal)fila_pago["porc_recargo"];
                 factura_fp.observaciones = fila_pago["observaciones"] == DBNull.Value ? null : fila_pago["porc_recargo"].ToString();
                 nueva_factura.lista_formas_pago.Add(factura_fp);
             }
@@ -65,8 +66,13 @@ namespace AccesoDatos.Datos
             {
                 DaoArticulo dao_art = (DaoArticulo)ModeloFactory.ObtenerInstancia().CreaObjeto("DaoArticulo");
                 detalle.articulo = (Articulo)dao_art.BuscaRegistro(detalle.articulo.cod_articulo);
-            
+
             }
+            foreach (Factura_FormaPago factura_fp in nueva_factura.lista_formas_pago)
+            {
+                factura_fp.forma_pago = ObtieneFormasPagoPorID(factura_fp.forma_pago.id_forma_pago);
+            }
+
             return nueva_factura;
         }
 
@@ -153,7 +159,67 @@ namespace AccesoDatos.Datos
 
         public int ModificarRegistro(object objeto)
         {
-            throw new NotImplementedException();
+            Factura nueva_factura = (Factura)objeto;
+            List<SqlParameter> param_factura = new List<SqlParameter>();
+            param_factura.Add(new SqlParameter("@nro_factura", nueva_factura.nro_factura));
+            param_factura.Add(new SqlParameter("@monto", nueva_factura.total));
+            DBHelper.ObtenerInstancia().AbreConexionConTransaccion();
+            int resultado;
+            resultado = DBHelper.ObtenerInstancia().EjecutaComando("PA_FACTURAS_ACTUALIZAR", param_factura, null);
+            //param_factura.Clear();
+            //param_factura.Add(new SqlParameter("@nro_factura", nueva_factura.nro_factura));
+
+            //resultado = DBHelper.ObtenerInstancia().EjecutaComando("PA_STOCK_ELIMINA_MOVIMIENTOS_POR_FACTURA", param_factura, null);
+            //resultado = DBHelper.ObtenerInstancia().EjecutaComando("PA_DETALLE_FACTURAS_ELIMNIAR_POR_FACTURA", param_factura, null);
+            //resultado = DBHelper.ObtenerInstancia().EjecutaComando("PA_FACTURAS_FORMAS_PAGO_ELIMNIAR_POR_FACTURA", param_factura, null);
+            foreach (DetalleFactura detalle in nueva_factura.lista_detalle)
+            {
+                detalle.nro_factura = nueva_factura.nro_factura;
+                List<SqlParameter> param_detalle = new List<SqlParameter>();
+                SqlParameter salida_detalle = new SqlParameter();
+                salida_detalle.Direction = ParameterDirection.Output;
+                salida_detalle.SqlDbType = SqlDbType.Int;
+                salida_detalle.ParameterName = "@id_detalle_factura";
+                param_detalle.Add(new SqlParameter("@nro_factura", detalle.nro_factura));
+                param_detalle.Add(new SqlParameter("@cod_articulo", detalle.articulo.cod_articulo));
+                param_detalle.Add(new SqlParameter("@cantidad", detalle.cantidad));
+                param_detalle.Add(new SqlParameter("@precio", detalle.precio));
+                param_detalle.Add(new SqlParameter("@descuento_os", detalle.descuento_os == null ? DBNull.Value : detalle.descuento_os));
+                param_detalle.Add(new SqlParameter("@nro_receta", detalle.nro_receta == null ? DBNull.Value : detalle.nro_receta));
+                param_detalle.Add(new SqlParameter("@medico", detalle.medico == null ? DBNull.Value : detalle.medico));
+                param_detalle.Add(new SqlParameter("@matricula", detalle.matricula == null ? DBNull.Value : detalle.matricula));
+                param_detalle.Add(new SqlParameter("@fecha_receta", detalle.fecha_receta == null ? DBNull.Value : detalle.fecha_receta));
+                param_detalle.Add(new SqlParameter("@cod_autorizacion", detalle.cod_autorizacion == null ? DBNull.Value : detalle.cod_autorizacion));
+                param_detalle.Add(new SqlParameter("@autorizado", detalle.autorizado == null ? DBNull.Value : detalle.autorizado));
+                detalle.id_detalle_factura = DBHelper.ObtenerInstancia().EjecutaComando("PA_FACTURAS_DETALLE_FACTURA_ALTA", param_detalle, salida_detalle);
+
+                List<SqlParameter> param_stock = new List<SqlParameter>();
+                param_stock.Add(new SqlParameter("@id_tipo_mov_stock", 2));
+                param_stock.Add(new SqlParameter("@cod_articulo", detalle.articulo.cod_articulo));
+                param_stock.Add(new SqlParameter("@cod_sucursal", nueva_factura.sucursal.codigo_sucursal));
+                param_stock.Add(new SqlParameter("@fecha_mov", nueva_factura.fecha));
+                param_stock.Add(new SqlParameter("@cantidad", detalle.cantidad));
+                param_stock.Add(new SqlParameter("@id_detalle_factura", detalle.id_detalle_factura));
+                param_stock.Add(new SqlParameter("@id_detalle_pedido", DBNull.Value));
+                param_stock.Add(new SqlParameter("@descripcion", DBNull.Value));
+                resultado = DBHelper.ObtenerInstancia().EjecutaComando("PA_STOCK_ALTA_MOVIMIENTO_STOCK", param_stock, null);
+            }
+
+            foreach (Factura_FormaPago factura_fp in nueva_factura.lista_formas_pago)
+            {
+                List<SqlParameter> param_factura_fp = new List<SqlParameter>();
+                param_factura_fp.Add(new SqlParameter("@nro_factura", nueva_factura.nro_factura));
+                param_factura_fp.Add(new SqlParameter("@id_forma_pago", factura_fp.forma_pago.id_forma_pago));
+                param_factura_fp.Add(new SqlParameter("@cuotas", factura_fp.cuotas == 0 ? DBNull.Value : factura_fp.cuotas));
+                param_factura_fp.Add(new SqlParameter("@monto", factura_fp.monto));
+                param_factura_fp.Add(new SqlParameter("@porc_recargo", factura_fp.porc_recargo == 0 ? DBNull.Value : factura_fp.porc_recargo));
+                param_factura_fp.Add(new SqlParameter("@observaciones", factura_fp.observaciones == null ? DBNull.Value : factura_fp.observaciones));
+                resultado = DBHelper.ObtenerInstancia().EjecutaComando("PA_FACTURAS_FORMAS_PAGO_ALTA", param_factura_fp, null);
+            }
+
+            DBHelper.ObtenerInstancia().CierraConexionConTransaccion();
+            return resultado;
+
         }
 
         public List<FormaPago> ObtieneFormasPago()
@@ -170,5 +236,18 @@ namespace AccesoDatos.Datos
             }
             return nueva_lista;
         }
+
+        public FormaPago ObtieneFormasPagoPorID(int codigo)
+        {
+            DataTable nueva_tabla = new DataTable();
+            List<SqlParameter> param_fp = new List<SqlParameter>();
+            param_fp.Add(new SqlParameter("@id_forma_pago", codigo));
+            nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("PA_FACTURAS_OBTENER_TIPO_FORMA_PAGO_POR_ID", param_fp);
+            FormaPago forma_pago = (FormaPago)ModeloFactory.ObtenerInstancia().CreaObjeto("forma_pago");
+            forma_pago.id_forma_pago = (int)nueva_tabla.Rows[0]["id_forma_pago"];
+            forma_pago.forma_pago = (string)nueva_tabla.Rows[0]["forma_Pago"];
+            return forma_pago;
+        }
+
     }
 }

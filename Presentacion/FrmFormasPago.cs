@@ -18,10 +18,14 @@ namespace Farmaceutica.Presentacion
         Factura nueva_factura;
         GestorFormasPago gestor_formas_Pago = (GestorFormasPago)ServiciosFactory.ObtenerInstancia().CreaObjeto("gestor_formas_pago");
         MetodosComunes metodos = (MetodosComunes)ServiciosFactory.ObtenerInstancia().CreaObjeto("metodos_comunes");
-        public FrmFormasPago(ref Factura factura)
+        int opcion;
+        const int Consultar = 1;
+        const int Modificar = 2;
+        public FrmFormasPago(ref Factura factura, int opc)
         {
             InitializeComponent();
             nueva_factura = factura;
+            opcion = opc;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -44,17 +48,24 @@ namespace Farmaceutica.Presentacion
             foreach (Factura_FormaPago factura_fp in nueva_factura.lista_formas_pago)
             {
                 decimal valorOriginal = Math.Round(factura_fp.porc_recargo == null ? factura_fp.monto : (decimal)factura_fp.monto / (1 + (decimal)factura_fp.porc_recargo), 2);
-                decimal recargo = (factura_fp.porc_recargo == null ? 0 : (decimal)(Math.Round((decimal)factura_fp.monto * (decimal)factura_fp.porc_recargo)));
+                decimal recargo = (factura_fp.porc_recargo == null ? 0 : (decimal)(Math.Round(valorOriginal * (decimal)factura_fp.porc_recargo)));
                 decimal total = valorOriginal + recargo;
                 dgvDeltallePagos.Rows.Add(factura_fp.forma_pago.id_forma_pago,
                                        factura_fp.forma_pago.forma_pago,
                                        valorOriginal,
                                        factura_fp.cuotas == 0 ? DBNull.Value : factura_fp.cuotas,
-                                       recargo == 0? DBNull.Value: recargo,
+                                       recargo == 0 ? DBNull.Value : recargo,
                                        total,
                                        "Eliminar");
                 CalculaTotal();
-                cboFormasPago.Focus();
+                if (opcion == Consultar)
+                {
+                    pnlSuperior.Enabled = false;
+                    return;
+                }
+                else 
+                    cboFormasPago.Focus();
+
             }
         }
 
