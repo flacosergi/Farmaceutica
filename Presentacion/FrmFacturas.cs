@@ -319,12 +319,10 @@ namespace Farmaceutica.Presentacion
             foreach (Factura_FormaPago factura_fp in nueva_factura.lista_formas_pago)
             {
                 decimal inicial;
-                if (factura_fp.porc_recargo != null)
-                {
-                    inicial = Math.Round(factura_fp.monto / (decimal)(1 + factura_fp.porc_recargo), 2);
-                    imputado += inicial;
-                    recargo += Math.Round(inicial * (decimal)factura_fp.porc_recargo, 2);
-                }
+
+                inicial = Math.Round(factura_fp.monto / (decimal)(1 + (factura_fp.porc_recargo == null? 0 : factura_fp.porc_recargo)), 2);
+                imputado += inicial;
+                recargo += Math.Round((decimal)(inicial * (factura_fp.porc_recargo == null ? 0 : factura_fp.porc_recargo)), 2);
             }
             ntbRecargoFactura.Focus();
             ntbRecargoFactura.Text = recargo.ToString();
@@ -425,7 +423,25 @@ namespace Farmaceutica.Presentacion
                     txtObraSocial.Text = factura_buscada.cliente.obra_social.razon_social_os;
                     ntbNumAfiliado.Text = factura_buscada.cliente.num_afiliado.ToString();
                     txtPlan.Text = factura_buscada.cliente.plan_os.desc_plan;
+                    foreach (DetalleFactura detalle in factura_buscada.lista_detalle)
+                    {
+                        dgvDetalleFactura.Rows.Add(detalle.articulo.cod_articulo,
+                                           detalle.articulo.detalle,
+                                           detalle.cantidad,
+                                           detalle.precio,
+                                           detalle.descuento_os,
+                                           detalle.precio - (detalle.descuento_os == null ? 0 : detalle.descuento_os),
+                                           "Eliminar",
+                                           1);
 
+
+                    }
+                    pnlTablaDetalle.Enabled = true;
+                    pnlDetalle.Enabled = true;
+                    btnFormasPago.Enabled = true;
+                    nueva_factura = factura_buscada;
+                    ActualizaTotal();
+                    btnBuscarArticulo.Focus();
 
                     if (accion == Consultar)
                     {

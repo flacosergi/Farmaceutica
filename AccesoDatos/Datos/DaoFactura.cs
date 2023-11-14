@@ -61,6 +61,12 @@ namespace AccesoDatos.Datos
             DBHelper.ObtenerInstancia().CierraConexionConTransaccion();
             DaoCliente dao = (DaoCliente)ModeloFactory.ObtenerInstancia().CreaObjeto("DaoCliente");
             nueva_factura.cliente = (Cliente)dao.BuscaRegistro(nueva_factura.cliente.codigo_cliente);
+            foreach (DetalleFactura detalle in nueva_factura.lista_detalle)
+            {
+                DaoArticulo dao_art = (DaoArticulo)ModeloFactory.ObtenerInstancia().CreaObjeto("DaoArticulo");
+                detalle.articulo = (Articulo)dao_art.BuscaRegistro(detalle.articulo.cod_articulo);
+            
+            }
             return nueva_factura;
         }
 
