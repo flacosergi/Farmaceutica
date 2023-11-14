@@ -133,6 +133,9 @@ namespace Farmaceutica.Presentacion
 
             btnNuevo.Enabled = true;
             btnEditar.Enabled = true;
+            txtNombre.Enabled = false;
+            txtApellido.Enabled = false;
+            txtRazonSocial.Enabled = false;
 
             lbl_cod_cli.Text = "000";
             metodos.BloqueaControles(pnlCarga, false);
@@ -153,34 +156,43 @@ namespace Farmaceutica.Presentacion
         {
             if (ValidarControles() == false)
                 return;
-            nuevo_cliente.nombre = txtNombre.Text;
+            if (txtRazonSocial.Text == string.Empty)
+            {
+                nuevo_cliente.nombre = txtNombre.Text;
+                nuevo_cliente.apellido = txtApellido.Text;
+                nuevo_cliente.razon_social = null;
+
+            }
+            else
+            {
+                nuevo_cliente.nombre = null;
+                nuevo_cliente.apellido = null;
+                nuevo_cliente.razon_social = txtRazonSocial.Text;
+            }
+
             nuevo_cliente.tipo_cliente = (TipoCliente)cbo_tipo_cliente.SelectedItem;
             nuevo_cliente.tipo_doc = (TipoDoc)cbo_tipo_doc.SelectedItem;
             nuevo_cliente.localidad = (Localidad)cboLocalidad.SelectedItem;
-            nuevo_cliente.obra_social = (ObraSocial)cboOS.SelectedItem;
-            nuevo_cliente.plan_os = (PlanOS)cboPlanOS.SelectedItem;
-            nuevo_cliente.fecha_alta = dateFechaAlta.Value;
-            nuevo_cliente.apellido = txtApellido.Text;
-            
-            if (txtRazonSocial.Text == string.Empty)
+            if (cboOS.SelectedIndex == -1)
             {
-                nuevo_cliente.razon_social = txtRazonSocial.Text = null;
+                nuevo_cliente.obra_social.codigo_os = 0;
+                nuevo_cliente.num_afiliado = null;
+                nuevo_cliente.plan_os.cod_plan = 0;
             }
-            else { nuevo_cliente.razon_social = txtRazonSocial.Text; }
-            
-            
-            
+
+            else
+            { 
+             nuevo_cliente.obra_social = (ObraSocial)cboOS.SelectedItem;
+             nuevo_cliente.plan_os = (PlanOS)cboPlanOS.SelectedItem;
+             nuevo_cliente.num_afiliado = (int)txtNroAfil.ValorEntero;
+            }
+           
+           
+            nuevo_cliente.fecha_alta = dateFechaAlta.Value;
             nuevo_cliente.calle = txtCalle.Text;
             nuevo_cliente.cod_postal = (int)txtCP.ValorEntero;
             nuevo_cliente.numero = (int)txtNroCalle.ValorEntero;
-            nuevo_cliente.num_afiliado = (int)txtNroAfil.ValorEntero;
             nuevo_cliente.nro_doc = long.Parse(txtNroDoc.Text);
-
-            if (nuevo_cliente.obra_social == null)
-                nuevo_cliente.obra_social = new ObraSocial();
-
-            if (nuevo_cliente.plan_os == null)
-                nuevo_cliente.plan_os = new PlanOS();
 
             string resultado;
             if (btnGuardar.Text == "Guardar")
@@ -203,14 +215,14 @@ namespace Farmaceutica.Presentacion
 
         private bool ValidarControles()
         {
-            if (cbo_tipo_cliente.SelectedIndex == 0) 
+            if (cbo_tipo_cliente.SelectedIndex == 0)
             {
                 if (txtNombre.Text == string.Empty)
                 {
-                        MessageBox.Show("Debe indicar un Nombre.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        txtNombre.Focus();
-                        return false;
-                }    
+                    MessageBox.Show("Debe indicar un Nombre.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtNombre.Focus();
+                    return false;
+                }
             }
 
             return true;
@@ -268,6 +280,31 @@ namespace Farmaceutica.Presentacion
                 txtNombre.Enabled = false;
                 txtApellido.Enabled = false;
                 txtRazonSocial.Enabled = true;
+            }
+        }
+
+        private void cbo_tipo_cliente_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if ((int)cbo_tipo_cliente.SelectedValue == 1)
+            {
+                txtNombre.Enabled = true;
+                txtNombre.Text = string.Empty;
+                txtApellido.Enabled = true;
+                txtApellido.Text = string.Empty;
+                txtRazonSocial.Enabled = false;
+                txtRazonSocial.Text = string.Empty;
+                txtNombre.Focus();
+            }
+
+            else
+            {
+                txtNombre.Enabled = false;
+                txtNombre.Text = string.Empty;
+                txtApellido.Enabled = false;
+                txtApellido.Text = string.Empty;
+                txtRazonSocial.Enabled = true;
+                txtRazonSocial.Text = string.Empty;
+                txtRazonSocial.Focus();
             }
         }
     }

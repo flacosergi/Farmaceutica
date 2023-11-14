@@ -22,7 +22,7 @@ namespace AccesoDatos.Modelos
         public Localidad localidad { get; set; }
         public ObraSocial obra_social { get; set; }
 
-        public long num_afiliado { get; set; }
+        public long? num_afiliado { get; set; }
         public DateTime fecha_alta { get; set; }
 
         public PlanOS plan_os { get; set; }

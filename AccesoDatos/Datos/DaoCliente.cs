@@ -68,29 +68,29 @@ namespace AccesoDatos.Datos
 
         public int InsertarRegistro(object objeto)
         {
-            Cliente NuevoArticulo = (Cliente)objeto;
+            Cliente NuevoCliente     = (Cliente)objeto;
             List<SqlParameter> param_cliente = new List<SqlParameter>();
             SqlParameter salida = new SqlParameter();
             salida.Direction = ParameterDirection.Output;
             salida.SqlDbType = SqlDbType.Int;
             salida.ParameterName = "@proximo";
             DBHelper.ObtenerInstancia().AbreConexionConTransaccion();
-            NuevoArticulo.codigo_cliente = DBHelper.ObtenerInstancia().EjecutaComando("SP_CLIENTES_BUSCA_PROXIMO_ID", new List<SqlParameter>(), salida);
-            param_cliente.Add(new SqlParameter("@cod_cliente", NuevoArticulo.codigo_cliente));
-            param_cliente.Add(new SqlParameter("@id_tipo_cliente", NuevoArticulo.tipo_cliente.id_tipo_cliente));
-            param_cliente.Add(new SqlParameter("@nro_doc", NuevoArticulo.nro_doc));
-            param_cliente.Add(new SqlParameter("@id_tipo_doc", NuevoArticulo.tipo_doc.id_tipo_doc));
-            param_cliente.Add(new SqlParameter("@nombre", NuevoArticulo.nombre));
-            param_cliente.Add(new SqlParameter("@apellido", NuevoArticulo.apellido));
-            param_cliente.Add(new SqlParameter("@razon_social", NuevoArticulo.razon_social));
-            param_cliente.Add(new SqlParameter("@calle", NuevoArticulo.calle));
-            param_cliente.Add(new SqlParameter("@nro_calle", NuevoArticulo.numero));
-            param_cliente.Add(new SqlParameter("@codigo_postal", NuevoArticulo.cod_postal));
-            param_cliente.Add(new SqlParameter("@id_localidad", NuevoArticulo.localidad.id_localidad));
-            param_cliente.Add(new SqlParameter("@id_OS", NuevoArticulo.obra_social.codigo_os));
-            param_cliente.Add(new SqlParameter("@id_plan_OS", NuevoArticulo.plan_os.cod_plan));
-            param_cliente.Add(new SqlParameter("@fecha_alta", NuevoArticulo.fecha_alta));
-            param_cliente.Add(new SqlParameter("@nro_afiliado", NuevoArticulo.num_afiliado));
+            NuevoCliente.codigo_cliente = DBHelper.ObtenerInstancia().EjecutaComando("SP_CLIENTES_BUSCA_PROXIMO_ID", new List<SqlParameter>(), salida);
+            param_cliente.Add(new SqlParameter("@cod_cliente", NuevoCliente.codigo_cliente));
+            param_cliente.Add(new SqlParameter("@id_tipo_cliente", NuevoCliente.tipo_cliente.id_tipo_cliente));
+            param_cliente.Add(new SqlParameter("@nro_doc", NuevoCliente.nro_doc));
+            param_cliente.Add(new SqlParameter("@id_tipo_doc", NuevoCliente.tipo_doc.id_tipo_doc));
+            param_cliente.Add(new SqlParameter("@nombre", NuevoCliente.nombre == null? DBNull.Value : NuevoCliente.nombre));
+            param_cliente.Add(new SqlParameter("@apellido", NuevoCliente.apellido == null? DBNull.Value : NuevoCliente.apellido));
+            param_cliente.Add(new SqlParameter("@razon_social", NuevoCliente.razon_social == null? DBNull.Value : NuevoCliente.razon_social));
+            param_cliente.Add(new SqlParameter("@calle", NuevoCliente.calle));
+            param_cliente.Add(new SqlParameter("@nro_calle", NuevoCliente.numero));
+            param_cliente.Add(new SqlParameter("@codigo_postal", NuevoCliente.cod_postal));
+            param_cliente.Add(new SqlParameter("@id_localidad", NuevoCliente.localidad.id_localidad));
+            param_cliente.Add(new SqlParameter("@id_OS", NuevoCliente.obra_social.codigo_os == 0? DBNull.Value : NuevoCliente.obra_social.codigo_os));
+            param_cliente.Add(new SqlParameter("@id_plan_OS", NuevoCliente.plan_os.cod_plan == 0? DBNull.Value: NuevoCliente.plan_os.cod_plan));
+            param_cliente.Add(new SqlParameter("@fecha_alta", NuevoCliente.fecha_alta));
+            param_cliente.Add(new SqlParameter("@nro_afiliado", NuevoCliente.num_afiliado == null? DBNull.Value : NuevoCliente.num_afiliado));
             int resultado = DBHelper.ObtenerInstancia().EjecutaComando("SP_CLIENTES_ALTA", param_cliente, null);
             DBHelper.ObtenerInstancia().CierraConexionConTransaccion();
             return resultado; ;
