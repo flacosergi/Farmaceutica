@@ -9,7 +9,7 @@
               <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>9.4998cm</Width>
+              <Width>6.66876cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.73813cm</Width>
@@ -391,7 +391,7 @@
         <DataSetName>DSRepoStocks</DataSetName>
         <Top>0.17639cm</Top>
         <Height>1.2cm</Height>
-        <Width>19.65855cm</Width>
+        <Width>16.82752cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -402,7 +402,7 @@
     <Height>2.04444cm</Height>
     <Style />
   </Body>
-  <Width>19.75146cm</Width>
+  <Width>16.82752cm</Width>
   <Page>
     <PageHeader>
       <Height>1.16416cm</Height>
@@ -431,7 +431,7 @@
           <rd:DefaultName>Textbox11</rd:DefaultName>
           <Top>0.28787cm</Top>
           <Height>0.6cm</Height>
-          <Width>19.65855cm</Width>
+          <Width>16.82752cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -475,8 +475,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.17639cm</Top>
-          <Left>14.48626cm</Left>
+          <Top>0.10583cm</Top>
+          <Left>11.65523cm</Left>
           <Height>0.6cm</Height>
           <Width>5.17229cm</Width>
           <Style>
