@@ -22,6 +22,9 @@ namespace Farmaceutica.Presentacion
         Factura nueva_factura;
         Articulo nuevo_articulo;
 
+        const int Consultar = 1;
+        const int Modificar = 2;
+
         public FrmFacturas(ServiciosFactory fact)
         {
             InitializeComponent();
@@ -69,6 +72,7 @@ namespace Farmaceutica.Presentacion
             btnAgregarDetalle.Enabled = false;
             btnAutorizar.Enabled = false;
             nueva_factura = (Factura)ModeloFactory.ObtenerInstancia().CreaObjeto("factura");
+            lbl_nro_factura.Text = "00000000";
 
         }
 
@@ -268,11 +272,11 @@ namespace Farmaceutica.Presentacion
             nuevo_detalle.articulo = nuevo_articulo;
             nuevo_detalle.cantidad = (int)ntbCantidad.ValorEntero;
             nuevo_detalle.precio = nuevo_articulo.precio;
-            nuevo_detalle.descuento_os = (decimal)ntbDescuento.ValorDecimal * nuevo_articulo.precio;
+            if (ntbDescuento.ValorDecimal == 0) nuevo_detalle.descuento_os = null; else nuevo_detalle.descuento_os = (decimal)ntbDescuento.ValorDecimal * nuevo_articulo.precio;
             nuevo_detalle.nro_receta = null;
-            nuevo_detalle.medico = txtMedico.Text;
-            nuevo_detalle.matricula = (int)ntbMatricula.ValorEntero;
-            nuevo_detalle.fecha_receta = dtpFechaReceta.Value;
+            if (txtMedico.Text == string.Empty) nuevo_detalle.medico = null; else nuevo_detalle.medico = txtMedico.Text;
+            if (txtMedico.Text == string.Empty) nuevo_detalle.matricula = null; else nuevo_detalle.matricula = (int)ntbMatricula.ValorEntero;
+            if (txtMedico.Text == string.Empty) nuevo_detalle.fecha_receta = null; else nuevo_detalle.fecha_receta = dtpFechaReceta.Value;
             nuevo_detalle.cod_autorizacion = "abc123";
             nuevo_detalle.autorizado = true;
             nueva_factura.lista_detalle.Add(nuevo_detalle);
@@ -393,5 +397,60 @@ namespace Farmaceutica.Presentacion
             btnFormasPago.Focus();
 
         }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            RellenarArticulo(Modificar);
+            btnGuardar.Text = "Modificar";
+            btnGuardar.Enabled = true;
+        }
+
+        private async void RellenarArticulo(int accion)
+        {
+            FrmBuscador buscador_facturas = (FrmBuscador)ServiciosFactory.ObtenerInstancia().CreaObjeto("buscador_facturas");
+            Opacity = 0.5;
+            if (buscador_facturas.ShowDialog(this) == DialogResult.OK)
+            {
+                int codigo_buscado = Convert.ToInt32(buscador_facturas.dgvBusqueda.SelectedRows[0].Cells[0].Value.ToString());
+                object? fra = await gestor_factura.ConsultarPorID(codigo_buscado);
+                Factura? factura_buscada = (Factura?)fra;
+                if (factura_buscada != null)
+                {
+                    Opacity = 1;
+                    lbl_nro_factura.Text = factura_buscada.nro_factura.ToString("D8");
+                    dtpFechaFactura.Value = factura_buscada.fecha;
+                    cbo_sucursales.SelectedValue = factura_buscada.sucursal.codigo_sucursal;
+                    if (factura_buscada.cliente.razon_social == null) txtCliente.Text = factura_buscada.cliente.apellido + ", " + factura_buscada.cliente.nombre;
+                    else txtCliente.Text = factura_buscada.cliente.razon_social;
+                    txtObraSocial.Text = factura_buscada.cliente.obra_social.razon_social_os;
+                    ntbNumAfiliado.Text = factura_buscada.cliente.num_afiliado.ToString();
+                    txtPlan.Text = factura_buscada.cliente.plan_os.desc_plan;
+
+
+                    if (accion == Consultar)
+                    {
+                        //metodos.BloqueaControles(pnlCarga, true);
+                        //btnAgregaImagen.Enabled = false;
+                        //btnBorraImagen.Enabled = false;
+                    }
+                }
+                else
+                {
+                    Opacity = 1;
+                    MessageBox.Show("No pudo encontrarse la factura buscada.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                btnLimpiar_Click(this, MouseEventArgs.Empty);
+                Opacity = 1;
+                return;
+            }
+            btnNueva.Enabled = false;
+            btnEditar.Enabled = false;
+            btnConsultar.Enabled = false;
+
+        }
+
     }
 }

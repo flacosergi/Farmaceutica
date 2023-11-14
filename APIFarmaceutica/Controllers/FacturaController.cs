@@ -27,18 +27,20 @@ namespace APIFarmaceutica.Controllers
             return dao.ObtieneFormasPago();
         }
 
-        // GET: api/<FacturaController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        // GET: /api/Factura/Obtener_Lista_Simple
+        [HttpGet, Route("Obtener_Lista_Simple")]
+        public IList<KeyValuePair<int, string>> ObtenerListaSimple()
         {
-            return new string[] { "value1", "value2" };
+            DaoFactura dao = (DaoFactura)ModeloFactory.ObtenerInstancia().CreaObjeto("DaoFactura");
+            return dao.ListaSimpleRegistros();
         }
 
-        // GET api/<FacturaController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET /api/Factura/ObtenerFacturaPorID/5
+        [HttpGet, Route("ObtenerFacturaPorID/{id}")]
+        public Factura GetFacturaByID(int id)
         {
-            return "value";
+            DaoFactura dao = (DaoFactura)ModeloFactory.ObtenerInstancia().CreaObjeto("DaoFactura");
+            return (Factura)dao.BuscaRegistro(id);
         }
 
 

@@ -42,6 +42,8 @@ namespace Farmaceutica.Servicios
                     return new FrmFacturas(this);
                 case "buscador_clientes":
                     return new FrmBuscador(this, "/api/Clientes/Obtener_Lista_Simple", "Seleccionar Cliente");
+                case "buscador_facturas":
+                    return new FrmBuscador(this, "/api/Factura/Obtener_Lista_Simple", "Seleccionar Factura");
                 case "articulos":
                     return new FrmArticulos(this);
                 case "cliente":
