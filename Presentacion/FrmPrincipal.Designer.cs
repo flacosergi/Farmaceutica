@@ -35,9 +35,10 @@
             soporteToolStripMenuItem = new ToolStripMenuItem();
             agregarArticulosToolStripMenuItem = new ToolStripMenuItem();
             tsmi_facturacion = new ToolStripMenuItem();
-            traToolStripMenuItem = new ToolStripMenuItem();
-            ayudaToolStripMenuItem = new ToolStripMenuItem();
             clientesToolStripMenuItem1 = new ToolStripMenuItem();
+            traToolStripMenuItem = new ToolStripMenuItem();
+            reporteDeStockToolStripMenuItem = new ToolStripMenuItem();
+            ayudaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -62,7 +63,7 @@
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(180, 22);
+            salirToolStripMenuItem.Size = new Size(96, 22);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
@@ -76,35 +77,43 @@
             // agregarArticulosToolStripMenuItem
             // 
             agregarArticulosToolStripMenuItem.Name = "agregarArticulosToolStripMenuItem";
-            agregarArticulosToolStripMenuItem.Size = new Size(180, 22);
+            agregarArticulosToolStripMenuItem.Size = new Size(136, 22);
             agregarArticulosToolStripMenuItem.Text = "&Artículos";
             agregarArticulosToolStripMenuItem.Click += agregarArticulosToolStripMenuItem_Click;
             // 
             // tsmi_facturacion
             // 
             tsmi_facturacion.Name = "tsmi_facturacion";
-            tsmi_facturacion.Size = new Size(180, 22);
+            tsmi_facturacion.Size = new Size(136, 22);
             tsmi_facturacion.Text = "&Facturación";
             tsmi_facturacion.Click += tsmi_facturacion_Click;
             // 
+            // clientesToolStripMenuItem1
+            // 
+            clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
+            clientesToolStripMenuItem1.Size = new Size(136, 22);
+            clientesToolStripMenuItem1.Text = "&Clientes";
+            clientesToolStripMenuItem1.Click += clientesToolStripMenuItem1_Click;
+            // 
             // traToolStripMenuItem
             // 
+            traToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reporteDeStockToolStripMenuItem });
             traToolStripMenuItem.Name = "traToolStripMenuItem";
             traToolStripMenuItem.Size = new Size(65, 20);
             traToolStripMenuItem.Text = "Reportes";
+            // 
+            // reporteDeStockToolStripMenuItem
+            // 
+            reporteDeStockToolStripMenuItem.Name = "reporteDeStockToolStripMenuItem";
+            reporteDeStockToolStripMenuItem.Size = new Size(180, 22);
+            reporteDeStockToolStripMenuItem.Text = "Reporte de Stock";
+            reporteDeStockToolStripMenuItem.Click += reporteDeStockToolStripMenuItem_Click;
             // 
             // ayudaToolStripMenuItem
             // 
             ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
             ayudaToolStripMenuItem.Size = new Size(53, 20);
             ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // clientesToolStripMenuItem1
-            // 
-            clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
-            clientesToolStripMenuItem1.Size = new Size(180, 22);
-            clientesToolStripMenuItem1.Text = "&Clientes";
-            clientesToolStripMenuItem1.Click += clientesToolStripMenuItem1_Click;
             // 
             // FrmPrincipal
             // 
@@ -140,5 +149,6 @@
         private ToolStripMenuItem agregarArticulosToolStripMenuItem;
         private ToolStripMenuItem tsmi_facturacion;
         private ToolStripMenuItem clientesToolStripMenuItem1;
+        private ToolStripMenuItem reporteDeStockToolStripMenuItem;
     }
 }

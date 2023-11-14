@@ -1,4 +1,5 @@
 ﻿using AccesoDatos.Servicios;
+using Farmaceutica.Presentacion.Reportes;
 using Farmaceutica.Servicios;
 using System;
 using System.Collections.Generic;
@@ -55,12 +56,19 @@ namespace Farmaceutica.Presentacion
             facturas.ShowDialog(this);
         }
 
-  
+
         private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmClientes cli = (FrmClientes)factory.CreaObjeto("cliente");
             Cursor.Current = Cursors.WaitCursor;
             cli.ShowDialog(this);
+        }
+
+        private void reporteDeStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmRepoStocks stock = (FrmRepoStocks)factory.CreaObjeto("repoStock");
+            Cursor.Current = Cursors.WaitCursor;
+            stock.ShowDialog(this);
         }
     }
 }
