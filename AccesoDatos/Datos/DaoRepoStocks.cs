@@ -28,7 +28,7 @@ namespace AccesoDatos.Datos
                 reporte.Articulo = fila["articulo"].ToString();
                 reporte.Estado = fila["estado"].ToString();
                 reporte.StockActual = Convert.ToInt32(fila["stock_actual"].ToString());
-                reporte.StockMinimo = Convert.ToInt32(fila["stock_actual"].ToString());
+                reporte.StockMinimo = Convert.ToInt32(fila["stock_minimo"].ToString());
                 repoStocks.Add(reporte);
             }
             return repoStocks;
