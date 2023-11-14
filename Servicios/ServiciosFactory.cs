@@ -56,8 +56,11 @@ namespace Farmaceutica.Servicios
                         return new FrmFormasPago(ref factura);
                     }
                 case "repoStock":
-                    return new FrmRepoStocks();
-                
+                    return new FrmRepoStocks(this);
+                case "GestorReporteStock":
+                    return new GestorReporteStock();
+
+
 
 
 

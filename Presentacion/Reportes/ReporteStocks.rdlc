@@ -2,23 +2,23 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Tablix Name="Tablix1">
+      <Tablix Name="Tablix2">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
               <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>6.13958cm</Width>
+              <Width>7.56833cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.87042cm</Width>
+              <Width>2.68521cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.97625cm</Width>
+              <Width>2.76458cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.02375cm</Width>
+              <Width>2.10313cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -27,7 +27,7 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox1">
+                    <Textbox Name="Textbox12">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -41,7 +41,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <rd:DefaultName>Textbox12</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -57,7 +57,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox3">
+                    <Textbox Name="Textbox14">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -71,7 +71,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox3</rd:DefaultName>
+                      <rd:DefaultName>Textbox14</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -87,7 +87,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox5">
+                    <Textbox Name="Textbox16">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -101,7 +101,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <rd:DefaultName>Textbox16</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -117,7 +117,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox7">
+                    <Textbox Name="Textbox18">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -131,7 +131,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <rd:DefaultName>Textbox18</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -147,7 +147,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox9">
+                    <Textbox Name="Textbox20">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -161,7 +161,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <rd:DefaultName>Textbox20</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -242,21 +242,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="stock_minimo">
+                    <Textbox Name="stockMinimo">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!stock_minimo.Value</Value>
+                              <Value>=Fields!stockMinimo.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>stock_minimo</rd:DefaultName>
+                      <rd:DefaultName>stockMinimo</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -272,21 +272,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="stock_actual">
+                    <Textbox Name="stockActual">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!stock_actual.Value</Value>
+                              <Value>=Fields!stockActual.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>stock_actual</rd:DefaultName>
+                      <rd:DefaultName>stockActual</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -298,6 +298,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -356,7 +357,7 @@
         <DataSetName>DSRepoStocks</DataSetName>
         <Top>0.17639cm</Top>
         <Height>1.2cm</Height>
-        <Width>16.51cm</Width>
+        <Width>17.62125cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -367,7 +368,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>7.04167in</Width>
   <Page>
     <PageHeader>
       <Height>1.53458cm</Height>
@@ -395,7 +396,7 @@
           <rd:DefaultName>Textbox11</rd:DefaultName>
           <Top>0.28787cm</Top>
           <Height>0.6cm</Height>
-          <Width>16.51cm</Width>
+          <Width>17.88583cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -447,13 +448,13 @@
           <DataField>articulo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="stock_minimo">
-          <DataField>stock_minimo</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+        <Field Name="stockMinimo">
+          <DataField>stockMinimo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="stock_actual">
-          <DataField>stock_actual</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+        <Field Name="stockActual">
+          <DataField>stockActual</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="estado">
           <DataField>estado</DataField>

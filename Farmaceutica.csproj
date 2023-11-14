@@ -22,6 +22,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Presentacion\Reportes\ReporteStocks.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Presentacion\Reportes\ReporteStocks.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
     <PackageReference Include="NumberTextBox" Version="1.0.0" />
     <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.18" />

@@ -283,9 +283,9 @@ namespace Farmaceutica.Presentacion.Reportes {
             
             private global::System.Data.DataColumn columnarticulo;
             
-            private global::System.Data.DataColumn columnstock_minimo;
+            private global::System.Data.DataColumn columnstockMinimo;
             
-            private global::System.Data.DataColumn columnstock_actual;
+            private global::System.Data.DataColumn columnstockActual;
             
             private global::System.Data.DataColumn columnestado;
             
@@ -340,17 +340,17 @@ namespace Farmaceutica.Presentacion.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn stock_minimoColumn {
+            public global::System.Data.DataColumn stockMinimoColumn {
                 get {
-                    return this.columnstock_minimo;
+                    return this.columnstockMinimo;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn stock_actualColumn {
+            public global::System.Data.DataColumn stockActualColumn {
                 get {
-                    return this.columnstock_actual;
+                    return this.columnstockActual;
                 }
             }
             
@@ -399,13 +399,13 @@ namespace Farmaceutica.Presentacion.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DTRepoStocksRow AddDTRepoStocksRow(string sucursal, string articulo, int stock_minimo, int stock_actual, string estado) {
+            public DTRepoStocksRow AddDTRepoStocksRow(string sucursal, string articulo, int stockMinimo, int stockActual, string estado) {
                 DTRepoStocksRow rowDTRepoStocksRow = ((DTRepoStocksRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         sucursal,
                         articulo,
-                        stock_minimo,
-                        stock_actual,
+                        stockMinimo,
+                        stockActual,
                         estado};
                 rowDTRepoStocksRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDTRepoStocksRow);
@@ -431,8 +431,8 @@ namespace Farmaceutica.Presentacion.Reportes {
             internal void InitVars() {
                 this.columnsucursal = base.Columns["sucursal"];
                 this.columnarticulo = base.Columns["articulo"];
-                this.columnstock_minimo = base.Columns["stock_minimo"];
-                this.columnstock_actual = base.Columns["stock_actual"];
+                this.columnstockMinimo = base.Columns["stockMinimo"];
+                this.columnstockActual = base.Columns["stockActual"];
                 this.columnestado = base.Columns["estado"];
             }
             
@@ -443,10 +443,10 @@ namespace Farmaceutica.Presentacion.Reportes {
                 base.Columns.Add(this.columnsucursal);
                 this.columnarticulo = new global::System.Data.DataColumn("articulo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnarticulo);
-                this.columnstock_minimo = new global::System.Data.DataColumn("stock_minimo", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstock_minimo);
-                this.columnstock_actual = new global::System.Data.DataColumn("stock_actual", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstock_actual);
+                this.columnstockMinimo = new global::System.Data.DataColumn("stockMinimo", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstockMinimo);
+                this.columnstockActual = new global::System.Data.DataColumn("stockActual", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstockActual);
                 this.columnestado = new global::System.Data.DataColumn("estado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnestado);
             }
@@ -623,33 +623,33 @@ namespace Farmaceutica.Presentacion.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int stock_minimo {
+            public int stockMinimo {
                 get {
                     try {
-                        return ((int)(this[this.tableDTRepoStocks.stock_minimoColumn]));
+                        return ((int)(this[this.tableDTRepoStocks.stockMinimoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'stock_minimo\' de la tabla \'DTRepoStocks\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'stockMinimo\' de la tabla \'DTRepoStocks\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDTRepoStocks.stock_minimoColumn] = value;
+                    this[this.tableDTRepoStocks.stockMinimoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int stock_actual {
+            public int stockActual {
                 get {
                     try {
-                        return ((int)(this[this.tableDTRepoStocks.stock_actualColumn]));
+                        return ((int)(this[this.tableDTRepoStocks.stockActualColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'stock_actual\' de la tabla \'DTRepoStocks\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'stockActual\' de la tabla \'DTRepoStocks\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDTRepoStocks.stock_actualColumn] = value;
+                    this[this.tableDTRepoStocks.stockActualColumn] = value;
                 }
             }
             
@@ -695,26 +695,26 @@ namespace Farmaceutica.Presentacion.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Isstock_minimoNull() {
-                return this.IsNull(this.tableDTRepoStocks.stock_minimoColumn);
+            public bool IsstockMinimoNull() {
+                return this.IsNull(this.tableDTRepoStocks.stockMinimoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Setstock_minimoNull() {
-                this[this.tableDTRepoStocks.stock_minimoColumn] = global::System.Convert.DBNull;
+            public void SetstockMinimoNull() {
+                this[this.tableDTRepoStocks.stockMinimoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Isstock_actualNull() {
-                return this.IsNull(this.tableDTRepoStocks.stock_actualColumn);
+            public bool IsstockActualNull() {
+                return this.IsNull(this.tableDTRepoStocks.stockActualColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Setstock_actualNull() {
-                this[this.tableDTRepoStocks.stock_actualColumn] = global::System.Convert.DBNull;
+            public void SetstockActualNull() {
+                this[this.tableDTRepoStocks.stockActualColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

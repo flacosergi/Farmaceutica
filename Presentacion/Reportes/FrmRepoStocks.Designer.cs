@@ -29,21 +29,34 @@
         private void InitializeComponent()
         {
             rvStocks = new Microsoft.Reporting.WinForms.ReportViewer();
+            btnGenerar = new Button();
             SuspendLayout();
             // 
             // rvStocks
             // 
+            rvStocks.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             rvStocks.Location = new Point(0, 0);
             rvStocks.Name = "ReportViewer";
             rvStocks.ServerReport.BearerToken = null;
-            rvStocks.Size = new Size(396, 246);
+            rvStocks.Size = new Size(750, 300);
             rvStocks.TabIndex = 0;
+            // 
+            // btnGenerar
+            // 
+            btnGenerar.Location = new Point(713, 415);
+            btnGenerar.Name = "btnGenerar";
+            btnGenerar.Size = new Size(75, 23);
+            btnGenerar.TabIndex = 1;
+            btnGenerar.Text = "Generar";
+            btnGenerar.UseVisualStyleBackColor = true;
+            btnGenerar.Click += btnGenerar_Click;
             // 
             // FrmRepoStocks
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnGenerar);
             Controls.Add(rvStocks);
             Name = "FrmRepoStocks";
             Text = "FrmRepoStocks";
@@ -54,5 +67,6 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer rvStocks;
+        private Button btnGenerar;
     }
 }
