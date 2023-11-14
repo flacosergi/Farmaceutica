@@ -32,6 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Presentacion\Reportes\DSRepoStocks.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DSRepoStocks.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -48,6 +53,13 @@
 
   <ItemGroup>
     <Folder Include="ImagenPrincipal\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Presentacion\Reportes\DSRepoStocks.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSRepoStocks.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

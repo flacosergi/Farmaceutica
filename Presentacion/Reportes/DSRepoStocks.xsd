@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSRepoStocks" targetNamespace="http://tempuri.org/DSRepoStocks.xsd" xmlns:mstns="http://tempuri.org/DSRepoStocks.xsd" xmlns="http://tempuri.org/DSRepoStocks.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSRepoStocks" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="DSRepoStocks" msprop:Generator_DataSetName="DSRepoStocks">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DTRepoStocks" msprop:Generator_RowEvHandlerName="DTRepoStocksRowChangeEventHandler" msprop:Generator_RowDeletedName="DTRepoStocksRowDeleted" msprop:Generator_RowDeletingName="DTRepoStocksRowDeleting" msprop:Generator_RowEvArgName="DTRepoStocksRowChangeEvent" msprop:Generator_TablePropName="DTRepoStocks" msprop:Generator_RowChangedName="DTRepoStocksRowChanged" msprop:Generator_RowChangingName="DTRepoStocksRowChanging" msprop:Generator_TableClassName="DTRepoStocksDataTable" msprop:Generator_RowClassName="DTRepoStocksRow" msprop:Generator_TableVarName="tableDTRepoStocks" msprop:Generator_UserTableName="DTRepoStocks">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sucursal" msprop:Generator_ColumnPropNameInRow="sucursal" msprop:Generator_ColumnPropNameInTable="sucursalColumn" msprop:Generator_ColumnVarNameInTable="columnsucursal" msprop:Generator_UserColumnName="sucursal" type="xs:string" minOccurs="0" />
+              <xs:element name="articulo" msprop:Generator_ColumnPropNameInRow="articulo" msprop:Generator_ColumnPropNameInTable="articuloColumn" msprop:Generator_ColumnVarNameInTable="columnarticulo" msprop:Generator_UserColumnName="articulo" type="xs:string" minOccurs="0" />
+              <xs:element name="stock_minimo" msprop:Generator_ColumnPropNameInRow="stock_minimo" msprop:Generator_ColumnPropNameInTable="stock_minimoColumn" msprop:Generator_ColumnVarNameInTable="columnstock_minimo" msprop:Generator_UserColumnName="stock_minimo" type="xs:int" minOccurs="0" />
+              <xs:element name="stock_actual" msprop:Generator_ColumnPropNameInRow="stock_actual" msprop:Generator_ColumnPropNameInTable="stock_actualColumn" msprop:Generator_ColumnVarNameInTable="columnstock_actual" msprop:Generator_UserColumnName="stock_actual" type="xs:int" minOccurs="0" />
+              <xs:element name="estado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_UserColumnName="estado" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

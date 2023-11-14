@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using AccesoDatos.Servicios;
 using AccesoDatos.Modelos;
 using Farmaceutica.Presentacion;
+using Farmaceutica.Presentacion.Reportes;
+
 namespace Farmaceutica.Servicios
 {
     public class ServiciosFactory : AbstractFactory
@@ -53,6 +55,8 @@ namespace Farmaceutica.Servicios
                             factura = (Factura)lista_parametros[0];
                         return new FrmFormasPago(ref factura);
                     }
+                case "repoStock":
+                    return new FrmRepoStocks();
                 
 
 
