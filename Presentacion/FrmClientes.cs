@@ -162,6 +162,14 @@ namespace Farmaceutica.Presentacion
             nuevo_cliente.num_afiliado = (int)txtNroAfil.ValorEntero;
             nuevo_cliente.nro_doc = long.Parse(txtNroDoc.Text);
 
+            if (nuevo_cliente.obra_social == null)
+                nuevo_cliente.obra_social = new ObraSocial();
+
+
+            if (nuevo_cliente.plan_os == null)
+                nuevo_cliente.plan_os = new PlanOS();
+
+
 
             string resultado;
             if (btnGuardar.Text == "Guardar")
@@ -181,6 +189,8 @@ namespace Farmaceutica.Presentacion
             else
                 MessageBox.Show("Se ha producido un error. El cliente no pudo ser guardado.", "Atención:", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+
+
         }
 
         private bool ValidarControles()
@@ -192,6 +202,31 @@ namespace Farmaceutica.Presentacion
                 return false;
             }
             return true;
+        }
+
+        private void btnAgregaImagen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNroAfil_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

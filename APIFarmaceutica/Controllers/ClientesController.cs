@@ -43,11 +43,6 @@ namespace APIFarmaceutica.Controllers
             return "value";
         }
 
-        // POST api/<ClienteController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
 
         // PUT api/<ClienteController>/5
         [HttpPut("{id}")]
@@ -102,7 +97,7 @@ namespace APIFarmaceutica.Controllers
         }
 
         // POST /api/Cliente/CargarCliente
-        [HttpPost, Route("IngresarCliente")]
+        [HttpPost, Route("CargarCliente")]
         public IActionResult PostCliente(Cliente nuevo_cliente)
         {
             DaoCliente dao = (DaoCliente)factory.CreaObjeto("DaoCliente");
