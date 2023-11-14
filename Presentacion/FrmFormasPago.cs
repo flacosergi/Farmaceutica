@@ -43,16 +43,18 @@ namespace Farmaceutica.Presentacion
 
             foreach (Factura_FormaPago factura_fp in nueva_factura.lista_formas_pago)
             {
-                dgvDeltallePagos.Rows.Add(factura_fp.forma_pago.id_forma_pago,
-                                       factura_fp.forma_pago.forma_pago,
-                                       Math.Round((decimal)factura_fp.porc_recargo == 0 ? factura_fp.monto : (decimal)factura_fp.monto / (1 + (decimal)factura_fp.porc_recargo)),
-                                       factura_fp.cuotas == 0 ? DBNull.Value : factura_fp.cuotas,
-                                       factura_fp.porc_recargo == 0 ? DBNull.Value : (decimal)(Math.Round((decimal)factura_fp.monto * (decimal)factura_fp.porc_recargo)),
-                                       Math.Round((factura_fp.monto * (decimal)factura_fp.porc_recargo), 2) + factura_fp.monto,
-                                       "Eliminar");
-                CalculaTotal();
-                cboFormasPago.Focus();
-
+                if (factura_fp.porc_recargo != null)
+                {
+                    dgvDeltallePagos.Rows.Add(factura_fp.forma_pago.id_forma_pago,
+                                           factura_fp.forma_pago.forma_pago,
+                                           Math.Round((decimal)factura_fp.porc_recargo == 0 ? factura_fp.monto : (decimal)factura_fp.monto / (1 + (decimal)factura_fp.porc_recargo), 2),
+                                           factura_fp.cuotas == 0 ? DBNull.Value : factura_fp.cuotas,
+                                           factura_fp.porc_recargo == 0 ? DBNull.Value : (decimal)(Math.Round((decimal)factura_fp.monto * (decimal)factura_fp.porc_recargo)),
+                                           Math.Round((factura_fp.monto * (decimal)factura_fp.porc_recargo), 2) + factura_fp.monto,
+                                           "Eliminar");
+                    CalculaTotal();
+                    cboFormasPago.Focus();
+                }
             }
         }
 
@@ -81,6 +83,7 @@ namespace Farmaceutica.Presentacion
             nuevo_pago.cuotas = (int)ntbCuotas.ValorEntero;
             nuevo_pago.monto = (decimal)(Math.Round((ntbImporte.ValorDecimal * ntbPorcRecargo.ValorDecimal), 2) + ntbImporte.ValorDecimal);
             nuevo_pago.porc_recargo = (decimal)ntbPorcRecargo.ValorDecimal;
+            nuevo_pago.observaciones = null;
             nueva_factura.lista_formas_pago.Add(nuevo_pago);
             dgvDeltallePagos.Rows.Add(nuevo_pago.forma_pago.id_forma_pago,
                                         nuevo_pago.forma_pago.forma_pago,
@@ -101,8 +104,17 @@ namespace Farmaceutica.Presentacion
 
         private bool ValidaCampos()
         {
+
+            if (cboFormasPago.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione un tipo de pago.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                cboFormasPago.Focus();
+                return false;
+            }
+
             if (ntbCuotas.ReadOnly == false)
             {
+  
                 if (ntbCuotas.Text == string.Empty)
                 {
                     MessageBox.Show("Ingrese cantidad de cuotas.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -131,10 +143,10 @@ namespace Farmaceutica.Presentacion
         {
 
             decimal total = 0;
-            decimal diferencia = 0;
+            decimal diferencia;
             foreach (DataGridViewRow fila in dgvDeltallePagos.Rows)
             {
-                total = total + (decimal)fila.Cells["Importe"].Value;
+                total += + (decimal)fila.Cells["Importe"].Value;
             }
             diferencia = (decimal)ntbSubTotal.ValorDecimal - total;
             ntbTotal.Focus();

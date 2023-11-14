@@ -49,7 +49,7 @@ namespace Farmaceutica.Presentacion
             List<TipoCliente> list = await gestor_cli.GetTipoCliente();
             metodos.LlenaCombo(cbo_tipo_cliente, list.ToList<object>(), "detalle", "id_tipo_cliente");
 
-            List<PlanOS> plan = await gestor_cli.GetPlanOS ();
+            List<PlanOS> plan = await gestor_cli.GetPlanOS();
             metodos.LlenaCombo(cboPlanOS, plan.ToList<object>(), "desc_plan", "cod_plan");
 
             List<ObraSocial> os = await gestor_cli.GetTipoOS();
@@ -151,16 +151,24 @@ namespace Farmaceutica.Presentacion
             nuevo_cliente.tipo_cliente = (TipoCliente)cbo_tipo_cliente.SelectedItem;
             nuevo_cliente.tipo_doc = (TipoDoc)cbo_tipo_doc.SelectedItem;
             nuevo_cliente.localidad = (Localidad)cboLocalidad.SelectedItem;
-            nuevo_cliente.obra_social = (ObraSocial)cboLocalidad.SelectedItem;
+            nuevo_cliente.obra_social = (ObraSocial)cboOS.SelectedItem;
             nuevo_cliente.plan_os = (PlanOS)cboPlanOS.SelectedItem;
             nuevo_cliente.fecha_alta = dateFechaAlta.Value;
             nuevo_cliente.apellido = txtApellido.Text;
             nuevo_cliente.razon_social = txtRazonSocial.Text;
             nuevo_cliente.calle = txtCalle.Text;
-            nuevo_cliente.cod_postal = Convert.ToInt32(txtCP);
-            nuevo_cliente.numero = Convert.ToInt32(txtNroCalle);
-            nuevo_cliente.num_afiliado = Convert.ToInt64(txtNroAfil);
-            nuevo_cliente.nro_doc = Convert.ToInt32(txtNroDoc);
+            nuevo_cliente.cod_postal = (int)txtCP.ValorEntero;
+            nuevo_cliente.numero = (int)txtNroCalle.ValorEntero;
+            nuevo_cliente.num_afiliado = (int)txtNroAfil.ValorEntero;
+            nuevo_cliente.nro_doc = long.Parse(txtNroDoc.Text);
+
+            if (nuevo_cliente.obra_social == null)
+                nuevo_cliente.obra_social = new ObraSocial();
+
+
+            if (nuevo_cliente.plan_os == null)
+                nuevo_cliente.plan_os = new PlanOS();
+
 
 
             string resultado;
@@ -173,13 +181,15 @@ namespace Farmaceutica.Presentacion
             if (resultado == "OK")
             {
                 if (btnGuardar.Text == "Guardar")
-                    MessageBox.Show("El artículo se ingresó correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("El cliente se ingresó correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
-                    MessageBox.Show("El artículo fue modificado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("El cliente fue modificado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnLimpiar_Click(this, EventArgs.Empty);
             }
             else
-                MessageBox.Show("Se ha producido un error. El artículo no pudo ser guardado.", "Atención:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se ha producido un error. El cliente no pudo ser guardado.", "Atención:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
 
         }
 
@@ -192,6 +202,31 @@ namespace Farmaceutica.Presentacion
                 return false;
             }
             return true;
+        }
+
+        private void btnAgregaImagen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNroAfil_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

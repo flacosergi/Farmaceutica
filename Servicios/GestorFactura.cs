@@ -1,4 +1,5 @@
 ﻿using AccesoDatos.Modelos;
+using AccesoDatos.Servicios;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,13 @@ namespace Farmaceutica.Servicios
 {
     public class GestorFactura : IGestor
     {
-        public Task<object?> ConsultarPorID(int codigo)
+        public async Task<object?> ConsultarPorID(int codigo)
         {
-            throw new NotImplementedException();
+            string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Factura/ObtenerFacturaPorID/" + codigo);
+            if (contenido != string.Empty)
+                return JsonConvert.DeserializeObject<Factura>(contenido);
+            else
+                return ModeloFactory.ObtenerInstancia().CreaObjeto("factura");
         }
 
         public Task<string> Eliminar(object objeto_eliminar)

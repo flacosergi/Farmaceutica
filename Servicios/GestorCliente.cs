@@ -40,12 +40,12 @@ namespace Farmaceutica.Servicios
         public async Task<string> IngresarCliente(Cliente nuevo_cliente)
         {
             string cli = JsonConvert.SerializeObject(nuevo_cliente, Formatting.Indented);
-            string response = await ClientSingleton.GetInstance().PostAsync("/api/Clientes/IngresarCliente", cli);
+            string response = await ClientSingleton.GetInstance().PostAsync("/api/Clientes/CargarCliente", cli);
             if (response != string.Empty)
                 return response;
             else
                 return string.Empty;
-        }
+        } 
 
         public async Task<string> ModificarCliente(Cliente cliente)
         {
