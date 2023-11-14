@@ -181,13 +181,13 @@ namespace Farmaceutica.Presentacion
             }
 
             else
-            { 
-             nuevo_cliente.obra_social = (ObraSocial)cboOS.SelectedItem;
-             nuevo_cliente.plan_os = (PlanOS)cboPlanOS.SelectedItem;
-             nuevo_cliente.num_afiliado = (int)txtNroAfil.ValorEntero;
+            {
+                nuevo_cliente.obra_social = (ObraSocial)cboOS.SelectedItem;
+                nuevo_cliente.plan_os = (PlanOS)cboPlanOS.SelectedItem;
+                nuevo_cliente.num_afiliado = (int)txtNroAfil.ValorEntero;
             }
-           
-           
+
+
             nuevo_cliente.fecha_alta = dateFechaAlta.Value;
             nuevo_cliente.calle = txtCalle.Text;
             nuevo_cliente.cod_postal = (int)txtCP.ValorEntero;
@@ -223,8 +223,74 @@ namespace Farmaceutica.Presentacion
                     txtNombre.Focus();
                     return false;
                 }
+
+                if (txtApellido.Text == string.Empty)
+                {
+                    MessageBox.Show("Debe indicar un Apellido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtApellido.Focus();
+                    return false;
+                }
             }
 
+            else
+
+            {
+                if (txtRazonSocial.Text == string.Empty)
+                {
+                    MessageBox.Show("Debe indicar una Razón Social.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtRazonSocial.Focus();
+                    return false;
+                }
+
+            }
+            if (cbo_tipo_doc.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe indicar un tipo de documento.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                cbo_tipo_doc.Focus();
+                return false;
+            }
+
+            if (txtNroDoc.Text == string.Empty)
+            {
+                MessageBox.Show("Debe indicar un número de documento.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtNroDoc.Focus();
+                return false;
+            }
+
+            if (cboLocalidad.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe indicar una calle.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                cboLocalidad.Focus();
+                return false;
+            }
+            if (txtNroCalle.Text == string.Empty)
+            {
+                MessageBox.Show("Debe indicar altura de la calle.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtNroCalle.Focus();
+                return false;
+            }
+            if (txtCP.Text == string.Empty)
+            {
+                MessageBox.Show("Debe indicar una Código Postal.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtCP.Focus();
+                return false;
+            }
+
+            if (cboOS.SelectedIndex != -1 && cboPlanOS.SelectedIndex == -1)
+
+            {
+                MessageBox.Show("Debe indicar un plan de obra social.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                cboPlanOS.Focus();
+                return false;
+            }
+
+            if (cboOS.SelectedIndex != -1 && txtNroAfil.Text == string.Empty)
+
+            {
+                MessageBox.Show("Debe indicar un número de afiliado.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtNroAfil.Focus();
+                return false;
+            }
             return true;
         }
 
@@ -256,11 +322,6 @@ namespace Farmaceutica.Presentacion
             btnEditar.Enabled = false;
             btnLimpiar.Enabled = true;
 
-
-        }
-
-        private void cbo_tipo_cliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
 

@@ -382,7 +382,6 @@
             cbo_tipo_cliente.Name = "cbo_tipo_cliente";
             cbo_tipo_cliente.Size = new Size(193, 23);
             cbo_tipo_cliente.TabIndex = 4;
-            cbo_tipo_cliente.SelectedIndexChanged += cbo_tipo_cliente_SelectedIndexChanged;
             cbo_tipo_cliente.SelectionChangeCommitted += cbo_tipo_cliente_SelectionChangeCommitted;
             // 
             // label5

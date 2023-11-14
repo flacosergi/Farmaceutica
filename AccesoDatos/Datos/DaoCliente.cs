@@ -58,6 +58,16 @@ namespace AccesoDatos.Datos
                 }
 
             }
+            //lista_parametros.Clear();
+            //lista_parametros.Add(new SqlParameter("@cod_plan", cliente_buscado.plan_os.cod_plan));
+            //DataTable tabla_plan = DBHelper.ObtenerInstancia().CargarTabla("PA_CLIENTES_OBTENER_PLAN_POR_CLIENTE", lista_parametros);
+            //PlanOS nuevoPlan = (PlanOS)ModeloFactory.ObtenerInstancia().CreaObjeto("plan_os");
+            //nuevoPlan.cod_plan = (int)tabla_plan.Rows[0]["cod_plan"];
+            //nuevoPlan.obra_social = (int)tabla_plan.Rows[0]["cod_os"];
+            //nuevoPlan.desc_plan = (string)tabla_plan.Rows[0]["desc_plan"];
+            //nuevoPlan.descuento = (decimal)tabla_plan.Rows[0]["descuento"];
+            //cliente_buscado.plan_os = nuevoPlan;
+
             return cliente_buscado;
         }
 
@@ -118,17 +128,17 @@ namespace AccesoDatos.Datos
             param_cliente.Add(new SqlParameter("@id_tipo_cliente", NuevoCliente.tipo_cliente.id_tipo_cliente));
             param_cliente.Add(new SqlParameter("@nro_doc", NuevoCliente.nro_doc));
             param_cliente.Add(new SqlParameter("@id_tipo_doc", NuevoCliente.tipo_doc.id_tipo_doc));
-            param_cliente.Add(new SqlParameter("@nombre", NuevoCliente.nombre));
-            param_cliente.Add(new SqlParameter("@apellido", NuevoCliente.apellido));
-            param_cliente.Add(new SqlParameter("@razon_social", NuevoCliente.razon_social));
+            param_cliente.Add(new SqlParameter("@nombre", NuevoCliente.nombre == null ? DBNull.Value : NuevoCliente.nombre));
+            param_cliente.Add(new SqlParameter("@apellido", NuevoCliente.apellido == null ? DBNull.Value : NuevoCliente.apellido));
+            param_cliente.Add(new SqlParameter("@razon_social", NuevoCliente.razon_social == null ? DBNull.Value : NuevoCliente.razon_social));
             param_cliente.Add(new SqlParameter("@calle", NuevoCliente.calle));
             param_cliente.Add(new SqlParameter("@nro_calle", NuevoCliente.numero));
             param_cliente.Add(new SqlParameter("@codigo_postal", NuevoCliente.cod_postal));
             param_cliente.Add(new SqlParameter("@id_localidad", NuevoCliente.localidad.id_localidad));
-            param_cliente.Add(new SqlParameter("@id_OS", NuevoCliente.obra_social.codigo_os));
-            param_cliente.Add(new SqlParameter("@id_plan_OS", NuevoCliente.plan_os.cod_plan));
+            param_cliente.Add(new SqlParameter("@id_OS", NuevoCliente.obra_social.codigo_os == 0 ? DBNull.Value : NuevoCliente.obra_social.codigo_os));
+            param_cliente.Add(new SqlParameter("@id_plan_OS", NuevoCliente.plan_os.cod_plan == 0 ? DBNull.Value : NuevoCliente.plan_os.cod_plan));
             param_cliente.Add(new SqlParameter("@fecha_alta", NuevoCliente.fecha_alta));
-            param_cliente.Add(new SqlParameter("@nro_afiliado", NuevoCliente.num_afiliado));
+            param_cliente.Add(new SqlParameter("@nro_afiliado", NuevoCliente.num_afiliado == null ? DBNull.Value : NuevoCliente.num_afiliado));
             DBHelper.ObtenerInstancia().AbreConexionConTransaccion();
             int resultado = DBHelper.ObtenerInstancia().EjecutaComando("SP_CLIENTES_MODIFICACION", param_cliente, null);
             DBHelper.ObtenerInstancia().CierraConexionConTransaccion();
