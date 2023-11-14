@@ -29,44 +29,107 @@
         private void InitializeComponent()
         {
             rvStocks = new Microsoft.Reporting.WinForms.ReportViewer();
+            cbSucursal = new ComboBox();
+            gbFiltros = new GroupBox();
             btnGenerar = new Button();
+            btnLimpiar = new Button();
+            label8 = new Label();
+            gbFiltros.SuspendLayout();
             SuspendLayout();
             // 
             // rvStocks
             // 
             rvStocks.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            rvStocks.Location = new Point(0, 0);
+            rvStocks.Location = new Point(10, 90);
             rvStocks.Name = "ReportViewer";
             rvStocks.ServerReport.BearerToken = null;
-            rvStocks.Size = new Size(750, 300);
+            rvStocks.Size = new Size(770, 300);
             rvStocks.TabIndex = 0;
+            // 
+            // cbSucursal
+            // 
+            cbSucursal.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbSucursal.FormattingEnabled = true;
+            cbSucursal.Location = new Point(69, 22);
+            cbSucursal.Name = "cbSucursal";
+            cbSucursal.Size = new Size(392, 23);
+            cbSucursal.TabIndex = 3;
+            // 
+            // gbFiltros
+            // 
+            gbFiltros.Controls.Add(label8);
+            gbFiltros.Controls.Add(btnGenerar);
+            gbFiltros.Controls.Add(btnLimpiar);
+            gbFiltros.Controls.Add(cbSucursal);
+            gbFiltros.Location = new Point(12, 12);
+            gbFiltros.Name = "gbFiltros";
+            gbFiltros.Size = new Size(747, 61);
+            gbFiltros.TabIndex = 5;
+            gbFiltros.TabStop = false;
+            gbFiltros.Text = "Filtros";
             // 
             // btnGenerar
             // 
-            btnGenerar.Location = new Point(713, 415);
+            btnGenerar.BackColor = Color.DarkCyan;
+            btnGenerar.FlatStyle = FlatStyle.Flat;
+            btnGenerar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGenerar.ForeColor = SystemColors.Control;
+            btnGenerar.Location = new Point(532, 19);
             btnGenerar.Name = "btnGenerar";
-            btnGenerar.Size = new Size(75, 23);
-            btnGenerar.TabIndex = 1;
+            btnGenerar.Size = new Size(85, 27);
+            btnGenerar.TabIndex = 6;
             btnGenerar.Text = "Generar";
-            btnGenerar.UseVisualStyleBackColor = true;
+            btnGenerar.UseVisualStyleBackColor = false;
             btnGenerar.Click += btnGenerar_Click;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.BackColor = Color.DarkCyan;
+            btnLimpiar.FlatStyle = FlatStyle.Flat;
+            btnLimpiar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLimpiar.ForeColor = SystemColors.Control;
+            btnLimpiar.Location = new Point(648, 19);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(85, 27);
+            btnLimpiar.TabIndex = 5;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = Color.DarkCyan;
+            label8.Location = new Point(6, 25);
+            label8.Name = "label8";
+            label8.Size = new Size(56, 15);
+            label8.TabIndex = 19;
+            label8.Text = "Sucursal:";
             // 
             // FrmRepoStocks
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Azure;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnGenerar);
+            Controls.Add(gbFiltros);
             Controls.Add(rvStocks);
             Name = "FrmRepoStocks";
             Text = "FrmRepoStocks";
             Load += FrmRepoStocks_Load;
+            gbFiltros.ResumeLayout(false);
+            gbFiltros.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer rvStocks;
+        private ComboBox cbSucursal;
+        private GroupBox gbFiltros;
+        private Button btnLimpiar;
         private Button btnGenerar;
+        private Label label8;
     }
 }

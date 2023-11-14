@@ -29,6 +29,11 @@ namespace Farmaceutica.Presentacion.Reportes
             rvStocks.RefreshReport();
         }
 
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            cbSucursal.SelectedIndex = -1;
+        }
+
         private async void btnGenerar_Click(object sender, EventArgs e)
         {
             rvStocks.LocalReport.DataSources.Clear();
