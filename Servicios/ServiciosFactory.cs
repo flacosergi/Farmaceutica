@@ -61,6 +61,8 @@ namespace Farmaceutica.Servicios
                     return new FrmRepoStocks(this);
                 case "GestorReporteStock":
                     return new GestorReporteStock();
+                case "GestorSucursal":
+                    return new GestorSucursal();
 
 
 

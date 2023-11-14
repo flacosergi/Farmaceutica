@@ -9,6 +9,6 @@ namespace Farmaceutica.Servicios
 {
     public interface IGestorSucursal
     {
-        Task<List<Sucursal>> GObtenerSucursales();
+        Task<List<Sucursal>> ObtenerSucursales();
     }
 }
