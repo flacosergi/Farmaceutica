@@ -70,9 +70,14 @@ namespace AccesoDatos.Servicios
                     return new RepoStocks();
                 case "DaoRepoStocks":
                     return new DaoRepoStocks();
+                case "DaoRepoFacturas":
+                    return new DaoRepoFacturas();
+				case "RepoFactura":
+					return new RepoFacturas();
 
 
-                default:
+
+				default:
                     throw new ArgumentException($"Tipo de objeto inválido: {tipo}");
             }
         }
