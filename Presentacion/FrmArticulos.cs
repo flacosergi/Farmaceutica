@@ -109,7 +109,7 @@ namespace Farmaceutica.Presentacion
                 nuevo_articulo.imagen = Path.GetFileName(pbArticulo.ImageLocation);
             else
                 if(pbArticulo.Image == null)
-                    nuevo_articulo.imagen = string.Empty;
+                    nuevo_articulo.imagen = string.Empty;            
             string resultado;
             if (btnGuardar.Text == "Guardar")
                 resultado = await gestor_art.IngresarArticulo(nuevo_articulo);

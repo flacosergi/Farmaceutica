@@ -60,7 +60,6 @@
             lbl_cod_cli = new Label();
             label1 = new Label();
             panel1 = new Panel();
-            btnConsultar = new Button();
             btnLimpiar = new Button();
             btnSalir = new Button();
             btnGuardar = new Button();
@@ -109,6 +108,7 @@
             pnlCarga.Name = "pnlCarga";
             pnlCarga.Size = new Size(712, 344);
             pnlCarga.TabIndex = 1;
+            pnlCarga.Paint += pnlCarga_Paint;
             // 
             // txtNroDoc
             // 
@@ -380,6 +380,7 @@
             cbo_tipo_cliente.Name = "cbo_tipo_cliente";
             cbo_tipo_cliente.Size = new Size(193, 23);
             cbo_tipo_cliente.TabIndex = 4;
+            cbo_tipo_cliente.SelectedIndexChanged += cbo_tipo_cliente_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -455,7 +456,6 @@
             // 
             panel1.BackColor = Color.FromArgb(180, 254, 228);
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(btnConsultar);
             panel1.Controls.Add(btnLimpiar);
             panel1.Controls.Add(btnSalir);
             panel1.Controls.Add(btnGuardar);
@@ -466,26 +466,13 @@
             panel1.Size = new Size(712, 71);
             panel1.TabIndex = 2;
             // 
-            // btnConsultar
-            // 
-            btnConsultar.BackColor = Color.DarkCyan;
-            btnConsultar.FlatStyle = FlatStyle.Flat;
-            btnConsultar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnConsultar.ForeColor = SystemColors.Control;
-            btnConsultar.Location = new Point(254, 18);
-            btnConsultar.Name = "btnConsultar";
-            btnConsultar.Size = new Size(85, 27);
-            btnConsultar.TabIndex = 5;
-            btnConsultar.Text = "Consultar";
-            btnConsultar.UseVisualStyleBackColor = false;
-            // 
             // btnLimpiar
             // 
             btnLimpiar.BackColor = Color.DarkCyan;
             btnLimpiar.FlatStyle = FlatStyle.Flat;
             btnLimpiar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnLimpiar.ForeColor = SystemColors.Control;
-            btnLimpiar.Location = new Point(500, 18);
+            btnLimpiar.Location = new Point(479, 18);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(85, 27);
             btnLimpiar.TabIndex = 3;
@@ -513,7 +500,7 @@
             btnGuardar.FlatStyle = FlatStyle.Flat;
             btnGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnGuardar.ForeColor = SystemColors.Control;
-            btnGuardar.Location = new Point(365, 18);
+            btnGuardar.Location = new Point(254, 18);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(85, 27);
             btnGuardar.TabIndex = 0;
@@ -601,7 +588,6 @@
         private Label label14;
         private TextBox txtRazonSocial;
         private Panel panel1;
-        private Button btnConsultar;
         private Button btnLimpiar;
         private Button btnSalir;
         private Button btnGuardar;

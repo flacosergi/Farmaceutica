@@ -125,8 +125,8 @@ namespace AccesoDatos.Datos
             param_cliente.Add(new SqlParameter("@nro_calle", NuevoCliente.numero));
             param_cliente.Add(new SqlParameter("@codigo_postal", NuevoCliente.cod_postal));
             param_cliente.Add(new SqlParameter("@id_localidad", NuevoCliente.localidad.id_localidad));
-            param_cliente.Add(new SqlParameter("@id_OS", NuevoCliente.obra_social));
-            param_cliente.Add(new SqlParameter("@id_plan_OS", NuevoCliente.plan_os));
+            param_cliente.Add(new SqlParameter("@id_OS", NuevoCliente.obra_social.codigo_os));
+            param_cliente.Add(new SqlParameter("@id_plan_OS", NuevoCliente.plan_os.cod_plan));
             param_cliente.Add(new SqlParameter("@fecha_alta", NuevoCliente.fecha_alta));
             param_cliente.Add(new SqlParameter("@nro_afiliado", NuevoCliente.num_afiliado));
             DBHelper.ObtenerInstancia().AbreConexionConTransaccion();
