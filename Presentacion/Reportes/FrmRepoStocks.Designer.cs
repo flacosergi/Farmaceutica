@@ -31,9 +31,9 @@
             rvStocks = new Microsoft.Reporting.WinForms.ReportViewer();
             cbSucursal = new ComboBox();
             gbFiltros = new GroupBox();
+            label8 = new Label();
             btnGenerar = new Button();
             btnLimpiar = new Button();
-            label8 = new Label();
             gbFiltros.SuspendLayout();
             SuspendLayout();
             // 
@@ -43,7 +43,7 @@
             rvStocks.Location = new Point(10, 90);
             rvStocks.Name = "ReportViewer";
             rvStocks.ServerReport.BearerToken = null;
-            rvStocks.Size = new Size(770, 300);
+            rvStocks.Size = new Size(770, 330);
             rvStocks.TabIndex = 0;
             // 
             // cbSucursal
@@ -67,6 +67,17 @@
             gbFiltros.TabIndex = 5;
             gbFiltros.TabStop = false;
             gbFiltros.Text = "Filtros";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = Color.DarkCyan;
+            label8.Location = new Point(6, 25);
+            label8.Name = "label8";
+            label8.Size = new Size(56, 15);
+            label8.TabIndex = 19;
+            label8.Text = "Sucursal:";
             // 
             // btnGenerar
             // 
@@ -96,17 +107,6 @@
             btnLimpiar.UseVisualStyleBackColor = false;
             btnLimpiar.Click += btnLimpiar_Click;
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.ForeColor = Color.DarkCyan;
-            label8.Location = new Point(6, 25);
-            label8.Name = "label8";
-            label8.Size = new Size(56, 15);
-            label8.TabIndex = 19;
-            label8.Text = "Sucursal:";
-            // 
             // FrmRepoStocks
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -116,7 +116,7 @@
             Controls.Add(gbFiltros);
             Controls.Add(rvStocks);
             Name = "FrmRepoStocks";
-            Text = "FrmRepoStocks";
+            Text = "Reporte de Stock";
             Load += FrmRepoStocks_Load;
             gbFiltros.ResumeLayout(false);
             gbFiltros.PerformLayout();

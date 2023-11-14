@@ -9,13 +9,13 @@
               <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>7.56833cm</Width>
+              <Width>9.4998cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.68521cm</Width>
+              <Width>2.73813cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.76458cm</Width>
+              <Width>2.8175cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.10313cm</Width>
@@ -35,10 +35,15 @@
                           <TextRuns>
                             <TextRun>
                               <Value>SUCURSAL</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>DarkCyan</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox12</rd:DefaultName>
@@ -47,6 +52,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>Azure</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -65,10 +71,15 @@
                           <TextRuns>
                             <TextRun>
                               <Value>ARTICULO</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>DarkCyan</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox14</rd:DefaultName>
@@ -77,6 +88,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>Azure</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -95,10 +107,16 @@
                           <TextRuns>
                             <TextRun>
                               <Value>STOCK MINIMO</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>DarkCyan</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox16</rd:DefaultName>
@@ -107,6 +125,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>Azure</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -125,10 +144,15 @@
                           <TextRuns>
                             <TextRun>
                               <Value>STOCK ACTUAL</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>DarkCyan</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox18</rd:DefaultName>
@@ -137,6 +161,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>Azure</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -155,10 +180,15 @@
                           <TextRuns>
                             <TextRun>
                               <Value>ESTADO</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>DarkCyan</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox20</rd:DefaultName>
@@ -167,6 +197,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>Azure</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -253,7 +284,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>stockMinimo</rd:DefaultName>
@@ -283,7 +316,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>stockActual</rd:DefaultName>
@@ -356,7 +391,7 @@
         <DataSetName>DSRepoStocks</DataSetName>
         <Top>0.17639cm</Top>
         <Height>1.2cm</Height>
-        <Width>17.62125cm</Width>
+        <Width>19.65855cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -364,13 +399,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>2.04444cm</Height>
     <Style />
   </Body>
-  <Width>7.04167in</Width>
+  <Width>19.75146cm</Width>
   <Page>
     <PageHeader>
-      <Height>1.53458cm</Height>
+      <Height>1.16416cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -384,6 +419,7 @@
                   <Value>REPORTE DE STOCK POR SUCURSAL</Value>
                   <Style>
                     <FontWeight>Bold</FontWeight>
+                    <Color>DarkCyan</Color>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -395,7 +431,54 @@
           <rd:DefaultName>Textbox11</rd:DefaultName>
           <Top>0.28787cm</Top>
           <Height>0.6cm</Height>
-          <Width>17.88583cm</Width>
+          <Width>19.65855cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BackgroundColor>Azure</BackgroundColor>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageHeader>
+    <PageFooter>
+      <Height>0.97896cm</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox2">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>="Pag. " + CStr(Globals!PageNumber) + "/" + CStr(Globals!TotalPages)</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                    <Color>DarkCyan</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>0.17639cm</Top>
+          <Left>14.48626cm</Left>
+          <Height>0.6cm</Height>
+          <Width>5.17229cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -412,7 +495,7 @@
           <Style>None</Style>
         </Border>
       </Style>
-    </PageHeader>
+    </PageFooter>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>

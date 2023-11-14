@@ -16,17 +16,22 @@ namespace Farmaceutica.Presentacion.Reportes
 {
     public partial class FrmRepoStocks : Form
     {
-        private GestorReporteStock gestor;
+        private GestorReporteStock gestorStock;
+        private GestorSucursal gestorSucursal;
+        private MetodosComunes metodos;
         public FrmRepoStocks(AbstractFactory factory)
         {
             InitializeComponent();
-            gestor = (GestorReporteStock)factory.CreaObjeto("GestorReporteStock");
+            gestorStock = (GestorReporteStock)factory.CreaObjeto("GestorReporteStock");
+            gestorSucursal = (GestorSucursal)factory.CreaObjeto("GestorSucursal");
+            metodos = (MetodosComunes)factory.CreaObjeto("metodos_comunes");
         }
 
-        private void FrmRepoStocks_Load(object sender, EventArgs e)
+        private async void FrmRepoStocks_Load(object sender, EventArgs e)
         {
             rvStocks.LocalReport.ReportEmbeddedResource = "Farmaceutica.Presentacion.Reportes.ReporteStocks.rdlc";
-            rvStocks.RefreshReport();
+            List<Sucursal> sucursales = await gestorSucursal.ObtenerSucursales();
+            metodos.LlenaCombo(cbSucursal, sucursales.ToList<object>(), "nombre", "codigo_sucursal");
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -36,8 +41,11 @@ namespace Farmaceutica.Presentacion.Reportes
 
         private async void btnGenerar_Click(object sender, EventArgs e)
         {
+            int suc = -1;
+            if (cbSucursal.SelectedIndex != -1)
+                suc = ((Sucursal)cbSucursal.SelectedItem).codigo_sucursal;
             rvStocks.LocalReport.DataSources.Clear();
-            List<RepoStocks> repo = await gestor.ObtenerReporte();
+            List<RepoStocks> repo = await gestorStock.ObtenerReporte(suc);
             DataTable dt = ToDataTable(repo);
             rvStocks.LocalReport.DataSources.Add(
                 new Microsoft.Reporting.WinForms.ReportDataSource("DSRepoStocks", dt));
