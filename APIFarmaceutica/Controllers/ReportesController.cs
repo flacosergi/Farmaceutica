@@ -27,5 +27,15 @@ namespace APIFarmaceutica.Controllers
             DaoRepoStocks dao = (DaoRepoStocks)factory.CreaObjeto("DaoRepoStocks");
             return dao.ObtenerReporteStocks(suc);
         }
-    }
+
+		// GET: api/<ReportesController>
+		[HttpGet, Route("ReporteFacturas/{desde}/{hasta}")]
+		public List<RepoFacturas> ObtenerReporteFacturas(DateTime desde, DateTime hasta)
+		{
+
+			DaoRepoFacturas dao = (DaoRepoFacturas)factory.CreaObjeto("DaoRepoFacturas");
+			return dao.ObtenerReporteFacturas(desde,hasta);
+			//return dao.ObtenerReporteFacturas(Convert.ToDateTime(desde.ToString("dd/MM/yyyy")), Convert.ToDateTime(hasta.ToString("dd/MM/yyyy")));
+		}
+	}
 }

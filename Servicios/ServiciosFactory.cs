@@ -63,16 +63,17 @@ namespace Farmaceutica.Servicios
                     }
                 case "repoStock":
                     return new FrmRepoStocks(this);
+                case "repoFactura":
+                    return new FrmReporteFacturas(this);
+        				case "GestorReporteFacturas":
+				          	return new GestorReporteFacturas();
                 case "GestorReporteStock":
                     return new GestorReporteStock();
                 case "GestorSucursal":
                     return new GestorSucursal();
 
 
-
-
-
-                default:
+          			default:
                     throw new ArgumentException($"Tipo de objeto inválido: {tipo}");
             }
         }
