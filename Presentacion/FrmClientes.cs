@@ -239,25 +239,9 @@ namespace Farmaceutica.Presentacion
                     return false;
                 }
 
-                if (txtApellido.Text == string.Empty)
-                {
-                    MessageBox.Show("Debe indicar un Apellido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtApellido.Focus();
-                    return false;
-                }
             }
 
-            else
 
-            {
-                if (txtRazonSocial.Text == string.Empty)
-                {
-                    MessageBox.Show("Debe indicar una Razón Social.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtRazonSocial.Focus();
-                    return false;
-                }
-
-            }
             if (cbo_tipo_doc.SelectedIndex == -1)
             {
                 MessageBox.Show("Debe indicar un tipo de documento.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
