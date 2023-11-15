@@ -96,7 +96,7 @@ namespace Farmaceutica.Presentacion
                     txtNroCalle.Text = cliente_buscado.numero.ToString();
                     txtCP.Text = cliente_buscado.cod_postal.ToString();
                     cboOS.SelectedValue = cliente_buscado.obra_social.codigo_os;
-                    cboPlanOS.SelectedValue = cliente_buscado.plan_os;
+                    cboPlanOS.SelectedValue = cliente_buscado.plan_os.cod_plan;
                     txtNroAfil.Text = cliente_buscado.num_afiliado.ToString();
                     dateFechaAlta.Value = cliente_buscado.fecha_alta;
 
@@ -215,11 +215,26 @@ namespace Farmaceutica.Presentacion
 
         private bool ValidarControles()
         {
-            if (cbo_tipo_cliente.SelectedIndex == 0)
+            if (cbo_tipo_cliente.SelectedIndex == -1)
             {
-                if (txtNombre.Text == string.Empty)
+                MessageBox.Show("Debe seleccionar un tipo de cliente.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+
+            if (string.Equals(((TipoCliente)cbo_tipo_cliente.SelectedItem).detalle, "Persona Física"))
+            {
+                if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtApellido.Text))
                 {
-                    MessageBox.Show("Debe indicar un Nombre.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Debe indicar un Nombre y Apellido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtNombre.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(txtRazonSocial.Text))
+                {
+                    MessageBox.Show("Debe indicar una Razon Social.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtNombre.Focus();
                     return false;
                 }

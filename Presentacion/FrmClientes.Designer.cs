@@ -117,9 +117,10 @@
             txtNroDoc.CerosIzquierda = false;
             txtNroDoc.Decimales = 0;
             txtNroDoc.DecimalesConFormato = 0;
-            txtNroDoc.Digitos = 8;
+            txtNroDoc.Digitos = 11;
             txtNroDoc.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
             txtNroDoc.Location = new Point(424, 163);
+            txtNroDoc.MaxLength = 65535;
             txtNroDoc.Name = "txtNroDoc";
             txtNroDoc.SimboloMoneda = "$";
             txtNroDoc.Size = new Size(215, 23);
@@ -141,6 +142,7 @@
             txtNroAfil.Digitos = 15;
             txtNroAfil.FormatoNegativo = NumberTextBox.NumberTextBox.TipoNegativo.Signo;
             txtNroAfil.Location = new Point(146, 299);
+            txtNroAfil.MaxLength = 999999999;
             txtNroAfil.Name = "txtNroAfil";
             txtNroAfil.SimboloMoneda = "$";
             txtNroAfil.Size = new Size(193, 23);

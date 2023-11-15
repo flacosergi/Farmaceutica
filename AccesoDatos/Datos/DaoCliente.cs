@@ -122,7 +122,7 @@ namespace AccesoDatos.Datos
         {
             Cliente NuevoCliente = (Cliente)objeto;
             List<SqlParameter> param_cliente = new List<SqlParameter>();
-            
+
 
             param_cliente.Add(new SqlParameter("@cod_cliente", NuevoCliente.codigo_cliente));
             param_cliente.Add(new SqlParameter("@id_tipo_cliente", NuevoCliente.tipo_cliente.id_tipo_cliente));
