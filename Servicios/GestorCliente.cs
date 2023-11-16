@@ -83,6 +83,16 @@ namespace Farmaceutica.Servicios
                 lista_tipos = JsonConvert.DeserializeObject<List<PlanOS>>(contenido);
             return lista_tipos;
         }
+
+        public async Task<List<GeoLoc>> GetGeoLoc(int cod_sucursal)
+        {
+            List<GeoLoc> lista_geo = new List<GeoLoc>();
+            string contenido = await ClientSingleton.GetInstance().GetAsync("/api/Clientes/ObtenerGeoLoc/" + cod_sucursal);
+            if (contenido != string.Empty)
+                lista_geo = JsonConvert.DeserializeObject<List<GeoLoc>>(contenido);
+            return lista_geo;
+        }
+
     }
 }
 

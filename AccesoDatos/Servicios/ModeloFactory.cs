@@ -74,6 +74,8 @@ namespace AccesoDatos.Servicios
                     return new DaoRepoFacturas();
 				case "RepoFactura":
 					return new RepoFacturas();
+                case "GeoLoc":
+                    return new GeoLoc();
 
 
 

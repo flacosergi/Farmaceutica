@@ -58,16 +58,6 @@ namespace AccesoDatos.Datos
                 }
 
             }
-            //lista_parametros.Clear();
-            //lista_parametros.Add(new SqlParameter("@cod_plan", cliente_buscado.plan_os.cod_plan));
-            //DataTable tabla_plan = DBHelper.ObtenerInstancia().CargarTabla("PA_CLIENTES_OBTENER_PLAN_POR_CLIENTE", lista_parametros);
-            //PlanOS nuevoPlan = (PlanOS)ModeloFactory.ObtenerInstancia().CreaObjeto("plan_os");
-            //nuevoPlan.cod_plan = (int)tabla_plan.Rows[0]["cod_plan"];
-            //nuevoPlan.obra_social = (int)tabla_plan.Rows[0]["cod_os"];
-            //nuevoPlan.desc_plan = (string)tabla_plan.Rows[0]["desc_plan"];
-            //nuevoPlan.descuento = (decimal)tabla_plan.Rows[0]["descuento"];
-            //cliente_buscado.plan_os = nuevoPlan;
-
             return cliente_buscado;
         }
 
@@ -215,6 +205,24 @@ namespace AccesoDatos.Datos
                 nuevo_tipo.cod_plan = Convert.ToInt32(fila["cod_plan"].ToString());
                 nuevo_tipo.desc_plan = (string)fila["desc_plan"];
                 nueva_lista.Add(nuevo_tipo);
+            }
+            return nueva_lista;
+        }
+
+        public List<GeoLoc> GetGeoLoc(int cod_sucursal)
+        {
+            List<GeoLoc> nueva_lista = new List<GeoLoc>();
+            DataTable nueva_tabla = new DataTable();
+            List<SqlParameter> param_gl = new List<SqlParameter>();
+            param_gl.Add(new SqlParameter("@sucursal", cod_sucursal));
+            nueva_tabla = DBHelper.ObtenerInstancia().CargarTabla("SP_CLIENTES_OBTENER_DOMICILIOS_POR_SUCURSAL", param_gl);
+            foreach (DataRow fila in nueva_tabla.Rows)
+            {
+                GeoLoc nueva = (GeoLoc)ModeloFactory.ObtenerInstancia().CreaObjeto("GeoLoc");
+                nueva.tipo = Convert.ToInt32(fila["tipo"].ToString());
+                nueva.nombre = (string)fila["nombre"];
+                nueva.domicilio = (string)fila["domicilio"];
+                nueva_lista.Add(nueva);
             }
             return nueva_lista;
         }

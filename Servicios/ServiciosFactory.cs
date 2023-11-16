@@ -71,6 +71,8 @@ namespace Farmaceutica.Servicios
                     return new GestorReporteStock();
                 case "GestorSucursal":
                     return new GestorSucursal();
+                case "geolocalizacion":
+                    return new FrmGeoLocalizacion();
 
 
                 default:

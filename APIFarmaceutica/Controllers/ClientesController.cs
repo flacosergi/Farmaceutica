@@ -36,6 +36,16 @@ namespace APIFarmaceutica.Controllers
             return (Cliente)dao.BuscaRegistro(id);
         }
 
+        // GET /api/Clientes/ObtenerGeoLoc/5
+        [HttpGet, Route("ObtenerGeoLoc/{id}")]
+        public IEnumerable<GeoLoc> GetGeoLoc(int id)
+        {
+            DaoCliente dao = (DaoCliente)factory.CreaObjeto("DaoCliente");
+            return dao.GetGeoLoc(id);
+        }
+
+
+
         // GET api/<ClienteController>/5
         [HttpGet("{id}")]
         public string Get(int id)
@@ -44,13 +54,7 @@ namespace APIFarmaceutica.Controllers
         }
 
 
-        //// PUT api/<ClienteController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        // DELETE api/<ClienteController>/5
+          // DELETE api/<ClienteController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
