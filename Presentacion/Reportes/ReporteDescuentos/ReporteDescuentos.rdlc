@@ -171,7 +171,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!total.Value</Value>
+                              <Value>="$ " + StrConv(Fields!total.Value, VbStrConv.None)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -192,6 +192,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
