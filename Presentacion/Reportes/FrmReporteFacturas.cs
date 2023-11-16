@@ -40,6 +40,24 @@ namespace Farmaceutica.Presentacion.Reportes
 			reportViewer1.RefreshReport();
 		}
 
+		private void dtpDesde_ValueChanged(object sender, EventArgs e)
+		{
+			if (dtpDesde.Value >= dtpHasta.Value)
+			{
+				MessageBox.Show("La fecha desde debe ser menor a la fecha hasta", "Fechas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				dtpDesde.Value = dtpHasta.Value.AddDays(-1);
+			}
+		}
+
+		private void dtpHasta_ValueChanged(object sender, EventArgs e)
+		{
+			if (dtpDesde.Value >= dtpHasta.Value)
+			{
+				MessageBox.Show("La fecha hasta debe ser mayor a la fecha desde", "Fechas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				dtpHasta.Value = dtpDesde.Value.AddDays(1);
+			}
+		}
+
 		private DataTable ToDataTable<T>(List<T> items)
 		{
 			DataTable dataTable = new DataTable(typeof(T).Name);

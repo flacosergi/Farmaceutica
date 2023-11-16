@@ -46,9 +46,9 @@
 			label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
 			label1.Location = new Point(3, 9);
 			label1.Name = "label1";
-			label1.Size = new Size(155, 21);
+			label1.Size = new Size(250, 21);
 			label1.TabIndex = 1;
-			label1.Text = "Listado de Facturas";
+			label1.Text = "Listado de Facturas con Tarjetas";
 			// 
 			// dtpDesde
 			// 
@@ -56,6 +56,7 @@
 			dtpDesde.Name = "dtpDesde";
 			dtpDesde.Size = new Size(217, 23);
 			dtpDesde.TabIndex = 2;
+			dtpDesde.ValueChanged += dtpDesde_ValueChanged;
 			// 
 			// label2
 			// 
@@ -84,6 +85,7 @@
 			dtpHasta.Name = "dtpHasta";
 			dtpHasta.Size = new Size(211, 23);
 			dtpHasta.TabIndex = 5;
+			dtpHasta.ValueChanged += dtpHasta_ValueChanged;
 			// 
 			// label6
 			// 
@@ -101,7 +103,7 @@
 			button1.BackColor = Color.DarkCyan;
 			button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
 			button1.ForeColor = SystemColors.Control;
-			button1.Location = new Point(3, 75);
+			button1.Location = new Point(544, 45);
 			button1.Name = "button1";
 			button1.Size = new Size(86, 31);
 			button1.TabIndex = 9;
@@ -119,28 +121,32 @@
 			panel1.Controls.Add(label6);
 			panel1.Controls.Add(dtpDesde);
 			panel1.Controls.Add(dtpHasta);
-			panel1.Location = new Point(12, 12);
+			panel1.Location = new Point(10, 10);
 			panel1.Name = "panel1";
-			panel1.Size = new Size(499, 114);
+			panel1.Size = new Size(655, 84);
 			panel1.TabIndex = 10;
 			// 
 			// reportViewer1
 			// 
-			reportViewer1.Location = new Point(15, 140);
+			reportViewer1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			reportViewer1.Location = new Point(10, 110);
 			reportViewer1.Name = "reportViewer1";
 			reportViewer1.ServerReport.BearerToken = null;
-			reportViewer1.Size = new Size(490, 300);
+			reportViewer1.Size = new Size(660, 648);
 			reportViewer1.TabIndex = 0;
 			// 
 			// FrmReporteFacturas
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			AutoSize = true;
 			BackColor = Color.Azure;
-			ClientSize = new Size(524, 351);
+			ClientSize = new Size(679, 749);
 			Controls.Add(reportViewer1);
 			Controls.Add(panel1);
+			MaximizeBox = false;
+			MaximumSize = new Size(695, 900);
+			MinimizeBox = false;
+			MinimumSize = new Size(695, 718);
 			Name = "FrmReporteFacturas";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Reporte Facturas";
