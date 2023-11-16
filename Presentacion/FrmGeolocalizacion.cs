@@ -61,6 +61,7 @@ namespace Farmaceutica.Presentacion
                     gmMapa.SetPositionByKeywords(gl.domicilio);
                     GMapOverlay markersoverlay = new GMapOverlay("markers");
                     GMarkerGoogle marker = new GMarkerGoogle(gmMapa.Position, GMarkerGoogleType.green);
+                    marker.ToolTipText = gl.nombre;
                     markersoverlay.Markers.Add(marker);
                     gmMapa.Overlays.Add(markersoverlay);
                 }
@@ -69,6 +70,7 @@ namespace Farmaceutica.Presentacion
                     gmMapa.SetPositionByKeywords(gl.domicilio);
                     GMapOverlay markersoverlay = new GMapOverlay("markers");
                     GMarkerGoogle marker = new GMarkerGoogle(gmMapa.Position, GMarkerGoogleType.red);
+                    marker.ToolTipText = gl.nombre;
                     markersoverlay.Markers.Add(marker);
                     gmMapa.Overlays.Add(markersoverlay);
                 }
