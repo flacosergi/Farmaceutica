@@ -1,0 +1,27 @@
+﻿           // gmMapa
+            // 
+            gmMapa.Bearing = 0F;
+            gmMapa.BorderStyle = BorderStyle.FixedSingle;
+            gmMapa.CanDragMap = true;
+            gmMapa.EmptyTileColor = Color.Navy;
+            gmMapa.GrayScaleMode = false;
+            gmMapa.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            gmMapa.LevelsKeepInMemory = 5;
+            gmMapa.Location = new Point(12, 53);
+            gmMapa.MarkersEnabled = true;
+            gmMapa.MaxZoom = 2;
+            gmMapa.MinZoom = 2;
+            gmMapa.MouseWheelZoomEnabled = true;
+            gmMapa.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            gmMapa.Name = "gmMapa";
+            gmMapa.NegativeMode = false;
+            gmMapa.PolygonsEnabled = true;
+            gmMapa.RetryLoadTile = 0;
+            gmMapa.RoutesEnabled = true;
+            gmMapa.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            gmMapa.SelectedAreaFillColor = Color.FromArgb(33, 65, 105, 225);
+            gmMapa.ShowTileGridLines = false;
+            gmMapa.Size = new Size(1025, 524);
+            gmMapa.TabIndex = 4;
+            gmMapa.Zoom = 0D;
+            gmMapa.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom; 

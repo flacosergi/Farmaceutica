@@ -61,6 +61,7 @@
             gmMapa.Size = new Size(1025, 524);
             gmMapa.TabIndex = 4;
             gmMapa.Zoom = 0D;
+            gmMapa.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom; 
             // 
             // btnLocalizar
             // 
