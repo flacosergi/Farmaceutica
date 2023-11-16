@@ -10,8 +10,8 @@ namespace AccesoDatos.Modelos
     {
         public string Sucursal { get; set; }
         public string Articulo { get; set; }
-        public int StockMinimo { get; set; }
-        public int StockActual { get; set; }
+        public long StockMinimo { get; set; }
+        public long StockActual { get; set; }
         public string Estado { get; set; }
 
         public RepoStocks()
