@@ -1,5 +1,6 @@
 ﻿using AccesoDatos.Servicios;
 using Farmaceutica.Presentacion.Reportes;
+using Farmaceutica.Presentacion.Reportes.ReporteDescuentos;
 using Farmaceutica.Servicios;
 using System;
 using System.Collections.Generic;
@@ -83,6 +84,12 @@ namespace Farmaceutica.Presentacion
             FrmGeoLocalizacion FormGeo = (FrmGeoLocalizacion)ServiciosFactory.ObtenerInstancia().CreaObjeto("geolocalizacion");
             Cursor.Current = Cursors.WaitCursor;
             FormGeo.ShowDialog(this);
+        }
+
+        private void mejoresCleintesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReporteDescuentos FrmDescuentos = (FrmReporteDescuentos)ServiciosFactory.ObtenerInstancia().CreaObjeto("FrmReporteDescuentos");
+            FrmDescuentos.ShowDialog(this);
         }
     }
 }
