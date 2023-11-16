@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace Farmaceutica.Presentacion.Reportes {
+namespace Farmaceutica.Presentacion.Reportes.ReporteStocks {
     
     
     /// <summary>
