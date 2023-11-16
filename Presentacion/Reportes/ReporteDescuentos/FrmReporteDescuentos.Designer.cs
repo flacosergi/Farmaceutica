@@ -121,7 +121,7 @@
             MinimumSize = new Size(695, 500);
             Name = "FrmReporteDescuentos";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmReporteDescuentos";
+            Text = "Reporte de Mejores Clientes";
             Load += FrmReporteDescuentos_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

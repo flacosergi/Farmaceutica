@@ -40,8 +40,8 @@
             reporteDeStockToolStripMenuItem = new ToolStripMenuItem();
             reporteDeFacturasToolStripMenuItem = new ToolStripMenuItem();
             tsmiGeolocalizacion = new ToolStripMenuItem();
-            ayudaToolStripMenuItem = new ToolStripMenuItem();
             mejoresCleintesToolStripMenuItem = new ToolStripMenuItem();
+            ayudaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -126,18 +126,18 @@
             tsmiGeolocalizacion.Text = "&Geolocalización";
             tsmiGeolocalizacion.Click += geoToolStripMenuItem_Click;
             // 
+            // mejoresCleintesToolStripMenuItem
+            // 
+            mejoresCleintesToolStripMenuItem.Name = "mejoresCleintesToolStripMenuItem";
+            mejoresCleintesToolStripMenuItem.Size = new Size(180, 22);
+            mejoresCleintesToolStripMenuItem.Text = "Mejores Clientes";
+            mejoresCleintesToolStripMenuItem.Click += mejoresCleintesToolStripMenuItem_Click;
+            // 
             // ayudaToolStripMenuItem
             // 
             ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
             ayudaToolStripMenuItem.Size = new Size(53, 20);
             ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // mejoresCleintesToolStripMenuItem
-            // 
-            mejoresCleintesToolStripMenuItem.Name = "mejoresCleintesToolStripMenuItem";
-            mejoresCleintesToolStripMenuItem.Size = new Size(180, 22);
-            mejoresCleintesToolStripMenuItem.Text = "Mejores cleintes";
-            mejoresCleintesToolStripMenuItem.Click += mejoresCleintesToolStripMenuItem_Click;
             // 
             // FrmPrincipal
             // 

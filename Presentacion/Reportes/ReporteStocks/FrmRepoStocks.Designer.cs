@@ -121,7 +121,7 @@
             MinimumSize = new Size(695, 900);
             Name = "FrmRepoStocks";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Reporte de Stock";
+            Text = "Reporte de Stock por Sucursal";
             Load += FrmRepoStocks_Load;
             gbFiltros.ResumeLayout(false);
             gbFiltros.PerformLayout();
