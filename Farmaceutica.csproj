@@ -22,10 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Presentacion\Reportes\ReporteDescuentos\ReporteDescuentos.rdlc" />
     <None Remove="Presentacion\Reportes\ReporteFacturas.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Presentacion\Reportes\ReporteDescuentos\ReporteDescuentos.rdlc" />
     <EmbeddedResource Include="Presentacion\Reportes\ReporteFacturas.rdlc" />
     <None Remove="Presentacion\Reportes\ReporteStocks.rdlc" />
   </ItemGroup>
@@ -57,6 +59,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>DSRepoStocks.xsd</DependentUpon>
     </Compile>
+    <Compile Update="Presentacion\Reportes\ReporteDescuentos\DSDescuentos.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DSDescuentos.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -83,6 +90,10 @@
     <None Update="Presentacion\Reportes\ReporteStocks\DSRepoStocks.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DSRepoStocks.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Presentacion\Reportes\ReporteDescuentos\DSDescuentos.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSDescuentos.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

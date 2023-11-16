@@ -7,6 +7,7 @@ using AccesoDatos.Servicios;
 using AccesoDatos.Modelos;
 using Farmaceutica.Presentacion;
 using Farmaceutica.Presentacion.Reportes;
+using Farmaceutica.Presentacion.Reportes.ReporteDescuentos;
 
 namespace Farmaceutica.Servicios
 {
@@ -73,6 +74,8 @@ namespace Farmaceutica.Servicios
                     return new GestorSucursal();
                 case "geolocalizacion":
                     return new FrmGeoLocalizacion();
+                case "FrmReporteDescuentos":
+                    return new FrmReporteDescuentos(this);
 
 
                 default:
