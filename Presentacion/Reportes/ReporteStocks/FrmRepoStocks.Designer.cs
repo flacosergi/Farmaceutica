@@ -43,7 +43,7 @@
             rvStocks.Location = new Point(10, 90);
             rvStocks.Name = "ReportViewer";
             rvStocks.ServerReport.BearerToken = null;
-            rvStocks.Size = new Size(770, 330);
+            rvStocks.Size = new Size(660, 760);
             rvStocks.TabIndex = 0;
             // 
             // cbSucursal
@@ -52,7 +52,7 @@
             cbSucursal.FormattingEnabled = true;
             cbSucursal.Location = new Point(69, 22);
             cbSucursal.Name = "cbSucursal";
-            cbSucursal.Size = new Size(392, 23);
+            cbSucursal.Size = new Size(323, 23);
             cbSucursal.TabIndex = 3;
             // 
             // gbFiltros
@@ -63,7 +63,7 @@
             gbFiltros.Controls.Add(cbSucursal);
             gbFiltros.Location = new Point(12, 12);
             gbFiltros.Name = "gbFiltros";
-            gbFiltros.Size = new Size(747, 61);
+            gbFiltros.Size = new Size(657, 61);
             gbFiltros.TabIndex = 5;
             gbFiltros.TabStop = false;
             gbFiltros.Text = "Filtros";
@@ -85,7 +85,7 @@
             btnGenerar.FlatStyle = FlatStyle.Flat;
             btnGenerar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnGenerar.ForeColor = SystemColors.Control;
-            btnGenerar.Location = new Point(532, 19);
+            btnGenerar.Location = new Point(446, 19);
             btnGenerar.Name = "btnGenerar";
             btnGenerar.Size = new Size(85, 27);
             btnGenerar.TabIndex = 6;
@@ -99,7 +99,7 @@
             btnLimpiar.FlatStyle = FlatStyle.Flat;
             btnLimpiar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnLimpiar.ForeColor = SystemColors.Control;
-            btnLimpiar.Location = new Point(648, 19);
+            btnLimpiar.Location = new Point(552, 19);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(85, 27);
             btnLimpiar.TabIndex = 5;
@@ -112,10 +112,15 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Azure;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(679, 861);
             Controls.Add(gbFiltros);
             Controls.Add(rvStocks);
+            MaximizeBox = false;
+            MaximumSize = new Size(695, 900);
+            MinimizeBox = false;
+            MinimumSize = new Size(695, 900);
             Name = "FrmRepoStocks";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Reporte de Stock";
             Load += FrmRepoStocks_Load;
             gbFiltros.ResumeLayout(false);

@@ -29,9 +29,10 @@ namespace Farmaceutica.Presentacion.Reportes
 
         private async void FrmRepoStocks_Load(object sender, EventArgs e)
         {
-            rvStocks.LocalReport.ReportEmbeddedResource = "Farmaceutica.Presentacion.Reportes.ReporteStocks.rdlc";
+            rvStocks.LocalReport.ReportEmbeddedResource = "Farmaceutica.Presentacion.Reportes.ReporteStocks.ReporteStocks.rdlc";
             List<Sucursal> sucursales = await gestorSucursal.ObtenerSucursales();
             metodos.LlenaCombo(cbSucursal, sucursales.ToList<object>(), "nombre", "codigo_sucursal");
+            LlenarReporte();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -39,7 +40,12 @@ namespace Farmaceutica.Presentacion.Reportes
             cbSucursal.SelectedIndex = -1;
         }
 
-        private async void btnGenerar_Click(object sender, EventArgs e)
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            LlenarReporte();
+        }
+
+        private async void LlenarReporte()
         {
             int suc = -1;
             if (cbSucursal.SelectedIndex != -1)

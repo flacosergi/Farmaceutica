@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Presentacion\Reportes\ReporteStocks.rdlc" />
+    <EmbeddedResource Include="Presentacion\Reportes\ReporteStocks\ReporteStocks.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,7 +52,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>DSFacturas.xsd</DependentUpon>
     </Compile>
-    <Compile Update="Presentacion\Reportes\DSRepoStocks.Designer.cs">
+    <Compile Update="Presentacion\Reportes\ReporteStocks\DSRepoStocks.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>DSRepoStocks.xsd</DependentUpon>
@@ -80,7 +80,7 @@
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DSFacturas.Designer.cs</LastGenOutput>
     </None>
-    <None Update="Presentacion\Reportes\DSRepoStocks.xsd">
+    <None Update="Presentacion\Reportes\ReporteStocks\DSRepoStocks.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DSRepoStocks.Designer.cs</LastGenOutput>
     </None>
